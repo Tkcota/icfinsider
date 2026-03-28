@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Find an ICF Contractor Near You | ICF Insider Directory</title>
+  <meta name="description" content="Find vetted ICF contractors, builders, distributors, and architects near you. Search by state, project type, and brand certification. The most complete ICF contractor directory in North America.">
+
+  <link rel="canonical" href="https://icfinsider.com/find-a-pro.html">
+
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Find an ICF Contractor Near You | ICF Insider">
+  <meta property="og:description" content="The most complete ICF contractor directory in North America — coming soon. Search by state, project type, and brand certification.">
+  <meta property="og:url"         content="https://icfinsider.com/find-a-pro.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <style>
+    /* -------------------------------------------------------
+       Find a Pro page — directory layout styles
+    ------------------------------------------------------- */
+
+    .directory-hero {
+      background-color: var(--color-dark-900);
+      padding-top: calc(var(--nav-height) + var(--space-16));
+      padding-bottom: var(--space-16);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .directory-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(232,120,10,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .directory-hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .directory-hero h1 {
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      color: var(--color-white);
+      margin-bottom: var(--space-4);
+      max-width: 700px;
+    }
+
+    .directory-hero p {
+      font-size: var(--text-lg);
+      color: var(--color-text-muted);
+      max-width: 580px;
+      margin-bottom: var(--space-8);
+    }
+
+    /* -------------------------------------------------------
+       SEARCH / FILTER BAR
+    ------------------------------------------------------- */
+    .search-bar {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      max-width: 760px;
+    }
+
+    .search-select {
+      flex: 1;
+      min-width: 180px;
+      padding: var(--space-3) var(--space-4);
+      background-color: var(--color-dark-800);
+      border: 1px solid var(--color-border-dark);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-light);
+      font-size: var(--text-base);
+      font-family: var(--font-body);
+      outline: none;
+      cursor: pointer;
+      transition: border-color var(--transition-fast);
+    }
+
+    .search-select:focus {
+      border-color: var(--color-accent);
+    }
+
+    /* Style the dropdown options (limited browser support but helps) */
+    .search-select option {
+      background-color: var(--color-dark-800);
+      color: var(--color-text-light);
+    }
+
+    /* -------------------------------------------------------
+       DIRECTORY LAYOUT
+    ------------------------------------------------------- */
+    .directory-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: var(--space-10);
+      padding-top: var(--space-12);
+      padding-bottom: var(--space-20);
+      align-items: start;
+    }
+
+    /* Left sidebar filters */
+    .directory-filters {
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-6));
+    }
+
+    .filter-group {
+      margin-bottom: var(--space-6);
+    }
+
+    .filter-group-title {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-mid);
+      margin-bottom: var(--space-3);
+    }
+
+    .filter-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .filter-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-sm);
+      color: var(--color-text-mid);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background-color var(--transition-fast), color var(--transition-fast);
+      width: 100%;
+    }
+
+    .filter-btn:hover {
+      background-color: var(--color-off-white);
+      color: var(--color-text-dark);
+    }
+
+    .filter-btn.active {
+      background-color: var(--color-accent-dim);
+      color: var(--color-accent);
+      font-weight: var(--weight-medium);
+    }
+
+    .filter-count {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      background: var(--color-off-white);
+      padding: 2px 7px;
+      border-radius: 999px;
+    }
+
+    /* -------------------------------------------------------
+       DIRECTORY RESULTS AREA
+    ------------------------------------------------------- */
+    .directory-results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--color-border-light);
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+
+    .results-count {
+      font-size: var(--text-sm);
+      color: var(--color-text-mid);
+    }
+
+    .results-count strong {
+      color: var(--color-text-dark);
+    }
+
+    /* Coming soon banner inside the results area */
+    .coming-soon-banner {
+      background: linear-gradient(135deg, var(--color-dark-900) 0%, var(--color-dark-800) 100%);
+      border: 1px solid var(--color-border-dark);
+      border-radius: var(--radius-lg);
+      padding: var(--space-10);
+      text-align: center;
+      margin-bottom: var(--space-8);
+    }
+
+    .coming-soon-banner h2 {
+      font-size: var(--text-3xl);
+      color: var(--color-white);
+      margin-bottom: var(--space-3);
+    }
+
+    .coming-soon-banner p {
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-6);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Placeholder listing cards — show what the directory will look like */
+    .listing-card {
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Blur overlay on placeholder cards */
+    .listing-card.placeholder {
+      filter: blur(3px);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .listing-card-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      background-color: var(--color-off-white);
+      border: 1px solid var(--color-border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-extrabold);
+      color: var(--color-accent);
+    }
+
+    .listing-card-body {
+      flex: 1;
+    }
+
+    .listing-card-name {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-text-dark);
+      margin-bottom: var(--space-1);
+    }
+
+    .listing-card-meta {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-3);
+    }
+
+    .listing-card-meta span {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    .listing-tags {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    .listing-tag {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      padding: 2px var(--space-3);
+      border-radius: 999px;
+      background-color: var(--color-off-white);
+      color: var(--color-text-mid);
+      border: 1px solid var(--color-border-light);
+    }
+
+    .listing-tag.featured {
+      background-color: var(--color-accent-dim);
+      color: var(--color-accent);
+      border-color: rgba(232,120,10,0.2);
+    }
+
+    .listing-card-action {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+
+    /* Overlay on blurred placeholder cards */
+    .placeholder-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(0px);
+    }
+
+    .placeholder-overlay span {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-mid);
+      background: var(--color-white);
+      border: 1px solid var(--color-border-light);
+      padding: var(--space-2) var(--space-4);
+      border-radius: 999px;
+    }
+
+    /* CTA block to claim listing */
+    .claim-listing-cta {
+      border: 2px dashed var(--color-border-light);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      text-align: center;
+      margin-top: var(--space-6);
+      transition: border-color var(--transition-normal);
+    }
+
+    .claim-listing-cta:hover {
+      border-color: var(--color-accent);
+    }
+
+    .claim-listing-cta h3 {
+      font-size: var(--text-2xl);
+      color: var(--color-text-dark);
+      margin-bottom: var(--space-2);
+    }
+
+    .claim-listing-cta p {
+      font-size: var(--text-sm);
+      color: var(--color-text-mid);
+      margin-bottom: var(--space-5);
+    }
+
+    /* -------------------------------------------------------
+       PRO TYPE TABS (Contractors / Distributors / Architects)
+    ------------------------------------------------------- */
+    .pro-type-tabs {
+      display: flex;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+      border-bottom: 1px solid var(--color-border-light);
+      padding-bottom: 0;
+    }
+
+    .pro-type-tab {
+      padding: var(--space-3) var(--space-5);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-mid);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      cursor: pointer;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .pro-type-tab:hover {
+      color: var(--color-text-dark);
+    }
+
+    .pro-type-tab.active {
+      color: var(--color-accent);
+      border-bottom-color: var(--color-accent);
+    }
+
+    /* Responsive */
+    @media (max-width: 1023px) {
+      .directory-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .directory-filters {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-4);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .directory-filters {
+        grid-template-columns: 1fr;
+      }
+
+      .listing-card {
+        flex-direction: column;
+      }
+
+      .listing-card-action {
+        align-items: flex-start;
+        flex-direction: row;
+      }
+
+      .search-bar {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="main-nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo" aria-label="ICF Insider home">
+        <div class="nav-logo-mark" aria-hidden="true">I</div>
+        <span class="nav-logo-text">ICF <span>Insider</span></span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="icf-101.html"    class="nav-link">ICF 101</a></li>
+        <li><a href="cost-guide.html" class="nav-link">Cost Guide</a></li>
+        <li><a href="brands.html"     class="nav-link">Brand Comparison</a></li>
+        <li><a href="find-a-pro.html" class="nav-link active">Find a Pro</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="early-access.html" class="btn btn-primary">Get Early Access</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="nav-mobile" role="navigation">
+    <a href="icf-101.html"    class="nav-link">ICF 101</a>
+    <a href="cost-guide.html" class="nav-link">Cost Guide</a>
+    <a href="brands.html"     class="nav-link">Brand Comparison</a>
+    <a href="find-a-pro.html" class="nav-link active">Find a Pro</a>
+    <a href="early-access.html" class="btn btn-primary">Get Early Access</a>
+  </div>
+
+
+  <!-- DIRECTORY HERO + SEARCH -->
+  <section class="directory-hero" aria-labelledby="dir-title">
+    <div class="container directory-hero-inner">
+
+      <span class="eyebrow">ICF Contractor Directory</span>
+      <h1 id="dir-title">Find a Qualified ICF Professional Near You</h1>
+      <p>
+        Search vetted ICF contractors, builders, distributors, architects, and
+        engineers across every state. Filter by project type and brand certification.
+      </p>
+
+      <div class="search-bar" role="search">
+        <select class="search-select" id="filter-state" aria-label="Filter by state">
+          <option value="">All States</option>
+          <option>Alabama</option><option>Alaska</option><option>Arizona</option>
+          <option>Arkansas</option><option>California</option><option>Colorado</option>
+          <option>Connecticut</option><option>Delaware</option><option>Florida</option>
+          <option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+          <option>Illinois</option><option>Indiana</option><option>Iowa</option>
+          <option>Kansas</option><option>Kentucky</option><option>Louisiana</option>
+          <option>Maine</option><option>Maryland</option><option>Massachusetts</option>
+          <option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+          <option>Missouri</option><option>Montana</option><option>Nebraska</option>
+          <option>Nevada</option><option>New Hampshire</option><option>New Jersey</option>
+          <option>New Mexico</option><option>New York</option><option>North Carolina</option>
+          <option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+          <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option>
+          <option>South Carolina</option><option>South Dakota</option><option>Tennessee</option>
+          <option>Texas</option><option>Utah</option><option>Vermont</option>
+          <option>Virginia</option><option>Washington</option><option>West Virginia</option>
+          <option>Wisconsin</option><option>Wyoming</option>
+        </select>
+
+        <select class="search-select" id="filter-type" aria-label="Filter by pro type">
+          <option value="">All Pro Types</option>
+          <option>Contractors &amp; Builders</option>
+          <option>Distributors</option>
+          <option>Architects &amp; Designers</option>
+          <option>Structural Engineers</option>
+        </select>
+
+        <select class="search-select" id="filter-brand" aria-label="Filter by ICF brand">
+          <option value="">All Brands</option>
+          <option>Nudura</option>
+          <option>Fox Blocks</option>
+          <option>Amvic</option>
+          <option>Logix</option>
+          <option>Super Form</option>
+          <option>Quad-Lock</option>
+          <option>Build Block</option>
+        </select>
+
+        <button class="btn btn-primary" id="search-btn">Search</button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- DIRECTORY MAIN LAYOUT -->
+  <div class="container">
+    <div class="directory-layout">
+
+      <!-- LEFT: Filters sidebar -->
+      <aside class="directory-filters" aria-label="Directory filters">
+
+        <div class="filter-group">
+          <div class="filter-group-title">Pro Type</div>
+          <div class="filter-list" role="list">
+            <button class="filter-btn active" role="listitem">All Professionals</button>
+            <button class="filter-btn" role="listitem">
+              Contractors &amp; Builders
+              <span class="filter-count">—</span>
+            </button>
+            <button class="filter-btn" role="listitem">
+              Distributors
+              <span class="filter-count">—</span>
+            </button>
+            <button class="filter-btn" role="listitem">
+              Architects &amp; Designers
+              <span class="filter-count">—</span>
+            </button>
+            <button class="filter-btn" role="listitem">
+              Structural Engineers
+              <span class="filter-count">—</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group-title">ICF Brand</div>
+          <div class="filter-list" role="list">
+            <button class="filter-btn" role="listitem">Nudura</button>
+            <button class="filter-btn" role="listitem">Fox Blocks</button>
+            <button class="filter-btn" role="listitem">Amvic</button>
+            <button class="filter-btn" role="listitem">Logix</button>
+            <button class="filter-btn" role="listitem">Super Form</button>
+            <button class="filter-btn" role="listitem">Quad-Lock</button>
+            <button class="filter-btn" role="listitem">Build Block</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group-title">Project Type</div>
+          <div class="filter-list" role="list">
+            <button class="filter-btn" role="listitem">Residential</button>
+            <button class="filter-btn" role="listitem">Commercial</button>
+            <button class="filter-btn" role="listitem">Basement Only</button>
+            <button class="filter-btn" role="listitem">Multi-Family</button>
+          </div>
+        </div>
+
+      </aside>
+
+
+      <!-- RIGHT: Results -->
+      <main aria-label="Directory results">
+
+        <!-- Pro type tabs -->
+        <div class="pro-type-tabs" role="tablist">
+          <button class="pro-type-tab active" role="tab">All Pros</button>
+          <button class="pro-type-tab" role="tab">Contractors</button>
+          <button class="pro-type-tab" role="tab">Distributors</button>
+          <button class="pro-type-tab" role="tab">Architects</button>
+          <button class="pro-type-tab" role="tab">Engineers</button>
+        </div>
+
+        <div class="directory-results-header">
+          <p class="results-count">Showing <strong>0 listings</strong> — directory launching soon</p>
+        </div>
+
+        <!-- Coming soon banner -->
+        <div class="coming-soon-banner">
+          <span class="eyebrow" style="display:block; margin-bottom: 0.75rem;">Directory Launching Soon</span>
+          <h2>Be the First Listed in Your State</h2>
+          <p>
+            We're actively onboarding ICF professionals right now. Early members get
+            priority placement, reduced first-year pricing, and maximum visibility
+            before the directory goes public.
+          </p>
+          <a href="early-access.html" class="btn btn-primary btn-lg">
+            Claim Your Listing
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Blurred placeholder listings — show what real listings will look like -->
+        <p style="font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 1rem; text-align: center; letter-spacing: 0.05em; text-transform: uppercase;">Preview — what listings will look like</p>
+
+        <!-- Placeholder 1 -->
+        <div class="listing-card placeholder" aria-hidden="true">
+          <div class="listing-card-logo">JB</div>
+          <div class="listing-card-body">
+            <div class="listing-card-name">Johnson Build Group</div>
+            <div class="listing-card-meta">
+              <span>📍 Tampa, Florida</span>
+              <span>⭐ 4.9 (24 reviews)</span>
+              <span>🏗 47 ICF projects</span>
+            </div>
+            <div class="listing-tags">
+              <span class="listing-tag featured">Featured</span>
+              <span class="listing-tag">Nudura Certified</span>
+              <span class="listing-tag">Residential</span>
+              <span class="listing-tag">Commercial</span>
+            </div>
+          </div>
+          <div class="listing-card-action">
+            <a href="#" class="btn btn-primary">View Profile</a>
+            <a href="#" class="btn btn-outline-dark">Get Quote</a>
+          </div>
+          <div class="placeholder-overlay"><span>Listing preview</span></div>
+        </div>
+
+        <!-- Placeholder 2 -->
+        <div class="listing-card placeholder" aria-hidden="true">
+          <div class="listing-card-logo">SC</div>
+          <div class="listing-card-body">
+            <div class="listing-card-name">Solid Core Construction</div>
+            <div class="listing-card-meta">
+              <span>📍 Denver, Colorado</span>
+              <span>⭐ 4.8 (18 reviews)</span>
+              <span>🏗 32 ICF projects</span>
+            </div>
+            <div class="listing-tags">
+              <span class="listing-tag">Fox Blocks Certified</span>
+              <span class="listing-tag">Residential</span>
+              <span class="listing-tag">Basement Specialist</span>
+            </div>
+          </div>
+          <div class="listing-card-action">
+            <a href="#" class="btn btn-primary">View Profile</a>
+            <a href="#" class="btn btn-outline-dark">Get Quote</a>
+          </div>
+          <div class="placeholder-overlay"><span>Listing preview</span></div>
+        </div>
+
+        <!-- Placeholder 3 -->
+        <div class="listing-card placeholder" aria-hidden="true">
+          <div class="listing-card-logo">AF</div>
+          <div class="listing-card-body">
+            <div class="listing-card-name">All-Forms Distribution</div>
+            <div class="listing-card-meta">
+              <span>📍 Atlanta, Georgia</span>
+              <span>🏢 Distributor</span>
+              <span>📦 Nudura · Fox Blocks · Amvic</span>
+            </div>
+            <div class="listing-tags">
+              <span class="listing-tag featured">Featured</span>
+              <span class="listing-tag">Multi-Brand</span>
+              <span class="listing-tag">Southeast US</span>
+            </div>
+          </div>
+          <div class="listing-card-action">
+            <a href="#" class="btn btn-primary">View Profile</a>
+          </div>
+          <div class="placeholder-overlay"><span>Listing preview</span></div>
+        </div>
+
+        <!-- Claim your listing CTA -->
+        <div class="claim-listing-cta">
+          <h3>Are you an ICF professional?</h3>
+          <p>Contractors, builders, distributors, architects, and engineers are all welcome. Be listed before we go public.</p>
+          <a href="early-access.html" class="btn btn-primary">Reserve Your Listing</a>
+        </div>
+
+      </main>
+
+    </div><!-- /.directory-layout -->
+  </div><!-- /.container -->
+
+
+  <!-- WHY GET LISTED SECTION -->
+  <section class="section bg-off-white" aria-labelledby="why-listed-heading">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="eyebrow">For ICF Professionals</span>
+        <h2 id="why-listed-heading">Why Get Listed on ICF Insider</h2>
+        <p class="lead">The only directory built specifically for ICF — where buyers are already sold on the product and looking for someone to build it.</p>
+      </div>
+
+      <div class="grid-3">
+
+        <div class="audience-card">
+          <div class="audience-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          <h3>Qualified Leads</h3>
+          <p>Every visitor on ICF Insider is already researching ICF construction. These aren't cold prospects — they're buyers. You're not convincing them to consider ICF; they've already decided.</p>
+        </div>
+
+        <div class="audience-card">
+          <div class="audience-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <h3>State Visibility</h3>
+          <p>When a homeowner in your state searches "ICF contractor [your state]", your listing appears. First movers in each state get dominant visibility before competition fills in.</p>
+        </div>
+
+        <div class="audience-card">
+          <div class="audience-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3>Independent Platform</h3>
+          <p>ICF Insider isn't owned by a manufacturer. We recommend your services based on your work, not which brand you install. That independence is what makes homeowners trust the directory.</p>
+        </div>
+
+      </div>
+
+      <div style="text-align: center; margin-top: var(--space-10);">
+        <a href="early-access.html" class="btn btn-primary btn-lg">Get Listed Before Launch</a>
+        <p style="font-size: var(--text-sm); color: var(--color-text-mid); margin-top: var(--space-3);">Early access pricing · Priority placement · No payment now</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo" aria-label="ICF Insider home">
+            <div class="nav-logo-mark" aria-hidden="true">I</div>
+            <span class="nav-logo-text">ICF <span>Insider</span></span>
+          </a>
+          <p>The independent authority on Insulated Concrete Form construction. Real data, unbiased comparisons, and a vetted contractor network.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="icf-101.html"    class="footer-link">ICF 101</a></li>
+            <li><a href="cost-guide.html" class="footer-link">Cost Guide</a></li>
+            <li><a href="brands.html"     class="footer-link">Brand Comparison</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Directory</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="find-a-pro.html"  class="footer-link">Find a Contractor</a></li>
+            <li><a href="early-access.html" class="footer-link">List Your Business</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="early-access.html" class="footer-link">Contact</a></li>
+            <li><a href="early-access.html" class="footer-link">Advertise</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ICF Insider. All rights reserved.</p>
+        <nav class="footer-bottom-links" aria-label="Legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+  <script>
+    /* =========================================================
+       DIRECTORY PAGE SCRIPTS
+       Filter button active state toggle (visual only for now —
+       real filtering happens in Phase 2 with the backend)
+    ========================================================= */
+    (function () {
+      // Filter sidebar buttons — toggle active state
+      document.querySelectorAll('.filter-list').forEach(function (list) {
+        list.querySelectorAll('.filter-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            list.querySelectorAll('.filter-btn').forEach(function (b) {
+              b.classList.remove('active');
+            });
+            btn.classList.add('active');
+          });
+        });
+      });
+
+      // Pro type tabs
+      var tabs = document.querySelectorAll('.pro-type-tab');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          tabs.forEach(function (t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+        });
+      });
+
+      // Search button — for now just scrolls to results
+      var searchBtn = document.getElementById('search-btn');
+      if (searchBtn) {
+        searchBtn.addEventListener('click', function () {
+          document.querySelector('main[aria-label="Directory results"]').scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+    }());
+  </script>
+
+</body>
+</html>
