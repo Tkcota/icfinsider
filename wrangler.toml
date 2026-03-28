@@ -1,0 +1,13 @@
+# Cloudflare Pages configuration
+# This file wires up the D1 database binding so /api/submit
+# can write leads to the icfinsider-leads database.
+# See: functions/api/submit.js
+
+name = "icfinsider"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "DB"
+database_name = "icfinsider-leads"
+database_id = "33d040e1-3f3f-4e31-8009-7573b4a12c35"
