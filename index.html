@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================
+    META & SEO
+    These tags control how the page appears in Google and
+    when shared on social media (Open Graph).
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ICF Insider — The Independent Authority on ICF Construction</title>
+  <meta name="description" content="The most comprehensive, independent resource for Insulated Concrete Form (ICF) construction in North America. Cost guides, brand comparisons, contractor directory, and more.">
+
+  <!-- Canonical URL: tells Google this is the definitive version of this page -->
+  <link rel="canonical" href="https://icfinsider.com/">
+
+  <!-- Open Graph: controls how this page looks when shared on Facebook, LinkedIn -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="ICF Insider — The Independent Authority on ICF Construction">
+  <meta property="og:description" content="Real data. Independent reviews. The resource ICF homeowners and contractors have been waiting for.">
+  <meta property="og:url"         content="https://icfinsider.com/">
+  <!-- og:image goes here once you have a social share image -->
+
+  <!-- =====================================================
+    FONTS — loaded from Google Fonts
+    Barlow Condensed: architectural headings
+    Inter: clean body text
+    display=swap: page text shows immediately while fonts load
+  ====================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- =====================================================
+    STYLESHEETS
+    main.css first (design tokens, reset, typography)
+    components.css second (it depends on variables in main.css)
+  ====================================================== -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- Favicon placeholder — replace with a real .ico file -->
+  <!-- <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico"> -->
+</head>
+
+<body>
+
+  <!-- =====================================================
+    NAVIGATION
+    Fixed to the top. Logo on left, links on right.
+    The hamburger (#nav-toggle) is hidden on desktop.
+  ====================================================== -->
+  <nav class="nav" id="main-nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+
+      <!-- Logo / Wordmark -->
+      <a href="/" class="nav-logo" aria-label="ICF Insider home">
+        <div class="nav-logo-mark" aria-hidden="true">I</div>
+        <span class="nav-logo-text">ICF <span>Insider</span></span>
+      </a>
+
+      <!-- Desktop Links -->
+      <ul class="nav-links" role="list">
+        <li><a href="icf-101.html"    class="nav-link">ICF 101</a></li>
+        <li><a href="cost-guide.html" class="nav-link">Cost Guide</a></li>
+        <li><a href="brands.html"     class="nav-link">Brand Comparison</a></li>
+        <li><a href="find-a-pro.html" class="nav-link">Find a Pro</a></li>
+      </ul>
+
+      <!-- Desktop CTA -->
+      <div class="nav-cta">
+        <a href="#early-access" class="btn btn-primary">Get Early Access</a>
+      </div>
+
+      <!-- Mobile hamburger button -->
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="nav-mobile"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div><!-- /.nav-inner -->
+  </nav>
+
+  <!-- Mobile menu (shown by JS when hamburger is clicked) -->
+  <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation">
+    <a href="icf-101.html"    class="nav-link">ICF 101</a>
+    <a href="cost-guide.html" class="nav-link">Cost Guide</a>
+    <a href="brands.html"     class="nav-link">Brand Comparison</a>
+    <a href="find-a-pro.html" class="nav-link">Find a Pro</a>
+    <a href="#early-access"   class="btn btn-primary">Get Early Access</a>
+  </div>
+
+
+  <!-- =====================================================
+    HERO SECTION
+    Full viewport. Dark background. Bold statement.
+    The #1 job of this section: communicate what we are
+    and why it matters in under 5 seconds.
+  ====================================================== -->
+  <section class="hero" id="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <div class="hero-content">
+
+        <div class="hero-eyebrow" aria-label="Category">
+          Independent ICF Resource
+        </div>
+
+        <h1 class="hero-title" id="hero-title">
+          Build Smarter.<br>
+          <span class="line-accent">Build in Concrete.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          ICF Insider is the independent authority on Insulated Concrete Form construction.
+          Real cost data, unbiased brand comparisons, and a vetted contractor directory —
+          everything you need to build with confidence.
+        </p>
+
+        <div class="hero-actions">
+          <a href="icf-101.html" class="btn btn-primary btn-lg">
+            Start with ICF 101
+            <!-- Arrow icon -->
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="cost-guide.html" class="btn btn-outline btn-lg">
+            See Cost Guide
+          </a>
+        </div>
+
+        <!-- Key stats — real data points build credibility fast -->
+        <div class="hero-stats" role="list">
+          <div role="listitem">
+            <span class="hero-stat-number">$1B+</span>
+            <span class="hero-stat-label">Annual industry volume</span>
+          </div>
+          <div role="listitem">
+            <span class="hero-stat-number">5–6%</span>
+            <span class="hero-stat-label">Industry growth rate</span>
+          </div>
+          <div role="listitem">
+            <span class="hero-stat-number">50–70%</span>
+            <span class="hero-stat-label">Less energy use vs. wood frame</span>
+          </div>
+          <div role="listitem">
+            <span class="hero-stat-number">4</span>
+            <span class="hero-stat-label">Major brands compared independently</span>
+          </div>
+        </div>
+
+      </div><!-- /.hero-content -->
+    </div><!-- /.container -->
+  </section><!-- /.hero -->
+
+
+  <!-- =====================================================
+    TRUST BAR
+    Short credibility signals. Separated from hero visually
+    but keeps the dark tone rolling into the next section.
+  ====================================================== -->
+  <div class="trust-bar" role="complementary" aria-label="Site values">
+    <div class="container trust-bar-inner">
+      <div class="trust-item">
+        <span class="trust-item-dot" aria-hidden="true"></span>
+        Independent &amp; Unbiased
+      </div>
+      <div class="trust-item">
+        <span class="trust-item-dot" aria-hidden="true"></span>
+        Real Data, Not Marketing
+      </div>
+      <div class="trust-item">
+        <span class="trust-item-dot" aria-hidden="true"></span>
+        Updated Regularly
+      </div>
+      <div class="trust-item">
+        <span class="trust-item-dot" aria-hidden="true"></span>
+        Built by Industry Insiders
+      </div>
+    </div>
+  </div><!-- /.trust-bar -->
+
+
+  <!-- =====================================================
+    WHO IS THIS FOR?
+    Three audience cards: homeowners, trade pros, industry.
+    Each links to the content most relevant to them.
+  ====================================================== -->
+  <section class="section bg-off-white" id="who-its-for" aria-labelledby="audience-heading">
+    <div class="container">
+
+      <div class="section-header centered">
+        <span class="eyebrow">Who It's For</span>
+        <h2 id="audience-heading">ICF Insider Serves Every Corner of the Industry</h2>
+        <p class="lead">Whether you're building your first home or your hundredth project, we have the data you need.</p>
+      </div>
+
+      <div class="grid-3" role="list">
+
+        <!-- Homeowners -->
+        <article class="audience-card" role="listitem">
+          <div class="audience-card-icon" aria-hidden="true">
+            <!-- House icon (inline SVG — no external request needed) -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3>Homeowners</h3>
+          <p>
+            Researching whether ICF is right for your build? Get honest cost breakdowns,
+            energy savings data, disaster resistance facts, and help finding a qualified
+            contractor near you.
+          </p>
+          <a href="icf-101.html" class="audience-card-link">
+            Start with ICF 101
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+        <!-- Trade Professionals -->
+        <article class="audience-card" role="listitem">
+          <div class="audience-card-icon" aria-hidden="true">
+            <!-- Tools/wrench icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <h3>Contractors &amp; Builders</h3>
+          <p>
+            Get listed in the most visible ICF contractor directory in North America.
+            Reach homeowners actively searching for qualified ICF professionals in your area.
+          </p>
+          <a href="#early-access" class="audience-card-link">
+            Claim Your Listing
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+        <!-- Industry / Manufacturers -->
+        <article class="audience-card" role="listitem">
+          <div class="audience-card-icon" aria-hidden="true">
+            <!-- Building/industry icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+              <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+            </svg>
+          </div>
+          <h3>Manufacturers &amp; Distributors</h3>
+          <p>
+            ICF Insider is the independent resource your customers trust. Sponsor content,
+            get featured in brand comparisons, and reach buyers who are already sold on ICF
+            and choosing between brands.
+          </p>
+          <a href="#early-access" class="audience-card-link">
+            Explore Partnerships
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+      </div><!-- /.grid-3 -->
+    </div><!-- /.container -->
+  </section>
+
+
+  <!-- =====================================================
+    FEATURED CONTENT (Start Here)
+    Three content cards linking to the core pages.
+    Dark section — visual contrast from the off-white above.
+  ====================================================== -->
+  <section class="section bg-dark" id="start-here" aria-labelledby="content-heading">
+    <div class="container">
+
+      <div class="section-header centered">
+        <span class="eyebrow">Start Here</span>
+        <h2 id="content-heading">The Resources Every ICF Decision Starts With</h2>
+        <p class="lead">Three pages. Everything you need to make an informed decision.</p>
+      </div>
+
+      <div class="grid-3" role="list">
+
+        <!-- ICF 101 -->
+        <article class="content-card" role="listitem">
+          <div class="content-card-tag">Foundation</div>
+          <h3>ICF 101</h3>
+          <p>
+            What is ICF? How does it work? Why are homeowners and builders switching away
+            from wood frame? The single best introduction to ICF construction — written for
+            people who haven't built with it yet.
+          </p>
+          <a href="icf-101.html" class="content-card-link">
+            Read ICF 101
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+        <!-- Cost Guide -->
+        <article class="content-card" role="listitem">
+          <div class="content-card-tag">Most Searched</div>
+          <h3>ICF Cost Guide</h3>
+          <p>
+            The most-searched question in ICF: "How much does it cost?" We give you real
+            numbers by project type, square footage, and state — not vague ranges that tell
+            you nothing.
+          </p>
+          <a href="cost-guide.html" class="content-card-link">
+            See the Numbers
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+        <!-- Brand Comparison -->
+        <article class="content-card" role="listitem">
+          <div class="content-card-tag">Independent</div>
+          <h3>Brand Comparison</h3>
+          <p>
+            Nudura vs Fox Blocks vs Amvic vs Logix — compared honestly. No brand pays us
+            to be ranked first. We look at R-value, block design, pricing, distributor
+            networks, and real builder feedback.
+          </p>
+          <a href="brands.html" class="content-card-link">
+            Compare Brands
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+      </div><!-- /.grid-3 -->
+    </div><!-- /.container -->
+  </section>
+
+
+  <!-- =====================================================
+    WHAT IS ICF? — Brief explainer for total newcomers
+    This is important for SEO: homeowners searching "what is ICF"
+    should find a clear, trustworthy answer here.
+  ====================================================== -->
+  <section class="section" id="what-is-icf" aria-labelledby="icf-explainer-heading">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+
+        <!-- Left: text -->
+        <div>
+          <span class="eyebrow">The Basics</span>
+          <h2 id="icf-explainer-heading">What Is ICF Construction?</h2>
+          <p class="lead" style="margin-top: 1rem; margin-bottom: 1.5rem;">
+            Insulated Concrete Forms (ICF) are hollow foam blocks that stack like Legos,
+            then get filled with reinforced concrete. The result is a structure that's
+            stronger, quieter, and far more energy-efficient than conventional wood framing.
+          </p>
+          <p style="margin-bottom: 2rem;">
+            ICF homes routinely achieve 50–70% lower heating and cooling costs. They're
+            rated to withstand hurricane-force winds, wildfire, and flooding. They've been
+            built across North America for 30+ years — the technology is proven, the
+            contractors are here, and the economics are better than ever.
+          </p>
+          <a href="icf-101.html" class="btn btn-outline-dark btn-lg">
+            Full ICF 101 Guide
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Right: benefit list -->
+        <div>
+          <ul style="display: flex; flex-direction: column; gap: 1rem;" role="list">
+
+            <li style="display: flex; gap: 1rem; align-items: flex-start;">
+              <div style="width: 40px; height: 40px; border-radius: 8px; background: rgba(232,120,10,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <div>
+                <strong style="display: block; color: #1A1D27; font-size: 1rem;">Disaster Resistant</strong>
+                <span style="font-size: 0.9rem; color: #4B5068;">Rated for 200+ mph winds. Fire, flood, and earthquake resistant.</span>
+              </div>
+            </li>
+
+            <li style="display: flex; gap: 1rem; align-items: flex-start;">
+              <div style="width: 40px; height: 40px; border-radius: 8px; background: rgba(232,120,10,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 8v4l3 3"/>
+                </svg>
+              </div>
+              <div>
+                <strong style="display: block; color: #1A1D27; font-size: 1rem;">Long-Term Savings</strong>
+                <span style="font-size: 0.9rem; color: #4B5068;">50–70% lower energy bills. Pays for itself in years, not decades.</span>
+              </div>
+            </li>
+
+            <li style="display: flex; gap: 1rem; align-items: flex-start;">
+              <div style="width: 40px; height: 40px; border-radius: 8px; background: rgba(232,120,10,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </div>
+              <div>
+                <strong style="display: block; color: #1A1D27; font-size: 1rem;">Quiet & Comfortable</strong>
+                <span style="font-size: 0.9rem; color: #4B5068;">Exceptional sound dampening. Consistent indoor temperature year-round.</span>
+              </div>
+            </li>
+
+            <li style="display: flex; gap: 1rem; align-items: flex-start;">
+              <div style="width: 40px; height: 40px; border-radius: 8px; background: rgba(232,120,10,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+              </div>
+              <div>
+                <strong style="display: block; color: #1A1D27; font-size: 1rem;">Proven Technology</strong>
+                <span style="font-size: 0.9rem; color: #4B5068;">30+ years of builds across North America. Thousands of contractors trained.</span>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </div><!-- /.container -->
+  </section>
+
+
+  <!-- =====================================================
+    EARLY ACCESS / EMAIL CAPTURE
+    Captures contractor and homeowner emails before
+    the directory launches. This is Phase 1 lead gen.
+  ====================================================== -->
+  <section class="section bg-dark" id="early-access" aria-labelledby="early-access-heading">
+    <div class="container">
+      <div class="email-capture">
+        <span class="eyebrow">Coming Soon</span>
+        <h2 id="early-access-heading">The ICF Contractor Directory Is Being Built</h2>
+        <p>
+          We're building the most searchable, most trusted ICF contractor directory
+          in North America. Get notified when it launches — contractors get first
+          access to claim their listing.
+        </p>
+
+        <form class="email-form" id="email-form" novalidate>
+          <input
+            type="email"
+            class="email-input"
+            name="email"
+            placeholder="your@email.com"
+            required
+            autocomplete="email"
+            aria-label="Email address"
+          >
+          <button type="submit" class="btn btn-primary">Notify Me</button>
+        </form>
+
+        <p class="email-disclaimer">No spam. One email when we launch. Unsubscribe any time.</p>
+      </div>
+    </div><!-- /.container -->
+  </section>
+
+
+  <!-- =====================================================
+    FOOTER
+  ====================================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <!-- Brand column -->
+        <div class="footer-brand">
+          <a href="/" class="nav-logo" aria-label="ICF Insider home">
+            <div class="nav-logo-mark" aria-hidden="true">I</div>
+            <span class="nav-logo-text">ICF <span>Insider</span></span>
+          </a>
+          <p>
+            The independent authority on Insulated Concrete Form construction.
+            Real data, unbiased comparisons, and a vetted contractor network.
+          </p>
+        </div>
+
+        <!-- Learn column -->
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="icf-101.html"    class="footer-link">ICF 101</a></li>
+            <li><a href="cost-guide.html" class="footer-link">Cost Guide</a></li>
+            <li><a href="brands.html"     class="footer-link">Brand Comparison</a></li>
+          </ul>
+        </div>
+
+        <!-- Directory column -->
+        <div class="footer-col">
+          <h4>Directory</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="find-a-pro.html" class="footer-link">Find a Contractor</a></li>
+            <li><a href="#early-access"   class="footer-link">List Your Business</a></li>
+          </ul>
+        </div>
+
+        <!-- Company column -->
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="#early-access" class="footer-link">Contact</a></li>
+            <li><a href="#early-access" class="footer-link">Advertise</a></li>
+          </ul>
+        </div>
+
+      </div><!-- /.footer-grid -->
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 ICF Insider. All rights reserved.</p>
+        <nav class="footer-bottom-links" aria-label="Legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </nav>
+      </div>
+
+    </div><!-- /.container -->
+  </footer>
+
+
+  <!-- =====================================================
+    SCRIPTS
+    Placed at the end of <body> so the page HTML loads
+    and renders before JS runs — faster perceived load time.
+  ====================================================== -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+# Files and folders git should NOT track
+
+# Node.js dependencies (installed packages — too large to upload, rebuilt from package.json)
+node_modules/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+*.swp
+
+# Environment variables (never commit secrets)
+.env
+.env.local
