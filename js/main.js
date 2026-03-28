@@ -64,7 +64,9 @@
 
 /* ------------------------------------------------------------
    3. EMAIL FORM (homepage)
-   POSTs to Formspree and shows success state on submit.
+   POSTs to /api/submit (Cloudflare Pages Function) and shows
+   success state on submit. lead_type = 'newsletter' so we can
+   distinguish these from contractor/homeowner/manufacturer leads.
    ------------------------------------------------------------ */
 (function () {
   const form = document.getElementById('email-form');
@@ -90,9 +92,13 @@
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
-    fetch('https://formspree.io/f/xgopojja', {
+    // Append lead_type since the homepage form has no hidden field
+    const fd = new FormData(form);
+    fd.append('lead_type', 'newsletter');
+
+    fetch('/api/submit', {
       method: 'POST',
-      body: new FormData(form),
+      body: fd,
       headers: { 'Accept': 'application/json' }
     })
     .then(function (response) {

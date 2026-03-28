@@ -382,6 +382,7 @@
               </p>
 
               <form id="form-homeowner" novalidate>
+                <input type="hidden" name="lead_type" value="homeowner">
                 <div class="form-row">
                   <div class="form-group">
                     <label for="h-name">Your Name</label>
@@ -463,6 +464,7 @@
               </p>
 
               <form id="form-contractor" novalidate>
+                <input type="hidden" name="lead_type" value="contractor">
                 <div class="form-row">
                   <div class="form-group">
                     <label for="c-name">Your Name <span style="color: #dc2626;">*</span></label>
@@ -563,6 +565,7 @@
               </p>
 
               <form id="form-manufacturer" novalidate>
+                <input type="hidden" name="lead_type" value="manufacturer">
                 <div class="form-row">
                   <div class="form-group">
                     <label for="m-name">Your Name <span style="color: #dc2626;">*</span></label>
@@ -766,21 +769,16 @@
 
 
     // --- 2. FORM SUBMISSION ---
-    // Each form POSTs to its own Formspree endpoint.
-    // On success: hides the form and shows the custom success state.
-    // On error: re-enables the submit button so the user can try again.
+    // All three forms POST to /api/submit (Cloudflare Pages Function).
+    // Each form has a hidden lead_type field so we can distinguish
+    // homeowner / contractor / manufacturer in the database.
     (function () {
-      var endpoints = {
-        'form-homeowner':    'https://formspree.io/f/xgopojja',
-        'form-contractor':   'https://formspree.io/f/xkopollb',
-        'form-manufacturer': 'https://formspree.io/f/xwvwvddn'
-      };
+      var formIds = ['form-homeowner', 'form-contractor', 'form-manufacturer'];
 
-      Object.keys(endpoints).forEach(function (formId) {
+      formIds.forEach(function (formId) {
         var form = document.getElementById(formId);
         if (!form) return;
 
-        var endpoint   = endpoints[formId];
         var successDiv = document.getElementById(formId.replace('form-', 'success-'));
         var submitBtn  = form.querySelector('[type="submit"]');
         var originalBtnText = submitBtn ? submitBtn.textContent.trim() : 'Submit';
@@ -811,7 +809,7 @@
             submitBtn.textContent = 'Sending...';
           }
 
-          fetch(endpoint, {
+          fetch('/api/submit', {
             method: 'POST',
             body: new FormData(form),
             headers: { 'Accept': 'application/json' }
