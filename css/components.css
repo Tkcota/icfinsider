@@ -786,14 +786,14 @@
   font-weight: var(--weight-semibold);
 }
 
-.article a {
+.article a:not(.btn) {
   color: var(--color-accent);
   text-decoration: underline;
   text-decoration-color: rgba(232, 120, 10, 0.4);
   transition: text-decoration-color var(--transition-fast);
 }
 
-.article a:hover {
+.article a:not(.btn):hover {
   text-decoration-color: var(--color-accent);
 }
 
