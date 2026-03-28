@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Get Early Access — ICF Insider Directory | ICF Insider</title>
+  <meta name="description" content="The ICF Insider contractor directory is coming. Contractors and distributors can claim their listing now. Homeowners can get notified when it launches.">
+
+  <link rel="canonical" href="https://icfinsider.com/early-access.html">
+
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Get Early Access — ICF Insider Directory">
+  <meta property="og:description" content="The most searchable ICF contractor directory in North America is being built. Get in early.">
+  <meta property="og:url"         content="https://icfinsider.com/early-access.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <style>
+    /* -------------------------------------------------------
+       Early access page — custom layout styles
+       Not added to components.css because this is a one-off
+       landing page layout, not a reusable pattern.
+    ------------------------------------------------------- */
+
+    /* Full-page dark hero for this page */
+    .ea-hero {
+      background-color: var(--color-dark-900);
+      padding-top: calc(var(--nav-height) + var(--space-20));
+      padding-bottom: var(--space-20);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ea-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(232, 120, 10, 0.10) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .ea-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .ea-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: var(--color-white);
+      margin-bottom: var(--space-5);
+    }
+
+    .ea-hero p {
+      font-size: var(--text-lg);
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
+    }
+
+    /* Audience selector tabs */
+    .audience-tabs {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-3);
+    }
+
+    .audience-tab {
+      padding: var(--space-2) var(--space-5);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      letter-spacing: 0.04em;
+      border-radius: 999px;
+      border: 1px solid var(--color-border-dark);
+      color: var(--color-text-muted);
+      background: transparent;
+      cursor: pointer;
+      transition: background-color var(--transition-fast),
+                  color var(--transition-fast),
+                  border-color var(--transition-fast);
+    }
+
+    .audience-tab:hover {
+      border-color: var(--color-text-muted);
+      color: var(--color-white);
+    }
+
+    .audience-tab.active {
+      background-color: var(--color-accent);
+      border-color: var(--color-accent);
+      color: var(--color-white);
+    }
+
+    .tab-hint {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      text-align: center;
+      margin-bottom: var(--space-10);
+    }
+
+    /* -------------------------------------------------------
+       AUDIENCE PANELS — shown/hidden based on tab selection
+    ------------------------------------------------------- */
+    .audience-panels {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .audience-panel {
+      display: none;
+    }
+
+    .audience-panel.active {
+      display: block;
+    }
+
+    /* -------------------------------------------------------
+       FORM STYLES
+    ------------------------------------------------------- */
+    .ea-form {
+      background-color: var(--color-white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-10);
+      text-align: left;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .ea-form h2 {
+      font-size: var(--text-3xl);
+      color: var(--color-text-dark);
+      margin-bottom: var(--space-2);
+    }
+
+    .ea-form .form-subtext {
+      font-size: var(--text-sm);
+      color: var(--color-text-mid);
+      margin-bottom: var(--space-8);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-bottom: var(--space-5);
+    }
+
+    .form-group label {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-dark);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: var(--space-3) var(--space-4);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-base);
+      color: var(--color-text-dark);
+      background-color: var(--color-white);
+      outline: none;
+      transition: border-color var(--transition-fast);
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--color-accent);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: var(--space-4);
+      font-size: var(--text-base);
+    }
+
+    .form-disclaimer {
+      font-size: var(--text-xs);
+      color: var(--color-text-mid);
+      text-align: center;
+      margin-top: var(--space-3);
+    }
+
+    /* Success state — shown after form submission */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: var(--space-12) var(--space-8);
+    }
+
+    .form-success.visible {
+      display: block;
+    }
+
+    .form-success-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: rgba(22, 163, 74, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-5);
+    }
+
+    .form-success h3 {
+      font-size: var(--text-3xl);
+      color: var(--color-text-dark);
+      margin-bottom: var(--space-3);
+    }
+
+    .form-success p {
+      font-size: var(--text-base);
+      color: var(--color-text-mid);
+    }
+
+    /* -------------------------------------------------------
+       WHAT'S COMING SECTION
+    ------------------------------------------------------- */
+    .whats-coming-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-12);
+    }
+
+    .coming-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .coming-item-phase {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    .coming-item h3 {
+      font-size: var(--text-xl);
+      color: var(--color-white);
+    }
+
+    .coming-item p {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* -------------------------------------------------------
+       SOCIAL PROOF / TRUST SECTION
+    ------------------------------------------------------- */
+    .trust-points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+      margin-top: var(--space-8);
+    }
+
+    .trust-point {
+      text-align: center;
+    }
+
+    .trust-point-number {
+      font-family: var(--font-heading);
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-extrabold);
+      color: var(--color-accent);
+      display: block;
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+
+    .trust-point-label {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.4;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .form-row { grid-template-columns: 1fr; }
+      .whats-coming-grid { grid-template-columns: 1fr; }
+      .trust-points { grid-template-columns: 1fr; gap: var(--space-6); }
+      .ea-form { padding: var(--space-6); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="main-nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo" aria-label="ICF Insider home">
+        <div class="nav-logo-mark" aria-hidden="true">I</div>
+        <span class="nav-logo-text">ICF <span>Insider</span></span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="icf-101.html"    class="nav-link">ICF 101</a></li>
+        <li><a href="cost-guide.html" class="nav-link">Cost Guide</a></li>
+        <li><a href="brands.html"     class="nav-link">Brand Comparison</a></li>
+        <li><a href="find-a-pro.html" class="nav-link">Find a Pro</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="early-access.html" class="btn btn-primary">Get Early Access</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation">
+    <a href="icf-101.html"    class="nav-link">ICF 101</a>
+    <a href="cost-guide.html" class="nav-link">Cost Guide</a>
+    <a href="brands.html"     class="nav-link">Brand Comparison</a>
+    <a href="find-a-pro.html" class="nav-link">Find a Pro</a>
+    <a href="early-access.html" class="btn btn-primary">Get Early Access</a>
+  </div>
+
+
+  <!-- HERO + FORM -->
+  <section class="ea-hero" aria-labelledby="ea-title">
+    <div class="container">
+      <div class="ea-hero-inner">
+
+        <span class="eyebrow">Coming Soon</span>
+        <h1 id="ea-title">The ICF Directory Is Being Built</h1>
+        <p>
+          The most searchable, most trusted ICF contractor directory in North America.
+          Tell us who you are and we'll reach out when it's ready for you.
+        </p>
+
+        <!-- Audience selector -->
+        <div class="audience-tabs" role="tablist" aria-label="I am a...">
+          <button class="audience-tab active" role="tab" aria-selected="true"  data-panel="homeowner"    id="tab-homeowner">Homeowner</button>
+          <button class="audience-tab"        role="tab" aria-selected="false" data-panel="contractor"   id="tab-contractor">Contractor / Builder</button>
+          <button class="audience-tab"        role="tab" aria-selected="false" data-panel="manufacturer" id="tab-manufacturer">Manufacturer / Distributor</button>
+        </div>
+        <p class="tab-hint">Select the option that best describes you</p>
+
+        <!-- =====================================================
+          AUDIENCE PANELS
+        ====================================================== -->
+        <div class="audience-panels">
+
+          <!-- HOMEOWNER PANEL -->
+          <div class="audience-panel active" id="panel-homeowner" role="tabpanel" aria-labelledby="tab-homeowner">
+            <div class="ea-form">
+              <h2>Find Your ICF Contractor</h2>
+              <p class="form-subtext">
+                We'll notify you the moment the directory launches so you can search
+                for vetted ICF builders in your area.
+              </p>
+
+              <form id="form-homeowner" novalidate>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="h-name">Your Name</label>
+                    <input type="text" id="h-name" name="name" placeholder="First Last" autocomplete="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="h-email">Email Address <span style="color: #dc2626;">*</span></label>
+                    <input type="email" id="h-email" name="email" placeholder="you@email.com" required autocomplete="email">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="h-state">Your State / Province</label>
+                    <select id="h-state" name="state">
+                      <option value="" disabled selected>Select your state</option>
+                      <option>Alabama</option><option>Alaska</option><option>Arizona</option>
+                      <option>Arkansas</option><option>California</option><option>Colorado</option>
+                      <option>Connecticut</option><option>Delaware</option><option>Florida</option>
+                      <option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+                      <option>Illinois</option><option>Indiana</option><option>Iowa</option>
+                      <option>Kansas</option><option>Kentucky</option><option>Louisiana</option>
+                      <option>Maine</option><option>Maryland</option><option>Massachusetts</option>
+                      <option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+                      <option>Missouri</option><option>Montana</option><option>Nebraska</option>
+                      <option>Nevada</option><option>New Hampshire</option><option>New Jersey</option>
+                      <option>New Mexico</option><option>New York</option><option>North Carolina</option>
+                      <option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+                      <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option>
+                      <option>South Carolina</option><option>South Dakota</option><option>Tennessee</option>
+                      <option>Texas</option><option>Utah</option><option>Vermont</option>
+                      <option>Virginia</option><option>Washington</option><option>West Virginia</option>
+                      <option>Wisconsin</option><option>Wyoming</option>
+                      <option>Alberta</option><option>British Columbia</option><option>Ontario</option>
+                      <option>Quebec</option><option>Other Canada</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="h-project">Project Type</label>
+                    <select id="h-project" name="project_type">
+                      <option value="" disabled selected>What are you building?</option>
+                      <option>Single-family home</option>
+                      <option>Home addition / renovation</option>
+                      <option>Basement only</option>
+                      <option>Multi-family / duplex</option>
+                      <option>Commercial building</option>
+                      <option>Just researching for now</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary form-submit">
+                  Notify Me at Launch
+                </button>
+                <p class="form-disclaimer">No spam. One email when we launch. Unsubscribe any time.</p>
+              </form>
+
+              <!-- Success state (hidden until form submitted) -->
+              <div class="form-success" id="success-homeowner">
+                <div class="form-success-icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </div>
+                <h3>You're on the list.</h3>
+                <p>We'll email you the moment the ICF contractor directory is live. In the meantime, check out the <a href="icf-101.html">ICF 101 guide</a> or the <a href="cost-guide.html">Cost Guide</a>.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- CONTRACTOR PANEL -->
+          <div class="audience-panel" id="panel-contractor" role="tabpanel" aria-labelledby="tab-contractor">
+            <div class="ea-form">
+              <h2>Claim Your Directory Listing</h2>
+              <p class="form-subtext">
+                Get in before we launch. Early members get priority placement, reduced
+                first-year pricing, and a direct line to the team.
+              </p>
+
+              <form id="form-contractor" novalidate>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="c-name">Your Name <span style="color: #dc2626;">*</span></label>
+                    <input type="text" id="c-name" name="name" placeholder="First Last" required autocomplete="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="c-email">Email Address <span style="color: #dc2626;">*</span></label>
+                    <input type="email" id="c-email" name="email" placeholder="you@company.com" required autocomplete="email">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="c-company">Company Name</label>
+                    <input type="text" id="c-company" name="company" placeholder="Your Company LLC">
+                  </div>
+                  <div class="form-group">
+                    <label for="c-phone">Phone Number</label>
+                    <input type="tel" id="c-phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="c-state">Primary State / Province</label>
+                    <select id="c-state" name="state">
+                      <option value="" disabled selected>Where do you build?</option>
+                      <option>Alabama</option><option>Alaska</option><option>Arizona</option>
+                      <option>Arkansas</option><option>California</option><option>Colorado</option>
+                      <option>Connecticut</option><option>Delaware</option><option>Florida</option>
+                      <option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+                      <option>Illinois</option><option>Indiana</option><option>Iowa</option>
+                      <option>Kansas</option><option>Kentucky</option><option>Louisiana</option>
+                      <option>Maine</option><option>Maryland</option><option>Massachusetts</option>
+                      <option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+                      <option>Missouri</option><option>Montana</option><option>Nebraska</option>
+                      <option>Nevada</option><option>New Hampshire</option><option>New Jersey</option>
+                      <option>New Mexico</option><option>New York</option><option>North Carolina</option>
+                      <option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+                      <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option>
+                      <option>South Carolina</option><option>South Dakota</option><option>Tennessee</option>
+                      <option>Texas</option><option>Utah</option><option>Vermont</option>
+                      <option>Virginia</option><option>Washington</option><option>West Virginia</option>
+                      <option>Wisconsin</option><option>Wyoming</option>
+                      <option>Alberta</option><option>British Columbia</option><option>Ontario</option>
+                      <option>Quebec</option><option>Other Canada</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="c-brand">ICF Brand(s) You Use</label>
+                    <select id="c-brand" name="brand">
+                      <option value="" disabled selected>Primary brand</option>
+                      <option>Nudura</option>
+                      <option>Fox Blocks</option>
+                      <option>Amvic</option>
+                      <option>Logix</option>
+                      <option>Super Form</option>
+                      <option>Quad-Lock</option>
+                      <option>Build Block</option>
+                      <option>Multiple / varies by project</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="c-message">Anything else? (optional)</label>
+                  <textarea id="c-message" name="message" placeholder="Years of ICF experience, types of projects, service area, questions about listing pricing..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary form-submit">
+                  Reserve My Listing
+                </button>
+                <p class="form-disclaimer">No payment required now. We'll reach out with early access pricing before the public launch.</p>
+              </form>
+
+              <div class="form-success" id="success-contractor">
+                <div class="form-success-icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </div>
+                <h3>Got it — we'll be in touch.</h3>
+                <p>You're reserved for early access. We'll email you directly before the public launch with pricing and next steps. Expect to hear from us.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- MANUFACTURER PANEL -->
+          <div class="audience-panel" id="panel-manufacturer" role="tabpanel" aria-labelledby="tab-manufacturer">
+            <div class="ea-form">
+              <h2>Partner with ICF Insider</h2>
+              <p class="form-subtext">
+                Manufacturers, distributors, and industry suppliers — tell us about your
+                company and what you're looking to accomplish. Sponsorship and partnership
+                opportunities are available.
+              </p>
+
+              <form id="form-manufacturer" novalidate>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="m-name">Your Name <span style="color: #dc2626;">*</span></label>
+                    <input type="text" id="m-name" name="name" placeholder="First Last" required autocomplete="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="m-email">Email Address <span style="color: #dc2626;">*</span></label>
+                    <input type="email" id="m-email" name="email" placeholder="you@company.com" required autocomplete="email">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="m-company">Company Name</label>
+                    <input type="text" id="m-company" name="company" placeholder="Company name">
+                  </div>
+                  <div class="form-group">
+                    <label for="m-role">Your Role</label>
+                    <select id="m-role" name="role">
+                      <option value="" disabled selected>Select your role</option>
+                      <option>ICF Manufacturer</option>
+                      <option>ICF Distributor</option>
+                      <option>Building Products Supplier</option>
+                      <option>Industry Association</option>
+                      <option>Other Industry Partner</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="m-interest">What are you interested in?</label>
+                  <select id="m-interest" name="interest">
+                    <option value="" disabled selected>Primary interest</option>
+                    <option>Featured brand listing / sponsorship</option>
+                    <option>Display advertising</option>
+                    <option>Sponsored content / editorial</option>
+                    <option>Contractor directory partnership</option>
+                    <option>General inquiry / exploring options</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="m-message">Tell us about your company and goals (optional)</label>
+                  <textarea id="m-message" name="message" placeholder="What markets do you serve? What does success look like for a partnership with ICF Insider?"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary form-submit">
+                  Start the Conversation
+                </button>
+                <p class="form-disclaimer">All inquiries are responded to within 48 hours.</p>
+              </form>
+
+              <div class="form-success" id="success-manufacturer">
+                <div class="form-success-icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </div>
+                <h3>Message received.</h3>
+                <p>We'll follow up within 48 hours. We're building something worth being part of early.</p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.audience-panels -->
+      </div><!-- /.ea-hero-inner -->
+    </div><!-- /.container -->
+  </section><!-- /.ea-hero -->
+
+
+  <!-- WHAT'S COMING SECTION -->
+  <section class="section bg-dark" id="whats-coming" aria-labelledby="coming-heading">
+    <div class="container">
+
+      <div class="section-header centered">
+        <span class="eyebrow">The Roadmap</span>
+        <h2 id="coming-heading">What We're Building</h2>
+        <p class="lead">Phase 1 is live. Here's what comes next.</p>
+      </div>
+
+      <div class="whats-coming-grid">
+
+        <div class="coming-item">
+          <div class="coming-item-phase">Phase 1 — Live Now</div>
+          <h3>Content Foundation</h3>
+          <p>ICF 101 guide, cost guide, independent brand comparison. The educational foundation that earns trust and drives search traffic.</p>
+        </div>
+
+        <div class="coming-item">
+          <div class="coming-item-phase">Phase 2 — Coming Soon</div>
+          <h3>Contractor Directory</h3>
+          <p>Searchable directory of ICF contractors, builders, and distributors across North America. Filter by state, project type, and brand certification.</p>
+        </div>
+
+        <div class="coming-item">
+          <div class="coming-item-phase">Phase 3 — In Development</div>
+          <h3>Tools &amp; Calculator</h3>
+          <p>Interactive ICF cost estimator, energy savings calculator, brand selector quiz, and project showcase from real ICF builds.</p>
+        </div>
+
+      </div>
+
+      <!-- Stats row -->
+      <div class="trust-points" style="margin-top: var(--space-16); padding-top: var(--space-12); border-top: 1px solid var(--color-border-dark);">
+        <div class="trust-point">
+          <span class="trust-point-number">$1B+</span>
+          <span class="trust-point-label">Annual ICF industry volume in North America</span>
+        </div>
+        <div class="trust-point">
+          <span class="trust-point-number">0</span>
+          <span class="trust-point-label">Independent consumer-facing ICF authorities online (until now)</span>
+        </div>
+        <div class="trust-point">
+          <span class="trust-point-number">150+</span>
+          <span class="trust-point-label">Directory members needed for $15K/month recurring revenue</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo" aria-label="ICF Insider home">
+            <div class="nav-logo-mark" aria-hidden="true">I</div>
+            <span class="nav-logo-text">ICF <span>Insider</span></span>
+          </a>
+          <p>The independent authority on Insulated Concrete Form construction. Real data, unbiased comparisons, and a vetted contractor network.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="icf-101.html"    class="footer-link">ICF 101</a></li>
+            <li><a href="cost-guide.html" class="footer-link">Cost Guide</a></li>
+            <li><a href="brands.html"     class="footer-link">Brand Comparison</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Directory</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="find-a-pro.html"  class="footer-link">Find a Contractor</a></li>
+            <li><a href="early-access.html" class="footer-link">List Your Business</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="early-access.html" class="footer-link">Contact</a></li>
+            <li><a href="early-access.html" class="footer-link">Advertise</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ICF Insider. All rights reserved.</p>
+        <nav class="footer-bottom-links" aria-label="Legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="js/main.js"></script>
+
+  <script>
+    /* =========================================================
+       EARLY ACCESS PAGE SCRIPTS
+       1. Audience tab switching
+       2. Form submission handling (one handler for all three forms)
+    ========================================================= */
+
+    // --- 1. AUDIENCE TABS ---
+    // When you click a tab, hide all panels and show the matching one.
+    (function () {
+      const tabs   = document.querySelectorAll('.audience-tab');
+      const panels = document.querySelectorAll('.audience-panel');
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          // Update tabs
+          tabs.forEach(function (t) {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+
+          // Show matching panel, hide others
+          const targetId = 'panel-' + tab.dataset.panel;
+          panels.forEach(function (panel) {
+            panel.classList.toggle('active', panel.id === targetId);
+          });
+        });
+      });
+    }());
+
+
+    // --- 2. FORM SUBMISSION ---
+    // Handles all three forms the same way.
+    // TODO Phase 2: replace the success simulation with a real fetch() POST
+    // to a backend endpoint (Node.js or a form service like Formspree).
+    (function () {
+      var formIds = ['form-homeowner', 'form-contractor', 'form-manufacturer'];
+
+      formIds.forEach(function (formId) {
+        var form = document.getElementById(formId);
+        if (!form) return;
+
+        // Derive the success div ID from the form ID
+        // e.g. "form-contractor" → "success-contractor"
+        var successId = formId.replace('form-', 'success-');
+        var successDiv = document.getElementById(successId);
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          // Find the required email field in this form
+          var emailInput = form.querySelector('input[type="email"]');
+          var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          if (emailInput && !emailRegex.test(emailInput.value.trim())) {
+            emailInput.style.borderColor = '#dc2626';
+            emailInput.focus();
+            return;
+          }
+
+          // Also validate required name if present
+          var nameInput = form.querySelector('input[name="name"][required]');
+          if (nameInput && !nameInput.value.trim()) {
+            nameInput.style.borderColor = '#dc2626';
+            nameInput.focus();
+            return;
+          }
+
+          // Hide the form, show the success message
+          form.style.display = 'none';
+          if (successDiv) {
+            successDiv.classList.add('visible');
+          }
+        });
+
+        // Reset red border on input focus
+        form.querySelectorAll('input, select, textarea').forEach(function (field) {
+          field.addEventListener('focus', function () {
+            field.style.borderColor = '';
+          });
+        });
+      });
+    }());
+  </script>
+
+</body>
+</html>
