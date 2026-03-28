@@ -735,6 +735,13 @@
    ARTICLE CONTENT TYPOGRAPHY
    Styles for the long-form written content area.
    ------------------------------------------------------------ */
+
+/* Prevents grid item from overflowing its track when content (e.g. wide tables) would
+   otherwise force the cell to expand. "min-width: auto" is the CSS Grid default. */
+.article {
+  min-width: 0;
+}
+
 .article h2 {
   font-size: clamp(1.875rem, 3vw, 2.5rem);
   color: var(--color-text-dark);
