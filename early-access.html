@@ -765,35 +765,38 @@
 
 
     // --- 2. FORM SUBMISSION ---
-    // Handles all three forms the same way.
-    // TODO Phase 2: replace the success simulation with a real fetch() POST
-    // to a backend endpoint (Node.js or a form service like Formspree).
+    // Each form POSTs to its own Formspree endpoint.
+    // On success: hides the form and shows the custom success state.
+    // On error: re-enables the submit button so the user can try again.
     (function () {
-      var formIds = ['form-homeowner', 'form-contractor', 'form-manufacturer'];
+      var endpoints = {
+        'form-homeowner':    'https://formspree.io/f/xgopojja',
+        'form-contractor':   'https://formspree.io/f/xkopollb',
+        'form-manufacturer': 'https://formspree.io/f/xwvwvddn'
+      };
 
-      formIds.forEach(function (formId) {
+      Object.keys(endpoints).forEach(function (formId) {
         var form = document.getElementById(formId);
         if (!form) return;
 
-        // Derive the success div ID from the form ID
-        // e.g. "form-contractor" → "success-contractor"
-        var successId = formId.replace('form-', 'success-');
-        var successDiv = document.getElementById(successId);
+        var endpoint   = endpoints[formId];
+        var successDiv = document.getElementById(formId.replace('form-', 'success-'));
+        var submitBtn  = form.querySelector('[type="submit"]');
+        var originalBtnText = submitBtn ? submitBtn.textContent.trim() : 'Submit';
 
         form.addEventListener('submit', function (e) {
           e.preventDefault();
 
-          // Find the required email field in this form
+          // Validate email
           var emailInput = form.querySelector('input[type="email"]');
           var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
           if (emailInput && !emailRegex.test(emailInput.value.trim())) {
             emailInput.style.borderColor = '#dc2626';
             emailInput.focus();
             return;
           }
 
-          // Also validate required name if present
+          // Validate required name
           var nameInput = form.querySelector('input[name="name"][required]');
           if (nameInput && !nameInput.value.trim()) {
             nameInput.style.borderColor = '#dc2626';
@@ -801,14 +804,39 @@
             return;
           }
 
-          // Hide the form, show the success message
-          form.style.display = 'none';
-          if (successDiv) {
-            successDiv.classList.add('visible');
+          // Show sending state
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
           }
+
+          fetch(endpoint, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          })
+          .then(function (response) {
+            if (response.ok) {
+              form.style.display = 'none';
+              if (successDiv) successDiv.classList.add('visible');
+            } else {
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+              }
+              alert('Something went wrong. Please try again.');
+            }
+          })
+          .catch(function () {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalBtnText;
+            }
+            alert('Network error — please check your connection and try again.');
+          });
         });
 
-        // Reset red border on input focus
+        // Reset red border when user starts correcting a field
         form.querySelectorAll('input, select, textarea').forEach(function (field) {
           field.addEventListener('focus', function () {
             field.style.borderColor = '';

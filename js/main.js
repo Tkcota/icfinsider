@@ -63,21 +63,22 @@
 
 
 /* ------------------------------------------------------------
-   3. EMAIL FORM
-   Basic client-side validation before submission.
-   In Phase 2 this will POST to a real backend endpoint.
+   3. EMAIL FORM (homepage)
+   POSTs to Formspree and shows success state on submit.
    ------------------------------------------------------------ */
 (function () {
   const form = document.getElementById('email-form');
   if (!form) return;
 
   form.addEventListener('submit', function (e) {
-    e.preventDefault(); // stop the default browser form submit
+    e.preventDefault();
 
     const input = form.querySelector('input[type="email"]');
     const email = input ? input.value.trim() : '';
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
 
-    // Simple email format check
+    // Email format check
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       input.style.borderColor = '#e74c3c';
@@ -85,23 +86,29 @@
       return;
     }
 
-    // Reset border on valid input
     input.style.borderColor = '';
-
-    // TODO Phase 2: replace this with a real fetch() POST to your backend
-    // For now, show a success message
-    const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn.textContent;
-
-    btn.textContent = 'Got it!';
+    btn.textContent = 'Sending...';
     btn.disabled = true;
-    input.value = '';
 
-    // Reset button after a few seconds
-    setTimeout(function () {
+    fetch('https://formspree.io/f/xgopojja', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function (response) {
+      if (response.ok) {
+        btn.textContent = 'Got it!';
+        input.value = '';
+      } else {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        input.style.borderColor = '#e74c3c';
+      }
+    })
+    .catch(function () {
       btn.textContent = originalText;
       btn.disabled = false;
-    }, 3000);
+    });
   });
 }());
 
