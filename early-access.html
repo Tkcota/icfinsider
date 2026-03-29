@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Get Early Access — ICF Insider Directory | ICF Insider</title>
-  <meta name="description" content="The ICF Insider contractor directory is coming. Contractors and distributors can claim their listing now. Homeowners can get notified when it launches.">
+  <title>Get Connected | ICF Insider</title>
+  <meta name="description" content="Tell us about your ICF project and we'll connect you with qualified contractors in your area. Contractors can reserve their directory listing. Manufacturers can explore partnerships.">
 
   <link rel="canonical" href="https://icfinsider.com/early-access.html">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <meta property="og:type"        content="website">
-  <meta property="og:title"       content="Get Early Access — ICF Insider Directory">
-  <meta property="og:description" content="The most searchable ICF contractor directory in North America is being built. Get in early.">
+  <meta property="og:title"       content="Get Connected | ICF Insider">
+  <meta property="og:description" content="Tell us about your ICF project and we'll connect you with qualified contractors in your area.">
   <meta property="og:url"         content="https://icfinsider.com/early-access.html">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -330,7 +330,7 @@
         <li><a href="find-a-pro.html" class="nav-link">Find a Pro</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="/find-a-pro.html" class="btn btn-primary">Get Connected</a>
+        <a href="/early-access.html" class="btn btn-primary">Get Connected</a>
       </div>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile">
         <span></span><span></span><span></span>
@@ -343,7 +343,7 @@
     <a href="cost-guide.html" class="nav-link">Cost Guide</a>
     <a href="brands.html"     class="nav-link">Brand Comparison</a>
     <a href="find-a-pro.html" class="nav-link">Find a Pro</a>
-    <a href="/find-a-pro.html" class="btn btn-primary">Get Connected</a>
+    <a href="/early-access.html" class="btn btn-primary">Get Connected</a>
   </div>
 
 
@@ -352,11 +352,11 @@
     <div class="container">
       <div class="ea-hero-inner">
 
-        <span class="eyebrow">Coming Soon</span>
-        <h1 id="ea-title">The ICF Directory Is Being Built</h1>
+        <span class="eyebrow">Get Connected</span>
+        <h1 id="ea-title">Let's Get You Connected</h1>
         <p>
-          The most searchable, most trusted ICF contractor directory in North America.
-          Tell us who you are and we'll reach out when it's ready for you.
+          Whether you're planning an ICF build, running a contracting business, or
+          looking to partner — tell us who you are and we'll take it from there.
         </p>
 
         <!-- Audience selector -->
@@ -377,16 +377,18 @@
             <div class="ea-form">
               <h2>Find Your ICF Contractor</h2>
               <p class="form-subtext">
-                We'll notify you the moment the directory launches so you can search
-                for vetted ICF builders in your area.
+                Tell us about your project and we'll connect you with qualified ICF
+                contractors in your area. Your info is shared only with relevant
+                contractors — never sold to marketers.
               </p>
 
               <form id="form-homeowner" novalidate>
                 <input type="hidden" name="lead_type" value="homeowner">
+
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="h-name">Your Name</label>
-                    <input type="text" id="h-name" name="name" placeholder="First Last" autocomplete="name">
+                    <label for="h-name">Full Name <span style="color: #dc2626;">*</span></label>
+                    <input type="text" id="h-name" name="name" placeholder="John Smith" required autocomplete="name">
                   </div>
                   <div class="form-group">
                     <label for="h-email">Email Address <span style="color: #dc2626;">*</span></label>
@@ -396,7 +398,11 @@
 
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="h-state">Your State / Province</label>
+                    <label for="h-phone">Cell Phone <span style="color: #dc2626;">*</span></label>
+                    <input type="tel" id="h-phone" name="phone" placeholder="(555) 000-0000" required autocomplete="tel">
+                  </div>
+                  <div class="form-group">
+                    <label for="h-state">State</label>
                     <select id="h-state" name="state">
                       <option value="" disabled selected>Select your state</option>
                       <option>Alabama</option><option>Alaska</option><option>Arizona</option>
@@ -420,35 +426,48 @@
                       <option>Quebec</option><option>Other Canada</option>
                     </select>
                   </div>
+                </div>
+
+                <div class="form-row">
                   <div class="form-group">
                     <label for="h-project">Project Type</label>
                     <select id="h-project" name="project_type">
                       <option value="" disabled selected>What are you building?</option>
-                      <option>Single-family home</option>
-                      <option>Home addition / renovation</option>
-                      <option>Basement only</option>
-                      <option>Multi-family / duplex</option>
-                      <option>Commercial building</option>
-                      <option>Just researching for now</option>
+                      <option>New home build</option>
+                      <option>Addition</option>
+                      <option>Renovation</option>
+                      <option>Commercial</option>
+                      <option>Other</option>
                     </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="h-file">Upload project plans <span style="font-weight:400;opacity:0.6;font-size:0.8rem;">(optional, max 100MB)</span></label>
+                    <input type="file" id="h-file" name="project_file" accept=".pdf,.dwg,.dxf,.jpg,.jpeg,.png,.zip">
                   </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary form-submit">
-                  Notify Me at Launch
-                </button>
-                <p class="form-disclaimer">No spam. One email when we launch. Unsubscribe any time.</p>
+                <div class="form-group">
+                  <label for="h-message">Tell us about your project</label>
+                  <textarea id="h-message" name="message" placeholder="Square footage, timeline, location, any specific requirements..."></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="h-link">Or share a file link <span style="font-weight:400;opacity:0.6;font-size:0.8rem;">(Google Drive, Dropbox, WeTransfer)</span></label>
+                  <input type="url" id="h-link" name="file_link" placeholder="https://drive.google.com/...">
+                </div>
+
+                <button type="submit" class="btn btn-primary form-submit">Get Connected →</button>
+                <p class="form-disclaimer">We review every request and connect you with qualified local contractors. Your info is shared only with relevant ICF contractors — never sold to marketers.</p>
               </form>
 
-              <!-- Success state (hidden until form submitted) -->
               <div class="form-success" id="success-homeowner">
                 <div class="form-success-icon" aria-hidden="true">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"/>
                   </svg>
                 </div>
-                <h3>You're on the list.</h3>
-                <p>We'll email you the moment the ICF contractor directory is live. In the meantime, check out the <a href="icf-101.html">ICF 101 guide</a> or the <a href="cost-guide.html">Cost Guide</a>.</p>
+                <h3>You're connected.</h3>
+                <p>We received your project details and will be in touch soon to connect you with qualified contractors. In the meantime, check out the <a href="icf-101.html">ICF 101 guide</a> or the <a href="cost-guide.html">Cost Guide</a>.</p>
               </div>
             </div>
           </div>
@@ -650,19 +669,19 @@
 
         <div class="coming-item">
           <div class="coming-item-phase">Phase 1 — Live Now</div>
-          <h3>Content Foundation</h3>
-          <p>ICF 101 guide, cost guide, independent brand comparison. The educational foundation that earns trust and drives search traffic.</p>
+          <h3>Content &amp; Lead Gen</h3>
+          <p>ICF 101 guide, cost guide, brand comparison, and state-by-state lead gen forms. Homeowners submit projects — we connect them with contractors now.</p>
         </div>
 
         <div class="coming-item">
-          <div class="coming-item-phase">Phase 2 — Coming Soon</div>
-          <h3>Contractor Directory</h3>
+          <div class="coming-item-phase">Phase 2 — In Progress</div>
+          <h3>Verified Contractor Directory</h3>
           <p>Searchable directory of ICF contractors, builders, and distributors across North America. Filter by state, project type, and brand certification.</p>
         </div>
 
         <div class="coming-item">
-          <div class="coming-item-phase">Phase 3 — In Development</div>
-          <h3>Tools &amp; Calculator</h3>
+          <div class="coming-item-phase">Phase 3 — Planned</div>
+          <h3>Tools &amp; Calculators</h3>
           <p>Interactive ICF cost estimator, energy savings calculator, brand selector quiz, and project showcase from real ICF builds.</p>
         </div>
 
