@@ -617,9 +617,58 @@
 
 
 /* ------------------------------------------------------------
-   7b. GET CONNECTED FORM
+   7b. HOME CTA SPLIT
+   Two-card grid on homepage: homeowners left, contractors right.
+   ------------------------------------------------------------ */
+
+.home-cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.home-cta-card {
+  background: var(--color-dark-800);
+  border: 1px solid var(--color-dark-700);
+  border-top: 3px solid var(--color-accent);
+  border-radius: 14px;
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.home-cta-card--dark {
+  background: var(--color-dark-900);
+}
+
+.home-cta-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--color-text-light);
+}
+
+.home-cta-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.home-cta-card .btn {
+  align-self: flex-start;
+}
+
+@media (max-width: 640px) {
+  .home-cta-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------------------------------------------
+   7c. GET CONNECTED FORM
    Used on state pages and content pages for lead capture.
-   Two-column layout: form on left, contractor card on right.
    ------------------------------------------------------------ */
 
 .contractor-banner {
