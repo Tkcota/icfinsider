@@ -34,8 +34,8 @@ const server = http.createServer(function (req, res) {
   // Strip query strings (?foo=bar) from the URL path
   let urlPath = req.url.split('?')[0];
 
-  // Default to index.html for the root path
-  if (urlPath === '/') urlPath = '/index.html';
+  // Default to index.html for root and any directory path (trailing slash)
+  if (urlPath === '/' || urlPath.endsWith('/')) urlPath = urlPath + 'index.html';
 
   // Build the full file path on disk
   const filePath = path.join(__dirname, urlPath);
