@@ -3,26 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>ICF Contractors in North Carolina | Find Certified ICF Builders | ICF Insider</title>
-  <meta name="description" content="Find ICF contractors in North Carolina. ICF construction for North Carolina&#39;s coastal storms and inland tornadoes. Browse the ICF Insider directory and get notified when it launches in your area.">
-
+  <meta name="description" content="Find ICF contractors in North Carolina. ICF construction for North Carolina's coastal storms and inland tornadoes. Browse the ICF Insider directory and get notified at launch.">
   <link rel="canonical" href="https://icfinsider.com/states/north-carolina/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
-  <meta property="og:type"        content="website">
-  <meta property="og:title"       content="ICF Contractors in North Carolina | ICF Insider">
-  <meta property="og:description" content="ICF construction for North Carolina&#39;s coastal storms and inland tornadoes.">
-  <meta property="og:url"         content="https://icfinsider.com/states/north-carolina/">
-
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ICF Contractors in North Carolina | ICF Insider">
+  <meta property="og:description" content="ICF construction for North Carolina's coastal storms and inland tornadoes.">
+  <meta property="og:url" content="https://icfinsider.com/states/north-carolina/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/components.css">
-
-  <!-- Schema: WebPage + BreadcrumbList + FAQPage -->
+  <style>
+    .state-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-top: var(--space-10); padding-top: var(--space-10); border-top: 1px solid rgba(255,255,255,0.12); }
+    .state-stat { text-align: center; }
+    .state-stat-number { display: block; font-family: var(--font-display); font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 800; color: var(--color-accent); line-height: 1; }
+    .state-stat-label { display: block; font-size: 0.78rem; color: rgba(255,255,255,0.6); margin-top: var(--space-1); text-transform: uppercase; letter-spacing: 0.06em; }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-8); }
+    .why-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: var(--space-6); display: flex; gap: var(--space-4); align-items: flex-start; }
+    .why-icon { flex-shrink: 0; width: 40px; height: 40px; background: rgba(232,120,10,0.12); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .why-card h3 { margin: 0 0 4px; font-size: 0.95rem; font-weight: 600; }
+    .why-card p  { margin: 0; font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.55; }
+    .directory-cta { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-6); }
+    .cta-card { border-radius: 14px; padding: var(--space-8); display: flex; flex-direction: column; gap: var(--space-5); }
+    .cta-card.dark  { background: var(--color-dark-900); border: 1px solid rgba(255,255,255,0.08); }
+    .cta-card.light { background: var(--color-surface);  border: 1px solid var(--color-border); }
+    .cta-card h3    { margin: 0; font-size: 1.05rem; }
+    .cta-card.dark h3 { color: var(--color-text-light); }
+    .cta-card p     { margin: 0; font-size: 0.875rem; line-height: 1.6; }
+    .cta-card.dark p  { color: var(--color-text-muted); }
+    .faq-list { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-8); }
+    .faq-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: var(--space-6) var(--space-7); }
+    .faq-card h3 { margin: 0 0 var(--space-2); font-size: 0.975rem; font-weight: 600; }
+    .faq-card p  { margin: 0; font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.7; }
+    .learn-strip { margin-top: var(--space-14); background: var(--color-dark-900); border-radius: 14px; padding: var(--space-8) var(--space-10); display: flex; align-items: center; justify-content: space-between; gap: var(--space-8); flex-wrap: wrap; }
+    .learn-strip h3 { margin: 0 0 var(--space-1); color: var(--color-text-light); font-size: 1.15rem; }
+    .learn-strip p  { margin: 0; color: var(--color-text-muted); font-size: 0.875rem; }
+    .learn-strip-links { display: flex; gap: var(--space-3); flex-shrink: 0; flex-wrap: wrap; }
+    @media (max-width: 767px) { .why-grid { grid-template-columns: 1fr; } .directory-cta { grid-template-columns: 1fr; } .learn-strip { flex-direction: column; align-items: flex-start; padding: var(--space-6); } }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -30,7 +51,7 @@
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://icfinsider.com/" },
+          { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://icfinsider.com/" },
           { "@type": "ListItem", "position": 2, "name": "Find a Pro", "item": "https://icfinsider.com/find-a-pro.html" },
           { "@type": "ListItem", "position": 3, "name": "ICF Contractors in North Carolina", "item": "https://icfinsider.com/states/north-carolina/" }
         ]
@@ -38,204 +59,146 @@
       {
         "@type": "FAQPage",
         "mainEntity": [
-      {
-            "@type": "Question",
-            "name": "Is ICF popular in North Carolina?",
-            "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "ICF construction has grown steadily in North Carolina, particularly in coastal areas and high-growth markets like the Charlotte metro and the Triangle. The state has an established network of ICF-trained contractors."
-            }
-      },
-      {
-            "@type": "Question",
-            "name": "How does ICF handle both hurricanes and tornadoes?",
-            "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "ICF walls consist of reinforced concrete engineered to withstand winds exceeding 200 mph. This rating is relevant for both hurricane-force winds and the debris impact associated with tornadoes. No above-grade wall system is tornado-proof, but ICF provides significantly more protection than wood frame."
-            }
-      },
-      {
-            "@type": "Question",
-            "name": "What is the cost premium for ICF in North Carolina?",
-            "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "ICF construction in North Carolina typically runs 5–15% above comparable wood frame. Urban markets like Charlotte and Raleigh-Durham often have more competitive ICF contractor pricing than rural areas."
-            }
-      }
-]
+          { "@type": "Question", "name": "Is ICF popular in North Carolina?", "acceptedAnswer": { "@type": "Answer", "text": "ICF construction has grown steadily in North Carolina, particularly in coastal areas and high-growth markets like the Charlotte metro and the Triangle. The state has an established network of ICF-trained contractors." } },
+          { "@type": "Question", "name": "How does ICF handle both hurricanes and tornadoes?", "acceptedAnswer": { "@type": "Answer", "text": "ICF walls consist of reinforced concrete engineered to withstand winds exceeding 200 mph. This rating is relevant for both hurricane-force winds and the debris impact associated with tornadoes. No above-grade wall system is tornado-proof, but ICF provides significantly more protection than wood frame." } },
+          { "@type": "Question", "name": "What is the cost premium for ICF in North Carolina?", "acceptedAnswer": { "@type": "Answer", "text": "ICF construction in North Carolina typically runs 5–15% above comparable wood frame. Urban markets like Charlotte and Raleigh-Durham often have more competitive ICF contractor pricing than rural areas." } }
+        ]
       }
     ]
   }
   </script>
 </head>
-
 <body>
-
-  <!-- NAVIGATION -->
   <nav class="nav" id="main-nav" aria-label="Main navigation">
     <div class="container nav-inner">
-      <a href="/" class="nav-logo" aria-label="ICF Insider home">
-        <div class="nav-logo-mark" aria-hidden="true">I</div>
-        <span class="nav-logo-text">ICF <span>Insider</span></span>
-      </a>
+      <a href="/" class="nav-logo" aria-label="ICF Insider home"><div class="nav-logo-mark" aria-hidden="true">I</div><span class="nav-logo-text">ICF <span>Insider</span></span></a>
       <ul class="nav-links" role="list">
-        <li><a href="/icf-101.html"    class="nav-link">ICF 101</a></li>
+        <li><a href="/icf-101.html" class="nav-link">ICF 101</a></li>
         <li><a href="/cost-guide.html" class="nav-link">Cost Guide</a></li>
-        <li><a href="/brands.html"     class="nav-link">Brand Comparison</a></li>
+        <li><a href="/brands.html" class="nav-link">Brand Comparison</a></li>
         <li><a href="/find-a-pro.html" class="nav-link active">Find a Pro</a></li>
       </ul>
-      <div class="nav-cta">
-        <a href="/early-access.html" class="btn btn-primary">Get Early Access</a>
-      </div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-cta"><a href="/early-access.html" class="btn btn-primary">Get Early Access</a></div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile"><span></span><span></span><span></span></button>
     </div>
   </nav>
-
   <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation">
-    <a href="/icf-101.html"    class="nav-link">ICF 101</a>
+    <a href="/icf-101.html" class="nav-link">ICF 101</a>
     <a href="/cost-guide.html" class="nav-link">Cost Guide</a>
-    <a href="/brands.html"     class="nav-link">Brand Comparison</a>
+    <a href="/brands.html" class="nav-link">Brand Comparison</a>
     <a href="/find-a-pro.html" class="nav-link active">Find a Pro</a>
     <a href="/early-access.html" class="btn btn-primary">Get Early Access</a>
   </div>
 
-
-  <!-- PAGE HERO -->
   <section class="page-hero" aria-labelledby="page-title">
     <div class="container">
       <div class="page-hero-meta">
-        <span class="page-hero-tag"><a href="/find-a-pro.html" style="color: inherit; text-decoration: none;">Find a Pro</a></span>
+        <span class="page-hero-tag"><a href="/find-a-pro.html" style="color:inherit;text-decoration:none;">Find a Pro</a></span>
         <span class="page-hero-readtime">North Carolina</span>
       </div>
       <h1 id="page-title">ICF Contractors in North Carolina</h1>
-      <p class="page-hero-intro">
-        ICF construction for North Carolina&#39;s coastal storms and inland tornadoes.
+      <p class="page-hero-intro" style="max-width:580px;">
+        North Carolina faces a unique double threat: coastal counties see direct hurricane strikes while the Piedmont experiences significant tornado activity. ICF construction addresses both with the same reinforced concrete wall system — and delivers 50–70% lower energy bills year-round.
       </p>
+      <div class="state-stats">
+        <div class="state-stat"><span class="state-stat-number">200+</span><span class="state-stat-label">mph Wind Resistance</span></div>
+        <div class="state-stat"><span class="state-stat-number">50–70%</span><span class="state-stat-label">Lower Energy Bills</span></div>
+        <div class="state-stat"><span class="state-stat-number">4-hr</span><span class="state-stat-label">Fire Rating</span></div>
+      </div>
     </div>
   </section>
 
-
-  <!-- MAIN CONTENT -->
-  <div class="container" style="padding-top: var(--space-16); padding-bottom: var(--space-20);">
+  <div class="container" style="padding-top:var(--space-10);padding-bottom:var(--space-20);">
     <div class="content-layout">
-
       <article class="article" id="article">
 
-        <!-- INTRO -->
-        <section>
-          <p>North Carolina faces a unique double threat: coastal counties experience direct hurricane strikes while the Piedmont and western regions see significant tornado activity each year. ICF construction addresses both threats with the same reinforced concrete wall system — a significant advantage over wood-framed alternatives.</p>
-          <p>North Carolina&#39;s growing population and active residential construction market means ICF contractors are increasingly available across the state. Whether you&#39;re building on the Outer Banks or in the Research Triangle, ICF delivers strength and energy performance that wood frame cannot match.</p>
-        </section>
-
-        <!-- WHY ICF IN THIS STATE -->
-        <section style="margin-top: var(--space-12);">
-          <h2>Why North Carolina Homeowners Choose ICF</h2>
-          <ul style="margin-top: var(--space-4); padding-left: 1.5rem; display: flex; flex-direction: column; gap: var(--space-2);">
-            <li style="line-height: 1.6;">Hurricane-rated walls for coastal and eastern North Carolina counties</li>
-            <li style="line-height: 1.6;">Tornado-resistant construction for the Piedmont and western regions</li>
-            <li style="line-height: 1.6;">50–70% energy savings in North Carolina&#39;s mixed hot-and-cold climate</li>
-            <li style="line-height: 1.6;">Significant reduction in long-term maintenance and storm repair costs</li>
-            <li style="line-height: 1.6;">Insurance discounts available for concrete construction in wind-exposed areas</li>
-          </ul>
-        </section>
-
-        <!-- DIRECTORY COMING SOON -->
-        <section style="margin-top: var(--space-16); padding: var(--space-10); background: var(--color-surface); border-radius: 12px; border: 1px solid var(--color-border);">
-          <h2 style="margin-top: 0;">The North Carolina ICF Contractor Directory</h2>
-          <p>We&#39;re building the most complete, independently verified directory of ICF contractors in North Carolina. Every listing will include verified credentials, brand certifications, service area, and real project history &#8212; so you can find the right builder with confidence.</p>
-          <p>The directory is coming soon. Get notified the moment it launches in North Carolina.</p>
-          <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-6);">
-            <a href="/early-access.html" class="btn btn-primary">Notify Me at Launch</a>
-            <a href="/early-access.html#panel-contractor" class="btn btn-secondary">Claim Your Contractor Listing</a>
+        <section id="why-north-carolina">
+          <span class="eyebrow">Why North Carolina</span>
+          <h2 style="margin-top:var(--space-2);">The Case for ICF in North Carolina</h2>
+          <p style="color:var(--color-text-muted);max-width:540px;">Hurricanes on the coast. Tornadoes inland. One wall system handles both.</p>
+          <div class="why-grid">
+            <div class="why-card">
+              <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div><h3>Hurricane Resistance</h3><p>Concrete walls rated for Category 4–5 wind speeds. ICF homes survive storms that flatten wood-frame neighbors along North Carolina's coast.</p></div>
+            </div>
+            <div class="why-card">
+              <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+              <div><h3>50–70% Lower Energy Bills</h3><p>Continuous foam insulation blocks heat and humidity far better than wood-framed walls in North Carolina's mixed climate.</p></div>
+            </div>
+            <div class="why-card">
+              <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+              <div><h3>Insurance Discounts</h3><p>North Carolina insurers recognize concrete. Coastal homeowners frequently see meaningful premium reductions for ICF builds.</p></div>
+            </div>
+            <div class="why-card">
+              <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+              <div><h3>Mold &amp; Moisture Resistant</h3><p>Concrete doesn't rot or harbor mold — a chronic problem for wood-framed homes in North Carolina's humidity.</p></div>
+            </div>
           </div>
         </section>
 
-        <!-- FAQ -->
-        <section style="margin-top: var(--space-16);">
-          <h2>Common Questions About ICF Construction in North Carolina</h2>
-  <div style="margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--color-border);">
-    <h3 style="margin-top: 0;">Is ICF popular in North Carolina?</h3>
-    <p>ICF construction has grown steadily in North Carolina, particularly in coastal areas and high-growth markets like the Charlotte metro and the Triangle. The state has an established network of ICF-trained contractors.</p>
-  </div>
-  <div style="margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--color-border);">
-    <h3 style="margin-top: 0;">How does ICF handle both hurricanes and tornadoes?</h3>
-    <p>ICF walls consist of reinforced concrete engineered to withstand winds exceeding 200 mph. This rating is relevant for both hurricane-force winds and the debris impact associated with tornadoes. No above-grade wall system is tornado-proof, but ICF provides significantly more protection than wood frame.</p>
-  </div>
-  <div style="margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--color-border);">
-    <h3 style="margin-top: 0;">What is the cost premium for ICF in North Carolina?</h3>
-    <p>ICF construction in North Carolina typically runs 5–15% above comparable wood frame. Urban markets like Charlotte and Raleigh-Durham often have more competitive ICF contractor pricing than rural areas.</p>
-  </div>
-        </section>
-
-        <!-- LEARN MORE -->
-        <section style="margin-top: var(--space-16); padding: var(--space-8); background: var(--color-dark-900); border-radius: 12px; color: var(--color-text-light);">
-          <h2 style="margin-top: 0; color: var(--color-text-light);">New to ICF? Start Here.</h2>
-          <p style="color: var(--color-text-muted);">Before you search for a contractor in North Carolina, make sure you understand what ICF is, how it works, and whether it&#39;s the right choice for your project.</p>
-          <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-6);">
-            <a href="/icf-101.html" class="btn btn-primary">Read the ICF 101 Guide</a>
-            <a href="/cost-guide.html" class="btn btn-secondary" style="color: var(--color-text-light); border-color: rgba(255,255,255,0.2);">See the Cost Guide</a>
+        <section id="north-carolina-directory" style="margin-top:var(--space-16);">
+          <span class="eyebrow">North Carolina Directory</span>
+          <h2 style="margin-top:var(--space-2);">Find an ICF Contractor in North Carolina</h2>
+          <p style="color:var(--color-text-muted);max-width:540px;">The ICF Insider contractor directory is being built — every listing verified, credentialed, and searchable by location and brand.</p>
+          <div class="directory-cta">
+            <div class="cta-card dark">
+              <div><span class="eyebrow" style="font-size:0.7rem;">Homeowners</span><h3>Get Notified at Launch</h3><p>One email when the North Carolina directory goes live. No spam, ever.</p></div>
+              <a href="/early-access.html" class="btn btn-primary" style="align-self:flex-start;">Notify Me</a>
+            </div>
+            <div class="cta-card light">
+              <div><span class="eyebrow" style="font-size:0.7rem;">Contractors &amp; Builders</span><h3>Claim Your North Carolina Listing</h3><p>Early members get priority placement and reduced first-year pricing.</p></div>
+              <a href="/early-access.html" class="btn btn-primary" style="align-self:flex-start;">Reserve My Spot</a>
+            </div>
           </div>
         </section>
+
+        <section id="north-carolina-faq" style="margin-top:var(--space-16);">
+          <span class="eyebrow">FAQ</span>
+          <h2 style="margin-top:var(--space-2);">Common Questions About ICF in North Carolina</h2>
+          <div class="faq-list">
+            <div class="faq-card"><h3>Is ICF popular in North Carolina?</h3><p>ICF construction has grown steadily in North Carolina, particularly in coastal areas and high-growth markets like the Charlotte metro and the Triangle. The state has an established network of ICF-trained contractors.</p></div>
+            <div class="faq-card"><h3>How does ICF handle both hurricanes and tornadoes?</h3><p>ICF walls consist of reinforced concrete engineered to withstand winds exceeding 200 mph. This rating is relevant for both hurricane-force winds and the debris impact associated with tornadoes. No above-grade wall system is tornado-proof, but ICF provides significantly more protection than wood frame.</p></div>
+            <div class="faq-card"><h3>What is the cost premium for ICF in North Carolina?</h3><p>ICF construction in North Carolina typically runs 5–15% above comparable wood frame. Urban markets like Charlotte and Raleigh-Durham often have more competitive ICF contractor pricing than rural areas.</p></div>
+          </div>
+        </section>
+
+        <div class="learn-strip">
+          <div><h3>New to ICF?</h3><p>Read the full guide before you search for a contractor. Know what to look for.</p></div>
+          <div class="learn-strip-links">
+            <a href="/icf-101.html" class="btn btn-primary">ICF 101 Guide</a>
+            <a href="/cost-guide.html" class="btn btn-secondary" style="color:var(--color-text-light);border-color:rgba(255,255,255,0.2);">Cost Guide</a>
+          </div>
+        </div>
 
       </article>
 
-      <!-- SIDEBAR TOC -->
       <aside class="toc-sidebar" aria-label="Page navigation">
         <div class="toc-inner">
           <p class="toc-label">On this page</p>
           <ul class="toc-list">
-            <li><a href="#article" class="toc-link">Why North Carolina Chooses ICF</a></li>
-            <li><a href="#article" class="toc-link">North Carolina Contractor Directory</a></li>
-            <li><a href="#article" class="toc-link">Common Questions</a></li>
+            <li><a href="#why-north-carolina" class="toc-link">Why North Carolina Chooses ICF</a></li>
+            <li><a href="#north-carolina-directory" class="toc-link">North Carolina Contractor Directory</a></li>
+            <li><a href="#north-carolina-faq" class="toc-link">Common Questions</a></li>
           </ul>
-          <div style="margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--color-border);">
-            <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 0 0 var(--space-3);">Browse other states</p>
-            <a href="/find-a-pro.html" class="btn btn-secondary" style="width: 100%; text-align: center; font-size: 0.85rem;">All States &#8594;</a>
+          <div style="margin-top:var(--space-8);padding-top:var(--space-6);border-top:1px solid var(--color-border);">
+            <p style="font-size:0.8rem;color:var(--color-text-muted);margin:0 0 var(--space-3);">Browse by state</p>
+            <a href="/find-a-pro.html" class="btn btn-secondary" style="width:100%;text-align:center;font-size:0.85rem;">All States →</a>
           </div>
         </div>
       </aside>
-
     </div>
   </div>
 
-
-  <!-- FOOTER -->
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <a href="/" class="nav-logo" aria-label="ICF Insider home">
-            <div class="nav-logo-mark" aria-hidden="true">I</div>
-            <span class="nav-logo-text">ICF <span>Insider</span></span>
-          </a>
-          <p class="footer-tagline">The independent authority on ICF construction.</p>
-        </div>
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <div class="footer-nav-group">
-            <p class="footer-nav-heading">Resources</p>
-            <ul>
-              <li><a href="/icf-101.html">ICF 101</a></li>
-              <li><a href="/cost-guide.html">Cost Guide</a></li>
-              <li><a href="/brands.html">Brand Comparison</a></li>
-            </ul>
-          </div>
-          <div class="footer-nav-group">
-            <p class="footer-nav-heading">Directory</p>
-            <ul>
-              <li><a href="/find-a-pro.html">Find a Pro</a></li>
-              <li><a href="/early-access.html">Get Early Access</a></li>
-            </ul>
-          </div>
-        </nav>
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="/" class="nav-logo" aria-label="ICF Insider home"><div class="nav-logo-mark" aria-hidden="true">I</div><span class="nav-logo-text">ICF <span>Insider</span></span></a><p>The independent authority on Insulated Concrete Form construction.</p></div>
+        <div class="footer-col"><h4>Learn</h4><ul class="footer-links" role="list"><li><a href="/icf-101.html" class="footer-link">ICF 101</a></li><li><a href="/cost-guide.html" class="footer-link">Cost Guide</a></li><li><a href="/brands.html" class="footer-link">Brand Comparison</a></li></ul></div>
+        <div class="footer-col"><h4>Directory</h4><ul class="footer-links" role="list"><li><a href="/find-a-pro.html" class="footer-link">Find a Pro</a></li><li><a href="/early-access.html" class="footer-link">Get Early Access</a></li></ul></div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 ICF Insider. Independent and unaffiliated with any ICF brand or manufacturer.</p>
-      </div>
+      <div class="footer-bottom"><p>&copy; 2026 ICF Insider. Independent and unaffiliated with any ICF brand or manufacturer.</p></div>
     </div>
   </footer>
-
   <script src="/js/main.js"></script>
 </body>
 </html>

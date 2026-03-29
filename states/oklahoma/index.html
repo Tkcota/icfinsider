@@ -3,26 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>ICF Contractors in Oklahoma | Find Certified ICF Builders | ICF Insider</title>
-  <meta name="description" content="Find ICF contractors in Oklahoma. ICF homes in Oklahoma — built to stand up to Tornado Alley. Browse the ICF Insider directory and get notified when it launches in your area.">
-
+  <meta name="description" content="Find ICF contractors in Oklahoma. ICF homes built to stand up to Tornado Alley. Browse the ICF Insider directory and get notified at launch.">
   <link rel="canonical" href="https://icfinsider.com/states/oklahoma/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
-  <meta property="og:type"        content="website">
-  <meta property="og:title"       content="ICF Contractors in Oklahoma | ICF Insider">
-  <meta property="og:description" content="ICF homes in Oklahoma — built to stand up to Tornado Alley.">
-  <meta property="og:url"         content="https://icfinsider.com/states/oklahoma/">
-
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ICF Contractors in Oklahoma | ICF Insider">
+  <meta property="og:description" content="ICF homes built to stand up to Tornado Alley.">
+  <meta property="og:url" content="https://icfinsider.com/states/oklahoma/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/components.css">
-
-  <!-- Schema: WebPage + BreadcrumbList + FAQPage -->
+  <style>
+    .state-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-top: var(--space-10); padding-top: var(--space-10); border-top: 1px solid rgba(255,255,255,0.12); }
+    .state-stat { text-align: center; }
+    .state-stat-number { display: block; font-family: var(--font-display); font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 800; color: var(--color-accent); line-height: 1; }
+    .state-stat-label { display: block; font-size: 0.78rem; color: rgba(255,255,255,0.6); margin-top: var(--space-1); text-transform: uppercase; letter-spacing: 0.06em; }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-8); }
+    .why-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: var(--space-6); display: flex; gap: var(--space-4); align-items: flex-start; }
+    .why-icon { flex-shrink: 0; width: 40px; height: 40px; background: rgba(232,120,10,0.12); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .why-card h3 { margin: 0 0 4px; font-size: 0.95rem; font-weight: 600; }
+    .why-card p  { margin: 0; font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.55; }
+    .directory-cta { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-6); }
+    .cta-card { border-radius: 14px; padding: var(--space-8); display: flex; flex-direction: column; gap: var(--space-5); }
+    .cta-card.dark  { background: var(--color-dark-900); border: 1px solid rgba(255,255,255,0.08); }
+    .cta-card.light { background: var(--color-surface);  border: 1px solid var(--color-border); }
+    .cta-card h3    { margin: 0; font-size: 1.05rem; }
+    .cta-card.dark h3 { color: var(--color-text-light); }
+    .cta-card p     { margin: 0; font-size: 0.875rem; line-height: 1.6; }
+    .cta-card.dark p  { color: var(--color-text-muted); }
+    .faq-list { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-8); }
+    .faq-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: var(--space-6) var(--space-7); }
+    .faq-card h3 { margin: 0 0 var(--space-2); font-size: 0.975rem; font-weight: 600; }
+    .faq-card p  { margin: 0; font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.7; }
+    .learn-strip { margin-top: var(--space-14); background: var(--color-dark-900); border-radius: 14px; padding: var(--space-8) var(--space-10); display: flex; align-items: center; justify-content: space-between; gap: var(--space-8); flex-wrap: wrap; }
+    .learn-strip h3 { margin: 0 0 var(--space-1); color: var(--color-text-light); font-size: 1.15rem; }
+    .learn-strip p  { margin: 0; color: var(--color-text-muted); font-size: 0.875rem; }
+    .learn-strip-links { display: flex; gap: var(--space-3); flex-shrink: 0; flex-wrap: wrap; }
+    @media (max-width: 767px) { .why-grid { grid-template-columns: 1fr; } .directory-cta { grid-template-columns: 1fr; } .learn-strip { flex-direction: column; align-items: flex-start; padding: var(--space-6); } }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -30,7 +51,7 @@
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://icfinsider.com/" },
+          { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://icfinsider.com/" },
           { "@type": "ListItem", "position": 2, "name": "Find a Pro", "item": "https://icfinsider.com/find-a-pro.html" },
           { "@type": "ListItem", "position": 3, "name": "ICF Contractors in Oklahoma", "item": "https://icfinsider.com/states/oklahoma/" }
         ]
@@ -38,204 +59,149 @@
       {
         "@type": "FAQPage",
         "mainEntity": [
-      {
-            "@type": "Question",
-            "name": "Is ICF the safest wall system for tornado zones?",
-            "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "ICF is among the strongest above-grade wall systems available. Reinforced concrete can withstand wind speeds exceeding 200 mph and flying debris at tornado velocities. While no wall system guarantees survival in an EF5 tornado, ICF dramatically outperforms wood frame in documented tornado events."
-            }
-      },
-      {
-            "@type": "Question",
-            "name": "Do Oklahoma insurance companies offer discounts for ICF homes?",
-            "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Many do. Insurance carriers recognize concrete construction as significantly more storm-resistant and frequently offer premium discounts for ICF homes. Contact your insurer specifically about discounts for reinforced concrete construction — savings can be substantial in Oklahoma's high-risk market."
-            }
-      },
-      {
-            "@type": "Question",
-            "name": "What does ICF cost in Oklahoma?",
-            "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "ICF construction in Oklahoma typically runs 5–15% above comparable wood frame, with above-grade walls in the $145–$205+ per square foot range. The Oklahoma City and Tulsa metros have the most established ICF contractor availability in the state."
-            }
-      }
-]
+          { "@type": "Question", "name": "Is ICF the safest wall system for tornado zones?", "acceptedAnswer": { "@type": "Answer", "text": "ICF is among the strongest above-grade wall systems available. Reinforced concrete can withstand wind speeds exceeding 200 mph and flying debris at tornado velocities. While no wall system guarantees survival in an EF5 tornado, ICF dramatically outperforms wood frame in documented tornado events." } },
+          { "@type": "Question", "name": "Do Oklahoma insurance companies offer discounts for ICF homes?", "acceptedAnswer": { "@type": "Answer", "text": "Many do. Insurance carriers recognize concrete construction as significantly more storm-resistant and frequently offer premium discounts for ICF homes. Contact your insurer specifically about discounts for reinforced concrete construction — savings can be substantial in Oklahoma's high-risk market." } },
+          { "@type": "Question", "name": "What does ICF cost in Oklahoma?", "acceptedAnswer": { "@type": "Answer", "text": "ICF construction in Oklahoma typically runs 5–15% above comparable wood frame, with above-grade walls in the $145–$205+ per square foot range. The Oklahoma City and Tulsa metros have the most established ICF contractor availability in the state." } }
+        ]
       }
     ]
   }
   </script>
 </head>
-
 <body>
-
-  <!-- NAVIGATION -->
   <nav class="nav" id="main-nav" aria-label="Main navigation">
     <div class="container nav-inner">
-      <a href="/" class="nav-logo" aria-label="ICF Insider home">
-        <div class="nav-logo-mark" aria-hidden="true">I</div>
-        <span class="nav-logo-text">ICF <span>Insider</span></span>
-      </a>
+      <a href="/" class="nav-logo" aria-label="ICF Insider home"><div class="nav-logo-mark" aria-hidden="true">I</div><span class="nav-logo-text">ICF <span>Insider</span></span></a>
       <ul class="nav-links" role="list">
-        <li><a href="/icf-101.html"    class="nav-link">ICF 101</a></li>
+        <li><a href="/icf-101.html" class="nav-link">ICF 101</a></li>
         <li><a href="/cost-guide.html" class="nav-link">Cost Guide</a></li>
-        <li><a href="/brands.html"     class="nav-link">Brand Comparison</a></li>
+        <li><a href="/brands.html" class="nav-link">Brand Comparison</a></li>
         <li><a href="/find-a-pro.html" class="nav-link active">Find a Pro</a></li>
       </ul>
-      <div class="nav-cta">
-        <a href="/early-access.html" class="btn btn-primary">Get Early Access</a>
-      </div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-cta"><a href="/early-access.html" class="btn btn-primary">Get Early Access</a></div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile"><span></span><span></span><span></span></button>
     </div>
   </nav>
-
   <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation">
-    <a href="/icf-101.html"    class="nav-link">ICF 101</a>
+    <a href="/icf-101.html" class="nav-link">ICF 101</a>
     <a href="/cost-guide.html" class="nav-link">Cost Guide</a>
-    <a href="/brands.html"     class="nav-link">Brand Comparison</a>
+    <a href="/brands.html" class="nav-link">Brand Comparison</a>
     <a href="/find-a-pro.html" class="nav-link active">Find a Pro</a>
     <a href="/early-access.html" class="btn btn-primary">Get Early Access</a>
   </div>
 
-
-  <!-- PAGE HERO -->
   <section class="page-hero" aria-labelledby="page-title">
     <div class="container">
       <div class="page-hero-meta">
-        <span class="page-hero-tag"><a href="/find-a-pro.html" style="color: inherit; text-decoration: none;">Find a Pro</a></span>
+        <span class="page-hero-tag"><a href="/find-a-pro.html" style="color:inherit;text-decoration:none;">Find a Pro</a></span>
         <span class="page-hero-readtime">Oklahoma</span>
       </div>
       <h1 id="page-title">ICF Contractors in Oklahoma</h1>
-      <p class="page-hero-intro">
-        ICF homes in Oklahoma — built to stand up to Tornado Alley.
+      <p class="page-hero-intro" style="max-width:580px;">
+        Oklahoma sits at the center of Tornado Alley and experiences more violent tornadoes
+        per square mile than virtually anywhere else in the world. ICF construction is the
+        most effective above-grade wall system available for tornado-prone areas — and
+        delivers year-round energy savings in Oklahoma's extreme climate.
       </p>
+      <div class="state-stats">
+        <div class="state-stat"><span class="state-stat-number">200+</span><span class="state-stat-label">mph Wind Resistance</span></div>
+        <div class="state-stat"><span class="state-stat-number">50–70%</span><span class="state-stat-label">Lower Energy Bills</span></div>
+        <div class="state-stat"><span class="state-stat-number">4-hr</span><span class="state-stat-label">Fire Rating</span></div>
+      </div>
     </div>
   </section>
 
-
-  <!-- MAIN CONTENT -->
-  <div class="container" style="padding-top: var(--space-16); padding-bottom: var(--space-20);">
+  <div class="container" style="padding-top:var(--space-10);padding-bottom:var(--space-20);">
     <div class="content-layout">
-
       <article class="article" id="article">
 
-        <!-- INTRO -->
-        <section>
-          <p>Oklahoma sits at the center of Tornado Alley and experiences more violent tornadoes per square mile than virtually anywhere else in the world. For Oklahoma homeowners, the question is not whether severe weather will hit — it&#39;s whether your home will still be standing when it does. ICF construction is the most effective above-grade wall system available for tornado-prone areas.</p>
-          <p>Oklahoma&#39;s extreme temperature swings — from brutal summer heat to frigid winter cold — also make ICF&#39;s continuous insulation and thermal mass a year-round energy advantage. Lower utility bills combined with dramatically improved storm resilience create a compelling long-term case for ICF across the state.</p>
-        </section>
-
-        <!-- WHY ICF IN THIS STATE -->
-        <section style="margin-top: var(--space-12);">
-          <h2>Why Oklahoma Homeowners Choose ICF</h2>
-          <ul style="margin-top: var(--space-4); padding-left: 1.5rem; display: flex; flex-direction: column; gap: var(--space-2);">
-            <li style="line-height: 1.6;">Reinforced concrete walls rated for tornado-force winds and debris impact</li>
-            <li style="line-height: 1.6;">The most effective above-grade wall system available for Tornado Alley construction</li>
-            <li style="line-height: 1.6;">50–70% energy savings across Oklahoma&#39;s extreme summer heat and winter cold</li>
-            <li style="line-height: 1.6;">Insurance discounts for storm-resistant construction are common in Oklahoma</li>
-            <li style="line-height: 1.6;">Long-term durability with no wood rot, warping, or termite risk</li>
-          </ul>
-        </section>
-
-        <!-- DIRECTORY COMING SOON -->
-        <section style="margin-top: var(--space-16); padding: var(--space-10); background: var(--color-surface); border-radius: 12px; border: 1px solid var(--color-border);">
-          <h2 style="margin-top: 0;">The Oklahoma ICF Contractor Directory</h2>
-          <p>We&#39;re building the most complete, independently verified directory of ICF contractors in Oklahoma. Every listing will include verified credentials, brand certifications, service area, and real project history &#8212; so you can find the right builder with confidence.</p>
-          <p>The directory is coming soon. Get notified the moment it launches in Oklahoma.</p>
-          <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-6);">
-            <a href="/early-access.html" class="btn btn-primary">Notify Me at Launch</a>
-            <a href="/early-access.html#panel-contractor" class="btn btn-secondary">Claim Your Contractor Listing</a>
+        <section id="why-oklahoma">
+          <span class="eyebrow">Why Oklahoma</span>
+          <h2 style="margin-top:var(--space-2);">The Case for ICF in Oklahoma</h2>
+          <p style="color:var(--color-text-muted);max-width:540px;">Tornado Alley. Extreme heat. Bitter winters. One wall system handles all of Oklahoma's climate demands.</p>
+          <div class="why-grid">
+            <div class="why-card">
+              <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><line x1="12" y1="12" x2="19" y2="12"/></svg></div>
+              <div><h3>Tornado Resistance</h3><p>Reinforced concrete walls rated for 200+ mph winds. ICF homes have stood through EF3 and EF4 events that leveled wood-frame neighbors across Oklahoma.</p></div>
+            </div>
+            <div class="why-card">
+              <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+              <div><h3>50–70% Lower Energy Bills</h3><p>Continuous insulation cuts cooling costs dramatically during Oklahoma's hot summers and keeps heat in during bitter winters.</p></div>
+            </div>
+            <div class="why-card">
+              <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div><h3>Storm-Safe Construction</h3><p>No wall system is tornado-proof, but ICF provides significantly greater protection than wood frame against wind and flying debris.</p></div>
+            </div>
+            <div class="why-card">
+              <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+              <div><h3>Insurance Discounts</h3><p>Storm-resistant concrete construction qualifies for meaningful premium reductions in Oklahoma's high-risk counties.</p></div>
+            </div>
           </div>
         </section>
 
-        <!-- FAQ -->
-        <section style="margin-top: var(--space-16);">
-          <h2>Common Questions About ICF Construction in Oklahoma</h2>
-  <div style="margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--color-border);">
-    <h3 style="margin-top: 0;">Is ICF the safest wall system for tornado zones?</h3>
-    <p>ICF is among the strongest above-grade wall systems available. Reinforced concrete can withstand wind speeds exceeding 200 mph and flying debris at tornado velocities. While no wall system guarantees survival in an EF5 tornado, ICF dramatically outperforms wood frame in documented tornado events.</p>
-  </div>
-  <div style="margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--color-border);">
-    <h3 style="margin-top: 0;">Do Oklahoma insurance companies offer discounts for ICF homes?</h3>
-    <p>Many do. Insurance carriers recognize concrete construction as significantly more storm-resistant and frequently offer premium discounts for ICF homes. Contact your insurer specifically about discounts for reinforced concrete construction — savings can be substantial in Oklahoma&#39;s high-risk market.</p>
-  </div>
-  <div style="margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--color-border);">
-    <h3 style="margin-top: 0;">What does ICF cost in Oklahoma?</h3>
-    <p>ICF construction in Oklahoma typically runs 5–15% above comparable wood frame, with above-grade walls in the $145–$205+ per square foot range. The Oklahoma City and Tulsa metros have the most established ICF contractor availability in the state.</p>
-  </div>
-        </section>
-
-        <!-- LEARN MORE -->
-        <section style="margin-top: var(--space-16); padding: var(--space-8); background: var(--color-dark-900); border-radius: 12px; color: var(--color-text-light);">
-          <h2 style="margin-top: 0; color: var(--color-text-light);">New to ICF? Start Here.</h2>
-          <p style="color: var(--color-text-muted);">Before you search for a contractor in Oklahoma, make sure you understand what ICF is, how it works, and whether it&#39;s the right choice for your project.</p>
-          <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-6);">
-            <a href="/icf-101.html" class="btn btn-primary">Read the ICF 101 Guide</a>
-            <a href="/cost-guide.html" class="btn btn-secondary" style="color: var(--color-text-light); border-color: rgba(255,255,255,0.2);">See the Cost Guide</a>
+        <section id="oklahoma-directory" style="margin-top:var(--space-16);">
+          <span class="eyebrow">Oklahoma Directory</span>
+          <h2 style="margin-top:var(--space-2);">Find an ICF Contractor in Oklahoma</h2>
+          <p style="color:var(--color-text-muted);max-width:540px;">The ICF Insider contractor directory is being built — every listing verified, credentialed, and searchable by location and brand.</p>
+          <div class="directory-cta">
+            <div class="cta-card dark">
+              <div><span class="eyebrow" style="font-size:0.7rem;">Homeowners</span><h3>Get Notified at Launch</h3><p>One email when the Oklahoma directory goes live. No spam, ever.</p></div>
+              <a href="/early-access.html" class="btn btn-primary" style="align-self:flex-start;">Notify Me</a>
+            </div>
+            <div class="cta-card light">
+              <div><span class="eyebrow" style="font-size:0.7rem;">Contractors &amp; Builders</span><h3>Claim Your Oklahoma Listing</h3><p>Early members get priority placement and reduced first-year pricing.</p></div>
+              <a href="/early-access.html" class="btn btn-primary" style="align-self:flex-start;">Reserve My Spot</a>
+            </div>
           </div>
         </section>
+
+        <section id="oklahoma-faq" style="margin-top:var(--space-16);">
+          <span class="eyebrow">FAQ</span>
+          <h2 style="margin-top:var(--space-2);">Common Questions About ICF in Oklahoma</h2>
+          <div class="faq-list">
+            <div class="faq-card"><h3>Is ICF the safest wall system for tornado zones?</h3><p>ICF is among the strongest above-grade wall systems available. Reinforced concrete can withstand wind speeds exceeding 200 mph and flying debris at tornado velocities. While no wall system guarantees survival in an EF5 tornado, ICF dramatically outperforms wood frame in documented tornado events.</p></div>
+            <div class="faq-card"><h3>Do Oklahoma insurance companies offer discounts for ICF homes?</h3><p>Many do. Insurance carriers recognize concrete construction as significantly more storm-resistant and frequently offer premium discounts for ICF homes. Contact your insurer specifically about discounts for reinforced concrete construction — savings can be substantial in Oklahoma's high-risk market.</p></div>
+            <div class="faq-card"><h3>What does ICF cost in Oklahoma?</h3><p>ICF construction in Oklahoma typically runs 5–15% above comparable wood frame, with above-grade walls in the $145–$205+ per square foot range. The Oklahoma City and Tulsa metros have the most established ICF contractor availability in the state.</p></div>
+          </div>
+        </section>
+
+        <div class="learn-strip">
+          <div><h3>New to ICF?</h3><p>Read the full guide before you search for a contractor. Know what to look for.</p></div>
+          <div class="learn-strip-links">
+            <a href="/icf-101.html" class="btn btn-primary">ICF 101 Guide</a>
+            <a href="/cost-guide.html" class="btn btn-secondary" style="color:var(--color-text-light);border-color:rgba(255,255,255,0.2);">Cost Guide</a>
+          </div>
+        </div>
 
       </article>
 
-      <!-- SIDEBAR TOC -->
       <aside class="toc-sidebar" aria-label="Page navigation">
         <div class="toc-inner">
           <p class="toc-label">On this page</p>
           <ul class="toc-list">
-            <li><a href="#article" class="toc-link">Why Oklahoma Chooses ICF</a></li>
-            <li><a href="#article" class="toc-link">Oklahoma Contractor Directory</a></li>
-            <li><a href="#article" class="toc-link">Common Questions</a></li>
+            <li><a href="#why-oklahoma" class="toc-link">Why Oklahoma Chooses ICF</a></li>
+            <li><a href="#oklahoma-directory" class="toc-link">Oklahoma Contractor Directory</a></li>
+            <li><a href="#oklahoma-faq" class="toc-link">Common Questions</a></li>
           </ul>
-          <div style="margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--color-border);">
-            <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 0 0 var(--space-3);">Browse other states</p>
-            <a href="/find-a-pro.html" class="btn btn-secondary" style="width: 100%; text-align: center; font-size: 0.85rem;">All States &#8594;</a>
+          <div style="margin-top:var(--space-8);padding-top:var(--space-6);border-top:1px solid var(--color-border);">
+            <p style="font-size:0.8rem;color:var(--color-text-muted);margin:0 0 var(--space-3);">Browse by state</p>
+            <a href="/find-a-pro.html" class="btn btn-secondary" style="width:100%;text-align:center;font-size:0.85rem;">All States →</a>
           </div>
         </div>
       </aside>
-
     </div>
   </div>
 
-
-  <!-- FOOTER -->
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <a href="/" class="nav-logo" aria-label="ICF Insider home">
-            <div class="nav-logo-mark" aria-hidden="true">I</div>
-            <span class="nav-logo-text">ICF <span>Insider</span></span>
-          </a>
-          <p class="footer-tagline">The independent authority on ICF construction.</p>
-        </div>
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <div class="footer-nav-group">
-            <p class="footer-nav-heading">Resources</p>
-            <ul>
-              <li><a href="/icf-101.html">ICF 101</a></li>
-              <li><a href="/cost-guide.html">Cost Guide</a></li>
-              <li><a href="/brands.html">Brand Comparison</a></li>
-            </ul>
-          </div>
-          <div class="footer-nav-group">
-            <p class="footer-nav-heading">Directory</p>
-            <ul>
-              <li><a href="/find-a-pro.html">Find a Pro</a></li>
-              <li><a href="/early-access.html">Get Early Access</a></li>
-            </ul>
-          </div>
-        </nav>
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="/" class="nav-logo" aria-label="ICF Insider home"><div class="nav-logo-mark" aria-hidden="true">I</div><span class="nav-logo-text">ICF <span>Insider</span></span></a><p>The independent authority on Insulated Concrete Form construction.</p></div>
+        <div class="footer-col"><h4>Learn</h4><ul class="footer-links" role="list"><li><a href="/icf-101.html" class="footer-link">ICF 101</a></li><li><a href="/cost-guide.html" class="footer-link">Cost Guide</a></li><li><a href="/brands.html" class="footer-link">Brand Comparison</a></li></ul></div>
+        <div class="footer-col"><h4>Directory</h4><ul class="footer-links" role="list"><li><a href="/find-a-pro.html" class="footer-link">Find a Pro</a></li><li><a href="/early-access.html" class="footer-link">Get Early Access</a></li></ul></div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 ICF Insider. Independent and unaffiliated with any ICF brand or manufacturer.</p>
-      </div>
+      <div class="footer-bottom"><p>&copy; 2026 ICF Insider. Independent and unaffiliated with any ICF brand or manufacturer.</p></div>
     </div>
   </footer>
-
   <script src="/js/main.js"></script>
 </body>
 </html>

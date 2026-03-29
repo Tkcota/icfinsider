@@ -39,13 +39,13 @@
       font-family: var(--font-display);
       font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 800;
-      color: var(--color-primary);
+      color: var(--color-accent);
       line-height: 1;
     }
     .state-stat-label {
       display: block;
       font-size: 0.78rem;
-      color: var(--color-text-muted);
+      color: rgba(255,255,255,0.6);
       margin-top: var(--space-1);
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -110,7 +110,7 @@
     .faq-card p  { margin: 0; font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.7; }
 
     .learn-strip {
-      margin-top: var(--space-14);
+      margin-top: var(--space-20);
       background: var(--color-dark-900);
       border-radius: 14px;
       padding: var(--space-8) var(--space-10);
@@ -298,33 +298,84 @@
         </section>
 
 
-        <!-- DIRECTORY -->
+        <!-- GET CONNECTED -->
         <section id="florida-directory" style="margin-top:var(--space-16);">
-          <span class="eyebrow">Florida Directory</span>
+          <span class="eyebrow">Get Connected</span>
           <h2 style="margin-top:var(--space-2);">Find an ICF Contractor in Florida</h2>
           <p style="color:var(--color-text-muted);max-width:540px;">
-            The ICF Insider contractor directory is being built — every listing verified,
-            credentialed, and searchable by location and brand.
+            Tell us about your project. We'll connect you with qualified ICF contractors
+            in Florida — fast. No spam, no runaround.
           </p>
 
-          <div class="directory-cta">
-            <div class="cta-card dark">
-              <div>
-                <span class="eyebrow" style="font-size:0.7rem;">Homeowners</span>
-                <h3>Get Notified at Launch</h3>
-                <p>One email when the Florida directory goes live. No spam, ever.</p>
-              </div>
-              <a href="/early-access.html" class="btn btn-primary" style="align-self:flex-start;">Notify Me</a>
-            </div>
+          <!-- FORM -->
+          <div class="connect-form-wrap">
+            <form id="connect-form" novalidate>
+              <input type="hidden" name="lead_type" value="homeowner">
+              <input type="hidden" name="state"     value="Florida">
 
-            <div class="cta-card light">
-              <div>
-                <span class="eyebrow" style="font-size:0.7rem;">Contractors &amp; Builders</span>
-                <h3>Claim Your Florida Listing</h3>
-                <p>Early members get priority placement and reduced first-year pricing.</p>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="cf-name">Full Name *</label>
+                  <input type="text" id="cf-name" name="name" placeholder="John Smith" required>
+                </div>
+                <div class="form-field">
+                  <label for="cf-email">Email *</label>
+                  <input type="email" id="cf-email" name="email" placeholder="you@email.com" required>
+                </div>
               </div>
-              <a href="/early-access.html" class="btn btn-primary" style="align-self:flex-start;">Reserve My Spot</a>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="cf-phone">Cell Phone *</label>
+                  <input type="tel" id="cf-phone" name="phone" placeholder="(555) 000-0000" required>
+                </div>
+                <div class="form-field">
+                  <label for="cf-type">Project Type</label>
+                  <select id="cf-type" name="project_type">
+                    <option value="">Select...</option>
+                    <option value="New home build">New home build</option>
+                    <option value="Addition">Addition</option>
+                    <option value="Renovation">Renovation</option>
+                    <option value="Commercial">Commercial</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="cf-message">Tell us about your project</label>
+                <textarea id="cf-message" name="message" rows="4" placeholder="Square footage, timeline, location within Florida, any specific requirements..."></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="cf-file">Upload project plans <span class="field-note">(optional — PDF, DWG, images, ZIP, max 100MB)</span></label>
+                  <input type="file" id="cf-file" name="project_file" accept=".pdf,.dwg,.dxf,.jpg,.jpeg,.png,.zip">
+                </div>
+                <div class="form-field">
+                  <label for="cf-link">Or share a file link <span class="field-note">(Google Drive, Dropbox, WeTransfer)</span></label>
+                  <input type="url" id="cf-link" name="file_link" placeholder="https://drive.google.com/...">
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width:100%;margin-top:var(--space-2);">Get Connected →</button>
+              <p class="form-disclaimer">We review every request and connect you with qualified local contractors. Your info is shared only with relevant ICF contractors — never sold to marketers.</p>
+            </form>
+
+            <div id="connect-success" class="connect-success" style="display:none;">
+              <div class="connect-success-icon">✓</div>
+              <h3>You're connected.</h3>
+              <p>We received your project details and will be in touch soon to connect you with qualified contractors.</p>
             </div>
+          </div>
+
+          <!-- CONTRACTOR BANNER -->
+          <div class="contractor-banner">
+            <div class="contractor-banner-text">
+              <span class="eyebrow" style="font-size:0.7rem;">ICF Contractors &amp; Builders</span>
+              <p>Are you an ICF contractor in Florida? Get early access to the directory and start receiving leads.</p>
+            </div>
+            <a href="/early-access.html" class="btn btn-primary">Reserve My Spot →</a>
           </div>
         </section>
 

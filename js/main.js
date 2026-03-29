@@ -120,7 +120,82 @@
 
 
 /* ------------------------------------------------------------
-   4. SMOOTH SCROLL FOR ANCHOR LINKS
+   4. GET CONNECTED FORM (state pages + content pages)
+   Handles the full lead capture form with optional file upload.
+   Submits to /api/submit and shows a success message on completion.
+   ------------------------------------------------------------ */
+(function () {
+  const form = document.getElementById('connect-form');
+  if (!form) return;
+
+  const successPanel = document.getElementById('connect-success');
+
+  // Clear error styling when user starts typing
+  form.querySelectorAll('input, select, textarea').forEach(function (el) {
+    el.addEventListener('input', function () {
+      this.style.borderColor = '';
+    });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const nameEl  = form.querySelector('[name="name"]');
+    const emailEl = form.querySelector('[name="email"]');
+    const phoneEl = form.querySelector('[name="phone"]');
+    const btn     = form.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+
+    // Client-side validation
+    let valid = true;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!nameEl.value.trim()) {
+      nameEl.style.borderColor = '#e74c3c';
+      valid = false;
+    }
+    if (!emailRegex.test(emailEl.value.trim())) {
+      emailEl.style.borderColor = '#e74c3c';
+      valid = false;
+    }
+    if (!phoneEl.value.trim()) {
+      phoneEl.style.borderColor = '#e74c3c';
+      valid = false;
+    }
+    if (!valid) return;
+
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const fd = new FormData(form);
+
+    fetch('/api/submit', {
+      method: 'POST',
+      body: fd,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      if (data.ok) {
+        // Hide form, show success message
+        form.style.display = 'none';
+        if (successPanel) successPanel.style.display = 'block';
+      } else {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        alert(data.error || 'Something went wrong. Please try again.');
+      }
+    })
+    .catch(function () {
+      btn.textContent = originalText;
+      btn.disabled = false;
+    });
+  });
+}());
+
+
+/* ------------------------------------------------------------
+   5. SMOOTH SCROLL FOR ANCHOR LINKS
    When you click a link like <a href="#about">, the page
    scrolls smoothly to that section instead of jumping.
    (CSS scroll-behavior: smooth handles most cases, but this

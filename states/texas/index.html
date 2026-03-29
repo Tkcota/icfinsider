@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>ICF Contractors in Texas | Find Certified ICF Builders | ICF Insider</title>
-  <meta name="description" content="Find ICF contractors in Texas. ICF construction for Texas — tornado-proof walls and energy savings in extreme heat. Browse the ICF Insider directory and get notified when it launches in your area.">
+  <meta name="description" content="Find ICF contractors in Texas. Tornado and hurricane-resistant homes built for Texas's extreme weather and brutal heat. Browse the ICF Insider directory.">
 
   <link rel="canonical" href="https://icfinsider.com/states/texas/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <meta property="og:type"        content="website">
   <meta property="og:title"       content="ICF Contractors in Texas | ICF Insider">
-  <meta property="og:description" content="ICF construction for Texas — tornado-proof walls and energy savings in extreme heat.">
+  <meta property="og:description" content="Tornado and hurricane-resistant homes built for Texas's extreme weather.">
   <meta property="og:url"         content="https://icfinsider.com/states/texas/">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,108 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/components.css">
 
-  <!-- Schema: WebPage + BreadcrumbList + FAQPage -->
+  <style>
+    .state-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin-top: var(--space-10);
+      padding-top: var(--space-10);
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .state-stat { text-align: center; }
+    .state-stat-number {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--color-accent);
+      line-height: 1;
+    }
+    .state-stat-label {
+      display: block;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: var(--space-1);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+    }
+    .why-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: var(--space-6);
+      display: flex;
+      gap: var(--space-4);
+      align-items: flex-start;
+    }
+    .why-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: rgba(232,120,10,0.12);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .why-card h3 { margin: 0 0 4px; font-size: 0.95rem; font-weight: 600; }
+    .why-card p  { margin: 0; font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.55; }
+    .directory-cta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+    .cta-card {
+      border-radius: 14px;
+      padding: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+    .cta-card.dark  { background: var(--color-dark-900); border: 1px solid rgba(255,255,255,0.08); }
+    .cta-card.light { background: var(--color-surface);  border: 1px solid var(--color-border); }
+    .cta-card h3    { margin: 0; font-size: 1.05rem; }
+    .cta-card.dark h3 { color: var(--color-text-light); }
+    .cta-card p     { margin: 0; font-size: 0.875rem; line-height: 1.6; }
+    .cta-card.dark p  { color: var(--color-text-muted); }
+    .faq-list { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-8); }
+    .faq-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: var(--space-6) var(--space-7);
+    }
+    .faq-card h3 { margin: 0 0 var(--space-2); font-size: 0.975rem; font-weight: 600; }
+    .faq-card p  { margin: 0; font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.7; }
+    .learn-strip {
+      margin-top: var(--space-14);
+      background: var(--color-dark-900);
+      border-radius: 14px;
+      padding: var(--space-8) var(--space-10);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-8);
+      flex-wrap: wrap;
+    }
+    .learn-strip h3 { margin: 0 0 var(--space-1); color: var(--color-text-light); font-size: 1.15rem; }
+    .learn-strip p  { margin: 0; color: var(--color-text-muted); font-size: 0.875rem; }
+    .learn-strip-links { display: flex; gap: var(--space-3); flex-shrink: 0; flex-wrap: wrap; }
+    @media (max-width: 767px) {
+      .why-grid        { grid-template-columns: 1fr; }
+      .directory-cta   { grid-template-columns: 1fr; }
+      .learn-strip     { flex-direction: column; align-items: flex-start; padding: var(--space-6); }
+    }
+  </style>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -30,7 +131,7 @@
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://icfinsider.com/" },
+          { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://icfinsider.com/" },
           { "@type": "ListItem", "position": 2, "name": "Find a Pro", "item": "https://icfinsider.com/find-a-pro.html" },
           { "@type": "ListItem", "position": 3, "name": "ICF Contractors in Texas", "item": "https://icfinsider.com/states/texas/" }
         ]
@@ -38,39 +139,27 @@
       {
         "@type": "FAQPage",
         "mainEntity": [
-      {
+          {
             "@type": "Question",
             "name": "Can an ICF home survive a Texas tornado?",
-            "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "ICF walls are significantly more tornado-resistant than wood frame. While no above-grade structure is guaranteed to survive a direct hit from an EF5 tornado, ICF homes have survived EF3 and EF4 storms that destroyed wood-framed structures nearby. Reinforced concrete construction provides the closest thing to a safe room for the entire house."
-            }
-      },
-      {
+            "acceptedAnswer": { "@type": "Answer", "text": "ICF walls are significantly more tornado-resistant than wood frame. While no above-grade structure is guaranteed to survive a direct hit from an EF5 tornado, ICF homes have survived EF3 and EF4 storms that destroyed wood-framed structures nearby. Reinforced concrete construction provides the closest thing to a safe room for the entire house." }
+          },
+          {
             "@type": "Question",
             "name": "How does ICF perform in Texas summers?",
-            "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "ICF's thermal mass and continuous insulation keep interior temperatures stable even during Texas's extreme summer heat. The concrete absorbs heat during the day and releases it slowly, dramatically reducing the load on air conditioning systems. Most Texas ICF homeowners report 50–70% lower cooling bills."
-            }
-      },
-      {
+            "acceptedAnswer": { "@type": "Answer", "text": "ICF's thermal mass and continuous insulation keep interior temperatures stable even during Texas's extreme summer heat. The concrete absorbs heat during the day and releases it slowly, dramatically reducing the load on air conditioning systems. Most Texas ICF homeowners report 50–70% lower cooling bills." }
+          },
+          {
             "@type": "Question",
             "name": "How much does ICF construction cost in Texas?",
-            "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "ICF construction in Texas typically costs 5–15% more than comparable wood frame, with above-grade walls running $150–$215+ per square foot. The Dallas-Fort Worth, Houston, Austin, and San Antonio metros have the most competitive ICF contractor markets in the state."
-            }
-      },
-      {
+            "acceptedAnswer": { "@type": "Answer", "text": "ICF construction in Texas typically costs 5–15% more than comparable wood frame, with above-grade walls running $150–$215+ per square foot. The Dallas-Fort Worth, Houston, Austin, and San Antonio metros have the most competitive ICF contractor markets in the state." }
+          },
+          {
             "@type": "Question",
             "name": "Are there ICF contractors in Texas?",
-            "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes. Texas has one of the largest ICF contractor bases in the country, driven by both the storm-resilience demand in coastal and tornado-prone areas and the state's booming residential construction market. All major ICF brands have certified contractors across the state."
-            }
-      }
-]
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Texas has one of the largest ICF contractor bases in the country, driven by both the storm-resilience demand in coastal and tornado-prone areas and the state's booming residential construction market. All major ICF brands have certified contractors across the state." }
+          }
+        ]
       }
     ]
   }
@@ -79,7 +168,6 @@
 
 <body>
 
-  <!-- NAVIGATION -->
   <nav class="nav" id="main-nav" aria-label="Main navigation">
     <div class="container nav-inner">
       <a href="/" class="nav-logo" aria-label="ICF Insider home">
@@ -110,101 +198,234 @@
   </div>
 
 
-  <!-- PAGE HERO -->
+  <!-- HERO -->
   <section class="page-hero" aria-labelledby="page-title">
     <div class="container">
       <div class="page-hero-meta">
-        <span class="page-hero-tag"><a href="/find-a-pro.html" style="color: inherit; text-decoration: none;">Find a Pro</a></span>
+        <span class="page-hero-tag">
+          <a href="/find-a-pro.html" style="color:inherit;text-decoration:none;">Find a Pro</a>
+        </span>
         <span class="page-hero-readtime">Texas</span>
       </div>
       <h1 id="page-title">ICF Contractors in Texas</h1>
-      <p class="page-hero-intro">
-        ICF construction for Texas — tornado-proof walls and energy savings in extreme heat.
+      <p class="page-hero-intro" style="max-width:580px;">
+        Texas sits at the intersection of Tornado Alley and the Gulf Coast hurricane corridor.
+        ICF is the only wall system built to handle both — while cutting energy bills in extreme heat.
       </p>
+
+      <div class="state-stats">
+        <div class="state-stat">
+          <span class="state-stat-number">200+</span>
+          <span class="state-stat-label">mph Wind Resistance</span>
+        </div>
+        <div class="state-stat">
+          <span class="state-stat-number">50–70%</span>
+          <span class="state-stat-label">Lower Cooling Bills</span>
+        </div>
+        <div class="state-stat">
+          <span class="state-stat-number">4-hr</span>
+          <span class="state-stat-label">Fire Rating</span>
+        </div>
+      </div>
     </div>
   </section>
 
 
-  <!-- MAIN CONTENT -->
-  <div class="container" style="padding-top: var(--space-16); padding-bottom: var(--space-20);">
+  <!-- CONTENT -->
+  <div class="container" style="padding-top:var(--space-10);padding-bottom:var(--space-20);">
     <div class="content-layout">
 
       <article class="article" id="article">
 
-        <!-- INTRO -->
-        <section>
-          <p>Texas presents two distinct challenges for homeowners: the Gulf Coast faces hurricane-force storms, while Central and North Texas sit directly in Tornado Alley — one of the most active severe weather corridors in the world. No other wall system addresses both threats as effectively as reinforced concrete ICF construction.</p>
-          <p>Add to this Texas&#39;s extreme summer temperatures — routinely above 100°F across much of the state — and ICF&#39;s superior thermal mass and insulation become a daily financial advantage. Texas homeowners report 50–70% reductions in cooling costs compared to wood-framed construction, which is one of the most compelling economic arguments for ICF in a state with high energy consumption.</p>
-        </section>
+        <!-- WHY TEXAS -->
+        <section id="why-texas">
+          <span class="eyebrow">Why Texas</span>
+          <h2 style="margin-top:var(--space-2);">The Case for ICF in Texas</h2>
+          <p style="color:var(--color-text-muted);max-width:540px;">
+            Tornado Alley. Gulf Coast storms. 100°F summers. One wall system handles all of it.
+          </p>
 
-        <!-- WHY ICF IN THIS STATE -->
-        <section style="margin-top: var(--space-12);">
-          <h2>Why Texas Homeowners Choose ICF</h2>
-          <ul style="margin-top: var(--space-4); padding-left: 1.5rem; display: flex; flex-direction: column; gap: var(--space-2);">
-            <li style="line-height: 1.6;">Tornado-resistant walls for Central and North Texas in the heart of Tornado Alley</li>
-            <li style="line-height: 1.6;">Hurricane protection for Texas Gulf Coast homes in the Corpus Christi–Houston corridor</li>
-            <li style="line-height: 1.6;">50–70% reduction in cooling costs during Texas&#39;s extreme summer heat</li>
-            <li style="line-height: 1.6;">Qualifies for insurance discounts for storm-resistant construction</li>
-            <li style="line-height: 1.6;">Long-term durability with no rot, warp, or termite vulnerability</li>
-          </ul>
-        </section>
+          <div class="why-grid">
+            <div class="why-card">
+              <div class="why-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><line x1="12" y1="12" x2="19" y2="12"/></svg>
+              </div>
+              <div>
+                <h3>Tornado Resistance</h3>
+                <p>Reinforced concrete walls rated for 200+ mph winds. ICF homes have stood through EF3 and EF4 events that leveled wood-frame neighbors across Tornado Alley.</p>
+              </div>
+            </div>
 
-        <!-- DIRECTORY COMING SOON -->
-        <section style="margin-top: var(--space-16); padding: var(--space-10); background: var(--color-surface); border-radius: 12px; border: 1px solid var(--color-border);">
-          <h2 style="margin-top: 0;">The Texas ICF Contractor Directory</h2>
-          <p>We&#39;re building the most complete, independently verified directory of ICF contractors in Texas. Every listing will include verified credentials, brand certifications, service area, and real project history &#8212; so you can find the right builder with confidence.</p>
-          <p>The directory is coming soon. Get notified the moment it launches in Texas.</p>
-          <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-6);">
-            <a href="/early-access.html" class="btn btn-primary">Notify Me at Launch</a>
-            <a href="/early-access.html#panel-contractor" class="btn btn-secondary">Claim Your Contractor Listing</a>
+            <div class="why-card">
+              <div class="why-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              </div>
+              <div>
+                <h3>50–70% Lower Cooling Bills</h3>
+                <p>ICF's concrete thermal mass absorbs summer heat and releases it slowly — drastically reducing AC load when Texas temperatures push past 100°F for weeks at a time.</p>
+              </div>
+            </div>
+
+            <div class="why-card">
+              <div class="why-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div>
+                <h3>Gulf Coast Hurricane Protection</h3>
+                <p>From Corpus Christi to Houston, ICF handles Gulf storms the same way it handles Tornado Alley — with solid reinforced concrete that doesn't flex, rot, or fail.</p>
+              </div>
+            </div>
+
+            <div class="why-card">
+              <div class="why-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8780A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+              <div>
+                <h3>Insurance Discounts</h3>
+                <p>Texas insurers recognize storm-resistant concrete construction. Homeowners in high-risk counties frequently see meaningful premium reductions for ICF builds.</p>
+              </div>
+            </div>
           </div>
         </section>
+
+
+        <!-- DIRECTORY -->
+        <section id="texas-directory" style="margin-top:var(--space-16);">
+          <span class="eyebrow">Get Connected</span>
+          <h2 style="margin-top:var(--space-2);">Find an ICF Contractor in Texas</h2>
+          <p style="color:var(--color-text-muted);max-width:540px;">
+            Tell us about your project. We'll connect you with qualified ICF contractors
+            in Texas — fast. No spam, no runaround.
+          </p>
+
+          <div class="connect-layout">
+
+            <!-- FORM -->
+            <div class="connect-form-wrap">
+              <form id="connect-form" novalidate>
+                <input type="hidden" name="lead_type" value="homeowner">
+                <input type="hidden" name="state"     value="Texas">
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="cf-name">Full Name *</label>
+                    <input type="text" id="cf-name" name="name" placeholder="John Smith" required>
+                  </div>
+                  <div class="form-field">
+                    <label for="cf-email">Email *</label>
+                    <input type="email" id="cf-email" name="email" placeholder="you@email.com" required>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="cf-phone">Cell Phone *</label>
+                    <input type="tel" id="cf-phone" name="phone" placeholder="(555) 000-0000" required>
+                  </div>
+                  <div class="form-field">
+                    <label for="cf-type">Project Type</label>
+                    <select id="cf-type" name="project_type">
+                      <option value="">Select...</option>
+                      <option value="New home build">New home build</option>
+                      <option value="Addition">Addition</option>
+                      <option value="Renovation">Renovation</option>
+                      <option value="Commercial">Commercial</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label for="cf-message">Tell us about your project</label>
+                  <textarea id="cf-message" name="message" rows="4" placeholder="Square footage, timeline, location within Texas, any specific requirements..."></textarea>
+                </div>
+
+                <div class="form-field">
+                  <label for="cf-file">Upload project plans <span class="field-note">(optional — PDF, DWG, images, ZIP, max 100MB)</span></label>
+                  <input type="file" id="cf-file" name="project_file" accept=".pdf,.dwg,.dxf,.jpg,.jpeg,.png,.zip">
+                </div>
+
+                <div class="form-field">
+                  <label for="cf-link">Or share a file link <span class="field-note">(Google Drive, Dropbox, WeTransfer)</span></label>
+                  <input type="url" id="cf-link" name="file_link" placeholder="https://drive.google.com/...">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width:100%;margin-top:var(--space-2);">Get Connected →</button>
+                <p class="form-disclaimer">We'll reach out within 1 business day. Your info is never sold or shared.</p>
+              </form>
+
+              <div id="connect-success" class="connect-success" style="display:none;">
+                <div class="connect-success-icon">✓</div>
+                <h3>You're connected.</h3>
+                <p>We received your project details and will follow up within 1 business day.</p>
+              </div>
+            </div>
+
+            <!-- CONTRACTOR CARD -->
+            <div class="connect-contractor-card">
+              <span class="eyebrow" style="font-size:0.7rem;">ICF Contractors &amp; Builders</span>
+              <h3>List Your Texas Business</h3>
+              <p>Early members get priority placement when the verified directory launches — and reduced first-year pricing.</p>
+              <a href="/early-access.html" class="btn btn-primary" style="align-self:flex-start;">Reserve My Spot</a>
+            </div>
+
+          </div>
+        </section>
+
 
         <!-- FAQ -->
-        <section style="margin-top: var(--space-16);">
-          <h2>Common Questions About ICF Construction in Texas</h2>
-  <div style="margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--color-border);">
-    <h3 style="margin-top: 0;">Can an ICF home survive a Texas tornado?</h3>
-    <p>ICF walls are significantly more tornado-resistant than wood frame. While no above-grade structure is guaranteed to survive a direct hit from an EF5 tornado, ICF homes have survived EF3 and EF4 storms that destroyed wood-framed structures nearby. Reinforced concrete construction provides the closest thing to a safe room for the entire house.</p>
-  </div>
-  <div style="margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--color-border);">
-    <h3 style="margin-top: 0;">How does ICF perform in Texas summers?</h3>
-    <p>ICF&#39;s thermal mass and continuous insulation keep interior temperatures stable even during Texas&#39;s extreme summer heat. The concrete absorbs heat during the day and releases it slowly, dramatically reducing the load on air conditioning systems. Most Texas ICF homeowners report 50–70% lower cooling bills.</p>
-  </div>
-  <div style="margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--color-border);">
-    <h3 style="margin-top: 0;">How much does ICF construction cost in Texas?</h3>
-    <p>ICF construction in Texas typically costs 5–15% more than comparable wood frame, with above-grade walls running $150–$215+ per square foot. The Dallas-Fort Worth, Houston, Austin, and San Antonio metros have the most competitive ICF contractor markets in the state.</p>
-  </div>
-  <div style="margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--color-border);">
-    <h3 style="margin-top: 0;">Are there ICF contractors in Texas?</h3>
-    <p>Yes. Texas has one of the largest ICF contractor bases in the country, driven by both the storm-resilience demand in coastal and tornado-prone areas and the state&#39;s booming residential construction market. All major ICF brands have certified contractors across the state.</p>
-  </div>
-        </section>
+        <section id="texas-faq" style="margin-top:var(--space-16);">
+          <span class="eyebrow">FAQ</span>
+          <h2 style="margin-top:var(--space-2);">Common Questions About ICF in Texas</h2>
 
-        <!-- LEARN MORE -->
-        <section style="margin-top: var(--space-16); padding: var(--space-8); background: var(--color-dark-900); border-radius: 12px; color: var(--color-text-light);">
-          <h2 style="margin-top: 0; color: var(--color-text-light);">New to ICF? Start Here.</h2>
-          <p style="color: var(--color-text-muted);">Before you search for a contractor in Texas, make sure you understand what ICF is, how it works, and whether it&#39;s the right choice for your project.</p>
-          <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-6);">
-            <a href="/icf-101.html" class="btn btn-primary">Read the ICF 101 Guide</a>
-            <a href="/cost-guide.html" class="btn btn-secondary" style="color: var(--color-text-light); border-color: rgba(255,255,255,0.2);">See the Cost Guide</a>
+          <div class="faq-list">
+            <div class="faq-card">
+              <h3>Can an ICF home survive a Texas tornado?</h3>
+              <p>ICF walls are significantly more tornado-resistant than wood frame. While no above-grade structure is guaranteed to survive a direct EF5 hit, ICF homes have survived EF3 and EF4 events that destroyed wood-framed structures nearby. Reinforced concrete provides the closest thing to a whole-house safe room.</p>
+            </div>
+            <div class="faq-card">
+              <h3>How does ICF perform in Texas summers?</h3>
+              <p>ICF's thermal mass and continuous insulation keep interior temperatures stable even during Texas's extreme heat. The concrete absorbs heat during the day and releases it slowly, dramatically reducing AC load. Most Texas ICF homeowners report 50–70% lower cooling bills.</p>
+            </div>
+            <div class="faq-card">
+              <h3>How much does ICF construction cost in Texas?</h3>
+              <p>ICF in Texas typically costs 5–15% more than comparable wood frame, with above-grade walls running $150–$215+ per square foot. The DFW, Houston, Austin, and San Antonio metros have the most competitive ICF contractor markets in the state.</p>
+            </div>
+            <div class="faq-card">
+              <h3>Are there ICF contractors in Texas?</h3>
+              <p>Yes — Texas has one of the largest ICF contractor bases in the country. Demand for storm-resilient construction drives a robust network of certified builders. All major ICF brands have certified contractors operating across the state.</p>
+            </div>
           </div>
         </section>
+
+
+        <!-- LEARN MORE -->
+        <div class="learn-strip">
+          <div>
+            <h3>New to ICF?</h3>
+            <p>Read the full guide before you search for a contractor. Know what to look for.</p>
+          </div>
+          <div class="learn-strip-links">
+            <a href="/icf-101.html" class="btn btn-primary">ICF 101 Guide</a>
+            <a href="/cost-guide.html" class="btn btn-secondary" style="color:var(--color-text-light);border-color:rgba(255,255,255,0.2);">Cost Guide</a>
+          </div>
+        </div>
 
       </article>
 
-      <!-- SIDEBAR TOC -->
+
+      <!-- SIDEBAR -->
       <aside class="toc-sidebar" aria-label="Page navigation">
         <div class="toc-inner">
           <p class="toc-label">On this page</p>
           <ul class="toc-list">
-            <li><a href="#article" class="toc-link">Why Texas Chooses ICF</a></li>
-            <li><a href="#article" class="toc-link">Texas Contractor Directory</a></li>
-            <li><a href="#article" class="toc-link">Common Questions</a></li>
+            <li><a href="#why-texas"       class="toc-link">Why Texas Chooses ICF</a></li>
+            <li><a href="#texas-directory" class="toc-link">Texas Contractor Directory</a></li>
+            <li><a href="#texas-faq"       class="toc-link">Common Questions</a></li>
           </ul>
-          <div style="margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--color-border);">
-            <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 0 0 var(--space-3);">Browse other states</p>
-            <a href="/find-a-pro.html" class="btn btn-secondary" style="width: 100%; text-align: center; font-size: 0.85rem;">All States &#8594;</a>
+          <div style="margin-top:var(--space-8);padding-top:var(--space-6);border-top:1px solid var(--color-border);">
+            <p style="font-size:0.8rem;color:var(--color-text-muted);margin:0 0 var(--space-3);">Browse by state</p>
+            <a href="/find-a-pro.html" class="btn btn-secondary" style="width:100%;text-align:center;font-size:0.85rem;">All States →</a>
           </div>
         </div>
       </aside>
@@ -214,33 +435,31 @@
 
 
   <!-- FOOTER -->
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="container">
-      <div class="footer-inner">
+      <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="nav-logo" aria-label="ICF Insider home">
             <div class="nav-logo-mark" aria-hidden="true">I</div>
             <span class="nav-logo-text">ICF <span>Insider</span></span>
           </a>
-          <p class="footer-tagline">The independent authority on ICF construction.</p>
+          <p>The independent authority on Insulated Concrete Form construction.</p>
         </div>
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <div class="footer-nav-group">
-            <p class="footer-nav-heading">Resources</p>
-            <ul>
-              <li><a href="/icf-101.html">ICF 101</a></li>
-              <li><a href="/cost-guide.html">Cost Guide</a></li>
-              <li><a href="/brands.html">Brand Comparison</a></li>
-            </ul>
-          </div>
-          <div class="footer-nav-group">
-            <p class="footer-nav-heading">Directory</p>
-            <ul>
-              <li><a href="/find-a-pro.html">Find a Pro</a></li>
-              <li><a href="/early-access.html">Get Early Access</a></li>
-            </ul>
-          </div>
-        </nav>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="/icf-101.html"    class="footer-link">ICF 101</a></li>
+            <li><a href="/cost-guide.html" class="footer-link">Cost Guide</a></li>
+            <li><a href="/brands.html"     class="footer-link">Brand Comparison</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Directory</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="/find-a-pro.html"   class="footer-link">Find a Pro</a></li>
+            <li><a href="/early-access.html" class="footer-link">Get Early Access</a></li>
+          </ul>
+        </div>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 ICF Insider. Independent and unaffiliated with any ICF brand or manufacturer.</p>
