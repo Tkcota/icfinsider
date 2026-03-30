@@ -1,0 +1,34 @@
+# ICF Insider — Cloudflare Worker configuration
+# Deploy with: npx wrangler deploy
+# All API logic lives in worker.js
+# Static assets (HTML/CSS/JS) served automatically from the project root
+
+name              = "icfinsider"
+main              = "worker.js"
+compatibility_date = "2025-09-27"
+
+[assets]
+directory = "."
+# Exclude server-side / dev files from being served as static assets
+exclude = [
+  "worker.js",
+  "wrangler.toml",
+  "schema.sql",
+  "generate-states.js",
+  "server.js",
+  "functions/**",
+  "build/**",
+  ".gitignore",
+  "node_modules/**"
+]
+
+# D1 Database — leads + listings
+[[d1_databases]]
+binding      = "DB"
+database_name = "icfinsider-leads"
+database_id  = "33d040e1-3f3f-4e31-8009-7573b4a12c35"
+
+# R2 Bucket — uploaded project files
+[[r2_buckets]]
+binding     = "BUCKET"
+bucket_name = "icfinsider-uploads"
