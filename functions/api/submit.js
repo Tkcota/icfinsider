@@ -35,6 +35,7 @@ export async function onRequestPost(context) {
   const role         = (formData.get('role')         || '').trim();
   const interest     = (formData.get('interest')     || '').trim();
   const message      = (formData.get('message')      || '').trim();
+  const file_link    = (formData.get('file_link')    || '').trim();
 
   // ----------------------------------------------------------
   // 2. Basic server-side validation
@@ -45,19 +46,50 @@ export async function onRequestPost(context) {
   }
 
   // ----------------------------------------------------------
-  // 3. Insert into D1
+  // 3. Handle optional file upload → R2
+  // ----------------------------------------------------------
+  let file_key = '';
+  const uploadedFile = formData.get('project_file');
+
+  if (uploadedFile && typeof uploadedFile === 'object' && uploadedFile.size > 0) {
+    if (!env.BUCKET) {
+      // R2 bucket not bound — skip file storage, still save the lead
+      console.warn('R2 BUCKET binding not configured; skipping file upload.');
+    } else {
+      try {
+        // Build a unique key: uploads/{timestamp}-{sanitised-filename}
+        const safeName = uploadedFile.name.replace(/[^a-zA-Z0-9.\-_]/g, '_');
+        file_key = `uploads/${Date.now()}-${safeName}`;
+
+        await env.BUCKET.put(file_key, uploadedFile.stream(), {
+          httpMetadata: { contentType: uploadedFile.type || 'application/octet-stream' },
+          customMetadata: {
+            originalName: uploadedFile.name,
+            submittedBy:  email,
+            leadState:    state,
+          },
+        });
+      } catch (err) {
+        console.error('R2 upload failed:', err);
+        // Don't block the lead save if file upload fails
+        file_key = '';
+      }
+    }
+  }
+
+  // ----------------------------------------------------------
+  // 4. Insert into D1
   // ----------------------------------------------------------
   try {
     await env.DB.prepare(`
       INSERT INTO leads
-        (lead_type, name, email, phone, company, state, project_type, brand, role, interest, message)
+        (lead_type, name, email, phone, company, state, project_type, brand, role, interest, message, file_key, file_link)
       VALUES
-        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `)
-    .bind(lead_type, name, email, phone, company, state, project_type, brand, role, interest, message)
+    .bind(lead_type, name, email, phone, company, state, project_type, brand, role, interest, message, file_key, file_link)
     .run();
   } catch (err) {
-    // Log server-side but don't expose internals to client
     console.error('D1 insert failed:', err);
     return jsonResponse({ error: 'Database error — please try again.' }, 500);
   }
