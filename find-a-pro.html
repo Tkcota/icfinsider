@@ -587,99 +587,13 @@
         </div>
 
         <div class="directory-results-header">
-          <p class="results-count">Showing <strong>0 listings</strong> — directory launching soon</p>
+          <p class="results-count" id="results-count">Loading listings…</p>
         </div>
 
-        <!-- Coming soon banner -->
-        <div class="coming-soon-banner">
-          <span class="eyebrow" style="display:block; margin-bottom: 0.75rem;">Directory Launching Soon</span>
-          <h2>Be the First Listed in Your State</h2>
-          <p>
-            We're actively onboarding ICF professionals right now. Early members get
-            priority placement, reduced first-year pricing, and maximum visibility
-            before the directory goes public.
-          </p>
-          <a href="early-access.html" class="btn btn-primary btn-lg">
-            Claim Your Listing
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
+        <!-- Listings render here -->
+        <div id="listings-container"></div>
 
-        <!-- Blurred placeholder listings — show what real listings will look like -->
-        <p style="font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 1rem; text-align: center; letter-spacing: 0.05em; text-transform: uppercase;">Preview — what listings will look like</p>
-
-        <!-- Placeholder 1 -->
-        <div class="listing-card placeholder" aria-hidden="true">
-          <div class="listing-card-logo">JB</div>
-          <div class="listing-card-body">
-            <div class="listing-card-name">Johnson Build Group</div>
-            <div class="listing-card-meta">
-              <span>📍 Tampa, Florida</span>
-              <span>⭐ 4.9 (24 reviews)</span>
-              <span>🏗 47 ICF projects</span>
-            </div>
-            <div class="listing-tags">
-              <span class="listing-tag featured">Featured</span>
-              <span class="listing-tag">Nudura Certified</span>
-              <span class="listing-tag">Residential</span>
-              <span class="listing-tag">Commercial</span>
-            </div>
-          </div>
-          <div class="listing-card-action">
-            <a href="#" class="btn btn-primary">View Profile</a>
-            <a href="#" class="btn btn-outline-dark">Get Quote</a>
-          </div>
-          <div class="placeholder-overlay"><span>Listing preview</span></div>
-        </div>
-
-        <!-- Placeholder 2 -->
-        <div class="listing-card placeholder" aria-hidden="true">
-          <div class="listing-card-logo">SC</div>
-          <div class="listing-card-body">
-            <div class="listing-card-name">Solid Core Construction</div>
-            <div class="listing-card-meta">
-              <span>📍 Denver, Colorado</span>
-              <span>⭐ 4.8 (18 reviews)</span>
-              <span>🏗 32 ICF projects</span>
-            </div>
-            <div class="listing-tags">
-              <span class="listing-tag">Fox Blocks Certified</span>
-              <span class="listing-tag">Residential</span>
-              <span class="listing-tag">Basement Specialist</span>
-            </div>
-          </div>
-          <div class="listing-card-action">
-            <a href="#" class="btn btn-primary">View Profile</a>
-            <a href="#" class="btn btn-outline-dark">Get Quote</a>
-          </div>
-          <div class="placeholder-overlay"><span>Listing preview</span></div>
-        </div>
-
-        <!-- Placeholder 3 -->
-        <div class="listing-card placeholder" aria-hidden="true">
-          <div class="listing-card-logo">AF</div>
-          <div class="listing-card-body">
-            <div class="listing-card-name">All-Forms Distribution</div>
-            <div class="listing-card-meta">
-              <span>📍 Atlanta, Georgia</span>
-              <span>🏢 Distributor</span>
-              <span>📦 Nudura · Fox Blocks · Amvic</span>
-            </div>
-            <div class="listing-tags">
-              <span class="listing-tag featured">Featured</span>
-              <span class="listing-tag">Multi-Brand</span>
-              <span class="listing-tag">Southeast US</span>
-            </div>
-          </div>
-          <div class="listing-card-action">
-            <a href="#" class="btn btn-primary">View Profile</a>
-          </div>
-          <div class="placeholder-overlay"><span>Listing preview</span></div>
-        </div>
-
-        <!-- Claim your listing CTA -->
+        <!-- Claim your listing CTA (always visible at bottom) -->
         <div class="claim-listing-cta">
           <h3>Are you an ICF professional?</h3>
           <p>Contractors, builders, distributors, architects, and engineers are all welcome. Be listed before we go public.</p>
@@ -784,7 +698,7 @@
         <p>&copy; 2026 ICF Insider. All rights reserved.</p>
         <nav class="footer-bottom-links" aria-label="Legal">
           <a href="/privacy-policy.html">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
+          <a href="terms-of-use.html">Terms of Use</a>
         </nav>
       </div>
     </div>
@@ -795,38 +709,138 @@
   <script>
     /* =========================================================
        DIRECTORY PAGE SCRIPTS
-       Filter button active state toggle (visual only for now —
-       real filtering happens in Phase 2 with the backend)
     ========================================================= */
     (function () {
-      // Filter sidebar buttons — toggle active state
+
+      // ---- State ----
+      var allListings = [];
+      var activeFilters = { state: '', pro_type: '', brand: '' };
+
+      // ---- Render ----
+      function initials(name) {
+        return name.split(' ').slice(0, 2).map(function (w) { return w[0]; }).join('').toUpperCase();
+      }
+
+      function proTypeLabel(type) {
+        var labels = {
+          distributor: 'Distributor',
+          contractor:  'Contractor',
+          architect:   'Architect',
+          engineer:    'Structural Engineer',
+        };
+        return labels[type] || type;
+      }
+
+      function renderCard(l) {
+        var tags = '';
+        if (l.featured) tags += '<span class="listing-tag featured">Featured</span>';
+        l.brands.forEach(function (b) {
+          tags += '<span class="listing-tag">' + b + ' Distributor</span>';
+        });
+        l.project_types.forEach(function (p) {
+          tags += '<span class="listing-tag">' + p + '</span>';
+        });
+
+        var location = l.city ? l.city + ', ' + l.state : l.state;
+        var websiteBtn = l.website
+          ? '<a href="' + l.website + '" target="_blank" rel="noopener" class="btn btn-primary">Visit Website</a>'
+          : '';
+        var phoneBtn = l.phone
+          ? '<a href="tel:' + l.phone.replace(/\D/g, '') + '" class="btn btn-outline-dark">' + l.phone + '</a>'
+          : '';
+
+        return '<div class="listing-card">'
+          + '<div class="listing-card-logo">' + initials(l.business_name) + '</div>'
+          + '<div class="listing-card-body">'
+          + '<div class="listing-card-name">' + l.business_name + '</div>'
+          + '<div class="listing-card-meta">'
+          + '<span>📍 ' + location + '</span>'
+          + '<span>🏢 ' + proTypeLabel(l.pro_type) + '</span>'
+          + (l.service_area ? '<span>🗺 ' + l.service_area + '</span>' : '')
+          + '</div>'
+          + '<div class="listing-tags">' + tags + '</div>'
+          + '</div>'
+          + '<div class="listing-card-action">' + websiteBtn + phoneBtn + '</div>'
+          + '</div>';
+      }
+
+      function applyFilters() {
+        var filtered = allListings.filter(function (l) {
+          if (activeFilters.state    && l.state    !== activeFilters.state)    return false;
+          if (activeFilters.pro_type && l.pro_type !== activeFilters.pro_type) return false;
+          if (activeFilters.brand    && !l.brands.includes(activeFilters.brand)) return false;
+          return true;
+        });
+
+        var container = document.getElementById('listings-container');
+        var countEl   = document.getElementById('results-count');
+
+        if (filtered.length === 0) {
+          container.innerHTML = '<div class="coming-soon-banner">'
+            + '<span class="eyebrow" style="display:block;margin-bottom:.75rem;">No listings found</span>'
+            + '<h2>Be the First Listed in Your State</h2>'
+            + '<p>We\'re actively onboarding ICF professionals. Early members get priority placement and maximum visibility.</p>'
+            + '<a href="early-access.html" class="btn btn-primary btn-lg">Claim Your Listing</a>'
+            + '</div>';
+          countEl.innerHTML = 'Showing <strong>0 listings</strong>';
+        } else {
+          container.innerHTML = filtered.map(renderCard).join('');
+          countEl.innerHTML = 'Showing <strong>' + filtered.length + ' listing' + (filtered.length !== 1 ? 's' : '') + '</strong>';
+        }
+      }
+
+      // ---- Fetch listings ----
+      fetch('/api/listings')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          allListings = data.listings || [];
+          applyFilters();
+        })
+        .catch(function () {
+          document.getElementById('results-count').textContent = 'Could not load listings.';
+        });
+
+      // ---- Filter sidebar buttons ----
       document.querySelectorAll('.filter-list').forEach(function (list) {
         list.querySelectorAll('.filter-btn').forEach(function (btn) {
           btn.addEventListener('click', function () {
-            list.querySelectorAll('.filter-btn').forEach(function (b) {
-              b.classList.remove('active');
-            });
+            list.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
             btn.classList.add('active');
           });
         });
       });
 
-      // Pro type tabs
+      // ---- Pro type tabs ----
       var tabs = document.querySelectorAll('.pro-type-tab');
       tabs.forEach(function (tab) {
         tab.addEventListener('click', function () {
           tabs.forEach(function (t) { t.classList.remove('active'); });
           tab.classList.add('active');
+          var label = tab.textContent.trim();
+          var map = { 'All Pros': '', 'Contractors': 'contractor', 'Distributors': 'distributor', 'Architects': 'architect', 'Engineers': 'engineer' };
+          activeFilters.pro_type = map[label] !== undefined ? map[label] : '';
+          applyFilters();
         });
       });
 
-      // Search button — for now just scrolls to results
-      var searchBtn = document.getElementById('search-btn');
-      if (searchBtn) {
-        searchBtn.addEventListener('click', function () {
-          document.querySelector('main[aria-label="Directory results"]').scrollIntoView({ behavior: 'smooth' });
-        });
-      }
+      // ---- Search dropdowns ----
+      document.getElementById('filter-state').addEventListener('change', function () {
+        activeFilters.state = this.value;
+      });
+      document.getElementById('filter-type').addEventListener('change', function () {
+        var map = { 'Contractors & Builders': 'contractor', 'Distributors': 'distributor', 'Architects & Designers': 'architect', 'Structural Engineers': 'engineer' };
+        activeFilters.pro_type = map[this.value] || '';
+      });
+      document.getElementById('filter-brand').addEventListener('change', function () {
+        activeFilters.brand = this.value;
+      });
+
+      // ---- Search button ----
+      document.getElementById('search-btn').addEventListener('click', function () {
+        applyFilters();
+        document.querySelector('main[aria-label="Directory results"]').scrollIntoView({ behavior: 'smooth' });
+      });
+
     }());
   </script>
 

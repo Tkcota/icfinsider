@@ -37,6 +37,18 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://icfinsider.com/privacy-policy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://icfinsider.com/terms-of-use.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
   <!-- State pages -->
   <url><loc>https://icfinsider.com/states/alabama/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://icfinsider.com/states/alaska/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

@@ -26,3 +26,31 @@ CREATE INDEX IF NOT EXISTS idx_leads_lead_type ON leads (lead_type);
 
 -- Index for date-range queries
 CREATE INDEX IF NOT EXISTS idx_leads_created_at ON leads (created_at);
+
+
+-- -------------------------------------------------------
+-- LISTINGS — ICF contractor / distributor directory
+-- -------------------------------------------------------
+CREATE TABLE IF NOT EXISTS listings (
+  id            INTEGER PRIMARY KEY AUTOINCREMENT,
+  slug          TEXT NOT NULL UNIQUE,   -- URL-safe identifier e.g. gdp-industries-florida
+  business_name TEXT NOT NULL,
+  pro_type      TEXT NOT NULL,          -- 'contractor' | 'distributor' | 'architect' | 'engineer'
+  state         TEXT NOT NULL,          -- e.g. 'Florida'
+  city          TEXT,                   -- e.g. 'Tampa' or leave blank for statewide
+  service_area  TEXT,                   -- plain-text e.g. 'All of Florida'
+  phone         TEXT,
+  website       TEXT,
+  email         TEXT,
+  brands        TEXT,                   -- comma-separated: 'Nudura,Fox Blocks'
+  project_types TEXT,                   -- comma-separated: 'Residential,Commercial'
+  description   TEXT,
+  featured      INTEGER DEFAULT 0,      -- 1 = featured placement
+  active        INTEGER DEFAULT 1,      -- 0 = hidden
+  created_at    TEXT DEFAULT (datetime('now'))
+);
+
+-- Fast lookups by state and type
+CREATE INDEX IF NOT EXISTS idx_listings_state    ON listings (state);
+CREATE INDEX IF NOT EXISTS idx_listings_pro_type ON listings (pro_type);
+CREATE INDEX IF NOT EXISTS idx_listings_active   ON listings (active);
