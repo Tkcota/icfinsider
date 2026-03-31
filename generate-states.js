@@ -481,12 +481,12 @@ function page(name, slug, climate, tagline, stats, faq) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ICF Contractors in ${name} | Insulated Concrete Form Builders | ICF Insider</title>
-  <meta name="description" content="Find Insulated Concrete Form contractors in ${name}. Climate-specific performance, lower energy bills, and lasting durability. Get connected with qualified ICF builders near you.">
+  <title>ICF Construction in ${name} | Insulated Concrete Form Homes & Contractors | ICF Insider</title>
+  <meta name="description" content="ICF construction in ${name} — cost data, climate performance, brand comparisons, and vetted ICF contractors near you. The independent resource for Insulated Concrete Form building in ${name}.">
   <link rel="canonical" href="https://icfinsider.com/states/${slug}/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="ICF Contractors in ${name} | ICF Insider">
+  <meta property="og:title" content="ICF Construction in ${name} | ICF Insider">
   <meta property="og:description" content="${tagline.substring(0,120)}">
   <meta property="og:url" content="https://icfinsider.com/states/${slug}/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -545,7 +545,7 @@ function page(name, slug, climate, tagline, stats, faq) {
         <span class="page-hero-tag"><a href="/find-a-pro.html" style="color:inherit;text-decoration:none;">Find a Pro</a></span>
         <span class="page-hero-readtime">${name}</span>
       </div>
-      <h1 id="page-title">Insulated Concrete Form Contractors in ${name}</h1>
+      <h1 id="page-title">ICF Construction in ${name}</h1>
       <p class="page-hero-intro" style="max-width:580px;">${tagline}</p>
       <div class="state-stats">${statsHtml}</div>
     </div>
