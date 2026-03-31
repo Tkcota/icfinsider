@@ -491,26 +491,6 @@
           <option>Virginia</option><option>Washington</option><option>West Virginia</option>
           <option>Wisconsin</option><option>Wyoming</option>
         </select>
-
-        <select class="search-select" id="filter-type" aria-label="Filter by pro type">
-          <option value="">All Pro Types</option>
-          <option>Contractors &amp; Builders</option>
-          <option>Distributors</option>
-          <option>Architects &amp; Designers</option>
-          <option>Structural Engineers</option>
-        </select>
-
-        <select class="search-select" id="filter-brand" aria-label="Filter by ICF brand">
-          <option value="">All Brands</option>
-          <option>Nudura</option>
-          <option>Fox Blocks</option>
-          <option>Amvic</option>
-          <option>Element ICF</option>
-          <option>Super Form</option>
-          <option>Quad-Lock</option>
-          <option>Build Block</option>
-        </select>
-
         <button class="btn btn-primary" id="search-btn">Search</button>
       </div>
 
@@ -518,91 +498,23 @@
   </section>
 
 
-  <!-- DIRECTORY MAIN LAYOUT -->
-  <div class="container">
-    <div class="directory-layout">
+  <!-- DIRECTORY RESULTS -->
+  <div class="container" style="padding-top: var(--space-10); padding-bottom: var(--space-20);">
 
-      <!-- LEFT: Filters sidebar -->
-      <aside class="directory-filters" aria-label="Directory filters">
+    <div class="directory-results-header">
+      <p class="results-count" id="results-count">Loading listings…</p>
+    </div>
 
-        <div class="filter-group">
-          <div class="filter-group-title">Pro Type</div>
-          <div class="filter-list" role="list">
-            <button class="filter-btn active" role="listitem">All Professionals</button>
-            <button class="filter-btn" role="listitem">
-              Contractors &amp; Builders
-              <span class="filter-count">—</span>
-            </button>
-            <button class="filter-btn" role="listitem">
-              Distributors
-              <span class="filter-count">—</span>
-            </button>
-            <button class="filter-btn" role="listitem">
-              Architects &amp; Designers
-              <span class="filter-count">—</span>
-            </button>
-            <button class="filter-btn" role="listitem">
-              Structural Engineers
-              <span class="filter-count">—</span>
-            </button>
-          </div>
-        </div>
+    <!-- Listings render here -->
+    <div id="listings-container"></div>
 
-        <div class="filter-group">
-          <div class="filter-group-title">ICF Brand</div>
-          <div class="filter-list" role="list">
-            <button class="filter-btn" role="listitem">Nudura</button>
-            <button class="filter-btn" role="listitem">Fox Blocks</button>
-            <button class="filter-btn" role="listitem">Amvic</button>
-            <button class="filter-btn" role="listitem">Element ICF</button>
-            <button class="filter-btn" role="listitem">Super Form</button>
-            <button class="filter-btn" role="listitem">Quad-Lock</button>
-            <button class="filter-btn" role="listitem">Build Block</button>
-          </div>
-        </div>
+    <!-- Claim your listing CTA -->
+    <div class="claim-listing-cta">
+      <h3>Are you an ICF professional?</h3>
+      <p>Contractors, builders, distributors, architects, and engineers are all welcome.</p>
+      <a href="early-access.html?tab=contractor" class="btn btn-primary">List Your Business</a>
+    </div>
 
-        <div class="filter-group">
-          <div class="filter-group-title">Project Type</div>
-          <div class="filter-list" role="list">
-            <button class="filter-btn" role="listitem">Residential</button>
-            <button class="filter-btn" role="listitem">Commercial</button>
-            <button class="filter-btn" role="listitem">Basement Only</button>
-            <button class="filter-btn" role="listitem">Multi-Family</button>
-          </div>
-        </div>
-
-      </aside>
-
-
-      <!-- RIGHT: Results -->
-      <main aria-label="Directory results">
-
-        <!-- Pro type tabs -->
-        <div class="pro-type-tabs" role="tablist">
-          <button class="pro-type-tab active" role="tab">All Pros</button>
-          <button class="pro-type-tab" role="tab">Contractors</button>
-          <button class="pro-type-tab" role="tab">Distributors</button>
-          <button class="pro-type-tab" role="tab">Architects</button>
-          <button class="pro-type-tab" role="tab">Engineers</button>
-        </div>
-
-        <div class="directory-results-header">
-          <p class="results-count" id="results-count">Loading listings…</p>
-        </div>
-
-        <!-- Listings render here -->
-        <div id="listings-container"></div>
-
-        <!-- Claim your listing CTA (always visible at bottom) -->
-        <div class="claim-listing-cta">
-          <h3>Are you an ICF professional?</h3>
-          <p>Contractors, builders, distributors, architects, and engineers are all welcome. Be listed before we go public.</p>
-          <a href="early-access.html" class="btn btn-primary">Reserve Your Listing</a>
-        </div>
-
-      </main>
-
-    </div><!-- /.directory-layout -->
   </div><!-- /.container -->
 
 
@@ -652,7 +564,7 @@
       </div>
 
       <div style="text-align: center; margin-top: var(--space-10);">
-        <a href="early-access.html" class="btn btn-primary btn-lg">Get Listed Before Launch</a>
+        <a href="early-access.html?tab=contractor" class="btn btn-primary btn-lg">List Your Business</a>
         <p style="font-size: var(--text-sm); color: var(--color-text-mid); margin-top: var(--space-3);">Early access pricing · Priority placement · No payment now</p>
       </div>
 
@@ -765,10 +677,9 @@
       }
 
       function applyFilters() {
+        var selectedState = document.getElementById('filter-state').value;
         var filtered = allListings.filter(function (l) {
-          if (activeFilters.state    && l.state    !== activeFilters.state)    return false;
-          if (activeFilters.pro_type && l.pro_type !== activeFilters.pro_type) return false;
-          if (activeFilters.brand    && !l.brands.includes(activeFilters.brand)) return false;
+          if (selectedState && l.state !== selectedState) return false;
           return true;
         });
 
@@ -780,7 +691,7 @@
             + '<span class="eyebrow" style="display:block;margin-bottom:.75rem;">No listings found</span>'
             + '<h2>Be the First Listed in Your State</h2>'
             + '<p>We\'re actively onboarding ICF professionals. Early members get priority placement and maximum visibility.</p>'
-            + '<a href="early-access.html" class="btn btn-primary btn-lg">Claim Your Listing</a>'
+            + '<a href="early-access.html?tab=contractor" class="btn btn-primary btn-lg">List Your Business</a>'
             + '</div>';
           countEl.innerHTML = 'Showing <strong>0 listings</strong>';
         } else {
@@ -800,45 +711,10 @@
           document.getElementById('results-count').textContent = 'Could not load listings.';
         });
 
-      // ---- Filter sidebar buttons ----
-      document.querySelectorAll('.filter-list').forEach(function (list) {
-        list.querySelectorAll('.filter-btn').forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            list.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
-            btn.classList.add('active');
-          });
-        });
-      });
-
-      // ---- Pro type tabs ----
-      var tabs = document.querySelectorAll('.pro-type-tab');
-      tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () {
-          tabs.forEach(function (t) { t.classList.remove('active'); });
-          tab.classList.add('active');
-          var label = tab.textContent.trim();
-          var map = { 'All Pros': '', 'Contractors': 'contractor', 'Distributors': 'distributor', 'Architects': 'architect', 'Engineers': 'engineer' };
-          activeFilters.pro_type = map[label] !== undefined ? map[label] : '';
-          applyFilters();
-        });
-      });
-
-      // ---- Search dropdowns ----
-      document.getElementById('filter-state').addEventListener('change', function () {
-        activeFilters.state = this.value;
-      });
-      document.getElementById('filter-type').addEventListener('change', function () {
-        var map = { 'Contractors & Builders': 'contractor', 'Distributors': 'distributor', 'Architects & Designers': 'architect', 'Structural Engineers': 'engineer' };
-        activeFilters.pro_type = map[this.value] || '';
-      });
-      document.getElementById('filter-brand').addEventListener('change', function () {
-        activeFilters.brand = this.value;
-      });
-
       // ---- Search button ----
       document.getElementById('search-btn').addEventListener('click', function () {
         applyFilters();
-        document.querySelector('main[aria-label="Directory results"]').scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('listings-container').scrollIntoView({ behavior: 'smooth' });
       });
 
     }());
