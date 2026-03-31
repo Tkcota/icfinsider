@@ -306,6 +306,15 @@
   flex-wrap: wrap;
 }
 
+@media (max-width: 767px) {
+  .trust-bar-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    justify-items: start;
+  }
+}
+
 .trust-item {
   display: flex;
   align-items: center;
