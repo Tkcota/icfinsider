@@ -362,8 +362,8 @@
         <!-- Audience selector -->
         <div class="audience-tabs" role="tablist" aria-label="I am a...">
           <button class="audience-tab active" role="tab" aria-selected="true"  data-panel="homeowner"    id="tab-homeowner">Homeowner</button>
-          <button class="audience-tab"        role="tab" aria-selected="false" data-panel="contractor"   id="tab-contractor">Contractor / Builder</button>
-          <button class="audience-tab"        role="tab" aria-selected="false" data-panel="manufacturer" id="tab-manufacturer">Manufacturer / Distributor</button>
+          <button class="audience-tab"        role="tab" aria-selected="false" data-panel="contractor"   id="tab-contractor">List Your Business</button>
+          <button class="audience-tab"        role="tab" aria-selected="false" data-panel="manufacturer" id="tab-manufacturer">Manufacturers &amp; Partners</button>
         </div>
         <p class="tab-hint">Select the option that best describes you</p>
 
@@ -473,17 +473,18 @@
           </div>
 
 
-          <!-- CONTRACTOR PANEL -->
+          <!-- LIST YOUR BUSINESS PANEL -->
           <div class="audience-panel" id="panel-contractor" role="tabpanel" aria-labelledby="tab-contractor">
             <div class="ea-form">
-              <h2>Claim Your Directory Listing</h2>
+              <h2>List Your Business</h2>
               <p class="form-subtext">
-                Get in before we launch. Early members get priority placement, reduced
-                first-year pricing, and a direct line to the team.
+                Contractors, builders, distributors, architects, and engineers are all welcome.
+                Early members get priority placement and first-year pricing before the directory goes public.
               </p>
 
               <form id="form-contractor" novalidate>
                 <input type="hidden" name="lead_type" value="contractor">
+
                 <div class="form-row">
                   <div class="form-group">
                     <label for="c-name">Your Name <span style="color: #dc2626;">*</span></label>
@@ -497,20 +498,48 @@
 
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="c-company">Company Name</label>
-                    <input type="text" id="c-company" name="company" placeholder="Your Company LLC">
+                    <label for="c-company">Business Name <span style="color: #dc2626;">*</span></label>
+                    <input type="text" id="c-company" name="company" placeholder="Your Company LLC" required>
                   </div>
                   <div class="form-group">
-                    <label for="c-phone">Phone Number</label>
-                    <input type="tel" id="c-phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel">
+                    <label for="c-phone">Phone Number <span style="color: #dc2626;">*</span></label>
+                    <input type="tel" id="c-phone" name="phone" placeholder="(555) 000-0000" required autocomplete="tel">
                   </div>
                 </div>
 
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="c-state">Primary State / Province</label>
+                    <label for="c-role">Business Type <span style="color: #dc2626;">*</span></label>
+                    <select id="c-role" name="role" required>
+                      <option value="" disabled selected>What best describes you?</option>
+                      <option>Contractor / Builder</option>
+                      <option>ICF Distributor</option>
+                      <option>Architect / Designer</option>
+                      <option>Structural Engineer</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="c-brand">ICF Brand(s)</label>
+                    <select id="c-brand" name="brand">
+                      <option value="" disabled selected>Primary brand</option>
+                      <option>Nudura</option>
+                      <option>Fox Blocks</option>
+                      <option>Amvic</option>
+                      <option>Element ICF</option>
+                      <option>Super Form</option>
+                      <option>Quad-Lock</option>
+                      <option>Build Block</option>
+                      <option>Multiple / varies by project</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="c-state">Primary State</label>
                     <select id="c-state" name="state">
-                      <option value="" disabled selected>Where do you build?</option>
+                      <option value="" disabled selected>Where do you operate?</option>
                       <option>Alabama</option><option>Alaska</option><option>Arizona</option>
                       <option>Arkansas</option><option>California</option><option>Colorado</option>
                       <option>Connecticut</option><option>Delaware</option><option>Florida</option>
@@ -533,29 +562,30 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="c-brand">ICF Brand(s) You Use</label>
-                    <select id="c-brand" name="brand">
-                      <option value="" disabled selected>Primary brand</option>
-                      <option>Nudura</option>
-                      <option>Fox Blocks</option>
-                      <option>Amvic</option>
-                      <option>Element ICF</option>
-                      <option>Super Form</option>
-                      <option>Quad-Lock</option>
-                      <option>Build Block</option>
-                      <option>Multiple / varies by project</option>
-                      <option>Other</option>
+                    <label for="c-project">Project Types</label>
+                    <select id="c-project" name="project_type">
+                      <option value="" disabled selected>Primary project type</option>
+                      <option>Residential</option>
+                      <option>Commercial</option>
+                      <option>Multi-Family</option>
+                      <option>Basement Only</option>
+                      <option>Residential &amp; Commercial</option>
                     </select>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="c-message">Anything else? (optional)</label>
-                  <textarea id="c-message" name="message" placeholder="Years of ICF experience, types of projects, service area, questions about listing pricing..."></textarea>
+                  <label for="c-website">Business Website</label>
+                  <input type="url" id="c-website" name="interest" placeholder="https://yourwebsite.com">
+                </div>
+
+                <div class="form-group">
+                  <label for="c-service">Service Area</label>
+                  <input type="text" id="c-service" name="message" placeholder="e.g. All of Florida, Dallas/Fort Worth area, Statewide TX">
                 </div>
 
                 <button type="submit" class="btn btn-primary form-submit">
-                  Reserve My Listing
+                  Reserve My Listing →
                 </button>
                 <p class="form-disclaimer">No payment required now. We'll reach out with early access pricing before the public launch.</p>
               </form>
@@ -567,7 +597,7 @@
                   </svg>
                 </div>
                 <h3>Got it — we'll be in touch.</h3>
-                <p>You're reserved for early access. We'll email you directly before the public launch with pricing and next steps. Expect to hear from us.</p>
+                <p>You're on the list. We'll email you directly before the public launch with pricing and next steps. Expect to hear from us soon.</p>
               </div>
             </div>
           </div>
@@ -763,27 +793,44 @@
 
     // --- 1. AUDIENCE TABS ---
     // When you click a tab, hide all panels and show the matching one.
+    // Also supports ?tab=contractor URL param to auto-select a tab on load,
+    // and ?state=Florida to pre-fill the state dropdown.
     (function () {
       const tabs   = document.querySelectorAll('.audience-tab');
       const panels = document.querySelectorAll('.audience-panel');
 
-      tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () {
-          // Update tabs
-          tabs.forEach(function (t) {
-            t.classList.remove('active');
-            t.setAttribute('aria-selected', 'false');
-          });
-          tab.classList.add('active');
-          tab.setAttribute('aria-selected', 'true');
-
-          // Show matching panel, hide others
-          const targetId = 'panel-' + tab.dataset.panel;
-          panels.forEach(function (panel) {
-            panel.classList.toggle('active', panel.id === targetId);
-          });
+      function activateTab(panelName) {
+        tabs.forEach(function (t) {
+          var isTarget = t.dataset.panel === panelName;
+          t.classList.toggle('active', isTarget);
+          t.setAttribute('aria-selected', isTarget ? 'true' : 'false');
         });
+        panels.forEach(function (panel) {
+          panel.classList.toggle('active', panel.id === 'panel-' + panelName);
+        });
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () { activateTab(tab.dataset.panel); });
       });
+
+      // Auto-select tab from URL param: ?tab=contractor
+      var params   = new URLSearchParams(window.location.search);
+      var tabParam = params.get('tab');
+      if (tabParam) activateTab(tabParam);
+
+      // Pre-fill state from URL param: ?state=Florida
+      var stateParam = params.get('state');
+      if (stateParam) {
+        ['c-state', 'h-state'].forEach(function (id) {
+          var el = document.getElementById(id);
+          if (!el) return;
+          var opt = Array.from(el.options).find(function (o) {
+            return o.value.toLowerCase() === stateParam.toLowerCase();
+          });
+          if (opt) el.value = opt.value;
+        });
+      }
     }());
 
 
