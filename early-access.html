@@ -818,19 +818,6 @@
       var params   = new URLSearchParams(window.location.search);
       var tabParam = params.get('tab');
       if (tabParam) activateTab(tabParam);
-
-      // Pre-fill state from URL param: ?state=Florida
-      var stateParam = params.get('state');
-      if (stateParam) {
-        ['c-state', 'h-state'].forEach(function (id) {
-          var el = document.getElementById(id);
-          if (!el) return;
-          var opt = Array.from(el.options).find(function (o) {
-            return o.value.toLowerCase() === stateParam.toLowerCase();
-          });
-          if (opt) el.value = opt.value;
-        });
-      }
     }());
 
 

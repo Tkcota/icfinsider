@@ -596,7 +596,7 @@ function page(name, slug, climate, tagline, stats, faq) {
               <span class="eyebrow" style="font-size:0.7rem;">ICF Contractors &amp; Builders</span>
               <p>Are you an ICF contractor in ${name}? Get early access to the directory and start receiving leads.</p>
             </div>
-            <a href="/early-access.html?tab=contractor&state=${name}" class="btn btn-primary">Reserve My Spot &rarr;</a>
+            <a href="/early-access.html?tab=contractor" class="btn btn-primary">Reserve My Spot &rarr;</a>
           </div>
         </section>
         <section id="${id}-faq" style="margin-top:var(--space-16);">
