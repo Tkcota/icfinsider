@@ -406,8 +406,29 @@
     }
 
     @media (max-width: 767px) {
+      /* Hide sidebar on mobile — hero search bar covers filtering */
       .directory-filters {
-        grid-template-columns: 1fr;
+        display: none;
+      }
+
+      /* Hero search: stack dropdowns, hide type/brand (state is enough) */
+      .search-bar {
+        flex-direction: column;
+      }
+
+      /* Tabs scroll horizontally instead of wrapping */
+      .pro-type-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        gap: 0;
+        padding-bottom: 0;
+      }
+
+      .pro-type-tab {
+        flex-shrink: 0;
+        padding: var(--space-3) var(--space-4);
+        font-size: var(--text-xs);
       }
 
       .listing-card {
@@ -417,10 +438,7 @@
       .listing-card-action {
         align-items: flex-start;
         flex-direction: row;
-      }
-
-      .search-bar {
-        flex-direction: column;
+        flex-wrap: wrap;
       }
     }
   </style>
