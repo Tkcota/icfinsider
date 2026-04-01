@@ -742,6 +742,25 @@
       var params   = new URLSearchParams(window.location.search);
       var tabParam = params.get('tab');
       if (tabParam) activateTab(tabParam);
+
+      // Pre-fill state dropdowns from URL param: ?state=Florida
+      var stateParam = params.get('state');
+      if (stateParam) {
+        var homeownerState = document.getElementById('h-state');
+        var contractorState = document.getElementById('c-state');
+
+        [homeownerState, contractorState].forEach(function (select) {
+          if (!select) return;
+
+          var matchingOption = Array.from(select.options).find(function (option) {
+            return option.value === stateParam || option.text === stateParam;
+          });
+
+          if (matchingOption) {
+            select.value = matchingOption.value || matchingOption.text;
+          }
+        });
+      }
     }());
 
 
