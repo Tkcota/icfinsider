@@ -101,72 +101,9 @@
        DIRECTORY LAYOUT
     ------------------------------------------------------- */
     .directory-layout {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: var(--space-10);
+      display: block;
       padding-top: var(--space-12);
       padding-bottom: var(--space-20);
-      align-items: start;
-    }
-
-    /* Left sidebar filters */
-    .directory-filters {
-      position: sticky;
-      top: calc(var(--nav-height) + var(--space-6));
-    }
-
-    .filter-group {
-      margin-bottom: var(--space-6);
-    }
-
-    .filter-group-title {
-      font-size: var(--text-xs);
-      font-weight: var(--weight-bold);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--color-text-mid);
-      margin-bottom: var(--space-3);
-    }
-
-    .filter-list {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-1);
-    }
-
-    .filter-btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: var(--space-2) var(--space-3);
-      border-radius: var(--radius-sm);
-      font-size: var(--text-sm);
-      color: var(--color-text-mid);
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-      transition: background-color var(--transition-fast), color var(--transition-fast);
-      width: 100%;
-    }
-
-    .filter-btn:hover {
-      background-color: var(--color-off-white);
-      color: var(--color-text-dark);
-    }
-
-    .filter-btn.active {
-      background-color: var(--color-accent-dim);
-      color: var(--color-accent);
-      font-weight: var(--weight-medium);
-    }
-
-    .filter-count {
-      font-size: var(--text-xs);
-      color: var(--color-text-muted);
-      background: var(--color-off-white);
-      padding: 2px 7px;
-      border-radius: 999px;
     }
 
     /* -------------------------------------------------------
@@ -393,23 +330,6 @@
 
     /* Responsive */
     @media (max-width: 1023px) {
-      .directory-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .directory-filters {
-        position: static;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-4);
-      }
-    }
-
-    @media (max-width: 767px) {
-      /* Hide sidebar on mobile — hero search bar covers filtering */
-      .directory-filters {
-        display: none;
-      }
 
       /* Hero search: stack dropdowns, hide type/brand (state is enough) */
       .search-bar {
@@ -539,60 +459,6 @@
   <!-- DIRECTORY MAIN LAYOUT -->
   <div class="container">
     <div class="directory-layout">
-
-      <!-- LEFT: Filters sidebar -->
-      <aside class="directory-filters" aria-label="Directory filters">
-
-        <div class="filter-group">
-          <div class="filter-group-title">Pro Type</div>
-          <div class="filter-list" role="list">
-            <button class="filter-btn active" role="listitem">All Professionals</button>
-            <button class="filter-btn" role="listitem">
-              Contractors &amp; Builders
-              <span class="filter-count">—</span>
-            </button>
-            <button class="filter-btn" role="listitem">
-              Distributors
-              <span class="filter-count">—</span>
-            </button>
-            <button class="filter-btn" role="listitem">
-              Architects &amp; Designers
-              <span class="filter-count">—</span>
-            </button>
-            <button class="filter-btn" role="listitem">
-              Structural Engineers
-              <span class="filter-count">—</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="filter-group">
-          <div class="filter-group-title">ICF Brand</div>
-          <div class="filter-list" role="list">
-            <button class="filter-btn" role="listitem">Nudura</button>
-            <button class="filter-btn" role="listitem">Fox Blocks</button>
-            <button class="filter-btn" role="listitem">Amvic</button>
-            <button class="filter-btn" role="listitem">Element ICF</button>
-            <button class="filter-btn" role="listitem">Super Form</button>
-            <button class="filter-btn" role="listitem">Quad-Lock</button>
-            <button class="filter-btn" role="listitem">Build Block</button>
-          </div>
-        </div>
-
-        <div class="filter-group">
-          <div class="filter-group-title">Project Type</div>
-          <div class="filter-list" role="list">
-            <button class="filter-btn" role="listitem">Residential</button>
-            <button class="filter-btn" role="listitem">Commercial</button>
-            <button class="filter-btn" role="listitem">Basement Only</button>
-            <button class="filter-btn" role="listitem">Multi-Family</button>
-          </div>
-        </div>
-
-      </aside>
-
-
-      <!-- RIGHT: Results -->
       <main aria-label="Directory results">
 
         <!-- Pro type tabs -->
@@ -817,16 +683,6 @@
         .catch(function () {
           document.getElementById('results-count').textContent = 'Could not load listings.';
         });
-
-      // ---- Filter sidebar buttons ----
-      document.querySelectorAll('.filter-list').forEach(function (list) {
-        list.querySelectorAll('.filter-btn').forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            list.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
-            btn.classList.add('active');
-          });
-        });
-      });
 
       // ---- Pro type tabs ----
       var tabs = document.querySelectorAll('.pro-type-tab');
