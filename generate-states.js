@@ -548,6 +548,9 @@ function page(name, slug, climate, tagline, stats, faq) {
       </div>
       <h1 id="page-title">ICF Construction in ${name}</h1>
       <p class="page-hero-intro" style="max-width:580px;">${tagline}</p>
+      <div style="margin-top:var(--space-6);">
+        <a href="${homeownerHref}" class="btn btn-primary btn-lg">Get Connected in ${name} &rarr;</a>
+      </div>
       <div class="state-stats">${statsHtml}</div>
     </div>
   </section>
