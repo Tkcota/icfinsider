@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Get Connected | ICF Insider</title>
-  <meta name="description" content="Tell us about your ICF project and we'll connect you with qualified contractors in your area. Contractors can reserve their directory listing. Manufacturers can explore partnerships.">
+  <meta name="description" content="Tell us about your ICF project and we'll connect you with qualified contractors in your area. Contractors and distributors can list their business before the directory goes public.">
 
   <link rel="canonical" href="https://icfinsider.com/early-access.html">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -72,7 +72,7 @@
     .audience-tabs {
       display: flex;
       justify-content: center;
-      gap: var(--space-2);
+      gap: var(--space-4);
       flex-wrap: wrap;
       margin-bottom: var(--space-3);
     }
@@ -355,17 +355,16 @@
         <span class="eyebrow">Get Connected</span>
         <h1 id="ea-title">Let's Get You Connected</h1>
         <p>
-          Whether you're planning an ICF build, running a contracting business, or
-          looking to partner — tell us who you are and we'll take it from there.
+          Whether you're planning an ICF build or want to list your business, tell us
+          who you are and we'll take it from there.
         </p>
 
         <!-- Audience selector -->
         <div class="audience-tabs" role="tablist" aria-label="I am a...">
-          <button class="audience-tab active" role="tab" aria-selected="true"  data-panel="homeowner"    id="tab-homeowner">Homeowner</button>
-          <button class="audience-tab"        role="tab" aria-selected="false" data-panel="contractor"   id="tab-contractor">List Your Business</button>
-          <button class="audience-tab"        role="tab" aria-selected="false" data-panel="manufacturer" id="tab-manufacturer">Manufacturers &amp; Partners</button>
+          <button class="audience-tab active" role="tab" aria-selected="true"  data-panel="homeowner"  id="tab-homeowner">Homeowner</button>
+          <button class="audience-tab"        role="tab" aria-selected="false" data-panel="contractor" id="tab-contractor">List Your Business</button>
         </div>
-        <p class="tab-hint">Select the option that best describes you</p>
+        <p class="tab-hint">Choose the path that's right for you.</p>
 
         <!-- =====================================================
           AUDIENCE PANELS
@@ -603,81 +602,6 @@
           </div>
 
 
-          <!-- MANUFACTURER PANEL -->
-          <div class="audience-panel" id="panel-manufacturer" role="tabpanel" aria-labelledby="tab-manufacturer">
-            <div class="ea-form">
-              <h2>Partner with ICF Insider</h2>
-              <p class="form-subtext">
-                Manufacturers, distributors, and industry suppliers — tell us about your
-                company and what you're looking to accomplish. Sponsorship and partnership
-                opportunities are available.
-              </p>
-
-              <form id="form-manufacturer" novalidate>
-                <input type="hidden" name="lead_type" value="manufacturer">
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="m-name">Your Name <span style="color: #dc2626;">*</span></label>
-                    <input type="text" id="m-name" name="name" placeholder="First Last" required autocomplete="name">
-                  </div>
-                  <div class="form-group">
-                    <label for="m-email">Email Address <span style="color: #dc2626;">*</span></label>
-                    <input type="email" id="m-email" name="email" placeholder="you@company.com" required autocomplete="email">
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="m-company">Company Name</label>
-                    <input type="text" id="m-company" name="company" placeholder="Company name">
-                  </div>
-                  <div class="form-group">
-                    <label for="m-role">Your Role</label>
-                    <select id="m-role" name="role">
-                      <option value="" disabled selected>Select your role</option>
-                      <option>ICF Manufacturer</option>
-                      <option>ICF Distributor</option>
-                      <option>Building Products Supplier</option>
-                      <option>Industry Association</option>
-                      <option>Other Industry Partner</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="m-interest">What are you interested in?</label>
-                  <select id="m-interest" name="interest">
-                    <option value="" disabled selected>Primary interest</option>
-                    <option>Featured brand listing / sponsorship</option>
-                    <option>Display advertising</option>
-                    <option>Sponsored content / editorial</option>
-                    <option>Contractor directory partnership</option>
-                    <option>General inquiry / exploring options</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="m-message">Tell us about your company and goals (optional)</label>
-                  <textarea id="m-message" name="message" placeholder="What markets do you serve? What does success look like for a partnership with ICF Insider?"></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary form-submit">
-                  Start the Conversation
-                </button>
-                <p class="form-disclaimer">All inquiries are responded to within 48 hours.</p>
-              </form>
-
-              <div class="form-success" id="success-manufacturer">
-                <div class="form-success-icon" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                </div>
-                <h3>Message received.</h3>
-                <p>We'll follow up within 48 hours. We're building something worth being part of early.</p>
-              </div>
-            </div>
-          </div>
 
         </div><!-- /.audience-panels -->
       </div><!-- /.ea-hero-inner -->
@@ -822,11 +746,11 @@
 
 
     // --- 2. FORM SUBMISSION ---
-    // All three forms POST to /api/submit (Cloudflare Pages Function).
+    // Both forms POST to /api/submit (Cloudflare Worker).
     // Each form has a hidden lead_type field so we can distinguish
-    // homeowner / contractor / manufacturer in the database.
+    // homeowner / contractor in the database.
     (function () {
-      var formIds = ['form-homeowner', 'form-contractor', 'form-manufacturer'];
+      var formIds = ['form-homeowner', 'form-contractor'];
 
       formIds.forEach(function (formId) {
         var form = document.getElementById(formId);
@@ -900,3 +824,4 @@
 
 </body>
 </html>
+
