@@ -219,20 +219,11 @@
   margin-bottom: var(--space-5);
 }
 
-/* Small accent line before the eyebrow text */
-.hero-eyebrow::before {
-  content: '';
-  display: block;
-  width: 24px;
-  height: 2px;
-  background-color: var(--color-accent);
-}
-
 .hero-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 8vw, 5.5rem); /* fluid type — scales with viewport */
+  font-size: clamp(2.2rem, 6.6vw, 4.75rem); /* slightly tighter so long headlines don't break awkwardly */
   font-weight: var(--weight-extrabold);
-  line-height: 1.0;
+  line-height: 0.96;
   letter-spacing: -0.02em;
   color: var(--color-white);
   margin-bottom: var(--space-6);
@@ -263,26 +254,35 @@
 /* Stats row below CTAs */
 .hero-stats {
   display: flex;
-  gap: var(--space-10);
+  justify-content: space-between;
+  gap: var(--space-6);
   margin-top: var(--space-16);
   padding-top: var(--space-10);
   border-top: 1px solid var(--color-border-dark);
   flex-wrap: wrap;
 }
 
+.hero-stats > [role="listitem"] {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
 .hero-stat-number {
   font-family: var(--font-heading);
-  font-size: var(--text-4xl);
+  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
   font-weight: var(--weight-extrabold);
   color: var(--color-white);
-  line-height: 1;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
   display: block;
 }
 
 .hero-stat-label {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  margin-top: var(--space-1);
+  font-size: 0.95rem;
+  font-weight: var(--weight-medium);
+  color: var(--color-text-light);
+  margin-top: var(--space-2);
+  line-height: 1.45;
   display: block;
 }
 
