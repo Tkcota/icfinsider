@@ -702,7 +702,11 @@
 .contractor-banner-text p {
   margin: 0;
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.7);
+  color: var(--color-text-muted);
+}
+
+.article .contractor-banner-text p {
+  color: var(--color-text-muted);
 }
 
 .contractor-banner .btn {

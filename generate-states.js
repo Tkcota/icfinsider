@@ -569,7 +569,7 @@ function page(name, slug, climate, tagline, stats, faq) {
           <p style="color:var(--color-text-muted);max-width:540px;">Tell us about your ${name} project and we'll connect you with our local ICF professionals who can help with pricing and next steps.</p>
           <div style="margin-top:var(--space-6);">
             <a href="${homeownerHref}" class="btn btn-primary btn-lg">Get Connected &rarr;</a>
-            <p class="form-disclaimer" style="margin-top:var(--space-3);">We'll reach out within 1 business day. Your info is never sold.</p>
+            <p class="form-disclaimer" style="margin-top:var(--space-3);">We only share your request with relevant local ICF professionals - never unrelated marketers.</p>
           </div>
           <div class="contractor-banner">
             <div class="contractor-banner-text">
