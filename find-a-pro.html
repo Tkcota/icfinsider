@@ -238,6 +238,12 @@
       border-color: rgba(232,120,10,0.2);
     }
 
+    .listing-tag.brand-nudura {
+      background-color: rgba(34,139,34,0.1);
+      color: #1a7a1a;
+      border-color: rgba(34,139,34,0.25);
+    }
+
     .listing-card-action {
       display: flex;
       flex-direction: column;
@@ -619,7 +625,8 @@
         var tags = '';
         if (l.featured) tags += '<span class="listing-tag featured">Featured</span>';
         l.brands.forEach(function (b) {
-          tags += '<span class="listing-tag">' + b + ' Distributor</span>';
+          var brandClass = b.toLowerCase().replace(/\s+/g, '-');
+          tags += '<span class="listing-tag brand-' + brandClass + '">' + b + ' Distributor</span>';
         });
         l.project_types.forEach(function (p) {
           tags += '<span class="listing-tag">' + p + '</span>';
