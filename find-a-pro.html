@@ -742,19 +742,22 @@
         });
       });
 
-      // ---- Search dropdowns ----
+      // ---- Search dropdowns — update instantly on change ----
       document.getElementById('filter-state').addEventListener('change', function () {
         activeFilters.state = this.value;
+        applyFilters();
       });
       document.getElementById('filter-type').addEventListener('change', function () {
         var map = { 'Contractors & Builders': 'contractor', 'Distributors': 'distributor', 'Architects & Designers': 'architect', 'Structural Engineers': 'engineer' };
         activeFilters.pro_type = map[this.value] || '';
+        applyFilters();
       });
       document.getElementById('filter-brand').addEventListener('change', function () {
         activeFilters.brand = this.value;
+        applyFilters();
       });
 
-      // ---- Search button ----
+      // ---- Search button — still works, scrolls to results ----
       document.getElementById('search-btn').addEventListener('click', function () {
         applyFilters();
         document.querySelector('main[aria-label="Directory results"]').scrollIntoView({ behavior: 'smooth' });
