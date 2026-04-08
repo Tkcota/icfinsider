@@ -26,6 +26,15 @@ export default {
     if (url.pathname === '/api/listings') return handleListings(request, env);
     if (url.pathname === '/api/submit')   return handleSubmit(request, env);
 
+    // ── Redirect bare paths back to .html (fixes Google indexing) ──
+    // Cloudflare Assets strips .html and redirects /brands → /brands
+    // This sends Google back to the canonical .html URL
+    const bare = url.pathname.match(/^\/([a-zA-Z0-9_-]+)$/);
+    if (bare && bare[1] !== 'favicon') {
+      const htmlUrl = url.pathname + '.html' + url.search;
+      return Response.redirect(new URL(htmlUrl, url.origin).href, 301);
+    }
+
     // ── Static assets (HTML, CSS, JS, images, etc.) ──────────
     return env.ASSETS.fetch(request);
   },
