@@ -9,6 +9,7 @@ compatibility_date = "2025-09-27"
 
 [assets]
 directory = "."
+html_handling = "none"
 # Exclude server-side / dev files from being served as static assets
 exclude = [
   "worker.js",
