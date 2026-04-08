@@ -113,6 +113,8 @@ async function handleSubmit(request, env) {
   const role         = (formData.get('role')         || '').slice(0, 100);
   const interest     = (formData.get('interest')     || '').slice(0, 200);
   const file_link    = (formData.get('file_link')    || '').slice(0, 500);
+  const website      = (formData.get('website')      || '').slice(0, 500);
+  const service_area = (formData.get('service_area') || '').slice(0, 500);
 
   // Validate email
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -147,9 +149,9 @@ async function handleSubmit(request, env) {
   try {
     await env.DB.prepare(`
       INSERT INTO leads
-        (lead_type, name, email, phone, company, state, project_type, brand, role, interest, message, file_key, file_link)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `).bind(lead_type, name, email, phone, company, state, project_type, brand, role, interest, message, file_key, file_link).run();
+        (lead_type, name, email, phone, company, state, project_type, brand, role, interest, message, website, service_area, file_key, file_link)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).bind(lead_type, name, email, phone, company, state, project_type, brand, role, interest, message, website, service_area, file_key, file_link).run();
   } catch (e) {
     console.error('DB insert error:', e);
     return new Response(JSON.stringify({ ok: false, error: 'Database error' }), {

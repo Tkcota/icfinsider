@@ -16,6 +16,8 @@ CREATE TABLE IF NOT EXISTS leads (
   role         TEXT,                   -- manufacturer: their role (ICF Manufacturer, etc.)
   interest     TEXT,                   -- manufacturer: what they want (sponsorship, ads, etc.)
   message      TEXT,
+  website      TEXT,                   -- contractor: business website URL
+  service_area TEXT,                   -- contractor: area they service
   file_key     TEXT,                   -- R2 object key for uploaded project file (optional)
   file_link    TEXT,                   -- Google Drive / Dropbox / WeTransfer link for large files
   created_at   TEXT DEFAULT (datetime('now'))
