@@ -402,6 +402,17 @@
     }
 
     /* Responsive */
+    @media (max-width: 767px) {
+      .directory-hero {
+        padding-top: var(--space-8);
+        padding-bottom: var(--space-8);
+      }
+
+      .directory-layout {
+        padding-top: var(--space-6);
+      }
+    }
+
     @media (max-width: 1023px) {
 
       /* Hero search: stack dropdowns, hide type/brand (state is enough) */
@@ -834,7 +845,8 @@
 
         // Init map once
         if (!leafletMap) {
-          leafletMap = L.map('map-container').setView([39.5, -98.35], 4);
+          var isMobile = window.innerWidth < 768;
+          leafletMap = L.map('map-container').setView([39.5, -98.35], isMobile ? 3 : 4);
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
             maxZoom: 18
