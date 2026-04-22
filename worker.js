@@ -26,6 +26,12 @@ export default {
     if (url.pathname === '/api/listings') return handleListings(request, env);
     if (url.pathname === '/api/submit')   return handleSubmit(request, env);
 
+    // ── Redirect old early-access URLs to list-your-business ──
+    if (url.pathname === '/early-access' || url.pathname === '/early-access.html') {
+      const newUrl = new URL('/list-your-business.html' + url.search, url.origin);
+      return Response.redirect(newUrl.href, 301);
+    }
+
     // ── Redirect bare paths back to .html (fixes Google indexing) ──
     // Cloudflare Assets strips .html and redirects /brands → /brands
     // This sends Google back to the canonical .html URL
