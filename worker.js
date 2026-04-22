@@ -264,6 +264,11 @@ async function handleAdminApprove(request, env) {
     const existing = await env.DB.prepare(`SELECT id FROM listings WHERE slug = ?`).bind(slug).first();
     if (existing) slug = `${slug}-${id}`;
 
+    // Ensure website has a protocol prefix
+    const website = lead.website
+      ? (lead.website.match(/^https?:\/\//i) ? lead.website : 'https://' + lead.website)
+      : '';
+
     // Look up city name from zip code via zippopotam.us
     let city = '';
     if (lead.zip_code && /^\d{5}/.test(lead.zip_code.trim())) {
@@ -288,7 +293,7 @@ async function handleAdminApprove(request, env) {
       lead.zip_code || '',
       city,
       lead.phone || '',
-      lead.website || '',
+      website,
       lead.email || '',
       lead.brand || '',
       lead.project_type || '',
