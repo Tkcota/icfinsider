@@ -745,6 +745,17 @@
             return;
           }
 
+          // Validate phone — must have at least 10 digits (allows dashes, spaces, parens)
+          var phoneInput = form.querySelector('input[type="tel"]');
+          if (phoneInput && phoneInput.value.trim()) {
+            var digits = phoneInput.value.replace(/\D/g, '');
+            if (digits.length < 10) {
+              phoneInput.style.borderColor = '#dc2626';
+              phoneInput.focus();
+              return;
+            }
+          }
+
           // Show sending state
           if (submitBtn) {
             submitBtn.disabled = true;
