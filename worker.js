@@ -12,10 +12,14 @@ export default {
     const url = new URL(request.url);
 
     // CORS preflight
+    const allowedOrigins = ['https://icfinsider.com', 'https://www.icfinsider.com'];
+    const origin = request.headers.get('Origin') || '';
+    const corsOrigin = allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
+
     if (request.method === 'OPTIONS') {
       return new Response(null, {
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': corsOrigin,
           'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
           'Access-Control-Allow-Headers': 'Content-Type, Accept',
         },
@@ -52,7 +56,7 @@ export default {
 // Returns active directory listings, optionally filtered by state/pro_type/brand.
 
 async function handleListings(request, env) {
-  const cors = { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' };
+  const cors = { 'Access-Control-Allow-Origin': 'https://icfinsider.com', 'Content-Type': 'application/json' };
 
   try {
     const url      = new URL(request.url);
@@ -92,7 +96,7 @@ async function handleListings(request, env) {
 // Accepts lead form submissions, stores in D1, uploads files to R2.
 
 async function handleSubmit(request, env) {
-  const cors = { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' };
+  const cors = { 'Access-Control-Allow-Origin': 'https://icfinsider.com', 'Content-Type': 'application/json' };
 
   if (request.method !== 'POST') {
     return new Response('Method not allowed', { status: 405 });
