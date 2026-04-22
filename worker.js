@@ -116,6 +116,7 @@ async function handleSubmit(request, env) {
   const name         = (formData.get('name')         || '').slice(0, 200);
   const email        = (formData.get('email')        || '').trim().slice(0, 200);
   const phone        = (formData.get('phone')        || '').slice(0, 50);
+  const zip_code     = (formData.get('zip_code')      || '').slice(0, 20);
   const state        = (formData.get('state')        || '').slice(0, 100);
   const project_type = (formData.get('project_type') || '').slice(0, 100);
   const message      = (formData.get('message')      || '').slice(0, 2000);
@@ -160,9 +161,9 @@ async function handleSubmit(request, env) {
   try {
     await env.DB.prepare(`
       INSERT INTO leads
-        (lead_type, name, email, phone, company, state, project_type, brand, role, interest, message, website, service_area, file_key, file_link)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `).bind(lead_type, name, email, phone, company, state, project_type, brand, role, interest, message, website, service_area, file_key, file_link).run();
+        (lead_type, name, email, phone, company, zip_code, state, project_type, brand, role, interest, message, website, service_area, file_key, file_link)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).bind(lead_type, name, email, phone, company, zip_code, state, project_type, brand, role, interest, message, website, service_area, file_key, file_link).run();
   } catch (e) {
     console.error('DB insert error:', e);
     return new Response(JSON.stringify({ ok: false, error: 'Database error' }), {

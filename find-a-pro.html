@@ -867,7 +867,9 @@
 
         // Geocode and place markers
         filtered.forEach(function (l) {
-          var query = (l.city ? l.city + ', ' : '') + l.state + ', USA';
+          // If city field looks like a zip code (all digits), geocode by zip alone for precision
+        var isZip = l.city && /^\d{5}(-\d{4})?$/.test(l.city.trim());
+        var query = isZip ? l.city + ', USA' : (l.city ? l.city + ', ' : '') + l.state + ', USA';
           geocode(query).then(function (coords) {
             if (!coords) return;
             var popup = '<strong>' + l.business_name + '</strong><br>'

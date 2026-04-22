@@ -536,6 +536,11 @@
 
                 <div class="form-row">
                   <div class="form-group">
+                    <label for="c-city">Zip Code <span style="color: #dc2626;">*</span></label>
+                    <input type="text" id="c-city" name="zip_code" placeholder="e.g. 33601" required inputmode="numeric" maxlength="10">
+                    <small style="color:var(--color-text-mid);font-size:0.78rem;">Used to place your listing on the map</small>
+                  </div>
+                  <div class="form-group">
                     <label for="c-state">Primary State</label>
                     <select id="c-state" name="state">
                       <option value="" disabled selected>Where do you operate?</option>
@@ -558,6 +563,7 @@
                       <option>Wisconsin</option><option>Wyoming</option>
                       <option>Alberta</option><option>British Columbia</option><option>Ontario</option>
                       <option>Quebec</option><option>Other Canada</option>
+                      <option>Other</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -567,6 +573,7 @@
                       <option>Residential</option>
                       <option>Commercial</option>
                       <option>Residential &amp; Commercial</option>
+                      <option>ICF Pools</option>
                     </select>
                   </div>
                 </div>
@@ -711,7 +718,33 @@
     }());
 
 
-    // --- 2. FORM SUBMISSION ---
+    // --- 2. ZIP CODE AUTO-FILL STATE ---
+    (function () {
+      var zipInput   = document.getElementById('c-city');
+      var stateSelect = document.getElementById('c-state');
+      if (!zipInput || !stateSelect) return;
+
+      zipInput.addEventListener('input', function () {
+        var zip = zipInput.value.replace(/\D/g, '');
+        if (zip.length !== 5) return;
+
+        fetch('https://api.zippopotam.us/us/' + zip)
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (data) {
+            if (!data || !data.places || !data.places[0]) return;
+            var stateName = data.places[0]['state'];
+            var options = Array.from(stateSelect.options);
+            var match = options.find(function (o) { return o.text === stateName; });
+            if (match) {
+              stateSelect.value = match.value || match.text;
+            }
+          })
+          .catch(function () { /* silently fail — user can still select manually */ });
+      });
+    }());
+
+
+    // --- 3. FORM SUBMISSION ---
     // Both forms POST to /api/submit (Cloudflare Worker).
     // Each form has a hidden lead_type field so we can distinguish
     // homeowner / contractor in the database.

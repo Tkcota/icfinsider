@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS leads (
   email        TEXT NOT NULL,
   phone        TEXT,
   company      TEXT,
+  zip_code     TEXT,                   -- contractor: zip code for map geocoding
   state        TEXT,
   project_type TEXT,                   -- homeowner: Single-family home, etc.
   brand        TEXT,                   -- contractor: ICF brand they use
