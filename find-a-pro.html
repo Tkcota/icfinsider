@@ -21,6 +21,7 @@
 
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
   <style>
     /* -------------------------------------------------------
@@ -275,6 +276,43 @@
       border-radius: 999px;
     }
 
+    /* View toggle */
+    .view-toggle {
+      display: flex;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+    .view-toggle-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      border: 1px solid var(--color-border-light);
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-mid);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .view-toggle-btn.active {
+      background: var(--color-dark-900);
+      border-color: var(--color-dark-900);
+      color: var(--color-white);
+    }
+
+    /* Map container */
+    #map-container {
+      display: none;
+      height: 500px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--space-6);
+      border: 1px solid var(--color-border-light);
+    }
+    #map-container.active { display: block; }
+
     /* CTA block to claim listing */
     .claim-listing-cta {
       border: 2px dashed var(--color-border-light);
@@ -504,6 +542,21 @@
     <div class="directory-layout">
       <main aria-label="Directory results">
 
+        <!-- List / Map toggle -->
+        <div class="view-toggle">
+          <button class="view-toggle-btn active" id="btn-list-view">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            List View
+          </button>
+          <button class="view-toggle-btn" id="btn-map-view">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+            Map View
+          </button>
+        </div>
+
+        <!-- Map container (hidden by default) -->
+        <div id="map-container"></div>
+
         <!-- Pro type tabs -->
         <div class="pro-type-tabs" role="tablist">
           <button class="pro-type-tab active" role="tab">All Pros</button>
@@ -631,6 +684,7 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="js/main.js"></script>
 
   <script>
@@ -754,8 +808,94 @@
       document.getElementById('filter-brand').addEventListener('change', function () {
         activeFilters.brand = this.value;
         applyFilters();
+        if (currentView === 'map') renderMap();
       });
 
+      // ---- Map view ----
+      var currentView = 'list';
+      var leafletMap = null;
+      var geocodeCache = {};
+
+      function geocode(query) {
+        if (geocodeCache[query]) return Promise.resolve(geocodeCache[query]);
+        return fetch('https://nominatim.openstreetmap.org/search?q=' + encodeURIComponent(query) + '&format=json&limit=1')
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            var result = data && data[0] ? [parseFloat(data[0].lat), parseFloat(data[0].lon)] : null;
+            geocodeCache[query] = result;
+            return result;
+          });
+      }
+
+      function renderMap() {
+        var mapEl = document.getElementById('map-container');
+
+        // Init map once
+        if (!leafletMap) {
+          leafletMap = L.map('map-container').setView([39.5, -98.35], 4);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a>',
+            maxZoom: 18
+          }).addTo(leafletMap);
+        } else {
+          leafletMap.eachLayer(function (layer) {
+            if (layer instanceof L.Marker) leafletMap.removeLayer(layer);
+          });
+        }
+
+        // Get current filtered listings
+        var filtered = allListings.filter(function (l) {
+          if (activeFilters.state    && l.state    !== activeFilters.state)    return false;
+          if (activeFilters.pro_type && l.pro_type !== activeFilters.pro_type) return false;
+          if (activeFilters.brand    && !l.brands.includes(activeFilters.brand)) return false;
+          return true;
+        });
+
+        // Geocode and place markers
+        filtered.forEach(function (l) {
+          var query = (l.city ? l.city + ', ' : '') + l.state + ', USA';
+          geocode(query).then(function (coords) {
+            if (!coords) return;
+            var popup = '<strong>' + l.business_name + '</strong><br>'
+              + proTypeLabel(l.pro_type) + ' · ' + (l.city ? l.city + ', ' : '') + l.state
+              + (l.phone ? '<br><a href="tel:' + l.phone.replace(/\D/g,'') + '">' + l.phone + '</a>' : '')
+              + (l.website ? '<br><a href="' + l.website + '" target="_blank" rel="noopener">Visit Website</a>' : '');
+            var redPin = L.divIcon({
+              className: '',
+              html: '<div style="width:16px;height:16px;background:#cc2200;border:2px solid #fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.4);"></div>',
+              iconSize: [16, 16],
+              iconAnchor: [8, 8],
+              popupAnchor: [0, -10]
+            });
+            L.marker(coords, { icon: redPin }).addTo(leafletMap).bindPopup(popup);
+          });
+        });
+
+        // Resize map in case container just became visible
+        setTimeout(function () { leafletMap.invalidateSize(); }, 100);
+      }
+
+      // Toggle between list and map view
+      document.getElementById('btn-list-view').addEventListener('click', function () {
+        currentView = 'list';
+        document.getElementById('btn-list-view').classList.add('active');
+        document.getElementById('btn-map-view').classList.remove('active');
+        document.getElementById('map-container').classList.remove('active');
+        document.getElementById('listings-container').style.display = '';
+        document.querySelector('.pro-type-tabs').style.display = '';
+        document.getElementById('results-count').style.display = '';
+      });
+
+      document.getElementById('btn-map-view').addEventListener('click', function () {
+        currentView = 'map';
+        document.getElementById('btn-map-view').classList.add('active');
+        document.getElementById('btn-list-view').classList.remove('active');
+        document.getElementById('map-container').classList.add('active');
+        document.getElementById('listings-container').style.display = 'none';
+        document.querySelector('.pro-type-tabs').style.display = 'none';
+        document.getElementById('results-count').style.display = 'none';
+        renderMap();
+      });
 
     }());
   </script>
