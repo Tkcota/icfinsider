@@ -264,16 +264,29 @@ async function handleAdminApprove(request, env) {
     const existing = await env.DB.prepare(`SELECT id FROM listings WHERE slug = ?`).bind(slug).first();
     if (existing) slug = `${slug}-${id}`;
 
+    // Look up city name from zip code via zippopotam.us
+    let city = '';
+    if (lead.zip_code && /^\d{5}/.test(lead.zip_code.trim())) {
+      try {
+        const zipRes = await fetch(`https://api.zippopotam.us/us/${lead.zip_code.trim().slice(0, 5)}`);
+        if (zipRes.ok) {
+          const zipData = await zipRes.json();
+          city = zipData.places?.[0]?.['place name'] || '';
+        }
+      } catch (e) { /* ignore — city stays blank */ }
+    }
+
     // Insert into listings
     await env.DB.prepare(`
-      INSERT INTO listings (slug, business_name, pro_type, state, zip_code, phone, website, email, brands, project_types, service_area, active, featured)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 0)
+      INSERT INTO listings (slug, business_name, pro_type, state, zip_code, city, phone, website, email, brands, project_types, service_area, active, featured)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 0)
     `).bind(
       slug,
       lead.company || lead.name,
       pro_type,
       lead.state || '',
       lead.zip_code || '',
+      city,
       lead.phone || '',
       lead.website || '',
       lead.email || '',
