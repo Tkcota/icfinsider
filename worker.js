@@ -2,8 +2,11 @@
 // Handles all API routes. Everything else is served as a static asset.
 //
 // API routes:
-//   POST /api/submit   — lead form submissions → D1 + R2
-//   GET  /api/listings — contractor directory  → D1
+//   POST /api/submit         — lead form submissions → D1 + R2
+//   GET  /api/listings       — contractor directory  → D1
+//   GET  /api/admin/leads    — admin: view leads (requires ADMIN_KEY)
+//   POST /api/admin/approve  — admin: approve lead → listings
+//   POST /api/admin/reject   — admin: reject lead
 //
 // To add a new endpoint: add a handler function and a route below.
 
@@ -27,8 +30,11 @@ export default {
     }
 
     // ── API routes ────────────────────────────────────────────
-    if (url.pathname === '/api/listings') return handleListings(request, env);
-    if (url.pathname === '/api/submit')   return handleSubmit(request, env);
+    if (url.pathname === '/api/listings')      return handleListings(request, env);
+    if (url.pathname === '/api/submit')        return handleSubmit(request, env);
+    if (url.pathname === '/api/admin/leads')   return handleAdminLeads(request, env);
+    if (url.pathname === '/api/admin/approve') return handleAdminApprove(request, env);
+    if (url.pathname === '/api/admin/reject')  return handleAdminReject(request, env);
 
     // ── Redirect old URLs to get-connected ──
     if (url.pathname === '/early-access' || url.pathname === '/early-access.html' ||
@@ -172,4 +178,140 @@ async function handleSubmit(request, env) {
   }
 
   return new Response(JSON.stringify({ ok: true }), { status: 200, headers: cors });
+}
+
+
+// ── ADMIN AUTH CHECK ──────────────────────────────────────────────────────────
+function checkAdminAuth(request, env) {
+  const key = request.headers.get('X-Admin-Key') || '';
+  return key === (env.ADMIN_KEY || '');
+}
+
+const adminCors = {
+  'Access-Control-Allow-Origin': '*',
+  'Content-Type': 'application/json',
+};
+
+
+// ── GET /api/admin/leads ──────────────────────────────────────────────────────
+// Returns all contractor leads filtered by status (pending/approved/rejected/all)
+
+async function handleAdminLeads(request, env) {
+  if (!checkAdminAuth(request, env)) {
+    return new Response(JSON.stringify({ ok: false, error: 'Unauthorized' }), { status: 401, headers: adminCors });
+  }
+
+  const url    = new URL(request.url);
+  const status = url.searchParams.get('status') || 'pending';
+
+  try {
+    let sql = `SELECT * FROM leads WHERE lead_type = 'contractor'`;
+    if (status !== 'all') sql += ` AND (status = ? OR (status IS NULL AND ? = 'pending'))`;
+    sql += ` ORDER BY created_at DESC`;
+
+    const stmt = status !== 'all'
+      ? env.DB.prepare(sql).bind(status, status)
+      : env.DB.prepare(sql);
+
+    const { results } = await stmt.all();
+    return new Response(JSON.stringify({ ok: true, leads: results }), { headers: adminCors });
+  } catch (e) {
+    console.error('Admin leads error:', e);
+    return new Response(JSON.stringify({ ok: false, error: 'Database error' }), { status: 500, headers: adminCors });
+  }
+}
+
+
+// ── POST /api/admin/approve ───────────────────────────────────────────────────
+// Approves a lead: inserts into listings table, marks lead as approved
+
+async function handleAdminApprove(request, env) {
+  if (!checkAdminAuth(request, env)) {
+    return new Response(JSON.stringify({ ok: false, error: 'Unauthorized' }), { status: 401, headers: adminCors });
+  }
+
+  let body;
+  try { body = await request.json(); } catch (e) {
+    return new Response(JSON.stringify({ ok: false, error: 'Invalid JSON' }), { status: 400, headers: adminCors });
+  }
+
+  const { id } = body;
+  if (!id) return new Response(JSON.stringify({ ok: false, error: 'Missing id' }), { status: 400, headers: adminCors });
+
+  try {
+    // Fetch the lead
+    const lead = await env.DB.prepare(`SELECT * FROM leads WHERE id = ?`).bind(id).first();
+    if (!lead) return new Response(JSON.stringify({ ok: false, error: 'Lead not found' }), { status: 404, headers: adminCors });
+
+    // Map role to pro_type
+    const roleMap = {
+      'Contractor / Builder': 'contractor',
+      'ICF Distributor':      'distributor',
+      'Architect / Designer': 'architect',
+      'Structural Engineer':  'engineer',
+    };
+    const pro_type = roleMap[lead.role] || 'contractor';
+
+    // Generate unique slug
+    const baseSlug = (lead.company || 'business').toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const stateSlug = (lead.state || 'us').toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    let slug = `${baseSlug}-${stateSlug}`;
+
+    // Check for slug collision and append id if needed
+    const existing = await env.DB.prepare(`SELECT id FROM listings WHERE slug = ?`).bind(slug).first();
+    if (existing) slug = `${slug}-${id}`;
+
+    // Insert into listings
+    await env.DB.prepare(`
+      INSERT INTO listings (slug, business_name, pro_type, state, city, phone, website, email, brands, project_types, service_area, active, featured)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 0)
+    `).bind(
+      slug,
+      lead.company || lead.name,
+      pro_type,
+      lead.state || '',
+      lead.zip_code || '',
+      lead.phone || '',
+      lead.website || '',
+      lead.email || '',
+      lead.brand || '',
+      lead.project_type || '',
+      lead.service_area || ''
+    ).run();
+
+    // Mark lead as approved
+    await env.DB.prepare(`UPDATE leads SET status = 'approved' WHERE id = ?`).bind(id).run();
+
+    return new Response(JSON.stringify({ ok: true, slug }), { headers: adminCors });
+  } catch (e) {
+    console.error('Approve error:', e);
+    return new Response(JSON.stringify({ ok: false, error: e.message || 'Database error' }), { status: 500, headers: adminCors });
+  }
+}
+
+
+// ── POST /api/admin/reject ────────────────────────────────────────────────────
+// Marks a lead as rejected
+
+async function handleAdminReject(request, env) {
+  if (!checkAdminAuth(request, env)) {
+    return new Response(JSON.stringify({ ok: false, error: 'Unauthorized' }), { status: 401, headers: adminCors });
+  }
+
+  let body;
+  try { body = await request.json(); } catch (e) {
+    return new Response(JSON.stringify({ ok: false, error: 'Invalid JSON' }), { status: 400, headers: adminCors });
+  }
+
+  const { id } = body;
+  if (!id) return new Response(JSON.stringify({ ok: false, error: 'Missing id' }), { status: 400, headers: adminCors });
+
+  try {
+    await env.DB.prepare(`UPDATE leads SET status = 'rejected' WHERE id = ?`).bind(id).run();
+    return new Response(JSON.stringify({ ok: true }), { headers: adminCors });
+  } catch (e) {
+    return new Response(JSON.stringify({ ok: false, error: 'Database error' }), { status: 500, headers: adminCors });
+  }
 }

@@ -15,6 +15,7 @@ exclude = [
   "wrangler.toml",
   "schema.sql",
   "generate-states.js",
+  "generate-cities.js",
   "server.js",
   "functions/**",
   "build/**",

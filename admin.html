@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICF Insider — Admin</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+
+    /* ── AUTH SCREEN ── */
+    #auth-screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .auth-box {
+      background: #1a1f2e;
+      border: 1px solid #2d3748;
+      border-radius: 12px;
+      padding: 40px;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+    }
+
+    .auth-box h1 { font-size: 1.4rem; margin-bottom: 8px; color: #fff; }
+    .auth-box p  { font-size: 0.875rem; color: #718096; margin-bottom: 24px; }
+
+    .auth-box input {
+      width: 100%;
+      padding: 10px 14px;
+      background: #0f1117;
+      border: 1px solid #2d3748;
+      border-radius: 8px;
+      color: #e2e8f0;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      outline: none;
+    }
+
+    .auth-box input:focus { border-color: #E8780A; }
+
+    .auth-error { color: #fc8181; font-size: 0.8rem; margin-top: 8px; display: none; }
+
+    /* ── MAIN LAYOUT ── */
+    #main-screen { display: none; }
+
+    .admin-header {
+      background: #1a1f2e;
+      border-bottom: 1px solid #2d3748;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .admin-header h1 { font-size: 1.1rem; color: #E8780A; font-weight: 700; }
+    .admin-header span { font-size: 0.8rem; color: #718096; }
+
+    .logout-btn {
+      background: transparent;
+      border: 1px solid #2d3748;
+      color: #718096;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .logout-btn:hover { border-color: #718096; color: #e2e8f0; }
+
+    .admin-body { max-width: 1000px; margin: 0 auto; padding: 24px 16px; }
+
+    /* ── TABS ── */
+    .status-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #2d3748;
+      padding-bottom: 0;
+    }
+
+    .status-tab {
+      padding: 8px 18px;
+      border-radius: 6px 6px 0 0;
+      border: 1px solid transparent;
+      border-bottom: none;
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #718096;
+      background: transparent;
+      position: relative;
+      bottom: -1px;
+      transition: all 0.15s;
+    }
+
+    .status-tab:hover { color: #e2e8f0; }
+
+    .status-tab.active {
+      background: #0f1117;
+      border-color: #2d3748;
+      border-bottom-color: #0f1117;
+      color: #E8780A;
+    }
+
+    .tab-badge {
+      display: inline-block;
+      background: #E8780A;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 1px 6px;
+      margin-left: 6px;
+    }
+
+    /* ── LEADS ── */
+    #leads-container { display: flex; flex-direction: column; gap: 16px; }
+
+    .lead-card {
+      background: #1a1f2e;
+      border: 1px solid #2d3748;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .lead-card.pending  { border-left: 3px solid #E8780A; }
+    .lead-card.approved { border-left: 3px solid #48bb78; }
+    .lead-card.rejected { border-left: 3px solid #4a5568; opacity: 0.6; }
+
+    .lead-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .lead-business { font-size: 1.05rem; font-weight: 700; color: #fff; }
+    .lead-meta     { font-size: 0.8rem; color: #718096; margin-top: 3px; }
+
+    .lead-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+
+    .badge-pending  { background: rgba(232,120,10,0.15); color: #E8780A; }
+    .badge-approved { background: rgba(72,187,120,0.15); color: #48bb78; }
+    .badge-rejected { background: rgba(74,85,104,0.2);   color: #718096; }
+
+    .lead-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .lead-field label {
+      display: block;
+      font-size: 0.7rem;
+      color: #718096;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 3px;
+    }
+
+    .lead-field span {
+      font-size: 0.875rem;
+      color: #e2e8f0;
+      word-break: break-word;
+    }
+
+    .lead-field a { color: #E8780A; text-decoration: none; }
+    .lead-field a:hover { text-decoration: underline; }
+
+    .lead-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .btn {
+      padding: 8px 18px;
+      border-radius: 7px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover { opacity: 0.85; }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .btn-approve { background: #48bb78; color: #0f1117; }
+    .btn-reject  { background: #2d3748; color: #e2e8f0; }
+    .btn-view    { background: #E8780A; color: #fff; text-decoration: none; display: inline-flex; align-items: center; }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #4a5568;
+    }
+
+    .empty-state p { font-size: 0.9rem; }
+
+    .loading { text-align: center; padding: 40px; color: #718096; }
+
+    /* ── BUTTONS (auth) ── */
+    .btn-primary-auth {
+      width: 100%;
+      padding: 10px;
+      background: #E8780A;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-primary-auth:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+
+  <!-- ── AUTH SCREEN ── -->
+  <div id="auth-screen">
+    <div class="auth-box">
+      <h1>ICF Insider</h1>
+      <p>Admin access required</p>
+      <input type="password" id="admin-key-input" placeholder="Enter admin key" autocomplete="current-password">
+      <button class="btn-primary-auth" id="auth-btn">Sign In</button>
+      <p class="auth-error" id="auth-error">Incorrect key. Try again.</p>
+    </div>
+  </div>
+
+  <!-- ── MAIN SCREEN ── -->
+  <div id="main-screen">
+    <div class="admin-header">
+      <h1>ICF Insider — Admin</h1>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <span id="lead-count-label"></span>
+        <button class="logout-btn" id="logout-btn">Sign Out</button>
+      </div>
+    </div>
+
+    <div class="admin-body">
+      <div class="status-tabs">
+        <button class="status-tab active" data-status="pending">Pending <span class="tab-badge" id="badge-pending">0</span></button>
+        <button class="status-tab" data-status="approved">Approved</button>
+        <button class="status-tab" data-status="rejected">Rejected</button>
+        <button class="status-tab" data-status="all">All</button>
+      </div>
+
+      <div id="leads-container">
+        <div class="loading">Loading leads...</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var adminKey = '';
+    var currentStatus = 'pending';
+
+    // ── AUTH ──
+    function tryAuth() {
+      var key = document.getElementById('admin-key-input').value.trim();
+      if (!key) return;
+
+      fetch('/api/admin/leads?status=pending', {
+        headers: { 'X-Admin-Key': key }
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data.ok) {
+          adminKey = key;
+          sessionStorage.setItem('icf_admin_key', key);
+          showMain(data.leads);
+        } else {
+          document.getElementById('auth-error').style.display = 'block';
+        }
+      })
+      .catch(function () {
+        document.getElementById('auth-error').style.display = 'block';
+      });
+    }
+
+    document.getElementById('auth-btn').addEventListener('click', tryAuth);
+    document.getElementById('admin-key-input').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') tryAuth();
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', function () {
+      sessionStorage.removeItem('icf_admin_key');
+      adminKey = '';
+      document.getElementById('main-screen').style.display = 'none';
+      document.getElementById('auth-screen').style.display = 'flex';
+    });
+
+    // Auto-login from session
+    var savedKey = sessionStorage.getItem('icf_admin_key');
+    if (savedKey) {
+      adminKey = savedKey;
+      loadLeads('pending');
+    }
+
+    // ── TABS ──
+    document.querySelectorAll('.status-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.status-tab').forEach(function (t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        currentStatus = tab.dataset.status;
+        loadLeads(currentStatus);
+      });
+    });
+
+    // ── LOAD LEADS ──
+    function loadLeads(status) {
+      document.getElementById('leads-container').innerHTML = '<div class="loading">Loading...</div>';
+
+      fetch('/api/admin/leads?status=' + status, {
+        headers: { 'X-Admin-Key': adminKey }
+      })
+      .then(function (r) {
+        if (r.status === 401) {
+          sessionStorage.removeItem('icf_admin_key');
+          location.reload();
+          return;
+        }
+        return r.json();
+      })
+      .then(function (data) {
+        if (!data) return;
+        if (data.ok) {
+          showMain(data.leads);
+        }
+      });
+    }
+
+    function showMain(leads) {
+      document.getElementById('auth-screen').style.display = 'none';
+      document.getElementById('main-screen').style.display = 'block';
+      renderLeads(leads);
+
+      // Update pending badge
+      if (currentStatus === 'pending') {
+        document.getElementById('badge-pending').textContent = leads.length;
+      }
+    }
+
+    // ── RENDER LEADS ──
+    function renderLeads(leads) {
+      var container = document.getElementById('leads-container');
+
+      if (!leads || leads.length === 0) {
+        container.innerHTML = '<div class="empty-state"><p>No ' + currentStatus + ' leads.</p></div>';
+        return;
+      }
+
+      document.getElementById('lead-count-label').textContent = leads.length + ' lead' + (leads.length !== 1 ? 's' : '');
+
+      container.innerHTML = leads.map(function (l) {
+        var status = l.status || 'pending';
+        var badgeClass = 'badge-' + status;
+        var cardClass  = 'lead-card ' + status;
+
+        var actionsHtml = '';
+        if (status === 'pending') {
+          actionsHtml = `
+            <button class="btn btn-approve" onclick="approveLead(${l.id}, this)">✓ Approve</button>
+            <button class="btn btn-reject"  onclick="rejectLead(${l.id}, this)">✕ Reject</button>
+          `;
+        } else if (status === 'approved') {
+          actionsHtml = `<a href="/find-a-pro.html" target="_blank" class="btn btn-view">View on Map →</a>`;
+        }
+
+        return `
+          <div class="lead-card ${status}" id="lead-${l.id}">
+            <div class="lead-header">
+              <div>
+                <div class="lead-business">${esc(l.company || l.name || 'Unknown')}</div>
+                <div class="lead-meta">${esc(l.name || '')} · Submitted ${formatDate(l.created_at)}</div>
+              </div>
+              <span class="lead-badge ${badgeClass}">${status}</span>
+            </div>
+            <div class="lead-grid">
+              ${field('Role', l.role)}
+              ${field('State', l.state)}
+              ${field('Zip Code', l.zip_code)}
+              ${field('Phone', l.phone ? `<a href="tel:${l.phone}">${esc(l.phone)}</a>` : '—', true)}
+              ${field('Email', l.email ? `<a href="mailto:${l.email}">${esc(l.email)}</a>` : '—', true)}
+              ${field('Website', l.website ? `<a href="${esc(l.website)}" target="_blank">${esc(l.website)}</a>` : '—', true)}
+              ${field('ICF Brand', l.brand)}
+              ${field('Project Type', l.project_type)}
+              ${field('Service Area', l.service_area)}
+            </div>
+            <div class="lead-actions">${actionsHtml}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function field(label, value, raw) {
+      var display = (raw ? value : esc(value || '')) || '—';
+      return `<div class="lead-field"><label>${label}</label><span>${display}</span></div>`;
+    }
+
+    function esc(str) {
+      return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function formatDate(str) {
+      if (!str) return '';
+      try { return new Date(str).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); }
+      catch (e) { return str; }
+    }
+
+    // ── APPROVE ──
+    function approveLead(id, btn) {
+      btn.disabled = true;
+      btn.textContent = 'Approving...';
+
+      fetch('/api/admin/approve', {
+        method: 'POST',
+        headers: { 'X-Admin-Key': adminKey, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: id })
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data.ok) {
+          var card = document.getElementById('lead-' + id);
+          card.style.transition = 'opacity 0.3s';
+          card.style.opacity = '0.4';
+          setTimeout(function () { loadLeads(currentStatus); }, 400);
+        } else {
+          btn.disabled = false;
+          btn.textContent = '✓ Approve';
+          alert('Error: ' + (data.error || 'Unknown error'));
+        }
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = '✓ Approve';
+        alert('Network error. Try again.');
+      });
+    }
+
+    // ── REJECT ──
+    function rejectLead(id, btn) {
+      if (!confirm('Reject this lead?')) return;
+      btn.disabled = true;
+      btn.textContent = 'Rejecting...';
+
+      fetch('/api/admin/reject', {
+        method: 'POST',
+        headers: { 'X-Admin-Key': adminKey, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: id })
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data.ok) {
+          var card = document.getElementById('lead-' + id);
+          card.style.transition = 'opacity 0.3s';
+          card.style.opacity = '0.4';
+          setTimeout(function () { loadLeads(currentStatus); }, 400);
+        } else {
+          btn.disabled = false;
+          btn.textContent = '✕ Reject';
+          alert('Error: ' + (data.error || 'Unknown error'));
+        }
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = '✕ Reject';
+        alert('Network error. Try again.');
+      });
+    }
+  </script>
+
+</body>
+</html>
