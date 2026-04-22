@@ -3,7 +3,12 @@
     "allow": [
       "WebSearch",
       "mcp__Claude_in_Chrome__navigate",
-      "Bash(xargs sed:*)"
+      "Bash(xargs sed:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx wrangler:*)",
+      "Bash(ls \"/c/Users/tkcot/Project ICFInsider/\"*.html)",
+      "Bash(xargs -I{} basename {})",
+      "Bash(node generate-states.js)"
     ]
   }
 }

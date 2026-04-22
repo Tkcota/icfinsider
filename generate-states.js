@@ -463,7 +463,7 @@ const STATES = [
 
 function page(name, slug, climate, tagline, stats, faq) {
   const id = slug.replace(/-/g,'');
-  const homeownerHref = `/early-access.html?tab=homeowner&state=${encodeURIComponent(name)}`;
+  const homeownerHref = `/get-connected.html?tab=homeowner&state=${encodeURIComponent(name)}`;
   const cardsHtml = CARDS[climate].map(c =>
     `<div class="why-card"><div class="why-icon">${ICONS[c.i]}</div><div><h3>${c.t}</h3><p>${c.b}</p></div></div>`
   ).join('');
@@ -574,9 +574,9 @@ function page(name, slug, climate, tagline, stats, faq) {
           <div class="contractor-banner">
             <div class="contractor-banner-text">
               <span class="eyebrow" style="font-size:0.7rem;">ICF Contractors &amp; Builders</span>
-              <p>Are you an ICF contractor in ${name}? Get early access to the directory and start receiving leads.</p>
+              <p>Are you an ICF contractor in ${name}? Get listed free and start getting found by homeowners in your area.</p>
             </div>
-            <a href="/early-access.html?tab=contractor" class="btn btn-primary">Reserve My Spot &rarr;</a>
+            <a href="/get-connected.html?tab=contractor" class="btn btn-primary">List Your Business Free &rarr;</a>
           </div>
         </section>
         <section id="${id}-faq" style="margin-top:var(--space-16);">
@@ -616,7 +616,7 @@ function page(name, slug, climate, tagline, stats, faq) {
           <p>The independent authority on Insulated Concrete Form construction.</p>
         </div>
         <div class="footer-col"><h4>Learn</h4><ul class="footer-links" role="list"><li><a href="/icf-101.html" class="footer-link">ICF 101</a></li><li><a href="/cost-guide.html" class="footer-link">Cost Guide</a></li><li><a href="/brands.html" class="footer-link">Brand Comparison</a></li></ul></div>
-        <div class="footer-col"><h4>Directory</h4><ul class="footer-links" role="list"><li><a href="/find-a-pro.html" class="footer-link">Find a Pro</a></li><li><a href="/early-access.html?tab=contractor" class="footer-link">List Your Business</a></li></ul></div>
+        <div class="footer-col"><h4>Directory</h4><ul class="footer-links" role="list"><li><a href="/find-a-pro.html" class="footer-link">Find a Pro</a></li><li><a href="/get-connected.html?tab=contractor" class="footer-link">List Your Business</a></li></ul></div>
       </div>
       <div class="footer-bottom"><p>&copy; 2026 ICF Insider. Independent and unaffiliated with any ICF brand or manufacturer.</p></div>
     </div>
