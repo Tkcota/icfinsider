@@ -856,15 +856,36 @@
       var leafletMap = null;
       var geocodeCache = {};
 
-      function geocode(query) {
-        if (geocodeCache[query]) return Promise.resolve(geocodeCache[query]);
-        return fetch('https://nominatim.openstreetmap.org/search?q=' + encodeURIComponent(query) + '&format=json&limit=1')
+      // Throttled geocode queue — max 1 request/sec to avoid Nominatim rate limiting
+      var geocodeQueue = [];
+      var geocodeRunning = false;
+
+      function processGeocodeQueue() {
+        if (geocodeQueue.length === 0) { geocodeRunning = false; return; }
+        geocodeRunning = true;
+        var item = geocodeQueue.shift();
+        if (geocodeCache[item.query]) {
+          item.resolve(geocodeCache[item.query]);
+          setTimeout(processGeocodeQueue, 0);
+          return;
+        }
+        fetch('https://nominatim.openstreetmap.org/search?q=' + encodeURIComponent(item.query) + '&format=json&limit=1')
           .then(function (r) { return r.json(); })
           .then(function (data) {
             var result = data && data[0] ? [parseFloat(data[0].lat), parseFloat(data[0].lon)] : null;
-            geocodeCache[query] = result;
-            return result;
-          });
+            geocodeCache[item.query] = result;
+            item.resolve(result);
+          })
+          .catch(function () { item.resolve(null); })
+          .finally(function () { setTimeout(processGeocodeQueue, 1100); });
+      }
+
+      function geocode(query) {
+        if (geocodeCache[query]) return Promise.resolve(geocodeCache[query]);
+        return new Promise(function (resolve) {
+          geocodeQueue.push({ query: query, resolve: resolve });
+          if (!geocodeRunning) processGeocodeQueue();
+        });
       }
 
       function renderMap() {
