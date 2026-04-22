@@ -705,6 +705,9 @@
   </footer>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"/>
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
   <script src="js/main.js"></script>
 
   <script>
@@ -888,6 +891,8 @@
         });
       }
 
+      var markerCluster = null;
+
       function renderMap() {
         var mapEl = document.getElementById('map-container');
 
@@ -899,11 +904,12 @@
             attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
             maxZoom: 18
           }).addTo(leafletMap);
-        } else {
-          leafletMap.eachLayer(function (layer) {
-            if (layer instanceof L.Marker) leafletMap.removeLayer(layer);
-          });
         }
+
+        // Clear previous cluster layer
+        if (markerCluster) leafletMap.removeLayer(markerCluster);
+        markerCluster = L.markerClusterGroup({ maxClusterRadius: 40 });
+        leafletMap.addLayer(markerCluster);
 
         // Get current filtered listings
         var filtered = allListings.filter(function (l) {
@@ -925,7 +931,7 @@
             html: '<div style="width:16px;height:16px;background:' + pinColor + ';border:2px solid #fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.4);"></div>',
             iconSize: [16, 16], iconAnchor: [8, 8], popupAnchor: [0, -10]
           });
-          L.marker(coords, { icon: colorPin }).addTo(leafletMap).bindPopup(popup);
+          markerCluster.addLayer(L.marker(coords, { icon: colorPin }).bindPopup(popup));
         }
 
         filtered.forEach(function (l) {
