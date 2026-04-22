@@ -737,9 +737,9 @@
           + '<div class="listing-card-body">'
           + '<div class="listing-card-name">' + l.business_name + '</div>'
           + '<div class="listing-card-meta">'
-          + '<span>📍 ' + location + '</span>'
-          + '<span>🏢 ' + proTypeLabel(l.pro_type) + '</span>'
-          + (l.service_area ? '<span>🗺 ' + l.service_area + '</span>' : '')
+          + '<span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:3px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>' + location + '</span>'
+          + '<span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:3px"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>' + proTypeLabel(l.pro_type) + '</span>'
+          + (l.service_area ? '<span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:3px"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>' + l.service_area + '</span>' : '')
           + '</div>'
           + '<div class="listing-tags">' + tags + '</div>'
           + '</div>'
