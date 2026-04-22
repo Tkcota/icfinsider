@@ -489,6 +489,7 @@ function page(name, slug, climate, tagline, stats, faq) {
   <meta property="og:type" content="website">
   <meta property="og:title" content="ICF Construction in ${name} | ICF Insider">
   <meta property="og:description" content="${tagline.substring(0,120)}">
+  <meta property="og:image" content="https://icfinsider.com/images/og-image.png">
   <meta property="og:url" content="https://icfinsider.com/states/${slug}/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
