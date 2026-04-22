@@ -269,22 +269,41 @@ async function handleAdminApprove(request, env) {
       ? (lead.website.match(/^https?:\/\//i) ? lead.website : 'https://' + lead.website)
       : '';
 
-    // Look up city name from zip code via zippopotam.us
+    // Look up city name and coordinates from zip code
     let city = '';
+    let lat = null, lng = null;
     if (lead.zip_code && /^\d{5}/.test(lead.zip_code.trim())) {
+      const zip5 = lead.zip_code.trim().slice(0, 5);
       try {
-        const zipRes = await fetch(`https://api.zippopotam.us/us/${lead.zip_code.trim().slice(0, 5)}`);
+        const zipRes = await fetch(`https://api.zippopotam.us/us/${zip5}`);
         if (zipRes.ok) {
           const zipData = await zipRes.json();
-          city = zipData.places?.[0]?.['place name'] || '';
+          if (zipData.places?.[0]) {
+            city = zipData.places[0]['place name'] || '';
+            lat  = parseFloat(zipData.places[0].latitude)  || null;
+            lng  = parseFloat(zipData.places[0].longitude) || null;
+          }
         }
-      } catch (e) { /* ignore — city stays blank */ }
+      } catch (e) { /* ignore */ }
+    }
+    // Fall back to state-level geocode if no zip coords
+    if (!lat || !lng) {
+      try {
+        const geoQuery = encodeURIComponent((lead.state || 'USA') + ', USA');
+        const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?q=${geoQuery}&format=json&limit=1`, {
+          headers: { 'User-Agent': 'ICFInsider/1.0 (icfinsider.com)' }
+        });
+        if (geoRes.ok) {
+          const geoData = await geoRes.json();
+          if (geoData?.[0]) { lat = parseFloat(geoData[0].lat); lng = parseFloat(geoData[0].lon); }
+        }
+      } catch (e) { /* ignore */ }
     }
 
     // Insert into listings
     await env.DB.prepare(`
-      INSERT INTO listings (slug, business_name, pro_type, state, zip_code, city, phone, website, email, brands, project_types, service_area, active, featured)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 0)
+      INSERT INTO listings (slug, business_name, pro_type, state, zip_code, city, lat, lng, phone, website, email, brands, project_types, service_area, active, featured)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 0)
     `).bind(
       slug,
       lead.company || lead.name,
@@ -292,6 +311,8 @@ async function handleAdminApprove(request, env) {
       lead.state || '',
       lead.zip_code || '',
       city,
+      lat,
+      lng,
       lead.phone || '',
       website,
       lead.email || '',

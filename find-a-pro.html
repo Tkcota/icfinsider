@@ -892,27 +892,33 @@
           return true;
         });
 
-        // Geocode and place markers
-        filtered.forEach(function (l) {
-          // If city field looks like a zip code (all digits), geocode by zip alone for precision
-        var isZip = l.zip_code && /^\d{5}(-\d{4})?$/.test(l.zip_code.trim());
-        var query = isZip ? l.zip_code + ', USA' : (l.zip_code ? l.zip_code + ', ' : '') + l.state + ', USA';
-          geocode(query).then(function (coords) {
-            if (!coords) return;
-            var popup = '<strong>' + l.business_name + '</strong><br>'
-              + proTypeLabel(l.pro_type) + ' · ' + (l.city ? l.city + ', ' : '') + l.state
-              + (l.phone ? '<br><a href="tel:' + l.phone.replace(/\D/g,'') + '">' + l.phone + '</a>' : '')
-              + (l.website ? '<br><a href="' + l.website + '" target="_blank" rel="noopener">Visit Website</a>' : '');
-            var pinColor = pinColors[l.pro_type] || '#cc2200';
-            var colorPin = L.divIcon({
-              className: '',
-              html: '<div style="width:16px;height:16px;background:' + pinColor + ';border:2px solid #fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.4);"></div>',
-              iconSize: [16, 16],
-              iconAnchor: [8, 8],
-              popupAnchor: [0, -10]
-            });
-            L.marker(coords, { icon: colorPin }).addTo(leafletMap).bindPopup(popup);
+        // Place markers — use stored lat/lng if available, fall back to Nominatim
+        function placeMarker(coords, l) {
+          var popup = '<strong>' + l.business_name + '</strong><br>'
+            + proTypeLabel(l.pro_type) + ' · ' + (l.city ? l.city + ', ' : '') + l.state
+            + (l.phone ? '<br><a href="tel:' + l.phone.replace(/\D/g,'') + '">' + formatPhone(l.phone) + '</a>' : '')
+            + (l.website ? '<br><a href="' + ensureUrl(l.website) + '" target="_blank" rel="noopener">Visit Website</a>' : '');
+          var pinColor = pinColors[l.pro_type] || '#cc2200';
+          var colorPin = L.divIcon({
+            className: '',
+            html: '<div style="width:16px;height:16px;background:' + pinColor + ';border:2px solid #fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.4);"></div>',
+            iconSize: [16, 16], iconAnchor: [8, 8], popupAnchor: [0, -10]
           });
+          L.marker(coords, { icon: colorPin }).addTo(leafletMap).bindPopup(popup);
+        }
+
+        filtered.forEach(function (l) {
+          if (l.lat && l.lng) {
+            // Use stored coordinates — no API call needed
+            placeMarker([l.lat, l.lng], l);
+          } else {
+            // Fall back to Nominatim for older listings without stored coords
+            var isZip = l.zip_code && /^\d{5}(-\d{4})?$/.test(l.zip_code.trim());
+            var query = isZip ? l.zip_code + ', USA' : (l.zip_code ? l.zip_code + ', ' : '') + l.state + ', USA';
+            geocode(query).then(function (coords) {
+              if (coords) placeMarker(coords, l);
+            });
+          }
         });
 
         // Resize map in case container just became visible
