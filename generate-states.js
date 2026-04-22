@@ -522,7 +522,7 @@ function page(name, slug, climate, tagline, stats, faq) {
 <body>
   <nav class="nav" id="main-nav" aria-label="Main navigation">
     <div class="container nav-inner">
-      <a href="/" class="nav-logo" aria-label="ICF Insider home"><div class="nav-logo-mark" aria-hidden="true">I</div><span class="nav-logo-text">ICF <span>Insider</span></span></a>
+      <a href="/" class="nav-logo" aria-label="ICF Insider home"><span class="nav-logo-text">ICF <span>Insider</span></span></a>
       <ul class="nav-links" role="list">
         <li><a href="/icf-101.html" class="nav-link">ICF 101</a></li>
         <li><a href="/cost-guide.html" class="nav-link">Cost Guide</a></li>
@@ -612,7 +612,7 @@ function page(name, slug, climate, tagline, stats, faq) {
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="/" class="nav-logo" aria-label="ICF Insider home"><div class="nav-logo-mark" aria-hidden="true">I</div><span class="nav-logo-text">ICF <span>Insider</span></span></a>
+          <a href="/" class="nav-logo" aria-label="ICF Insider home"><span class="nav-logo-text">ICF <span>Insider</span></span></a>
           <p>The independent authority on Insulated Concrete Form construction.</p>
         </div>
         <div class="footer-col"><h4>Learn</h4><ul class="footer-links" role="list"><li><a href="/icf-101.html" class="footer-link">ICF 101</a></li><li><a href="/cost-guide.html" class="footer-link">Cost Guide</a></li><li><a href="/brands.html" class="footer-link">Brand Comparison</a></li></ul></div>
