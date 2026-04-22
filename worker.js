@@ -249,6 +249,7 @@ async function handleAdminApprove(request, env) {
       'ICF Distributor':      'distributor',
       'Architect / Designer': 'architect',
       'Structural Engineer':  'engineer',
+      'ICF Pool Contractor':  'pool',
     };
     const pro_type = roleMap[lead.role] || 'contractor';
 

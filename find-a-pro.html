@@ -530,6 +530,7 @@
           <option>Distributors</option>
           <option>Architects &amp; Designers</option>
           <option>Structural Engineers</option>
+          <option>ICF Pool Contractors</option>
         </select>
 
         <select class="search-select" id="filter-brand" aria-label="Filter by ICF brand">
@@ -566,6 +567,15 @@
           </button>
         </div>
 
+        <!-- Map legend (hidden until map view active) -->
+        <div id="map-legend" style="display:none;flex-wrap:wrap;gap:12px;margin-bottom:10px;padding:10px 14px;background:var(--color-surface);border:1px solid var(--color-border-light);border-radius:var(--radius-sm);font-size:0.8rem;">
+          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#cc2200;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Contractor</span>
+          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#1d4ed8;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Distributor</span>
+          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#16a34a;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Architect</span>
+          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#7c3aed;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Engineer</span>
+          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#0891b2;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>ICF Pool</span>
+        </div>
+
         <!-- Map container (hidden by default) -->
         <div id="map-container"></div>
 
@@ -576,6 +586,7 @@
           <button class="pro-type-tab" role="tab">Distributors</button>
           <button class="pro-type-tab" role="tab">Architects</button>
           <button class="pro-type-tab" role="tab">Engineers</button>
+          <button class="pro-type-tab" role="tab">ICF Pools</button>
         </div>
 
         <div class="directory-results-header">
@@ -721,9 +732,19 @@
           contractor:  'Contractor',
           architect:   'Architect',
           engineer:    'Structural Engineer',
+          pool:        'ICF Pool Contractor',
         };
         return labels[type] || type;
       }
+
+      // Color per pro type for map pins
+      var pinColors = {
+        contractor:  '#cc2200',
+        distributor: '#1d4ed8',
+        architect:   '#16a34a',
+        engineer:    '#7c3aed',
+        pool:        '#0891b2',
+      };
 
       function renderCard(l) {
         var tags = '';
@@ -802,7 +823,7 @@
           tabs.forEach(function (t) { t.classList.remove('active'); });
           tab.classList.add('active');
           var label = tab.textContent.trim();
-          var map = { 'All Pros': '', 'Contractors': 'contractor', 'Distributors': 'distributor', 'Architects': 'architect', 'Engineers': 'engineer' };
+          var map = { 'All Pros': '', 'Contractors': 'contractor', 'Distributors': 'distributor', 'Architects': 'architect', 'Engineers': 'engineer', 'ICF Pools': 'pool' };
           activeFilters.pro_type = map[label] !== undefined ? map[label] : '';
           applyFilters();
         });
@@ -814,7 +835,7 @@
         applyFilters();
       });
       document.getElementById('filter-type').addEventListener('change', function () {
-        var map = { 'Contractors & Builders': 'contractor', 'Distributors': 'distributor', 'Architects & Designers': 'architect', 'Structural Engineers': 'engineer' };
+        var map = { 'Contractors & Builders': 'contractor', 'Distributors': 'distributor', 'Architects & Designers': 'architect', 'Structural Engineers': 'engineer', 'ICF Pool Contractors': 'pool' };
         activeFilters.pro_type = map[this.value] || '';
         applyFilters();
       });
@@ -876,14 +897,15 @@
               + proTypeLabel(l.pro_type) + ' · ' + (l.city ? l.city + ', ' : '') + l.state
               + (l.phone ? '<br><a href="tel:' + l.phone.replace(/\D/g,'') + '">' + l.phone + '</a>' : '')
               + (l.website ? '<br><a href="' + l.website + '" target="_blank" rel="noopener">Visit Website</a>' : '');
-            var redPin = L.divIcon({
+            var pinColor = pinColors[l.pro_type] || '#cc2200';
+            var colorPin = L.divIcon({
               className: '',
-              html: '<div style="width:16px;height:16px;background:#cc2200;border:2px solid #fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.4);"></div>',
+              html: '<div style="width:16px;height:16px;background:' + pinColor + ';border:2px solid #fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.4);"></div>',
               iconSize: [16, 16],
               iconAnchor: [8, 8],
               popupAnchor: [0, -10]
             });
-            L.marker(coords, { icon: redPin }).addTo(leafletMap).bindPopup(popup);
+            L.marker(coords, { icon: colorPin }).addTo(leafletMap).bindPopup(popup);
           });
         });
 
@@ -897,6 +919,7 @@
         document.getElementById('btn-list-view').classList.add('active');
         document.getElementById('btn-map-view').classList.remove('active');
         document.getElementById('map-container').classList.remove('active');
+        document.getElementById('map-legend').style.display = 'none';
         document.getElementById('listings-container').style.display = '';
         document.querySelector('.pro-type-tabs').style.display = '';
         document.getElementById('results-count').style.display = '';
@@ -907,6 +930,7 @@
         document.getElementById('btn-map-view').classList.add('active');
         document.getElementById('btn-list-view').classList.remove('active');
         document.getElementById('map-container').classList.add('active');
+        document.getElementById('map-legend').style.display = 'flex';
         document.getElementById('listings-container').style.display = 'none';
         document.querySelector('.pro-type-tabs').style.display = 'none';
         document.getElementById('results-count').style.display = 'none';
