@@ -741,6 +741,11 @@
         pool:        '#0891b2',
       };
 
+      function ensureUrl(url) {
+        if (!url) return '';
+        return /^https?:\/\//i.test(url) ? url : 'https://' + url;
+      }
+
       function renderCard(l) {
         var tags = '';
         if (l.featured) tags += '<span class="listing-tag featured">Featured</span>';
@@ -753,7 +758,7 @@
 
         var location = l.city ? l.city + ', ' + l.state : l.state;
         var websiteBtn = l.website
-          ? '<a href="' + l.website + '" target="_blank" rel="noopener" class="btn btn-primary">Visit Website</a>'
+          ? '<a href="' + ensureUrl(l.website) + '" target="_blank" rel="noopener" class="btn btn-primary">Visit Website</a>'
           : '';
         var phoneBtn = l.phone
           ? '<a href="tel:' + l.phone.replace(/\D/g, '') + '" class="btn btn-outline-dark">' + l.phone + '</a>'
