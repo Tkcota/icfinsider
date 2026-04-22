@@ -32,9 +32,15 @@
   </url>
 
   <url>
-    <loc>https://icfinsider.com/early-access.html</loc>
+    <loc>https://icfinsider.com/get-connected.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://icfinsider.com/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -102,5 +108,33 @@
   <url><loc>https://icfinsider.com/states/west-virginia/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://icfinsider.com/states/wisconsin/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://icfinsider.com/states/wyoming/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- City pages -->
+  <url><loc>https://icfinsider.com/locations/tampa-fl/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/locations/orlando-fl/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/locations/miami-fl/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/locations/jacksonville-fl/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://icfinsider.com/locations/sarasota-fl/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://icfinsider.com/locations/houston-tx/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/locations/dallas-tx/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/locations/austin-tx/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/locations/san-antonio-tx/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://icfinsider.com/locations/phoenix-az/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/locations/tucson-az/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://icfinsider.com/locations/atlanta-ga/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/locations/charlotte-nc/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://icfinsider.com/locations/raleigh-nc/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://icfinsider.com/locations/denver-co/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/locations/las-vegas-nv/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/locations/salt-lake-city-ut/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://icfinsider.com/locations/nashville-tn/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://icfinsider.com/locations/charleston-sc/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://icfinsider.com/locations/virginia-beach-va/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://icfinsider.com/locations/albany-ny/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://icfinsider.com/locations/buffalo-ny/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://icfinsider.com/locations/los-angeles-ca/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/locations/san-diego-ca/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://icfinsider.com/locations/columbus-oh/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://icfinsider.com/locations/philadelphia-pa/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
 </urlset>
