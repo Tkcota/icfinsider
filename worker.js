@@ -26,9 +26,10 @@ export default {
     if (url.pathname === '/api/listings') return handleListings(request, env);
     if (url.pathname === '/api/submit')   return handleSubmit(request, env);
 
-    // ── Redirect old early-access URLs to list-your-business ──
-    if (url.pathname === '/early-access' || url.pathname === '/early-access.html') {
-      const newUrl = new URL('/list-your-business.html' + url.search, url.origin);
+    // ── Redirect old URLs to get-connected ──
+    if (url.pathname === '/early-access' || url.pathname === '/early-access.html' ||
+        url.pathname === '/list-your-business' || url.pathname === '/list-your-business.html') {
+      const newUrl = new URL('/get-connected.html' + url.search, url.origin);
       return Response.redirect(newUrl.href, 301);
     }
 
