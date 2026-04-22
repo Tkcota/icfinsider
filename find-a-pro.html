@@ -757,7 +757,7 @@
           tags += '<span class="listing-tag">' + p + '</span>';
         });
 
-        var location = l.city ? l.city + ', ' + l.state : l.state;
+        var location = l.zip_code ? l.zip_code + ', ' + l.state : l.state;
         var websiteBtn = l.website
           ? '<a href="' + l.website + '" target="_blank" rel="noopener" class="btn btn-primary">Visit Website</a>'
           : '';
@@ -889,12 +889,12 @@
         // Geocode and place markers
         filtered.forEach(function (l) {
           // If city field looks like a zip code (all digits), geocode by zip alone for precision
-        var isZip = l.city && /^\d{5}(-\d{4})?$/.test(l.city.trim());
-        var query = isZip ? l.city + ', USA' : (l.city ? l.city + ', ' : '') + l.state + ', USA';
+        var isZip = l.zip_code && /^\d{5}(-\d{4})?$/.test(l.zip_code.trim());
+        var query = isZip ? l.zip_code + ', USA' : (l.zip_code ? l.zip_code + ', ' : '') + l.state + ', USA';
           geocode(query).then(function (coords) {
             if (!coords) return;
             var popup = '<strong>' + l.business_name + '</strong><br>'
-              + proTypeLabel(l.pro_type) + ' · ' + (l.city ? l.city + ', ' : '') + l.state
+              + proTypeLabel(l.pro_type) + ' · ' + (l.zip_code ? l.zip_code + ', ' : '') + l.state
               + (l.phone ? '<br><a href="tel:' + l.phone.replace(/\D/g,'') + '">' + l.phone + '</a>' : '')
               + (l.website ? '<br><a href="' + l.website + '" target="_blank" rel="noopener">Visit Website</a>' : '');
             var pinColor = pinColors[l.pro_type] || '#cc2200';

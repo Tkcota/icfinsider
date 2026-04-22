@@ -266,7 +266,7 @@ async function handleAdminApprove(request, env) {
 
     // Insert into listings
     await env.DB.prepare(`
-      INSERT INTO listings (slug, business_name, pro_type, state, city, phone, website, email, brands, project_types, service_area, active, featured)
+      INSERT INTO listings (slug, business_name, pro_type, state, zip_code, phone, website, email, brands, project_types, service_area, active, featured)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 0)
     `).bind(
       slug,

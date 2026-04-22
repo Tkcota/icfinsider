@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS listings (
   business_name TEXT NOT NULL,
   pro_type      TEXT NOT NULL,          -- 'contractor' | 'distributor' | 'architect' | 'engineer'
   state         TEXT NOT NULL,          -- e.g. 'Florida'
-  city          TEXT,                   -- e.g. 'Tampa' or leave blank for statewide
+  zip_code      TEXT,                   -- zip code for map geocoding
   service_area  TEXT,                   -- plain-text e.g. 'All of Florida'
   phone         TEXT,
   website       TEXT,
