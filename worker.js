@@ -32,9 +32,10 @@ export default {
     // ── API routes ────────────────────────────────────────────
     if (url.pathname === '/api/listings')      return handleListings(request, env);
     if (url.pathname === '/api/submit')        return handleSubmit(request, env);
-    if (url.pathname === '/api/admin/leads')   return handleAdminLeads(request, env);
-    if (url.pathname === '/api/admin/approve') return handleAdminApprove(request, env);
-    if (url.pathname === '/api/admin/reject')  return handleAdminReject(request, env);
+    if (url.pathname === '/api/admin/leads')         return handleAdminLeads(request, env);
+    if (url.pathname === '/api/admin/approve')       return handleAdminApprove(request, env);
+    if (url.pathname === '/api/admin/reject')        return handleAdminReject(request, env);
+    if (url.pathname === '/api/admin/geocode-all')   return handleGeocodeAll(request, env);
 
     // ── Redirect old URLs to get-connected ──
     if (url.pathname === '/early-access' || url.pathname === '/early-access.html' ||
@@ -354,4 +355,64 @@ async function handleAdminReject(request, env) {
   } catch (e) {
     return new Response(JSON.stringify({ ok: false, error: 'Database error' }), { status: 500, headers: adminCors });
   }
+}
+
+
+// ── GET /api/admin/geocode-all ────────────────────────────────────────────────
+// One-time: geocode all listings missing lat/lng and store coordinates in DB.
+
+async function handleGeocodeAll(request, env) {
+  if (!checkAdminAuth(request, env)) {
+    return new Response(JSON.stringify({ ok: false, error: 'Unauthorized' }), { status: 401, headers: adminCors });
+  }
+
+  const { results } = await env.DB.prepare(
+    `SELECT id, zip_code, state FROM listings WHERE lat IS NULL OR lng IS NULL`
+  ).all();
+
+  const updated = [];
+  const failed  = [];
+
+  for (const listing of results) {
+    let lat = null, lng = null;
+
+    // Try zippopotam.us first (zip code → precise coords, no rate limit)
+    if (listing.zip_code && /^\d{5}/.test(listing.zip_code.trim())) {
+      try {
+        const res = await fetch(`https://api.zippopotam.us/us/${listing.zip_code.trim().slice(0, 5)}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.places?.[0]) {
+            lat = parseFloat(data.places[0].latitude);
+            lng = parseFloat(data.places[0].longitude);
+          }
+        }
+      } catch (e) {}
+    }
+
+    // Fall back to Nominatim (state-level) with delay to respect rate limit
+    if (!lat || !lng) {
+      try {
+        const query = encodeURIComponent((listing.state || 'USA') + ', USA');
+        const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1`, {
+          headers: { 'User-Agent': 'ICFInsider/1.0 (icfinsider.com)' }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data?.[0]) { lat = parseFloat(data[0].lat); lng = parseFloat(data[0].lon); }
+        }
+      } catch (e) {}
+      // Respect Nominatim 1 req/sec limit
+      await new Promise(r => setTimeout(r, 1100));
+    }
+
+    if (lat && lng) {
+      await env.DB.prepare(`UPDATE listings SET lat = ?, lng = ? WHERE id = ?`).bind(lat, lng, listing.id).run();
+      updated.push(listing.id);
+    } else {
+      failed.push(listing.id);
+    }
+  }
+
+  return new Response(JSON.stringify({ ok: true, updated, failed }), { headers: adminCors });
 }
