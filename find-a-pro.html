@@ -109,6 +109,52 @@
     }
 
     /* -------------------------------------------------------
+       DESKTOP SPLIT VIEW — list left, map right
+    ------------------------------------------------------- */
+    @media (min-width: 1024px) {
+
+      .directory-split {
+        display: flex;
+        gap: var(--space-5);
+        align-items: flex-start;
+      }
+
+      .split-list {
+        flex: 1;
+        min-width: 0;
+        max-height: calc(100vh - 280px);
+        overflow-y: auto;
+        padding-right: var(--space-2);
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-border-light) transparent;
+      }
+
+      .split-map {
+        width: 38%;
+        flex-shrink: 0;
+        position: sticky;
+        top: calc(var(--nav-height) + var(--space-4));
+      }
+
+      #map-container {
+        display: block !important;
+        height: calc(100vh - 280px);
+        border-radius: var(--radius-lg);
+      }
+
+      #map-legend {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        margin-bottom: var(--space-3);
+      }
+
+      /* Full-screen map mode on desktop */
+      .directory-split.map-fullscreen .split-list { display: none; }
+      .directory-split.map-fullscreen .split-map  { width: 100%; }
+      .directory-split.map-fullscreen #map-container { height: calc(100vh - 220px); }
+    }
+
+    /* -------------------------------------------------------
        DIRECTORY RESULTS AREA
     ------------------------------------------------------- */
     .directory-results-header {
@@ -551,7 +597,7 @@
     <div class="directory-layout">
       <main aria-label="Directory results">
 
-        <!-- List / Map toggle -->
+        <!-- List / Map toggle (mobile only) -->
         <div class="view-toggle">
           <button class="view-toggle-btn active" id="btn-list-view">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
@@ -562,18 +608,6 @@
             Map View
           </button>
         </div>
-
-        <!-- Map legend (hidden until map view active) -->
-        <div id="map-legend" style="display:none;flex-wrap:wrap;gap:12px;margin-bottom:10px;padding:10px 14px;background:var(--color-surface);border:1px solid var(--color-border-light);border-radius:var(--radius-sm);font-size:0.8rem;">
-          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#cc2200;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Contractor</span>
-          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#1d4ed8;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Distributor</span>
-          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#16a34a;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Architect</span>
-          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#7c3aed;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Engineer</span>
-          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#0891b2;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>ICF Pool</span>
-        </div>
-
-        <!-- Map container (hidden by default) -->
-        <div id="map-container"></div>
 
         <!-- Pro type tabs -->
         <div class="pro-type-tabs" role="tablist">
@@ -589,18 +623,34 @@
           <p class="results-count" id="results-count">Loading listings…</p>
         </div>
 
-        <!-- Listings render here -->
-        <div id="listings-container"></div>
+        <!-- Split layout: list left, map right -->
+        <div class="directory-split">
 
-        <!-- Claim your listing CTA (always visible at bottom) -->
-        <div class="claim-listing-cta">
-          <h3>Are you an ICF professional?</h3>
-          <p>Contractors, builders, distributors, architects, and engineers are all welcome. Get listed free and get found by homeowners searching for ICF pros in your area.</p>
-          <a href="get-connected.html?tab=contractor" class="btn btn-primary">List Your Business — Free</a>
-        </div>
+          <!-- LEFT: scrollable list -->
+          <div class="split-list">
+            <div id="listings-container"></div>
+            <div class="claim-listing-cta">
+              <h3>Are you an ICF professional?</h3>
+              <p>Contractors, builders, distributors, architects, and engineers are all welcome. Get listed free and get found by homeowners searching for ICF pros in your area.</p>
+              <a href="get-connected.html?tab=contractor" class="btn btn-primary">List Your Business — Free</a>
+            </div>
+          </div>
+
+          <!-- RIGHT: sticky map -->
+          <div class="split-map">
+            <div id="map-legend" style="display:none;flex-wrap:wrap;gap:8px;margin-bottom:10px;padding:8px 12px;background:var(--color-surface);border:1px solid var(--color-border-light);border-radius:var(--radius-sm);font-size:0.75rem;">
+              <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#cc2200;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Contractor</span>
+              <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#1d4ed8;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Distributor</span>
+              <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#16a34a;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Architect</span>
+              <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#7c3aed;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Engineer</span>
+              <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#0891b2;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>ICF Pool</span>
+            </div>
+            <div id="map-container"></div>
+          </div>
+
+        </div><!-- /.directory-split -->
 
       </main>
-
     </div><!-- /.directory-layout -->
   </div><!-- /.container -->
 
@@ -787,6 +837,7 @@
       }
 
       function applyFilters() {
+        if (isDesktop()) renderMap();
         var filtered = allListings.filter(function (l) {
           if (activeFilters.state    && l.state    !== activeFilters.state)    return false;
           if (activeFilters.pro_type && l.pro_type !== activeFilters.pro_type) return false;
@@ -811,12 +862,19 @@
         }
       }
 
+      function isDesktop() { return window.innerWidth >= 1024; }
+
       // ---- Fetch listings ----
       fetch('/api/listings')
         .then(function (r) { return r.json(); })
         .then(function (data) {
           allListings = data.listings || [];
           applyFilters();
+          if (isDesktop()) {
+            document.getElementById('map-container').classList.add('active');
+            document.getElementById('map-legend').style.display = 'flex';
+            renderMap();
+          }
         })
         .catch(function () {
           document.getElementById('results-count').textContent = 'Could not load listings.';
@@ -848,7 +906,6 @@
       document.getElementById('filter-brand').addEventListener('change', function () {
         activeFilters.brand = this.value;
         applyFilters();
-        if (currentView === 'map') renderMap();
       });
 
       // ---- Map view ----
@@ -894,7 +951,7 @@
         // Init map once
         if (!leafletMap) {
           var isMobile = window.innerWidth < 768;
-          leafletMap = L.map('map-container').setView([39.5, -98.35], isMobile ? 3 : 4);
+          leafletMap = L.map('map-container').setView([39.5, -98.35], 3);
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
             maxZoom: 18
@@ -943,7 +1000,7 @@
         });
 
         // Resize map in case container just became visible
-        setTimeout(function () { leafletMap.invalidateSize(); }, 100);
+        setTimeout(function () { leafletMap.invalidateSize(); }, 150);
       }
 
       // Toggle between list and map view
@@ -951,23 +1008,35 @@
         currentView = 'list';
         document.getElementById('btn-list-view').classList.add('active');
         document.getElementById('btn-map-view').classList.remove('active');
-        document.getElementById('map-container').classList.remove('active');
-        document.getElementById('map-legend').style.display = 'none';
-        document.getElementById('listings-container').style.display = '';
-        document.querySelector('.pro-type-tabs').style.display = '';
-        document.getElementById('results-count').style.display = '';
+        if (isDesktop()) {
+          // Restore split view
+          document.querySelector('.directory-split').classList.remove('map-fullscreen');
+          setTimeout(function () { leafletMap && leafletMap.invalidateSize(); }, 150);
+        } else {
+          document.getElementById('map-container').classList.remove('active');
+          document.getElementById('map-legend').style.display = 'none';
+          document.getElementById('listings-container').style.display = '';
+          document.querySelector('.pro-type-tabs').style.display = '';
+          document.getElementById('results-count').style.display = '';
+        }
       });
 
       document.getElementById('btn-map-view').addEventListener('click', function () {
         currentView = 'map';
         document.getElementById('btn-map-view').classList.add('active');
         document.getElementById('btn-list-view').classList.remove('active');
-        document.getElementById('map-container').classList.add('active');
-        document.getElementById('map-legend').style.display = 'flex';
-        document.getElementById('listings-container').style.display = 'none';
-        document.querySelector('.pro-type-tabs').style.display = 'none';
-        document.getElementById('results-count').style.display = 'none';
-        renderMap();
+        if (isDesktop()) {
+          // Full-screen map on desktop
+          document.querySelector('.directory-split').classList.add('map-fullscreen');
+          setTimeout(function () { leafletMap && leafletMap.invalidateSize(); }, 150);
+        } else {
+          document.getElementById('map-container').classList.add('active');
+          document.getElementById('map-legend').style.display = 'flex';
+          document.getElementById('listings-container').style.display = 'none';
+          document.querySelector('.pro-type-tabs').style.display = 'none';
+          document.getElementById('results-count').style.display = 'none';
+          renderMap();
+        }
       });
 
     }());
