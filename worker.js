@@ -142,6 +142,21 @@ async function handleSubmit(request, env) {
     });
   }
 
+  // Validate required fields by lead type
+  const missing = [];
+  if (!name)  missing.push('name');
+  if (!phone) missing.push('phone');
+  if (lead_type === 'contractor') {
+    if (!company)  missing.push('company');
+    if (!role)     missing.push('role (Business Type)');
+    if (!zip_code) missing.push('zip code');
+  }
+  if (missing.length > 0) {
+    return new Response(JSON.stringify({ ok: false, error: 'Missing required fields: ' + missing.join(', ') }), {
+      status: 400, headers: cors,
+    });
+  }
+
   // Handle file upload to R2
   let file_key = null;
   const file = formData.get('project_file');
