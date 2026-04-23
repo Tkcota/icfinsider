@@ -261,6 +261,17 @@ async function handleAdminApprove(request, env) {
       .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     let slug = `${baseSlug}-${stateSlug}`;
 
+    // Check for duplicate listing by email
+    const duplicate = await env.DB.prepare(
+      `SELECT id, business_name FROM listings WHERE email = ? AND active = 1`
+    ).bind(lead.email).first();
+    if (duplicate) {
+      return new Response(JSON.stringify({
+        ok: false,
+        error: `Already listed: "${duplicate.business_name}" (listing #${duplicate.id}) uses this email.`
+      }), { status: 409, headers: adminCors });
+    }
+
     // Check for slug collision and append id if needed
     const existing = await env.DB.prepare(`SELECT id FROM listings WHERE slug = ?`).bind(slug).first();
     if (existing) slug = `${slug}-${id}`;
