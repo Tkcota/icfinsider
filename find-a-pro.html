@@ -1016,6 +1016,7 @@
           document.getElementById('map-container').classList.remove('active');
           document.getElementById('map-legend').style.display = 'none';
           document.getElementById('listings-container').style.display = '';
+          document.querySelector('.claim-listing-cta').style.display = '';
           document.querySelector('.pro-type-tabs').style.display = '';
           document.getElementById('results-count').style.display = '';
         }
@@ -1033,6 +1034,7 @@
           document.getElementById('map-container').classList.add('active');
           document.getElementById('map-legend').style.display = 'flex';
           document.getElementById('listings-container').style.display = 'none';
+          document.querySelector('.claim-listing-cta').style.display = 'none';
           document.querySelector('.pro-type-tabs').style.display = 'none';
           document.getElementById('results-count').style.display = 'none';
           renderMap();
