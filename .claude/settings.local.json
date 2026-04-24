@@ -10,7 +10,8 @@
       "Bash(xargs -I{} basename {})",
       "Bash(node generate-states.js)",
       "Bash(node generate-cities.js)",
-      "WebFetch(domain:api.zippopotam.us)"
+      "WebFetch(domain:api.zippopotam.us)",
+      "PowerShell(cd \"C:\\\\Users\\\\tkcot\\\\Project ICFInsider\"; powershell -ExecutionPolicy Bypass -File \"fix-footer.ps1\")"
     ]
   }
 }
