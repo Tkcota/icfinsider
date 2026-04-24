@@ -373,10 +373,17 @@
 
       document.getElementById('lead-count-label').textContent = leads.length + ' lead' + (leads.length !== 1 ? 's' : '');
 
+      // Find duplicate emails in this batch
+      var emailCounts = {};
+      leads.forEach(function (l) {
+        if (l.email) emailCounts[l.email.toLowerCase()] = (emailCounts[l.email.toLowerCase()] || 0) + 1;
+      });
+
       container.innerHTML = leads.map(function (l) {
         var status = l.status || 'pending';
         var badgeClass = 'badge-' + status;
         var cardClass  = 'lead-card ' + status;
+        var isDuplicate = l.email && emailCounts[l.email.toLowerCase()] > 1;
 
         var actionsHtml = '';
         if (status === 'pending') {
@@ -393,7 +400,7 @@
             <div class="lead-header">
               <div>
                 <div class="lead-business">${esc(l.company || l.name || 'Unknown')}</div>
-                <div class="lead-meta">${esc(l.name || '')} · Submitted ${formatDate(l.created_at)}</div>
+                <div class="lead-meta">${esc(l.name || '')} · Submitted ${formatDate(l.created_at)}${isDuplicate ? ' &nbsp;<span style="background:#fef3c7;color:#92400e;font-size:0.7rem;font-weight:600;padding:1px 7px;border-radius:999px;letter-spacing:0.04em;">duplicate email</span>' : ''}</div>
               </div>
               <span class="lead-badge ${badgeClass}">${status}</span>
             </div>

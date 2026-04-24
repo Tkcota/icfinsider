@@ -213,6 +213,18 @@
       overflow: hidden;
     }
 
+    /* Active/highlighted card (synced from map click) */
+    .listing-card.map-active {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 2px rgba(232,120,10,0.2);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    /* Clickable card cursor on desktop */
+    @media (min-width: 1024px) {
+      .listing-card { cursor: pointer; }
+    }
+
     /* Blur overlay on placeholder cards */
     .listing-card.placeholder {
       filter: blur(3px);
@@ -772,6 +784,7 @@
       var allListings = [];
       var activeFilters = { state: '', pro_type: '', brand: '' };
       var visibleCount = 10; // how many listings to show at once
+      var markerRegistry = {}; // id → Leaflet marker
 
       // ---- Render ----
       function initials(name) {
@@ -827,7 +840,7 @@
           ? '<a href="tel:' + l.phone.replace(/\D/g, '') + '" class="btn btn-outline-dark">' + formatPhone(l.phone) + '</a>'
           : '';
 
-        return '<div class="listing-card">'
+        return '<div class="listing-card" data-id="' + l.id + '">'
           + '<div class="listing-card-logo">' + initials(l.business_name) + '</div>'
           + '<div class="listing-card-body">'
           + '<div class="listing-card-name">' + l.business_name + '</div>'
@@ -864,8 +877,9 @@
             + '</div>';
           countEl.innerHTML = 'Showing <strong>0 listings</strong>';
         } else {
-          var visible = filtered.slice(0, visibleCount);
-          var hasMore = filtered.length > visibleCount;
+          // Desktop: show all so map↔list sync works. Mobile: paginate 10 at a time.
+          var visible = isDesktop() ? filtered : filtered.slice(0, visibleCount);
+          var hasMore = !isDesktop() && filtered.length > visibleCount;
           container.innerHTML = visible.map(renderCard).join('')
             + (hasMore
               ? '<div style="text-align:center;padding:var(--space-4) 0;">'
@@ -873,7 +887,8 @@
                 + 'Load More (' + (filtered.length - visibleCount) + ' remaining)</button>'
                 + '</div>'
               : '');
-          countEl.innerHTML = 'Showing <strong>' + Math.min(visibleCount, filtered.length) + ' of ' + filtered.length + ' listing' + (filtered.length !== 1 ? 's' : '') + '</strong>';
+          var shownCount = isDesktop() ? filtered.length : Math.min(visibleCount, filtered.length);
+          countEl.innerHTML = 'Showing <strong>' + shownCount + (isDesktop() ? '' : ' of ' + filtered.length) + ' listing' + (filtered.length !== 1 ? 's' : '') + '</strong>';
 
           // Load more button handler
           var btn = document.getElementById('load-more-btn');
@@ -915,6 +930,24 @@
           activeFilters.pro_type = map[label] !== undefined ? map[label] : '';
           applyFilters();
         });
+      });
+
+      // ---- Card → Map sync (desktop only) ----
+      document.getElementById('listings-container').addEventListener('click', function (e) {
+        if (!isDesktop()) return;
+        // Ignore clicks on buttons and links inside the card
+        if (e.target.closest('a, button')) return;
+        var card = e.target.closest('.listing-card[data-id]');
+        if (!card) return;
+        var id = parseInt(card.dataset.id, 10);
+        var marker = markerRegistry[id];
+        if (!marker) return;
+        // Highlight card
+        document.querySelectorAll('.listing-card').forEach(function (c) { c.classList.remove('map-active'); });
+        card.classList.add('map-active');
+        // Center map on marker and open popup
+        leafletMap.panTo(marker.getLatLng(), { animate: true });
+        marker.openPopup();
       });
 
       // ---- Search dropdowns — update instantly on change ----
@@ -985,6 +1018,7 @@
             if (layer instanceof L.Marker) leafletMap.removeLayer(layer);
           });
         }
+        markerRegistry = {}; // clear registry on re-render
 
         // Get current filtered listings
         var filtered = allListings.filter(function (l) {
@@ -1006,7 +1040,24 @@
             html: '<div style="width:16px;height:16px;background:' + pinColor + ';border:2px solid #fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.4);"></div>',
             iconSize: [16, 16], iconAnchor: [8, 8], popupAnchor: [0, -10]
           });
-          L.marker(coords, { icon: colorPin }).addTo(leafletMap).bindPopup(popup);
+          var marker = L.marker(coords, { icon: colorPin }).addTo(leafletMap).bindPopup(popup);
+          markerRegistry[l.id] = marker;
+
+          // Map pin → scroll to and highlight the listing card
+          marker.on('popupopen', function () {
+            var card = document.querySelector('.listing-card[data-id="' + l.id + '"]');
+            if (!card) return;
+            // Remove highlight from all cards
+            document.querySelectorAll('.listing-card').forEach(function (c) { c.classList.remove('map-active'); });
+            card.classList.add('map-active');
+            // Scroll the card into view using getBoundingClientRect for accuracy
+            var listPanel = document.querySelector('.split-list');
+            if (listPanel) {
+              var cardRect  = card.getBoundingClientRect();
+              var panelRect = listPanel.getBoundingClientRect();
+              listPanel.scrollBy({ top: cardRect.top - panelRect.top - 16, behavior: 'smooth' });
+            }
+          });
         }
 
         filtered.forEach(function (l) {
