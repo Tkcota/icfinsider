@@ -913,6 +913,15 @@
             document.getElementById('map-container').classList.add('active');
             document.getElementById('map-legend').style.display = 'flex';
             renderMap();
+          } else {
+            // Mobile: default to map view
+            document.getElementById('btn-map-view').classList.add('active');
+            document.getElementById('btn-list-view').classList.remove('active');
+            document.getElementById('map-container').classList.add('active');
+            document.getElementById('map-legend').style.display = 'flex';
+            document.getElementById('listings-container').style.display = 'none';
+            document.querySelector('.claim-listing-cta').style.display = 'none';
+            renderMap();
           }
         })
         .catch(function () {
@@ -966,7 +975,7 @@
       });
 
       // ---- Map view ----
-      var currentView = 'list';
+      var currentView = isDesktop() ? 'list' : 'map';
       var leafletMap = null;
       var geocodeCache = {};
 
