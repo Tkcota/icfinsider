@@ -8,7 +8,9 @@
       "Bash(npx wrangler:*)",
       "Bash(ls \"/c/Users/tkcot/Project ICFInsider/\"*.html)",
       "Bash(xargs -I{} basename {})",
-      "Bash(node generate-states.js)"
+      "Bash(node generate-states.js)",
+      "Bash(node generate-cities.js)",
+      "WebFetch(domain:api.zippopotam.us)"
     ]
   }
 }
