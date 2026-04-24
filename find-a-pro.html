@@ -765,6 +765,7 @@
       // ---- State ----
       var allListings = [];
       var activeFilters = { state: '', pro_type: '', brand: '' };
+      var visibleCount = 10; // how many listings to show at once
 
       // ---- Render ----
       function initials(name) {
@@ -835,7 +836,8 @@
           + '</div>';
       }
 
-      function applyFilters() {
+      function applyFilters(resetCount) {
+        if (resetCount !== false) visibleCount = 10; // reset to 10 on any filter change
         if (isDesktop()) renderMap();
         var filtered = allListings.filter(function (l) {
           if (activeFilters.state    && l.state    !== activeFilters.state)    return false;
@@ -856,8 +858,25 @@
             + '</div>';
           countEl.innerHTML = 'Showing <strong>0 listings</strong>';
         } else {
-          container.innerHTML = filtered.map(renderCard).join('');
-          countEl.innerHTML = 'Showing <strong>' + filtered.length + ' listing' + (filtered.length !== 1 ? 's' : '') + '</strong>';
+          var visible = filtered.slice(0, visibleCount);
+          var hasMore = filtered.length > visibleCount;
+          container.innerHTML = visible.map(renderCard).join('')
+            + (hasMore
+              ? '<div style="text-align:center;padding:var(--space-4) 0;">'
+                + '<button id="load-more-btn" style="background:#fff;border:2px solid var(--color-primary);color:var(--color-primary);padding:.6rem 2rem;border-radius:var(--radius-md);font-weight:600;cursor:pointer;font-size:.95rem;">'
+                + 'Load More (' + (filtered.length - visibleCount) + ' remaining)</button>'
+                + '</div>'
+              : '');
+          countEl.innerHTML = 'Showing <strong>' + Math.min(visibleCount, filtered.length) + ' of ' + filtered.length + ' listing' + (filtered.length !== 1 ? 's' : '') + '</strong>';
+
+          // Load more button handler
+          var btn = document.getElementById('load-more-btn');
+          if (btn) {
+            btn.addEventListener('click', function () {
+              visibleCount += 10;
+              applyFilters(false); // don't reset count
+            });
+          }
         }
       }
 
