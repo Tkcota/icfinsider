@@ -857,7 +857,7 @@
 
       function applyFilters(resetCount) {
         if (resetCount !== false) visibleCount = 10; // reset to 10 on any filter change
-        if (isDesktop()) renderMap();
+        if (isDesktop() || currentView === 'map') renderMap();
         var filtered = allListings.filter(function (l) {
           if (activeFilters.state    && l.state    !== activeFilters.state)    return false;
           if (activeFilters.pro_type && l.pro_type !== activeFilters.pro_type) return false;
