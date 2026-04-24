@@ -142,6 +142,17 @@ async function handleSubmit(request, env) {
     });
   }
 
+  // Validate website if provided — must look like a real domain
+  if (website) {
+    const stripped = website.replace(/^https?:\/\//i, '').replace(/\/.*$/, '').toLowerCase();
+    const domainPattern = /^[a-z0-9]([a-z0-9\-]{0,61}[a-z0-9])?(\.[a-z]{2,})+$/i;
+    if (!domainPattern.test(stripped)) {
+      return new Response(JSON.stringify({ ok: false, error: 'Please enter a valid website (e.g. yourwebsite.com)' }), {
+        status: 400, headers: cors,
+      });
+    }
+  }
+
   // Validate required fields by lead type
   const missing = [];
   if (!name)  missing.push('name');

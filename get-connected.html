@@ -797,6 +797,18 @@
             }
           }
 
+          // Validate website if provided — must look like a real domain
+          var websiteInput = form.querySelector('input[name="website"]');
+          if (websiteInput && websiteInput.value.trim()) {
+            var stripped = websiteInput.value.trim().replace(/^https?:\/\//i, '').replace(/\/.*$/, '').toLowerCase();
+            var domainPattern = /^[a-z0-9]([a-z0-9\-]{0,61}[a-z0-9])?(\.[a-z]{2,})+$/i;
+            if (!domainPattern.test(stripped)) {
+              websiteInput.style.borderColor = '#dc2626';
+              websiteInput.focus();
+              return;
+            }
+          }
+
           // Show sending state
           if (submitBtn) {
             submitBtn.disabled = true;
