@@ -415,6 +415,7 @@
               ${field('Project Type', l.project_type)}
               ${field('Service Area', l.service_area)}
             </div>
+            ${l.message ? '<div style="margin:10px 0;padding:8px 10px;background:#1a202c;border-radius:6px;font-size:0.8rem;color:#a0aec0;border-left:3px solid #e8780a;"><span style="color:#fff;font-weight:600;">Notes:</span> ' + esc(l.message) + '</div>' : ''}
             <div class="lead-actions">${actionsHtml}</div>
           </div>
         `;
