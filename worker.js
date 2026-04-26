@@ -410,14 +410,30 @@ async function handleGeocodeAll(request, env) {
   const updated = [];
   const failed  = [];
 
+  // Canadian provinces — used to detect country and route geocoding correctly
+  const canadianProvinces = new Set([
+    'Alberta','British Columbia','Manitoba','New Brunswick','Newfoundland and Labrador',
+    'Nova Scotia','Ontario','Prince Edward Island','Quebec','Saskatchewan',
+    'Northwest Territories','Nunavut','Yukon'
+  ]);
+
   for (const listing of results) {
     let lat = null, lng = null;
+    const isCanada = canadianProvinces.has(listing.state || '');
+    const postal   = (listing.zip_code || '').trim();
 
-    // Try zippopotam.us first (zip code → precise coords, no rate limit)
-    if (listing.zip_code && /^\d{5}/.test(listing.zip_code.trim())) {
+    // Try zippopotam.us first — supports US zip codes and Canadian postal codes
+    if (postal) {
       try {
-        const res = await fetch(`https://api.zippopotam.us/us/${listing.zip_code.trim().slice(0, 5)}`);
-        if (res.ok) {
+        let res;
+        if (!isCanada && /^\d{5}/.test(postal)) {
+          // US zip code (5 digits)
+          res = await fetch(`https://api.zippopotam.us/us/${postal.slice(0, 5)}`);
+        } else if (isCanada && /^[A-Za-z]\d[A-Za-z]/.test(postal)) {
+          // Canadian postal code — use first 3 chars (FSA)
+          res = await fetch(`https://api.zippopotam.us/ca/${postal.slice(0, 3).toUpperCase()}`);
+        }
+        if (res && res.ok) {
           const data = await res.json();
           if (data.places?.[0]) {
             lat = parseFloat(data.places[0].latitude);
@@ -427,10 +443,11 @@ async function handleGeocodeAll(request, env) {
       } catch (e) {}
     }
 
-    // Fall back to Nominatim (state-level) with delay to respect rate limit
+    // Fall back to Nominatim (province/state-level) with delay to respect rate limit
     if (!lat || !lng) {
       try {
-        const query = encodeURIComponent((listing.state || 'USA') + ', USA');
+        const country = isCanada ? 'Canada' : 'USA';
+        const query = encodeURIComponent((listing.state || country) + ', ' + country);
         const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1`, {
           headers: { 'User-Agent': 'ICFInsider/1.0 (icfinsider.com)' }
         });
