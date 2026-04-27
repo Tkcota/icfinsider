@@ -194,6 +194,29 @@
       min-height: 100px;
     }
 
+    /* Role checkboxes */
+    .role-checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2) var(--space-4);
+    }
+    .role-checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--color-text-dark);
+      cursor: pointer;
+      font-weight: 400;
+    }
+    .role-checkbox-label input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--color-accent);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
     .form-submit {
       width: 100%;
       padding: var(--space-4);
@@ -509,18 +532,20 @@
                   </div>
                 </div>
 
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="c-role">Business Type <span style="color: #dc2626;">*</span></label>
-                    <select id="c-role" name="role" required>
-                      <option value="" disabled selected>What best describes you?</option>
-                      <option>Contractor / Builder</option>
-                      <option>ICF Distributor</option>
-                      <option>Architect / Designer</option>
-                      <option>Structural Engineer</option>
-                      <option>ICF Pool Contractor</option>
-                    </select>
+                <div class="form-group" id="role-group">
+                  <label>Business Type <span style="color: #dc2626;">*</span></label>
+                  <div class="role-checkboxes">
+                    <label class="role-checkbox-label"><input type="checkbox" name="role" value="Contractor / Builder"> Contractor / Builder</label>
+                    <label class="role-checkbox-label"><input type="checkbox" name="role" value="ICF Distributor"> ICF Distributor</label>
+                    <label class="role-checkbox-label"><input type="checkbox" name="role" value="Architect / Designer"> Architect / Designer</label>
+                    <label class="role-checkbox-label"><input type="checkbox" name="role" value="Structural Engineer"> Structural Engineer</label>
+                    <label class="role-checkbox-label"><input type="checkbox" name="role" value="ICF Pool Contractor"> ICF Pool Contractor</label>
                   </div>
+                  <small id="role-error" style="color:#dc2626;display:none;">Please select at least one business type.</small>
+                  <small style="color:var(--color-text-mid);">Select up to 2.</small>
+                </div>
+
+                <div class="form-row">
                   <div class="form-group">
                     <label for="c-brand">ICF Brand(s)</label>
                     <select id="c-brand" name="brand">
@@ -761,6 +786,19 @@
       });
     }());
 
+    // Limit role checkboxes to 2 max
+    (function () {
+      var roleBoxes = document.querySelectorAll('input[name="role"]');
+      roleBoxes.forEach(function (cb) {
+        cb.addEventListener('change', function () {
+          var checked = Array.from(roleBoxes).filter(function (b) { return b.checked; });
+          roleBoxes.forEach(function (b) {
+            if (!b.checked) b.disabled = checked.length >= 2;
+          });
+        });
+      });
+    }());
+
 
     // --- 3. FORM SUBMISSION ---
     // Both forms POST to /api/submit (Cloudflare Worker).
@@ -779,6 +817,19 @@
 
         form.addEventListener('submit', function (e) {
           e.preventDefault();
+
+          // Validate at least one role checkbox is checked (contractor form only)
+          var roleCheckboxes = form.querySelectorAll('input[name="role"]');
+          if (roleCheckboxes.length > 0) {
+            var anyChecked = Array.from(roleCheckboxes).some(function (cb) { return cb.checked; });
+            var roleError = document.getElementById('role-error');
+            if (!anyChecked) {
+              if (roleError) roleError.style.display = 'block';
+              return;
+            } else {
+              if (roleError) roleError.style.display = 'none';
+            }
+          }
 
           // Validate email
           var emailInput = form.querySelector('input[type="email"]');

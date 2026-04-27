@@ -75,7 +75,7 @@ async function handleListings(request, env) {
     const params = [];
 
     if (state)    { sql += ' AND state = ?';    params.push(state); }
-    if (pro_type) { sql += ' AND pro_type = ?'; params.push(pro_type); }
+    if (pro_type) { sql += " AND (',' || pro_type || ',') LIKE ?"; params.push(`%,${pro_type},%`); }
     if (brand)    { sql += " AND (',' || brands || ',') LIKE ?"; params.push(`%,${brand},%`); }
 
     sql += ' ORDER BY featured DESC, business_name ASC';
@@ -129,7 +129,7 @@ async function handleSubmit(request, env) {
   const message      = (formData.get('message')      || '').slice(0, 2000);
   const company      = (formData.get('company')      || '').slice(0, 200);
   const brand        = (formData.get('brand')        || '').slice(0, 100);
-  const role         = (formData.get('role')         || '').slice(0, 100);
+  const role         = formData.getAll('role').map(r => r.trim().slice(0, 100)).filter(Boolean).join(',') || '';
   const interest     = (formData.get('interest')     || '').slice(0, 200);
   const file_link    = (formData.get('file_link')    || '').slice(0, 500);
   const website      = (formData.get('website')      || '').slice(0, 500);
@@ -278,7 +278,7 @@ async function handleAdminApprove(request, env) {
       'Structural Engineer':  'engineer',
       'ICF Pool Contractor':  'pool',
     };
-    const pro_type = roleMap[lead.role] || 'contractor';
+    const pro_type = (lead.role || '').split(',').map(r => roleMap[r.trim()] || 'contractor').filter(Boolean).join(',');
 
     // Generate unique slug
     const baseSlug = (lead.company || 'business').toLowerCase()

@@ -852,7 +852,7 @@
           + '<div class="listing-card-name">' + l.business_name + '</div>'
           + '<div class="listing-card-meta">'
           + '<span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:3px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>' + location + '</span>'
-          + '<span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:3px"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>' + proTypeLabel(l.pro_type) + '</span>'
+          + '<span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:3px"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>' + (l.pro_type || '').split(',').map(function(t){return proTypeLabel(t.trim());}).join(' · ') + '</span>'
           + (l.service_area ? '<span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:3px"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>' + (function(sa){ var parts = sa.split(',').map(function(s){return s.trim();}).filter(Boolean); return parts.length >= 10 ? 'Nationwide' : sa; })(l.service_area) + '</span>' : '')
           + '</div>'
           + '<div class="listing-tags">' + tags + '</div>'
@@ -866,7 +866,7 @@
         if (isDesktop() || currentView === 'map') renderMap();
         var filtered = allListings.filter(function (l) {
           if (activeFilters.state    && l.state    !== activeFilters.state)    return false;
-          if (activeFilters.pro_type && l.pro_type !== activeFilters.pro_type) return false;
+          if (activeFilters.pro_type && !(l.pro_type || '').split(',').map(function(t){return t.trim();}).includes(activeFilters.pro_type)) return false;
           if (activeFilters.brand    && !l.brands.includes(activeFilters.brand)) return false;
           return true;
         });
@@ -1038,21 +1038,27 @@
         // Get current filtered listings
         var filtered = allListings.filter(function (l) {
           if (activeFilters.state    && l.state    !== activeFilters.state)    return false;
-          if (activeFilters.pro_type && l.pro_type !== activeFilters.pro_type) return false;
+          if (activeFilters.pro_type && !(l.pro_type || '').split(',').map(function(t){return t.trim();}).includes(activeFilters.pro_type)) return false;
           if (activeFilters.brand    && !l.brands.includes(activeFilters.brand)) return false;
           return true;
         });
 
         // Place markers — use stored lat/lng if available, fall back to Nominatim
         function placeMarker(coords, l) {
+          var types = (l.pro_type || '').split(',').map(function(t){return t.trim();});
+          var allTypes = types.map(function(t){return proTypeLabel(t);}).join(' · ');
           var popup = '<strong>' + l.business_name + '</strong><br>'
-            + proTypeLabel(l.pro_type) + ' · ' + (l.city ? l.city + ', ' : '') + l.state
+            + allTypes + ' · ' + (l.city ? l.city + ', ' : '') + l.state
             + (l.phone ? '<br><a href="tel:' + l.phone.replace(/\D/g,'') + '">' + formatPhone(l.phone) + '</a>' : '')
             + (l.website ? '<br><a href="' + ensureUrl(l.website) + '" target="_blank" rel="noopener">Visit Website</a>' : '');
-          var pinColor = pinColors[l.pro_type] || '#cc2200';
+          var color1 = pinColors[types[0]] || '#cc2200';
+          var color2 = types[1] ? (pinColors[types[1]] || color1) : null;
+          var pinBackground = color2
+            ? 'linear-gradient(to right, ' + color1 + ' 50%, ' + color2 + ' 50%)'
+            : color1;
           var colorPin = L.divIcon({
             className: '',
-            html: '<div style="width:16px;height:16px;background:' + pinColor + ';border:2px solid #fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.4);"></div>',
+            html: '<div style="width:16px;height:16px;background:' + pinBackground + ';border:2px solid #fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.4);"></div>',
             iconSize: [16, 16], iconAnchor: [8, 8], popupAnchor: [0, -10]
           });
           var marker = L.marker(coords, { icon: colorPin }).addTo(leafletMap).bindPopup(popup);
