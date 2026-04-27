@@ -909,6 +909,20 @@
 
       function isDesktop() { return window.innerWidth >= 1024; }
 
+      // ---- Pre-filter from URL params (e.g. ?state=Florida) ----
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var stateParam = params.get('state');
+        if (stateParam) {
+          var stateSelect = document.getElementById('filter-state');
+          var match = Array.from(stateSelect.options).find(function (o) { return o.value === stateParam || o.text === stateParam; });
+          if (match) {
+            stateSelect.value = match.value || match.text;
+            activeFilters.state = match.value || match.text;
+          }
+        }
+      }());
+
       // ---- Fetch listings ----
       fetch('/api/listings')
         .then(function (r) { return r.json(); })
