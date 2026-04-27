@@ -768,21 +768,43 @@
       if (!zipInput || !stateSelect) return;
 
       zipInput.addEventListener('input', function () {
-        var zip = zipInput.value.replace(/\D/g, '');
-        if (zip.length !== 5) return;
+        var raw = zipInput.value.trim();
 
-        fetch('https://api.zippopotam.us/us/' + zip)
-          .then(function (r) { return r.ok ? r.json() : null; })
-          .then(function (data) {
-            if (!data || !data.places || !data.places[0]) return;
-            var stateName = data.places[0]['state'];
-            var options = Array.from(stateSelect.options);
-            var match = options.find(function (o) { return o.text === stateName; });
-            if (match) {
-              stateSelect.value = match.value || match.text;
-            }
-          })
-          .catch(function () { /* silently fail — user can still select manually */ });
+        // Canadian postal code: starts with letter-digit-letter (e.g. A1A or A1A 1A1)
+        var isCanadian = /^[A-Za-z]\d[A-Za-z]/i.test(raw);
+
+        if (isCanadian) {
+          // Use just the FSA (first 3 chars, no space) for the lookup
+          var fsa = raw.replace(/\s/g, '').slice(0, 3).toUpperCase();
+          if (fsa.length < 3) return;
+
+          fetch('https://api.zippopotam.us/ca/' + fsa)
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (data) {
+              if (!data || !data.places || !data.places[0]) return;
+              var provinceName = data.places[0]['state'];
+              var options = Array.from(stateSelect.options);
+              var match = options.find(function (o) { return o.text === provinceName; });
+              if (match) stateSelect.value = match.value || match.text;
+            })
+            .catch(function () { /* silently fail */ });
+
+        } else {
+          // US zip — must be exactly 5 digits
+          var zip = raw.replace(/\D/g, '');
+          if (zip.length !== 5) return;
+
+          fetch('https://api.zippopotam.us/us/' + zip)
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (data) {
+              if (!data || !data.places || !data.places[0]) return;
+              var stateName = data.places[0]['state'];
+              var options = Array.from(stateSelect.options);
+              var match = options.find(function (o) { return o.text === stateName; });
+              if (match) stateSelect.value = match.value || match.text;
+            })
+            .catch(function () { /* silently fail */ });
+        }
       });
     }());
 
