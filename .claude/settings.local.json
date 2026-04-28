@@ -11,7 +11,20 @@
       "Bash(node generate-states.js)",
       "Bash(node generate-cities.js)",
       "WebFetch(domain:api.zippopotam.us)",
-      "PowerShell(cd \"C:\\\\Users\\\\tkcot\\\\Project ICFInsider\"; powershell -ExecutionPolicy Bypass -File \"fix-footer.ps1\")"
+      "PowerShell(cd \"C:\\\\Users\\\\tkcot\\\\Project ICFInsider\"; powershell -ExecutionPolicy Bypass -File \"fix-footer.ps1\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git checkout *)",
+      "Bash(wrangler deploy *)",
+      "Bash(sed -i 's|href=\"/get-connected.html?tab=homeowner&state=Florida\" class=\"btn btn-primary\">Get Connected|href=\"/find-a-pro.html?state=Florida\" class=\"btn btn-primary\">Find a Pro|g' states/florida/cost.html)",
+      "Bash(sed -i 's|href=\"/get-connected.html?tab=homeowner&state=Florida\" class=\"btn btn-primary btn-lg\">Request Pricing|href=\"/find-a-pro.html?state=Florida\" class=\"btn btn-primary btn-lg\">Find a Pro in Florida|g' states/florida/cost.html)",
+      "Bash(sed -i 's|href=\"/get-connected.html?tab=homeowner&state=Texas\" class=\"btn btn-primary\">Get Connected|href=\"/find-a-pro.html?state=Texas\" class=\"btn btn-primary\">Find a Pro|g' states/texas/cost.html)",
+      "Bash(sed -i 's|href=\"/get-connected.html?tab=homeowner&state=Texas\" class=\"btn btn-primary btn-lg\">Request Pricing|href=\"/find-a-pro.html?state=Texas\" class=\"btn btn-primary btn-lg\">Find a Pro in Texas|g' states/texas/cost.html)",
+      "Bash(node generate-costs-v2-3.js)",
+      "Bash(node generate-costs-v2-4.js)",
+      "Bash(node -e ' *)",
+      "Bash(del states\\\\florida\\\\cost.html states\\\\pennsylvania\\\\cost.html states\\\\rhode-island\\\\cost.html states\\\\south-carolina\\\\cost.html states\\\\south-dakota\\\\cost.html states\\\\tennessee\\\\cost.html states\\\\texas\\\\cost.html states\\\\utah\\\\cost.html states\\\\vermont\\\\cost.html states\\\\virginia\\\\cost.html states\\\\washington\\\\cost.html states\\\\west-virginia\\\\cost.html states\\\\wisconsin\\\\cost.html states\\\\wyoming\\\\cost.html)",
+      "Bash(del generate-costs-v2-1.js generate-costs-v2-2.js generate-costs-v2-3.js generate-costs-v2-4.js)"
     ]
   }
 }
