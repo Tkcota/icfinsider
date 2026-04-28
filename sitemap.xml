@@ -55,6 +55,58 @@
     <priority>0.3</priority>
   </url>
 
+  <!-- State cost pages -->
+  <url><loc>https://icfinsider.com/states/alabama/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/alaska/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/arizona/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/arkansas/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/california/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/colorado/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/connecticut/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/delaware/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/florida/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/georgia/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/hawaii/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/idaho/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/illinois/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/indiana/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/iowa/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/kansas/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/kentucky/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/louisiana/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/maine/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/maryland/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/massachusetts/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/michigan/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/minnesota/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/mississippi/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/missouri/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/montana/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/nebraska/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/nevada/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/new-hampshire/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/new-jersey/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/new-mexico/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/new-york/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/north-carolina/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/north-dakota/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/ohio/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/oklahoma/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/oregon/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/pennsylvania/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/rhode-island/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/south-carolina/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/south-dakota/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/tennessee/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/texas/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/utah/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/vermont/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/virginia/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/washington/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/west-virginia/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/wisconsin/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://icfinsider.com/states/wyoming/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
   <!-- State pages -->
   <url><loc>https://icfinsider.com/states/alabama/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://icfinsider.com/states/alaska/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -64,7 +116,6 @@
   <url><loc>https://icfinsider.com/states/colorado/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://icfinsider.com/states/connecticut/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://icfinsider.com/states/delaware/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://icfinsider.com/states/florida/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://icfinsider.com/states/florida/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://icfinsider.com/states/georgia/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://icfinsider.com/states/hawaii/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -99,7 +150,6 @@
   <url><loc>https://icfinsider.com/states/south-carolina/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://icfinsider.com/states/south-dakota/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://icfinsider.com/states/tennessee/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://icfinsider.com/states/texas/cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://icfinsider.com/states/texas/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://icfinsider.com/states/utah/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://icfinsider.com/states/vermont/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
