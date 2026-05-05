@@ -40,17 +40,8 @@ export default {
     // ── Redirect old URLs to get-connected ──
     if (url.pathname === '/early-access' || url.pathname === '/early-access.html' ||
         url.pathname === '/list-your-business' || url.pathname === '/list-your-business.html') {
-      const newUrl = new URL('/get-connected.html' + url.search, url.origin);
+      const newUrl = new URL('/get-connected' + url.search, url.origin);
       return Response.redirect(newUrl.href, 301);
-    }
-
-    // ── Redirect bare paths back to .html (fixes Google indexing) ──
-    // Cloudflare Assets strips .html and redirects /brands → /brands
-    // This sends Google back to the canonical .html URL
-    const bare = url.pathname.match(/^\/([a-zA-Z0-9_-]+)$/);
-    if (bare && bare[1] !== 'favicon') {
-      const htmlUrl = url.pathname + '.html' + url.search;
-      return Response.redirect(new URL(htmlUrl, url.origin).href, 301);
     }
 
     // ── Static assets (HTML, CSS, JS, images, etc.) ──────────
