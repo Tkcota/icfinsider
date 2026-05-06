@@ -176,6 +176,18 @@
       color: var(--color-text-dark);
     }
 
+    .results-tip {
+      font-size: var(--text-xs);
+      color: var(--color-text-mid);
+      margin: 4px 0 0;
+      opacity: 0.75;
+    }
+
+    .results-tip strong {
+      color: var(--color-text-dark);
+      font-weight: 600;
+    }
+
     /* Coming soon banner inside the results area */
     .coming-soon-banner {
       background: linear-gradient(135deg, var(--color-dark-900) 0%, var(--color-dark-800) 100%);
@@ -639,6 +651,7 @@
 
         <div class="directory-results-header">
           <p class="results-count" id="results-count">Loading listings…</p>
+          <p class="results-tip">💡 When you reach out, let them know you found them on <strong>ICF Insider</strong>. Some pros offer a discount to our readers.</p>
         </div>
 
         <!-- Split layout: list left, map right -->
