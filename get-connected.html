@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Find ICF Contractors or List Your ICF Business Free | ICF Insider</title>
-  <meta name="description" content="Homeowners — get connected with local ICF pros. Contractors, builders, and distributors — list your business free and get found by serious ICF buyers.">
+  <meta name="description" content="Homeowners, get connected with local ICF pros. Contractors, builders, and distributors, list your business free and get found by serious ICF buyers.">
 
   <link rel="canonical" href="https://icfinsider.com/get-connected">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -25,7 +25,7 @@
 
   <style>
     /* -------------------------------------------------------
-       Early access page — custom layout styles
+       Early access page, custom layout styles
        Not added to components.css because this is a one-off
        landing page layout, not a reusable pattern.
     ------------------------------------------------------- */
@@ -112,7 +112,7 @@
     }
 
     /* -------------------------------------------------------
-       AUDIENCE PANELS — shown/hidden based on tab selection
+       AUDIENCE PANELS, shown/hidden based on tab selection
     ------------------------------------------------------- */
     .audience-panels {
       max-width: 680px;
@@ -263,7 +263,7 @@
       display: block;
     }
 
-    /* Success state — shown after form submission */
+    /* Success state, shown after form submission */
     .form-success {
       display: none;
       text-align: center;
@@ -673,7 +673,7 @@
                     <polyline points="20 6 9 17 4 12"/>
                   </svg>
                 </div>
-                <h3>Got it — we'll be in touch.</h3>
+                <h3>Got it: we'll be in touch.</h3>
                 <p>We'll review your info and get your listing live shortly.</p>
               </div>
             </div>
@@ -826,7 +826,7 @@
             .catch(function () { /* silently fail */ });
 
         } else {
-          // US zip — must be exactly 5 digits
+          // US zip, must be exactly 5 digits
           var zip = raw.replace(/\D/g, '');
           if (zip.length !== 5) return;
 
@@ -932,7 +932,7 @@
             hasErrors = true;
           }
 
-          // 3. Phone — required, at least 10 digits
+          // 3. Phone, required, at least 10 digits
           var phoneInput = form.querySelector('input[type="tel"]');
           if (phoneInput && phoneInput.hasAttribute('required')) {
             var digits = phoneInput.value.replace(/\D/g, '');
@@ -956,7 +956,7 @@
             hasErrors = true;
           }
 
-          // 6. Website — optional but must look real if provided
+          // 6. Website, optional but must look real if provided
           var websiteInput = form.querySelector('input[name="website"]');
           if (websiteInput && websiteInput.value.trim()) {
             var stripped = websiteInput.value.trim().replace(/^https?:\/\//i, '').replace(/\/.*$/, '').toLowerCase();
@@ -993,7 +993,7 @@
             return;
           }
 
-          // ── All good — submit ────────────────────────────────
+          // ── All good, submit ────────────────────────────────
           if (submitBtn) {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
@@ -1026,7 +1026,7 @@
               submitBtn.textContent = originalBtnText;
             }
             if (errorBanner) {
-              errorBanner.textContent = 'Network error — please check your connection and try again.';
+              errorBanner.textContent = 'Network error, please check your connection and try again.';
               errorBanner.classList.add('visible');
               errorBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }

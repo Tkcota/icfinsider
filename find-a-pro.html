@@ -26,7 +26,7 @@
 
   <style>
     /* -------------------------------------------------------
-       Find a Pro page — directory layout styles
+       Find a Pro page, directory layout styles
     ------------------------------------------------------- */
 
     .directory-hero {
@@ -109,7 +109,7 @@
     }
 
     /* -------------------------------------------------------
-       DESKTOP SPLIT VIEW — list left, map right
+       DESKTOP SPLIT VIEW, list left, map right
     ------------------------------------------------------- */
     @media (min-width: 1024px) {
 
@@ -212,7 +212,7 @@
       margin-right: auto;
     }
 
-    /* Placeholder listing cards — show what the directory will look like */
+    /* Placeholder listing cards, show what the directory will look like */
     .listing-card {
       border: 1px solid var(--color-border-light);
       border-radius: var(--radius-lg);
@@ -303,7 +303,7 @@
       border: 1px solid var(--color-border-light);
     }
 
-    /* Brand tags — slightly darker than project type tags */
+    /* Brand tags, slightly darker than project type tags */
     .listing-tag.brand {
       background-color: #e2e8f0;
       color: var(--color-text-dark);
@@ -549,7 +549,7 @@
     <div class="container early-access-banner">
       <div class="early-access-left">
         <span style="background:rgba(0,0,0,0.2);color:#fff;font-size:var(--text-xs);font-weight:var(--weight-bold);letter-spacing:0.08em;text-transform:uppercase;padding:2px var(--space-3);border-radius:999px;flex-shrink:0;">Early Access</span>
-        <p style="color:#fff;font-size:var(--text-sm);margin:0;font-weight:var(--weight-medium);">Directory in progress — we're actively onboarding ICF professionals. Listings are growing.</p>
+        <p style="color:#fff;font-size:var(--text-sm);margin:0;font-weight:var(--weight-medium);">Directory in progress, we're actively onboarding ICF professionals. Listings are growing.</p>
       </div>
       <a href="/get-connected.html?tab=contractor" style="font-size:var(--text-sm);font-weight:var(--weight-bold);color:#fff;text-decoration:none;white-space:nowrap;flex-shrink:0;">Get listed for priority placement →</a>
     </div>
@@ -663,7 +663,7 @@
             <div class="claim-listing-cta">
               <h3>Are you an ICF professional?</h3>
               <p>Contractors, builders, distributors, architects, and engineers are all welcome. Get listed free (Early Access) and get found by homeowners searching for ICF pros in your area.</p>
-              <a href="get-connected.html?tab=contractor" class="btn btn-primary">List Your Business — Free</a>
+              <a href="get-connected.html?tab=contractor" class="btn btn-primary">List Your Business, Free</a>
             </div>
           </div>
 
@@ -692,7 +692,7 @@
       <div class="section-header centered">
         <span class="eyebrow">For ICF Professionals</span>
         <h2 id="why-listed-heading">Why Get Listed on ICF Insider</h2>
-        <p class="lead">The only directory built specifically for ICF — where buyers are already sold on the product and looking for someone to build it.</p>
+        <p class="lead">The only directory built specifically for ICF, where buyers are already sold on the product and looking for someone to build it.</p>
       </div>
 
       <div class="grid-3">
@@ -704,7 +704,7 @@
             </svg>
           </div>
           <h3>Qualified Leads</h3>
-          <p>Every visitor on ICF Insider is already researching ICF construction. These aren't cold prospects — they're buyers. You're not convincing them to consider ICF; they've already decided.</p>
+          <p>Every visitor on ICF Insider is already researching ICF construction. These aren't cold prospects, they're buyers. You're not convincing them to consider ICF; they've already decided.</p>
         </div>
 
         <div class="audience-card">
@@ -993,7 +993,7 @@
         marker.openPopup();
       });
 
-      // ---- Search dropdowns — update instantly on change ----
+      // ---- Search dropdowns, update instantly on change ----
       document.getElementById('filter-state').addEventListener('change', function () {
         activeFilters.state = this.value;
         applyFilters();
@@ -1013,7 +1013,7 @@
       var leafletMap = null;
       var geocodeCache = {};
 
-      // Throttled geocode queue — max 1 request/sec to avoid Nominatim rate limiting
+      // Throttled geocode queue, max 1 request/sec to avoid Nominatim rate limiting
       var geocodeQueue = [];
       var geocodeRunning = false;
 
@@ -1071,7 +1071,7 @@
           return true;
         });
 
-        // Place markers — use stored lat/lng if available, fall back to Nominatim
+        // Place markers, use stored lat/lng if available, fall back to Nominatim
         function placeMarker(coords, l) {
           var types = (l.pro_type || '').split(',').map(function(t){return t.trim();});
           var allTypes = types.map(function(t){return proTypeLabel(t);}).join(' · ');
@@ -1111,7 +1111,7 @@
 
         filtered.forEach(function (l) {
           if (l.lat && l.lng) {
-            // Use stored coordinates — no API call needed
+            // Use stored coordinates, no API call needed
             placeMarker([l.lat, l.lng], l);
           } else {
             // Fall back to Nominatim for older listings without stored coords

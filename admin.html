@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ICF Insider — Admin</title>
+  <title>ICF Insider: Admin</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -251,7 +251,7 @@
   <!-- ── MAIN SCREEN ── -->
   <div id="main-screen">
     <div class="admin-header">
-      <h1>ICF Insider — Admin</h1>
+      <h1>ICF Insider: Admin</h1>
       <div style="display:flex;align-items:center;gap:16px;">
         <span id="lead-count-label"></span>
         <button class="logout-btn" id="logout-btn">Sign Out</button>
@@ -408,9 +408,9 @@
               ${field('Role', l.role)}
               ${field('State', l.state)}
               ${field('Zip Code', l.zip_code)}
-              ${field('Phone', l.phone ? `<a href="tel:${l.phone}">${esc(l.phone)}</a>` : '—', true)}
-              ${field('Email', l.email ? `<a href="mailto:${l.email}">${esc(l.email)}</a>` : '—', true)}
-              ${field('Website', l.website ? `<a href="${esc(l.website)}" target="_blank">${esc(l.website)}</a>` : '—', true)}
+              ${field('Phone', l.phone ? `<a href="tel:${l.phone}">${esc(l.phone)}</a>` : ', ', true)}
+              ${field('Email', l.email ? `<a href="mailto:${l.email}">${esc(l.email)}</a>` : ', ', true)}
+              ${field('Website', l.website ? `<a href="${esc(l.website)}" target="_blank">${esc(l.website)}</a>` : ', ', true)}
               ${field('ICF Brand', l.brand)}
               ${field('Project Type', l.project_type)}
               ${field('Service Area', l.service_area)}
@@ -423,7 +423,7 @@
     }
 
     function field(label, value, raw) {
-      var display = (raw ? value : esc(value || '')) || '—';
+      var display = (raw ? value : esc(value || '')) || ', ';
       return `<div class="lead-field"><label>${label}</label><span>${display}</span></div>`;
     }
 
