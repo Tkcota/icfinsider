@@ -55,6 +55,13 @@
     <priority>0.3</priority>
   </url>
 
+  <!-- Blog articles -->
+  <url>
+    <loc>https://icfinsider.com/blog/how-long-to-build-a-house</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- State cost pages -->
   <url><loc>https://icfinsider.com/states/alabama/cost</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://icfinsider.com/states/alaska/cost</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
