@@ -1,4 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#E8780A"/>
-  <path d="M16 7 L27 17 L25 17 L25 26 L19 26 L19 20 L13 20 L13 26 L7 26 L7 17 L5 17 Z" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Black background -->
+  <rect width="100" height="100" rx="10" fill="#111111"/>
+  <!-- ICF in white, large and centered -->
+  <text
+    x="50"
+    y="41"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="Arial Black, Impact, sans-serif"
+    font-weight="900"
+    font-size="36"
+    letter-spacing="2"
+    fill="#FFFFFF">ICF</text>
+  <!-- INSIDER in orange beneath -->
+  <text
+    x="50"
+    y="70"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="Arial Black, Impact, sans-serif"
+    font-weight="700"
+    font-size="13"
+    letter-spacing="3"
+    fill="#E8780A">INSIDER</text>
 </svg>
