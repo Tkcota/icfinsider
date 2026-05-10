@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ICF Construction Articles & Build Guides | ICF Insider</title>
+  <meta name="description" content="In-depth guides on ICF construction, costs, build timelines, and comparisons. Independent, unbiased articles for homeowners and builders across all 50 states.">
+
+  <link rel="canonical" href="https://icfinsider.com/blog">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="ICF Construction Articles & Build Guides | ICF Insider">
+  <meta property="og:description" content="In-depth guides on ICF construction, costs, build timelines, and comparisons. Independent, unbiased articles for homeowners and builders.">
+  <meta property="og:url"         content="https://icfinsider.com/blog">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
+
+  <style>
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-8);
+    }
+
+    .article-card {
+      background: var(--color-surface-1);
+      border: 1px solid var(--color-border-light);
+      border-radius: 10px;
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .article-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: 0 4px 20px rgba(232,120,10,0.08);
+    }
+
+    .article-card-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+    }
+
+    .article-card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--color-text-dark);
+      margin: 0;
+    }
+
+    .article-card-desc {
+      font-size: 0.9rem;
+      color: var(--color-text-mid);
+      line-height: 1.6;
+      flex: 1;
+      margin: 0;
+    }
+
+    .article-card-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: 0.8rem;
+      color: var(--color-text-mid);
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--color-border-light);
+    }
+
+    .article-card-read {
+      margin-left: auto;
+      color: var(--color-accent);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="main-nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo" aria-label="ICF Insider home">
+        <span class="nav-logo-text">ICF <span>Insider</span></span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="/icf-101"    class="nav-link">ICF 101</a></li>
+        <li><a href="/cost-guide" class="nav-link">Cost Guide</a></li>
+        <li><a href="/brands"     class="nav-link">Brand Comparison</a></li>
+        <li><a href="/find-a-pro" class="nav-link">Find a Pro</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="/get-connected" class="btn btn-primary">Get Connected</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation">
+    <a href="/icf-101"    class="nav-link">ICF 101</a>
+    <a href="/cost-guide" class="nav-link">Cost Guide</a>
+    <a href="/brands"     class="nav-link">Brand Comparison</a>
+    <a href="/find-a-pro" class="nav-link">Find a Pro</a>
+    <a href="/get-connected" class="btn btn-primary">Get Connected</a>
+  </div>
+
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="container">
+      <div class="page-hero-meta">
+        <span class="page-hero-tag">Articles</span>
+      </div>
+      <h1 id="page-title">ICF Build Guides & Articles</h1>
+      <p class="page-hero-intro">
+        Independent, unbiased guides on ICF construction for homeowners and builders.
+        No manufacturer spin — just real data and honest comparisons.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ARTICLE GRID -->
+  <div class="container" style="padding-bottom: var(--space-16);">
+
+    <div class="article-grid" role="list">
+
+      <a href="/blog/icf-vs-wood-frame" class="article-card" role="listitem">
+        <span class="article-card-tag">Build Guide</span>
+        <h2 class="article-card-title">ICF vs. Wood Frame: The Honest Comparison</h2>
+        <p class="article-card-desc">Energy, strength, cost, and build speed — we cover every category and tell you when wood frame is actually the right call. The comparison no manufacturer will write.</p>
+        <div class="article-card-meta">
+          <span>10 min read</span>
+          <span class="article-card-read">Read article →</span>
+        </div>
+      </a>
+
+      <a href="/blog/how-long-to-build-a-house" class="article-card" role="listitem">
+        <span class="article-card-tag">Build Guide</span>
+        <h2 class="article-card-title">How Long Does It Take to Build a House in 2026?</h2>
+        <p class="article-card-desc">Most homes take 7 to 12 months from groundbreaking to move-in. Full phase-by-phase breakdown, timeline by build type, and how ICF compares to wood frame.</p>
+        <div class="article-card-meta">
+          <span>8 min read</span>
+          <span class="article-card-read">Read article →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo" aria-label="ICF Insider home">
+            <span class="nav-logo-text">ICF <span>Insider</span></span>
+          </a>
+          <p>The independent authority on Insulated Concrete Form construction. Real data, unbiased comparisons, and a vetted contractor network.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="/icf-101" class="footer-link">ICF 101</a></li>
+            <li><a href="/cost-guide" class="footer-link">Cost Guide</a></li>
+            <li><a href="/brands" class="footer-link">Brand Comparison</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Directory</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="/find-a-pro" class="footer-link">Find a Contractor</a></li>
+            <li><a href="/get-connected?tab=contractor" class="footer-link">List Your Business</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="/about" class="footer-link">About</a></li>
+            <li><a href="/privacy-policy" class="footer-link">Privacy Policy</a></li>
+            <li><a href="/terms-of-use" class="footer-link">Terms of Use</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="mailto:tyler@icfinsider.com" class="footer-link" style="color:var(--color-accent);">tyler@icfinsider.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ICF Insider. All rights reserved.</p>
+        <nav class="footer-bottom-links" aria-label="Legal">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-of-use">Terms of Use</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+
+</body>
+</html>
