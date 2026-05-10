@@ -4,23 +4,14 @@
   <!-- ICF in white, large and centered -->
   <text
     x="50"
-    y="41"
+    y="50"
     text-anchor="middle"
     dominant-baseline="middle"
     font-family="Arial Black, Impact, sans-serif"
     font-weight="900"
-    font-size="36"
+    font-size="46"
     letter-spacing="2"
     fill="#FFFFFF">ICF</text>
-  <!-- INSIDER in orange beneath -->
-  <text
-    x="50"
-    y="70"
-    text-anchor="middle"
-    dominant-baseline="middle"
-    font-family="Arial Black, Impact, sans-serif"
-    font-weight="700"
-    font-size="13"
-    letter-spacing="3"
-    fill="#E8780A">INSIDER</text>
+  <!-- Orange accent bar — wider than ICF, tight below text -->
+  <rect x="4" y="68" width="92" height="4" rx="2" fill="#E8780A"/>
 </svg>
