@@ -11,13 +11,13 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How Much Does ICF Cost in Maine? Real Numbers + Local Experts | ICF Insider</title>
-  <meta name="description" content="ICF homes in Maine run $160–$280/sq ft finished. See what drives the price, why Maine builders choose ICF, and find a local ICF contractor free.">
+  <title>How Much Does ICF Cost in Maine? 2026 Pricing, Savings &amp; Local Pros | ICF Insider</title>
+  <meta name="description" content="Maine ICF construction runs $170-$240/sq ft for walls. See the full cost breakdown, ICF vs wood frame comparison, long-term savings math, and connect with local ICF contractors.">
   <link rel="canonical" href="https://icfinsider.com/states/maine/cost">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="How Much Does ICF Cost in Maine? Real Numbers + Local Experts">
-  <meta property="og:description" content="ICF homes in Maine run $160–$280/sq ft finished. See what drives the price, why Maine builders choose ICF, and find a local ICF contractor free.">
+  <meta property="og:title" content="How Much Does ICF Cost in Maine? 2026 Pricing &amp; Local Pros">
+  <meta property="og:description" content="Maine ICF walls run $170-$240/sq ft. Full cost breakdown, ICF vs wood frame comparison, and savings math for Maine homeowners.">
   <meta property="og:url" content="https://icfinsider.com/states/maine/cost">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,24 +25,214 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/components.css">
   <style>
-    .factor-list{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-top:var(--space-8);}
-    .factor-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6);}
-    .factor-item h3{margin:0 0 var(--space-2);font-size:1rem;}
-    .factor-item p{margin:0;font-size:0.9rem;color:var(--color-text-mid);line-height:1.65;}
-    .cta-panel{margin-top:var(--space-16);background:var(--color-dark-900);border-radius:14px;padding:var(--space-8);border:1px solid rgba(255,255,255,0.08);}
-    .cta-panel h2{margin:0 0 var(--space-3);color:var(--color-text-light);}
-    .cta-panel p{margin:0 0 var(--space-6);color:var(--color-text-muted);max-width:600px;}
-    .faq-list{display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-8);}
-    .faq-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6) var(--space-7);}
-    .faq-card h3{margin:0 0 var(--space-2);font-size:1rem;}
-    .faq-card p{margin:0;color:var(--color-text-mid);line-height:1.7;}
-    @media(max-width:767px){.factor-list{grid-template-columns:1fr;}}
+    /* ── Cost page styles ───────────────────────────────── */
+
+    .cost-snapshot {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+    }
+    .cost-snapshot-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: var(--space-6);
+      text-align: center;
+    }
+    .cost-snapshot-card .cost-number {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      color: var(--color-accent);
+      line-height: 1.1;
+    }
+    .cost-snapshot-card .cost-label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-top: var(--space-2);
+      line-height: 1.4;
+    }
+
+    .cost-table-wrap {
+      margin-top: var(--space-8);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .breakdown-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+    }
+    .breakdown-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: var(--space-6);
+    }
+    .breakdown-card h3 { margin: 0 0 var(--space-1); font-size: 0.95rem; font-weight: 600; }
+    .breakdown-pct {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--color-accent);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+    .breakdown-card p { margin: 0; font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.6; }
+
+    .savings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+    }
+    .savings-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: var(--space-6);
+      text-align: center;
+    }
+    .savings-card .savings-number {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      font-weight: 800;
+      color: var(--color-accent);
+      line-height: 1.1;
+    }
+    .savings-card .savings-label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-top: var(--space-2);
+      line-height: 1.4;
+    }
+
+    .factor-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+    }
+    .factor-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: var(--space-6);
+    }
+    .factor-item h3 { margin: 0 0 var(--space-2); font-size: 1rem; }
+    .factor-item p { margin: 0; font-size: 0.9rem; color: var(--color-text-mid); line-height: 1.65; }
+
+    .mid-cta {
+      margin-top: var(--space-10);
+      background: var(--color-dark-900);
+      border-radius: 14px;
+      padding: var(--space-8);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+    }
+    .mid-cta h3 { margin: 0 0 var(--space-1); color: var(--color-text-light); font-size: 1.1rem; }
+    .mid-cta p  { margin: 0; color: var(--color-text-muted); font-size: 0.875rem; }
+
+    .cta-panel {
+      margin-top: var(--space-16);
+      background: var(--color-dark-900);
+      border-radius: 14px;
+      padding: var(--space-8);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .cta-panel h2 { margin: 0 0 var(--space-3); color: var(--color-text-light); }
+    .cta-panel p  { margin: 0 0 var(--space-6); color: var(--color-text-muted); max-width: 600px; }
+
+    .faq-list { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-8); }
+    .faq-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: var(--space-6) var(--space-7);
+    }
+    .faq-card h3 { margin: 0 0 var(--space-2); font-size: 1rem; }
+    .faq-card p  { margin: 0; color: var(--color-text-mid); line-height: 1.7; }
+
+    .disclaimer-note {
+      margin-top: var(--space-6);
+      padding: var(--space-5) var(--space-6);
+      background: rgba(232,120,10,0.06);
+      border-left: 3px solid var(--color-accent);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 767px) {
+      .cost-snapshot    { grid-template-columns: 1fr; }
+      .breakdown-grid   { grid-template-columns: 1fr; }
+      .savings-grid     { grid-template-columns: 1fr; }
+      .factor-list      { grid-template-columns: 1fr; }
+      .mid-cta          { flex-direction: column; align-items: flex-start; }
+    }
   </style>
+
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://icfinsider.com/"},{"@type":"ListItem","position":2,"name":"Maine","item":"https://icfinsider.com/states/maine/"},{"@type":"ListItem","position":3,"name":"Maine ICF Cost","item":"https://icfinsider.com/states/maine/cost.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does ICF cost in Maine?","acceptedAnswer":{"@type":"Answer","text":"Maine ICF pricing depends heavily on location. Southern Maine and Portland area projects are most accessible. Remote and northern builds carry higher costs for crew travel and material freight. A local contractor can give you an accurate estimate."}},{"@type":"Question","name":"Why is ICF popular in Maine?","acceptedAnswer":{"@type":"Answer","text":"Maine's extreme winters and high heating costs make ICF's thermal performance highly valuable. Many homeowners find the payback period is shorter in Maine than in warmer climates because heating savings are so significant."}},{"@type":"Question","name":"Is ICF used for basements in Maine?","acceptedAnswer":{"@type":"Answer","text":"Yes. ICF is commonly used for both above-grade walls and insulated basement construction in Maine. The continuous insulation is especially valuable below grade where frost depth requirements are significant."}}]}]}
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://icfinsider.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Maine", "item": "https://icfinsider.com/states/maine/" },
+          { "@type": "ListItem", "position": 3, "name": "Maine ICF Cost", "item": "https://icfinsider.com/states/maine/cost" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does ICF cost in Maine?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Maine ICF pricing depends heavily on location. Southern Maine and Portland area projects are most accessible. Remote and northern builds carry higher costs for crew travel and material freight. A local contractor can give you an accurate estimate." }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is ICF popular in Maine?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Maine's extreme winters and high heating costs make ICF's thermal performance highly valuable. Many homeowners find the savings period is shorter in Maine than in warmer climates because heating savings are so significant." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is ICF used for basements in Maine?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. ICF is commonly used for both above-grade walls and insulated basement construction in Maine. The continuous insulation is especially valuable below grade where frost depth requirements are significant." }
+          },
+          {
+            "@type": "Question",
+            "name": "How much can I save on energy with an ICF home in Maine?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Maine ICF homeowners typically save 40-60% on heating and cooling costs compared to wood-frame homes. That translates to roughly $1,600-$2,800 per year in energy savings alone, starting the day you move in." }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the long-term savings of an ICF home in Maine?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Over 30 years, the total financial advantage of owning an ICF home in Maine can exceed $65K. That includes energy savings of 40-60%, and dramatically lower maintenance costs compared to wood-frame construction." }
+          }
+        ]
+      }
+    ]
+  }
   </script>
 </head>
 <body>
+
+  <!-- NAV -->
   <nav class="nav" id="main-nav" aria-label="Main navigation">
     <div class="container nav-inner">
       <a href="/" class="nav-logo" aria-label="ICF Insider home"><span class="nav-logo-text">ICF <span>Insider</span></span></a>
@@ -63,6 +253,9 @@
     <a href="/find-a-pro" class="nav-link">Find a Pro</a>
     <a href="/find-a-pro?state=Maine" class="btn btn-primary">Find a Pro</a>
   </div>
+
+
+  <!-- HERO -->
   <section class="page-hero" aria-labelledby="page-title">
     <div class="container">
       <div class="page-hero-meta">
@@ -71,75 +264,315 @@
       </div>
       <span class="eyebrow">Insulated Concrete Form Cost Guide</span>
       <h1 id="page-title">How Much Does ICF Cost in Maine?</h1>
-      <p class="page-hero-intro" style="max-width:620px;">ICF construction in Maine makes strong practical sense. Extreme winters, high heating costs, a remote building environment, and a culture of building for durability all align with what ICF does best. Maine homeowners often view ICF as the logical choice for a serious build. Your project cost will depend heavily on your location and how remote your build site is.</p>
+      <p class="page-hero-intro" style="max-width:620px;">
+        ICF construction in Maine makes strong practical sense. Extreme winters, high heating costs, a remote building environment, and a culture of building for durability all align with what ICF does best. Maine homeowners often view ICF as the logical choice for a serious build. Your project cost will depend heavily on your location and how remote your build site is.
+</p>
       <div style="margin-top:var(--space-6);">
-        <a href="/find-a-pro?state=Maine" class="btn btn-primary btn-lg">Find a Pro in Maine</a>
+        <a href="/find-a-pro?state=Maine" class="btn btn-primary btn-lg">Get a Quote From a Maine ICF Pro &rarr;</a>
       </div>
     </div>
   </section>
+
+
+  <!-- CONTENT -->
   <div class="container">
     <div class="content-layout">
       <article class="article" id="article">
-        <section id="cost-factors">
-          <span class="eyebrow">What Affects ICF Cost</span>
-          <h2>What Affects ICF Pricing in Maine</h2>
-          <p style="color:var(--color-text-mid);max-width:640px;">ICF costs more upfront than wood framing, but how much more depends on factors specific to your project. Here is what drives the number.</p>
-          <div class="factor-list">
-            <div class="factor-item">
-              <h3>Design Complexity</h3>
-              <p>Simple rectangular homes are more efficient to build with ICF than complex multi-story custom designs. The more corners, curves, and structural transitions in your Maine home, the more labor and material time required, which directly affects total project cost.</p>
+
+
+        <!-- COST SNAPSHOT -->
+        <section id="cost-snapshot">
+          <span class="eyebrow">Quick Numbers</span>
+          <h2 style="margin-top:var(--space-2);">Maine ICF Cost at a Glance</h2>
+          <p style="color:var(--color-text-muted);max-width:580px;">
+            These ranges reflect typical Maine ICF projects in 2025-2026. Your actual cost depends on location, design, and contractor. The best way to get a real number is to talk to a local ICF pro.
+          </p>
+
+          <div class="cost-snapshot">
+            <div class="cost-snapshot-card">
+              <span class="cost-number">$170 - $240</span>
+              <span class="cost-label">Per sq ft, ICF walls only<br>(materials + labor)</span>
             </div>
-            <div class="factor-item">
-              <h3>Labor Availability</h3>
+            <div class="cost-snapshot-card">
+              <span class="cost-number">$2,200 - $4,600</span>
+              <span class="cost-label">Saved per year<br>(energy + maintenance)</span>
+            </div>
+            <div class="cost-snapshot-card">
+              <span class="cost-number">$65K+</span>
+              <span class="cost-label">Total savings over<br>30-year ownership</span>
+            </div>
+          </div>
+
+          <div class="disclaimer-note">
+            <strong>Why ranges, not exact prices?</strong> ICF pricing varies significantly by county, design complexity, and which contractor you work with. A 2,000 sq ft ranch in Bangor will cost very differently than a 4,000 sq ft custom home in Portland. These ranges give you a realistic starting point, but the only way to get a number you can build a budget around is a quote from a local ICF contractor who can evaluate your specific project.
+          </div>
+        </section>
+
+
+        <!-- ICF vs WOOD FRAME COMPARISON -->
+        <section id="icf-vs-wood" style="margin-top:var(--space-16);">
+          <span class="eyebrow">Side by Side</span>
+          <h2 style="margin-top:var(--space-2);">ICF vs Wood Frame in Maine: Cost Comparison</h2>
+          <p style="color:var(--color-text-muted);max-width:600px;">
+            The upfront investment is only one part of the story. When you account for what you save every year in energy and maintenance, the full picture looks very different. Here is how ICF and wood frame compare for a typical 2,500 sq ft Maine home.
+          </p>
+
+          <div class="cost-table-wrap">
+            <table class="comparison-table" aria-label="ICF vs wood frame cost comparison for Maine">
+              <thead>
+                <tr>
+                  <th>Cost Category</th>
+                  <th class="col-icf">ICF Construction</th>
+                  <th>Wood Frame</th>
+                  <th>Winner</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Wall construction (per sq ft)</td>
+                  <td class="col-icf">$170 - $240</td>
+                  <td>$135 - $190</td>
+                  <td>Wood Frame</td>
+                </tr>
+                <tr>
+                  <td>Total build cost (2,500 sq ft home)</td>
+                  <td class="col-icf">$425K - $600K</td>
+                  <td>$400K - $555K</td>
+                  <td>Wood Frame</td>
+                </tr>
+                <tr>
+                  <td>Annual energy costs</td>
+                  <td class="col-icf win">40-60% lower</td>
+                  <td>Standard rates</td>
+                  <td class="win">ICF</td>
+                </tr>
+                <tr>
+                  <td>Maintenance (10-yr avg/yr)</td>
+                  <td class="col-icf win">$500 - $1,200</td>
+                  <td>$1,500 - $3,000</td>
+                  <td class="win">ICF</td>
+                </tr>
+                <tr>
+                  <td>Extreme cold performance</td>
+                  <td class="col-icf win">Continuous insulation, zero thermal bridging</td>
+                  <td>Standard insulation with thermal bridging</td>
+                  <td class="win">ICF</td>
+                </tr>
+                <tr>
+                  <td>Pest and mold resistance</td>
+                  <td class="col-icf win">Concrete does not rot or feed pests</td>
+                  <td>Requires treatment, ongoing risk</td>
+                  <td class="win">ICF</td>
+                </tr>
+                <tr>
+                  <td>Net cost after 15 years</td>
+                  <td class="col-icf win">$450K - $625K</td>
+                  <td>$465K - $635K</td>
+                  <td class="win">ICF</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p style="margin-top:var(--space-6);font-size:0.85rem;color:var(--color-text-muted);">
+            Estimates based on 2025-2026 Maine market data. Energy savings assume typical Maine heating loads. Your numbers will vary by location, design, and utility rates.
+          </p>
+        </section>
+
+
+        <!-- MID-PAGE CTA -->
+        <div class="mid-cta">
+          <div>
+            <h3>Want real numbers for your project?</h3>
+            <p>These are ranges. A local Maine ICF contractor can give you an actual quote based on your plans, your lot, and your area's requirements.</p>
+          </div>
+          <a href="/find-a-pro?state=Maine" class="btn btn-primary" style="flex-shrink:0;">Find a Pro in Maine &rarr;</a>
+        </div>
+
+
+        <!-- COST BREAKDOWN -->
+        <section id="cost-breakdown" style="margin-top:var(--space-16);">
+          <span class="eyebrow">Where Your Money Goes</span>
+          <h2 style="margin-top:var(--space-2);">ICF Cost Breakdown in Maine</h2>
+          <p style="color:var(--color-text-muted);max-width:580px;">
+            Understanding what makes up the cost helps you have a smarter conversation with your contractor. Here is roughly where the money goes on a typical Maine ICF wall project.
+          </p>
+
+          <div class="breakdown-grid">
+            <div class="breakdown-card">
+              <div class="breakdown-pct">40 - 50%</div>
+              <h3>ICF Blocks and Concrete</h3>
+              <p>The foam forms themselves plus the concrete poured inside them. Brand choice affects pricing. Concrete costs vary by region within Maine.</p>
+            </div>
+            <div class="breakdown-card">
+              <div class="breakdown-pct">30 - 40%</div>
+              <h3>Labor</h3>
               <p>Southern Maine and the Portland area have the most active ICF contractor markets in the state. Remote and northern Maine projects may require contractors to travel and face higher material delivery costs that affect overall project pricing.</p>
             </div>
+            <div class="breakdown-card">
+              <div class="breakdown-pct">8 - 12%</div>
+              <h3>Rebar and Reinforcement</h3>
+              <p>Steel reinforcement inside the concrete core is what gives ICF walls their structural strength. The amount of rebar depends on your design and local code requirements.</p>
+            </div>
+            <div class="breakdown-card">
+              <div class="breakdown-pct">5 - 10%</div>
+              <h3>Engineering and Permits</h3>
+              <p>Maine requires stamped engineering plans. Snow load, frost depth, and energy code requirements all affect engineering scope. Budget more for complex designs or remote sites.</p>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- WHAT AFFECTS COST -->
+        <section id="cost-factors" style="margin-top:var(--space-16);">
+          <span class="eyebrow">What Affects Your Price</span>
+          <h2 style="margin-top:var(--space-2);">What Drives ICF Cost Up or Down in Maine</h2>
+          <p style="color:var(--color-text-muted);max-width:640px;">
+            Two Maine ICF projects can vary significantly in price. Understanding these factors helps you get the best value and have a smarter conversation with your contractor.
+          </p>
+          <div class="factor-list">
             <div class="factor-item">
-              <h3>Materials and Freight</h3>
-              <p>ICF block ships from regional distribution centers. Depending on your location in Maine and the brand selected, delivery costs can vary. Projects farther from suppliers may see higher freight costs built into the overall quote.</p>
+              <h3>Your Location in Maine</h3>
+              <p>Metro areas like Portland and Bangor have the most competitive contractor markets. Remote and rural areas may see higher costs due to crew travel and material freight distances.</p>
             </div>
             <div class="factor-item">
-              <h3>Local Code and Engineering</h3>
+              <h3>Design Complexity</h3>
+              <p>A simple rectangular floor plan is the most efficient to build with ICF. Every corner, curve, and height change adds labor time. Multi-story designs cost more per square foot than single-story. If budget is tight, simplify the geometry before cutting quality.</p>
+            </div>
+            <div class="factor-item">
+              <h3>Contractor Experience</h3>
+              <p>An experienced ICF crew builds faster and wastes less material. Experienced crews in Portland and Bangor often deliver better value than less experienced crews who quote lower but take longer. Ask how many ICF homes they have completed.</p>
+            </div>
+            <div class="factor-item">
+              <h3>Code and Engineering Requirements</h3>
               <p>Maine follows the IRC with state amendments. Frost depth requirements are significant statewide. Coastal projects may require additional wind and storm engineering. Energy code compliance has been progressively tightening.</p>
             </div>
           </div>
         </section>
-        <section id="worth-it" style="margin-top:var(--space-16);">
-          <span class="eyebrow">Why It Makes Sense</span>
-          <h2>Why ICF Makes Sense for Many Maine Homes</h2>
-          <p>Maine homeowners choose ICF primarily for the dramatic reduction in heating costs that a well-insulated ICF home provides. In a state where winters are serious and energy is expensive, the payback window is shorter than the national average.</p>
+
+
+        <!-- LONG-TERM SAVINGS -->
+        <section id="savings" style="margin-top:var(--space-16);">
+          <span class="eyebrow">Annual Savings</span>
+          <h2 style="margin-top:var(--space-2);">What Maine ICF Homeowners Save Every Year</h2>
+          <p style="color:var(--color-text-muted);max-width:600px;">
+            On top of building a stronger, quieter, more comfortable home, Maine ICF homeowners spend significantly less to own it. Here is where the savings show up.
+          </p>
+
+          <div class="savings-grid">
+            <div class="savings-card">
+              <span class="savings-number">$1,600 - $2,800</span>
+              <span class="savings-label">Annual energy savings<br>(40-60% lower heating bills)</span>
+            </div>
+            <div class="savings-card">
+              <span class="savings-number">$600 - $1,300</span>
+              <span class="savings-label">Annual maintenance savings<br>(no rot, minimal exterior maintenance)</span>
+            </div>
+          </div>
+
+          <p style="margin-top:var(--space-6);">
+            Combined, a typical Maine ICF homeowner saves <strong>$2,200 - $4,600 per year</strong> compared to an equivalent wood-frame home. That is real money back in your pocket every single year, starting the day you move in.
+          </p>
+          <p>
+            Over 30 years, the total financial advantage of owning an ICF home in Maine can exceed <strong>$65,000+</strong>.
+          </p>
+        </section>
+
+
+        <!-- MID-PAGE CTA 2 -->
+        <div class="mid-cta">
+          <div>
+            <h3>Ready to see what ICF would cost for your Maine project?</h3>
+            <p>Connect with a local ICF contractor who can walk your lot, review your plans, and give you a real quote.</p>
+          </div>
+          <a href="/find-a-pro?state=Maine" class="btn btn-primary" style="flex-shrink:0;">Find a Pro &rarr;</a>
+        </div>
+
+
+        <!-- WHY ICF IN STATE -->
+        <section id="why-maine" style="margin-top:var(--space-16);">
+          <span class="eyebrow">Why Maine</span>
+          <h2 style="margin-top:var(--space-2);">Why ICF Makes Financial Sense in Maine</h2>
+          <p>Maine homeowners choose ICF primarily for the dramatic reduction in heating costs that a well-insulated ICF home provides. In a state where winters are serious and energy is expensive, the savings window is shorter than the national average.</p>
           <p>Durability in harsh conditions is the other major factor. Maine homeowners build for generations, and ICF's long lifespan and resistance to freeze-thaw cycling make it a logical choice for the climate.</p>
         </section>
+
+
+        <!-- FAQ -->
         <section id="faq" style="margin-top:var(--space-16);">
           <span class="eyebrow">FAQ</span>
-          <h2>Common Questions About Maine ICF Cost</h2>
+          <h2 style="margin-top:var(--space-2);">Common Questions About ICF Cost in Maine</h2>
+
           <div class="faq-list">
-            <div class="faq-card"><h3>How much does ICF cost in Maine?</h3><p>Maine ICF pricing depends heavily on location. Southern Maine and Portland area projects are most accessible. Remote and northern builds carry higher costs for crew travel and material freight. A local contractor can give you an accurate estimate.</p></div>
-            <div class="faq-card"><h3>Why is ICF popular in Maine?</h3><p>Maine's extreme winters and high heating costs make ICF's thermal performance highly valuable. Many homeowners find the payback period is shorter in Maine than in warmer climates because heating savings are so significant.</p></div>
-            <div class="faq-card"><h3>Is ICF used for basements in Maine?</h3><p>Yes. ICF is commonly used for both above-grade walls and insulated basement construction in Maine. The continuous insulation is especially valuable below grade where frost depth requirements are significant.</p></div>
+            <div class="faq-card">
+              <h3>How much does ICF cost in Maine?</h3>
+              <p>Maine ICF pricing depends heavily on location. Southern Maine and Portland area projects are most accessible. Remote and northern builds carry higher costs for crew travel and material freight. A local contractor can give you an accurate estimate.</p>
+            </div>
+            <div class="faq-card">
+              <h3>Why is ICF popular in Maine?</h3>
+              <p>Maine's extreme winters and high heating costs make ICF's thermal performance highly valuable. Many homeowners find the savings period is shorter in Maine than in warmer climates because heating savings are so significant.</p>
+            </div>
+            <div class="faq-card">
+              <h3>Is ICF used for basements in Maine?</h3>
+              <p>Yes. ICF is commonly used for both above-grade walls and insulated basement construction in Maine. The continuous insulation is especially valuable below grade where frost depth requirements are significant.</p>
+            </div>
+            <div class="faq-card">
+              <h3>How much can I save on energy with an ICF home in Maine?</h3>
+              <p>Maine ICF homeowners typically save 40-60% on heating and cooling costs compared to wood-frame homes. That translates to roughly $1,600-$2,800 per year in energy savings alone, starting the day you move in.</p>
+            </div>
+            <div class="faq-card">
+              <h3>What are the long-term savings of an ICF home in Maine?</h3>
+              <p>Over 30 years, the total financial advantage of owning an ICF home in Maine can exceed $65K. That includes energy savings of 40-60%, and dramatically lower maintenance costs compared to wood-frame construction.</p>
+            </div>
           </div>
         </section>
+
+
+        <!-- BOTTOM CTA -->
         <div class="cta-panel">
-          <h2>Find ICF Contractors in Maine</h2>
-          <p>Browse verified ICF professionals in Maine and get the information you need to move your project forward.</p>
-          <a href="/find-a-pro?state=Maine" class="btn btn-primary btn-lg">Find a Pro in Maine</a>
+          <h2>Get a Real Quote for Your Maine ICF Project</h2>
+          <p>Every project is different. The only way to get a number you can build a budget around is to connect with a local ICF contractor who knows your market and your area's code requirements.</p>
+          <a href="/find-a-pro?state=Maine" class="btn btn-primary btn-lg">Find a Pro in Maine &rarr;</a>
+          <p style="margin-top:var(--space-3);font-size:0.8rem;color:var(--color-text-muted);">We only share your request with relevant local ICF professionals, never unrelated marketers.</p>
         </div>
+
+        <!-- CONTRACTOR BANNER -->
+        <div class="contractor-banner" style="margin-top:var(--space-8);">
+          <div class="contractor-banner-text">
+            <span class="eyebrow" style="font-size:0.7rem;">ICF Contractors &amp; Builders</span>
+            <p>Are you an ICF contractor in Maine? Get listed in the directory and start receiving leads from homeowners in your area.</p>
+          </div>
+          <a href="/get-connected?tab=contractor" class="btn btn-primary">List Your Business &rarr;</a>
+        </div>
+
+
       </article>
+
+
+      <!-- SIDEBAR -->
       <aside class="toc-sidebar" aria-label="Page navigation">
         <div class="toc-inner">
           <p class="toc-label">On this page</p>
           <ul class="toc-list">
-            <li><a href="#cost-factors" class="toc-link">What Affects ICF Cost</a></li>
-            <li><a href="#worth-it" class="toc-link">Why It Makes Sense</a></li>
+            <li><a href="#cost-snapshot" class="toc-link">Cost at a Glance</a></li>
+            <li><a href="#icf-vs-wood" class="toc-link">ICF vs Wood Frame</a></li>
+            <li><a href="#cost-breakdown" class="toc-link">Cost Breakdown</a></li>
+            <li><a href="#cost-factors" class="toc-link">What Affects Price</a></li>
+            <li><a href="#savings" class="toc-link">Long-Term Savings</a></li>
+            <li><a href="#why-maine" class="toc-link">Why Maine</a></li>
             <li><a href="#faq" class="toc-link">Common Questions</a></li>
           </ul>
           <div style="margin-top:var(--space-8);padding-top:var(--space-6);border-top:1px solid var(--color-border);">
-            <p style="font-size:0.8rem;color:var(--color-text-muted);margin:0 0 var(--space-3);">More Maine pages</p>
-            <a href="/states/maine/" class="btn btn-secondary" style="width:100%;text-align:center;font-size:0.85rem;">Maine ICF Page &rarr;</a>
+            <a href="/find-a-pro?state=Maine" class="btn btn-primary" style="width:100%;text-align:center;font-size:0.85rem;">Find a Pro in Maine</a>
           </div>
         </div>
       </aside>
+
     </div>
   </div>
+
+
+  <!-- FOOTER -->
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
@@ -153,11 +586,12 @@
         <div class="footer-col"><h4>Contact</h4><ul class="footer-links" role="list"><li><a href="mailto:tyler@icfinsider.com" class="footer-link" style="color:var(--color-accent);">tyler@icfinsider.com</a></li></ul></div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 ICF Insider. All rights reserved.</p>
+        <p>&copy; 2026 ICF Insider. Independent and unaffiliated with any ICF brand or manufacturer.</p>
         <nav class="footer-bottom-links" aria-label="Legal"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-use">Terms of Use</a></nav>
       </div>
     </div>
   </footer>
+
   <script src="/js/main.js"></script>
 </body>
 </html>
