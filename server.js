@@ -40,21 +40,24 @@ const server = http.createServer(function (req, res) {
   // Build the full file path on disk
   const filePath = path.join(__dirname, urlPath);
 
-  fs.readFile(filePath, function (err, data) {
-    if (err) {
-      // File not found — return a simple 404
-      res.writeHead(404, { 'Content-Type': 'text/html' });
-      res.end('<h1>404 — Page Not Found</h1>');
-      return;
-    }
-
-    // Determine Content-Type from file extension
-    const ext = path.extname(filePath).toLowerCase();
-    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-
-    res.writeHead(200, { 'Content-Type': contentType });
-    res.end(data);
-  });
+  function serve(fp) {
+    fs.readFile(fp, function (err, data) {
+      if (err) {
+        // If no extension, try appending .html (clean URL support)
+        if (!path.extname(fp)) {
+          return serve(fp + '.html');
+        }
+        res.writeHead(404, { 'Content-Type': 'text/html' });
+        res.end('<h1>404 — Page Not Found</h1>');
+        return;
+      }
+      const ext = path.extname(fp).toLowerCase();
+      const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+      res.writeHead(200, { 'Content-Type': contentType });
+      res.end(data);
+    });
+  }
+  serve(filePath);
 });
 
 server.listen(PORT, function () {

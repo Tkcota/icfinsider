@@ -11,13 +11,13 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How Much Does ICF Cost in Florida? Real Numbers + Local Experts | ICF Insider</title>
-  <meta name="description" content="ICF homes in Florida run $160–$280/sq ft finished. See what drives the price, why Florida builders choose ICF, and find a local ICF contractor free.">
+  <title>How Much Does ICF Cost in Florida? 2026 Pricing, Savings &amp; Local Pros | ICF Insider</title>
+  <meta name="description" content="Florida ICF construction runs $155-$220/sq ft for walls. See the full cost breakdown, ICF vs wood frame comparison, long-term savings math, and connect with local ICF contractors.">
   <link rel="canonical" href="https://icfinsider.com/states/florida/cost">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="How Much Does ICF Cost in Florida? Real Numbers + Local Experts">
-  <meta property="og:description" content="ICF homes in Florida run $160–$280/sq ft finished. See what drives the price, why Florida builders choose ICF, and find a local ICF contractor free.">
+  <meta property="og:title" content="How Much Does ICF Cost in Florida? 2026 Pricing &amp; Local Pros">
+  <meta property="og:description" content="Florida ICF walls run $155-$220/sq ft. Full cost breakdown, ICF vs wood frame comparison, and savings math for Florida homeowners.">
   <meta property="og:url" content="https://icfinsider.com/states/florida/cost">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,24 +25,214 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/components.css">
   <style>
-    .factor-list{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-top:var(--space-8);}
-    .factor-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6);}
-    .factor-item h3{margin:0 0 var(--space-2);font-size:1rem;}
-    .factor-item p{margin:0;font-size:0.9rem;color:var(--color-text-mid);line-height:1.65;}
-    .cta-panel{margin-top:var(--space-16);background:var(--color-dark-900);border-radius:14px;padding:var(--space-8);border:1px solid rgba(255,255,255,0.08);}
-    .cta-panel h2{margin:0 0 var(--space-3);color:var(--color-text-light);}
-    .cta-panel p{margin:0 0 var(--space-6);color:var(--color-text-muted);max-width:600px;}
-    .faq-list{display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-8);}
-    .faq-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6) var(--space-7);}
-    .faq-card h3{margin:0 0 var(--space-2);font-size:1rem;}
-    .faq-card p{margin:0;color:var(--color-text-mid);line-height:1.7;}
-    @media(max-width:767px){.factor-list{grid-template-columns:1fr;}}
+    /* ── Cost page styles ───────────────────────────────── */
+
+    .cost-snapshot {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+    }
+    .cost-snapshot-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: var(--space-6);
+      text-align: center;
+    }
+    .cost-snapshot-card .cost-number {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      color: var(--color-accent);
+      line-height: 1.1;
+    }
+    .cost-snapshot-card .cost-label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-top: var(--space-2);
+      line-height: 1.4;
+    }
+
+    .cost-table-wrap {
+      margin-top: var(--space-8);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .breakdown-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+    }
+    .breakdown-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: var(--space-6);
+    }
+    .breakdown-card h3 { margin: 0 0 var(--space-1); font-size: 0.95rem; font-weight: 600; }
+    .breakdown-pct {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--color-accent);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+    .breakdown-card p { margin: 0; font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.6; }
+
+    .savings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+    }
+    .savings-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: var(--space-6);
+      text-align: center;
+    }
+    .savings-card .savings-number {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      font-weight: 800;
+      color: var(--color-accent);
+      line-height: 1.1;
+    }
+    .savings-card .savings-label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-top: var(--space-2);
+      line-height: 1.4;
+    }
+
+    .factor-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+    }
+    .factor-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: var(--space-6);
+    }
+    .factor-item h3 { margin: 0 0 var(--space-2); font-size: 1rem; }
+    .factor-item p { margin: 0; font-size: 0.9rem; color: var(--color-text-mid); line-height: 1.65; }
+
+    .mid-cta {
+      margin-top: var(--space-10);
+      background: var(--color-dark-900);
+      border-radius: 14px;
+      padding: var(--space-8);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+    }
+    .mid-cta h3 { margin: 0 0 var(--space-1); color: var(--color-text-light); font-size: 1.1rem; }
+    .mid-cta p  { margin: 0; color: var(--color-text-muted); font-size: 0.875rem; }
+
+    .cta-panel {
+      margin-top: var(--space-16);
+      background: var(--color-dark-900);
+      border-radius: 14px;
+      padding: var(--space-8);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .cta-panel h2 { margin: 0 0 var(--space-3); color: var(--color-text-light); }
+    .cta-panel p  { margin: 0 0 var(--space-6); color: var(--color-text-muted); max-width: 600px; }
+
+    .faq-list { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-8); }
+    .faq-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: var(--space-6) var(--space-7);
+    }
+    .faq-card h3 { margin: 0 0 var(--space-2); font-size: 1rem; }
+    .faq-card p  { margin: 0; color: var(--color-text-mid); line-height: 1.7; }
+
+    .disclaimer-note {
+      margin-top: var(--space-6);
+      padding: var(--space-5) var(--space-6);
+      background: rgba(232,120,10,0.06);
+      border-left: 3px solid var(--color-accent);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 767px) {
+      .cost-snapshot    { grid-template-columns: 1fr; }
+      .breakdown-grid   { grid-template-columns: 1fr; }
+      .savings-grid     { grid-template-columns: 1fr; }
+      .factor-list      { grid-template-columns: 1fr; }
+      .mid-cta          { flex-direction: column; align-items: flex-start; }
+    }
   </style>
+
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://icfinsider.com/"},{"@type":"ListItem","position":2,"name":"Florida","item":"https://icfinsider.com/states/florida/"},{"@type":"ListItem","position":3,"name":"Florida ICF Cost","item":"https://icfinsider.com/states/florida/cost.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does ICF construction cost in Florida?","acceptedAnswer":{"@type":"Answer","text":"ICF costs in Florida vary based on your location, design complexity, and local labor market. A local ICF contractor who knows your county's code requirements and crew availability is the best source for accurate pricing on your specific project."}},{"@type":"Question","name":"Is ICF worth it in Florida for hurricanes?","acceptedAnswer":{"@type":"Answer","text":"Many Florida homeowners choose ICF specifically for hurricane resistance. ICF walls are reinforced concrete and handle high-wind loads far better than wood framing, an important consideration in a state with an active hurricane season."}},{"@type":"Question","name":"How does Florida's building code affect ICF projects?","acceptedAnswer":{"@type":"Answer","text":"Florida's building code is strict, especially in wind exposure zones and coastal areas. ICF actually aligns well with many of these requirements, but your contractor and engineer will need to verify compliance for your specific location and design."}}]}]}
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://icfinsider.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Florida", "item": "https://icfinsider.com/states/florida/" },
+          { "@type": "ListItem", "position": 3, "name": "Florida ICF Cost", "item": "https://icfinsider.com/states/florida/cost" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does ICF construction cost in Florida?",
+            "acceptedAnswer": { "@type": "Answer", "text": "ICF wall construction in Florida typically runs $155-$220 per square foot of wall area. For the total finished home, expect to invest 5-12% more than wood-frame construction, and in return you get reinforced concrete walls rated for 200+ mph winds, 50-70% lower energy bills, and significant insurance discounts. The exact cost depends on your location, design complexity, and the ICF contractor serving your area." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is ICF worth it in Florida for hurricanes?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Many Florida homeowners consider ICF the smartest building decision they can make. ICF walls are reinforced concrete rated for 200+ mph winds. Florida ICF homeowners save $1,500-$4,000 per year on insurance, 50-70% on energy bills, and avoid ongoing costs like termite treatment and rot repair that wood-frame homes require." }
+          },
+          {
+            "@type": "Question",
+            "name": "How does Florida's building code affect ICF projects?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Florida's building code is among the strictest in the country, especially for wind-resistant construction. ICF meets and often exceeds Florida Building Code requirements, including High-Velocity Hurricane Zone (HVHZ) standards in South Florida. Your contractor and engineer will verify compliance for your specific county." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does an ICF home lower insurance costs in Florida?",
+            "acceptedAnswer": { "@type": "Answer", "text": "In most cases, yes. Florida insurers offer discounts for concrete construction because ICF homes sustain dramatically less damage in hurricanes. Coastal county homeowners have reported annual savings of $1,500-$4,000 or more compared to equivalent wood-frame homes." }
+          },
+          {
+            "@type": "Question",
+            "name": "Where in Florida is ICF most popular?",
+            "acceptedAnswer": { "@type": "Answer", "text": "ICF is most common in coastal areas with the highest hurricane exposure: South Florida, Tampa Bay, the Gulf Coast, and the Space Coast. However, ICF is used statewide for its energy efficiency and comfort benefits, even in inland areas like Orlando and North Florida." }
+          }
+        ]
+      }
+    ]
+  }
   </script>
 </head>
 <body>
+
+  <!-- NAV -->
   <nav class="nav" id="main-nav" aria-label="Main navigation">
     <div class="container nav-inner">
       <a href="/" class="nav-logo" aria-label="ICF Insider home"><span class="nav-logo-text">ICF <span>Insider</span></span></a>
@@ -63,6 +253,9 @@
     <a href="/find-a-pro" class="nav-link">Find a Pro</a>
     <a href="/find-a-pro?state=Florida" class="btn btn-primary">Find a Pro</a>
   </div>
+
+
+  <!-- HERO -->
   <section class="page-hero" aria-labelledby="page-title">
     <div class="container">
       <div class="page-hero-meta">
@@ -71,80 +264,332 @@
       </div>
       <span class="eyebrow">Insulated Concrete Form Cost Guide</span>
       <h1 id="page-title">How Much Does ICF Cost in Florida?</h1>
-      <p class="page-hero-intro" style="max-width:620px;">ICF construction in Florida costs more upfront than wood framing, but in a state defined by hurricane risk, high humidity, and year-round cooling demands, many homeowners consider it one of the most practical long-term investments they can make. What you'll pay depends heavily on your location, design, and the ICF contractors serving your market.</p>
+      <p class="page-hero-intro" style="max-width:620px;">
+        Florida's hurricanes, extreme heat, and coastal humidity make ICF one of the smartest building choices in the state. Lower energy bills, insurance discounts, and near-zero maintenance mean Florida ICF homeowners save thousands every year.
+</p>
       <div style="margin-top:var(--space-6);">
-        <a href="/find-a-pro?state=Florida" class="btn btn-primary btn-lg">Find a Pro in Florida</a>
+        <a href="/find-a-pro?state=Florida" class="btn btn-primary btn-lg">Get a Quote From a Florida ICF Pro &rarr;</a>
       </div>
     </div>
   </section>
+
+
+  <!-- CONTENT -->
   <div class="container">
     <div class="content-layout">
       <article class="article" id="article">
 
-        <section id="cost-factors">
-          <span class="eyebrow">What Affects ICF Cost</span>
-          <h2>What Affects ICF Pricing in Florida</h2>
-          <p style="color:var(--color-text-mid);max-width:640px;">ICF costs more upfront than wood framing, but how much more depends on factors specific to your project. Here is what drives the number.</p>
-          <div class="factor-list">
-            <div class="factor-item">
-              <h3>Design Complexity</h3>
-              <p>Simple rectangular homes are more efficient to build with ICF than complex multi-story custom designs. The more corners, curves, and structural transitions in your Florida home, the more labor and material time required, which directly affects total project cost.</p>
+
+        <!-- COST SNAPSHOT -->
+        <section id="cost-snapshot">
+          <span class="eyebrow">Quick Numbers</span>
+          <h2 style="margin-top:var(--space-2);">Florida ICF Cost at a Glance</h2>
+          <p style="color:var(--color-text-muted);max-width:580px;">
+            These ranges reflect typical Florida ICF projects in 2025-2026. Your actual cost depends on location, design, and contractor. The best way to get a real number is to talk to a local ICF pro.
+          </p>
+
+          <div class="cost-snapshot">
+            <div class="cost-snapshot-card">
+              <span class="cost-number">$155 - $220</span>
+              <span class="cost-label">Per sq ft, ICF walls only<br>(materials + labor)</span>
             </div>
-            <div class="factor-item">
-              <h3>Labor Availability</h3>
-              <p>South Florida, Tampa Bay, and Orlando have active ICF contractor markets with competitive pricing. Coastal and rural areas may have fewer crew options, which can affect both availability and cost.</p>
+            <div class="cost-snapshot-card">
+              <span class="cost-number">$3,900 - $8,400</span>
+              <span class="cost-label">Saved per year<br>(energy + insurance + maintenance)</span>
             </div>
-            <div class="factor-item">
-              <h3>Materials and Freight</h3>
-              <p>ICF block ships from regional distribution centers. Depending on your location in Florida and the brand selected, delivery costs can vary. Projects farther from suppliers may see higher freight costs built into the overall quote.</p>
+            <div class="cost-snapshot-card">
+              <span class="cost-number">$100K+</span>
+              <span class="cost-label">Total savings over<br>30-year ownership</span>
             </div>
-            <div class="factor-item">
-              <h3>Local Code and Engineering</h3>
-              <p>Florida's Building Code is one of the most rigorous in the country, particularly for wind-resistant construction. Engineering requirements, impact-resistant specifications, and coastal setback rules all vary by county and can significantly affect your project's scope.</p>
-            </div>
+          </div>
+
+          <div class="disclaimer-note">
+            <strong>Why ranges, not exact prices?</strong> ICF pricing varies significantly by county, design complexity, and which contractor you work with. A 2,000 sq ft ranch in Ocala will cost very differently than a 4,000 sq ft coastal custom home in Naples. These ranges give you a realistic starting point, but the only way to get a number you can build a budget around is a quote from a local ICF contractor who can evaluate your specific project.
           </div>
         </section>
 
-        <section id="worth-it" style="margin-top:var(--space-16);">
-          <span class="eyebrow">Why It Makes Sense</span>
-          <h2>Why ICF Makes Sense for Many Florida Homes</h2>
-          <p>For Florida homeowners, hurricane resilience is the headline reason to choose ICF. Reinforced concrete walls perform dramatically better than wood framing in high-wind events, and many ICF homes in Florida have come through major storms with minimal structural damage.</p>
-          <p>Energy efficiency is the other major driver. Florida's year-round cooling season makes ICF's continuous insulation especially valuable, lower air conditioning bills over the life of the home help offset the upfront premium.</p>
-        </section>
 
-        <section id="faq" style="margin-top:var(--space-16);">
-          <span class="eyebrow">FAQ</span>
-          <h2>Common Questions About Florida ICF Cost</h2>
-          <div class="faq-list">
-            <div class="faq-card"><h3>How much does ICF construction cost in Florida?</h3><p>ICF costs in Florida vary based on your location, design complexity, and local labor market. A local ICF contractor who knows your county's code requirements and crew availability is the best source for accurate pricing on your specific project.</p></div>
-            <div class="faq-card"><h3>Is ICF worth it in Florida for hurricanes?</h3><p>Many Florida homeowners choose ICF specifically for hurricane resistance. ICF walls are reinforced concrete and handle high-wind loads far better than wood framing: an important consideration in a state with an active hurricane season.</p></div>
-            <div class="faq-card"><h3>How does Florida's building code affect ICF projects?</h3><p>Florida's building code is strict, especially in wind exposure zones and coastal areas. ICF actually aligns well with many of these requirements, but your contractor and engineer will need to verify compliance for your specific location and design.</p></div>
+        <!-- ICF vs WOOD FRAME COMPARISON -->
+        <section id="icf-vs-wood" style="margin-top:var(--space-16);">
+          <span class="eyebrow">Side by Side</span>
+          <h2 style="margin-top:var(--space-2);">ICF vs Wood Frame in Florida: Cost Comparison</h2>
+          <p style="color:var(--color-text-muted);max-width:600px;">
+            The upfront investment is only one part of the story. When you account for what you save every year in energy, insurance, and maintenance, the full picture looks very different. Here is how ICF and wood frame compare for a typical 2,500 sq ft Florida home.
+          </p>
+
+          <div class="cost-table-wrap">
+            <table class="comparison-table" aria-label="ICF vs wood frame cost comparison for Florida">
+              <thead>
+                <tr>
+                  <th>Cost Category</th>
+                  <th class="col-icf">ICF Construction</th>
+                  <th>Wood Frame</th>
+                  <th>Winner</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Wall construction (per sq ft)</td>
+                  <td class="col-icf">$155 - $220</td>
+                  <td>$120 - $165</td>
+                  <td>Wood Frame</td>
+                </tr>
+                <tr>
+                  <td>Total build cost (2,500 sq ft home)</td>
+                  <td class="col-icf">$400K - $550K</td>
+                  <td>$375K - $500K</td>
+                  <td>Wood Frame</td>
+                </tr>
+                <tr>
+                  <td>Annual energy costs</td>
+                  <td class="col-icf win">$1,200 - $2,200</td>
+                  <td>$3,200 - $4,800</td>
+                  <td class="win">ICF</td>
+                </tr>
+                <tr>
+                  <td>Annual homeowner insurance</td>
+                  <td class="col-icf win">$2,800 - $6,000</td>
+                  <td>$4,500 - $9,000</td>
+                  <td class="win">ICF</td>
+                </tr>
+                <tr>
+                  <td>Maintenance (10-yr avg/yr)</td>
+                  <td class="col-icf win">$500 - $1,200</td>
+                  <td>$1,500 - $3,000</td>
+                  <td class="win">ICF</td>
+                </tr>
+                <tr>
+                  <td>Hurricane resistance</td>
+                  <td class="col-icf win">200+ mph rated</td>
+                  <td>Meets minimum code</td>
+                  <td class="win">ICF</td>
+                </tr>
+                <tr>
+                  <td>Pest and mold resistance</td>
+                  <td class="col-icf win">Concrete does not rot or feed pests</td>
+                  <td>Requires treatment, ongoing risk</td>
+                  <td class="win">ICF</td>
+                </tr>
+                <tr>
+                  <td>Net cost after 15 years</td>
+                  <td class="col-icf win">$430K - $570K</td>
+                  <td>$475K - $640K</td>
+                  <td class="win">ICF</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+
+          <p style="margin-top:var(--space-6);font-size:0.85rem;color:var(--color-text-muted);">
+            Estimates based on 2025-2026 Florida market data. Energy savings assume typical Florida cooling loads. Insurance figures reflect coastal and near-coastal Florida counties where discounts for concrete construction are most significant. Your numbers will vary by location.
+          </p>
         </section>
 
-        <div class="cta-panel">
-          <h2>Find ICF Contractors in Florida</h2>
-          <p>Browse verified ICF professionals in Florida and get the information you need to move your project forward.</p>
-          <a href="/find-a-pro?state=Florida" class="btn btn-primary btn-lg">Find a Pro in Florida</a>
+
+        <!-- MID-PAGE CTA -->
+        <div class="mid-cta">
+          <div>
+            <h3>Want real numbers for your project?</h3>
+            <p>These are ranges. A local Florida ICF contractor can give you an actual quote based on your plans, your lot, and your county's requirements.</p>
+          </div>
+          <a href="/find-a-pro?state=Florida" class="btn btn-primary" style="flex-shrink:0;">Find a Pro in Florida &rarr;</a>
         </div>
 
+
+        <!-- COST BREAKDOWN -->
+        <section id="cost-breakdown" style="margin-top:var(--space-16);">
+          <span class="eyebrow">Where Your Money Goes</span>
+          <h2 style="margin-top:var(--space-2);">ICF Cost Breakdown in Florida</h2>
+          <p style="color:var(--color-text-muted);max-width:580px;">
+            Understanding what makes up the cost helps you have a smarter conversation with your contractor. Here is roughly where the money goes on a typical Florida ICF wall project.
+          </p>
+
+          <div class="breakdown-grid">
+            <div class="breakdown-card">
+              <div class="breakdown-pct">40 - 50%</div>
+              <h3>ICF Blocks and Concrete</h3>
+              <p>The foam forms themselves plus the concrete poured inside them. Brand choice (Nudura, Fox Blocks, BuildBlock, etc.) affects pricing. Concrete costs in South Florida tend to run higher than North Florida.</p>
+            </div>
+            <div class="breakdown-card">
+              <div class="breakdown-pct">30 - 40%</div>
+              <h3>Labor</h3>
+              <p>ICF installation is specialized work. South Florida and Tampa Bay have the most competitive crew markets. Rural areas may see higher labor costs due to travel. Experienced crews are faster and waste less material.</p>
+            </div>
+            <div class="breakdown-card">
+              <div class="breakdown-pct">8 - 12%</div>
+              <h3>Rebar and Reinforcement</h3>
+              <p>Florida's wind code requirements mean more steel reinforcement than most states, especially in High-Velocity Hurricane Zones (HVHZ) along the coast. This is a code-driven cost, not optional.</p>
+            </div>
+            <div class="breakdown-card">
+              <div class="breakdown-pct">5 - 10%</div>
+              <h3>Engineering and Permits</h3>
+              <p>Florida requires stamped engineering plans. Coastal counties, flood zones, and HVHZ areas require additional engineering review. Budget more for complex designs or waterfront lots.</p>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- WHAT AFFECTS COST -->
+        <section id="cost-factors" style="margin-top:var(--space-16);">
+          <span class="eyebrow">What Affects Your Price</span>
+          <h2 style="margin-top:var(--space-2);">What Drives ICF Cost Up or Down in Florida</h2>
+          <p style="color:var(--color-text-muted);max-width:640px;">
+            Two Florida ICF projects can vary significantly in price. Understanding these factors helps you get the best value and have a smarter conversation with your contractor.
+          </p>
+          <div class="factor-list">
+            <div class="factor-item">
+              <h3>Your Location in Florida</h3>
+              <p>South Florida (Miami-Dade, Broward, Palm Beach) has the highest labor and concrete costs. The Tampa Bay corridor and Orlando metro are moderately priced. North Florida and the Panhandle tend to be the most affordable markets for ICF, though contractor availability may be more limited.</p>
+            </div>
+            <div class="factor-item">
+              <h3>Design Complexity</h3>
+              <p>A simple rectangular floor plan is the most efficient to build with ICF. Every corner, curve, and height change adds labor time. Multi-story designs cost more per square foot than single-story. If budget is tight, simplify the geometry before cutting quality.</p>
+            </div>
+            <div class="factor-item">
+              <h3>Contractor Experience</h3>
+              <p>An experienced ICF crew builds faster and wastes less material. In Florida's active market, experienced crews in Miami, Tampa, Jacksonville, and Orlando often deliver better value than less experienced crews who quote lower but take longer. Ask how many ICF homes they have completed.</p>
+            </div>
+            <div class="factor-item">
+              <h3>Wind Zone and Code Requirements</h3>
+              <p>Florida's Building Code requirements vary by county and wind exposure zone. Coastal projects in HVHZ areas require additional rebar and engineering, which means a stronger structure and more storm protection built into the walls. Requirements in Ocala will look different than Key West, so your contractor will tailor the build to your specific location.</p>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- LONG-TERM SAVINGS -->
+        <section id="savings" style="margin-top:var(--space-16);">
+          <span class="eyebrow">Annual Savings</span>
+          <h2 style="margin-top:var(--space-2);">What Florida ICF Homeowners Save Every Year</h2>
+          <p style="color:var(--color-text-muted);max-width:600px;">
+            On top of building a stronger, quieter, more comfortable home, Florida ICF homeowners spend significantly less to own it. Here is where the savings show up.
+          </p>
+
+          <div class="savings-grid">
+            <div class="savings-card">
+              <span class="savings-number">$1,600 - $2,600</span>
+              <span class="savings-label">Annual energy savings<br>(50-70% lower cooling bills)</span>
+            </div>
+            <div class="savings-card">
+              <span class="savings-number">$1,500 - $4,000</span>
+              <span class="savings-label">Annual insurance savings<br>(concrete construction discounts)</span>
+            </div>
+            <div class="savings-card">
+              <span class="savings-number">$800 - $1,800</span>
+              <span class="savings-label">Annual maintenance savings<br>(no rot, no termites, no mold)</span>
+            </div>
+          </div>
+
+          <p style="margin-top:var(--space-6);">
+            Combined, a typical Florida ICF homeowner saves <strong>$3,900 - $8,400 per year</strong> compared to an equivalent wood-frame home. That is real money back in your pocket every single year, starting the day you move in.
+          </p>
+          <p>
+            Over 30 years, the total financial advantage of owning an ICF home in Florida can exceed <strong>$100,000</strong>. And that does not account for the value of living in a home rated for 200+ mph winds while wood-frame neighbors board up and evacuate every hurricane season.
+          </p>
+        </section>
+
+
+        <!-- MID-PAGE CTA 2 -->
+        <div class="mid-cta">
+          <div>
+            <h3>Ready to see what ICF would cost for your Florida project?</h3>
+            <p>Connect with a local ICF contractor who can walk your lot, review your plans, and give you a real quote.</p>
+          </div>
+          <a href="/find-a-pro?state=Florida" class="btn btn-primary" style="flex-shrink:0;">Find a Pro &rarr;</a>
+        </div>
+
+
+        <!-- WHY ICF IN FLORIDA -->
+        <section id="why-florida" style="margin-top:var(--space-16);">
+          <span class="eyebrow">Why Florida</span>
+          <h2 style="margin-top:var(--space-2);">Why ICF Makes Financial Sense in Florida</h2>
+          <p>
+            Florida is not just any state when it comes to construction decisions. The combination of Category 4-5 hurricane risk, year-round cooling season, coastal humidity, termite pressure, and rising insurance costs makes the ICF value proposition stronger here than almost anywhere else in the country.
+          </p>
+          <p>
+            Wood-frame homes in Florida face a list of ongoing costs that ICF simply avoids. Termite treatments, hurricane shutter systems, mold remediation, exterior rot repair, and increasingly unaffordable homeowner insurance premiums are all realities of wood-frame ownership in this state. ICF addresses every one of these at the point of construction.
+          </p>
+          <p>
+            For coastal homeowners in particular, the insurance math alone can justify ICF. Florida's insurance market has been in crisis, with premiums doubling or tripling for wood-frame homes in high-risk zones. Concrete construction is one of the few things that consistently earns meaningful discounts from Florida insurers.
+          </p>
+        </section>
+
+
+        <!-- FAQ -->
+        <section id="faq" style="margin-top:var(--space-16);">
+          <span class="eyebrow">FAQ</span>
+          <h2 style="margin-top:var(--space-2);">Common Questions About ICF Cost in Florida</h2>
+
+          <div class="faq-list">
+            <div class="faq-card">
+              <h3>How much does ICF construction cost per square foot in Florida?</h3>
+              <p>ICF wall construction in Florida typically runs $155-$220 per square foot of wall area for materials and labor. The total finished home cost, including all other systems (roof, MEP, finishes), usually falls 5-12% higher than an equivalent wood-frame home. South Florida runs at the higher end; North Florida and the Panhandle are generally more affordable.</p>
+            </div>
+            <div class="faq-card">
+              <h3>Is ICF worth it in Florida?</h3>
+              <p>For most Florida homeowners, absolutely. You are building a reinforced concrete home that handles 200+ mph winds, cuts energy bills 50-70%, earns insurance discounts, never rots, and never needs termite treatment. Combined annual savings of $3,900-$8,400 over a wood-frame home add up to over $100,000 across the life of the home.</p>
+            </div>
+            <div class="faq-card">
+              <h3>Does an ICF home lower insurance costs in Florida?</h3>
+              <p>Usually, yes. Florida insurers recognize concrete construction as significantly more storm-resistant and frequently offer premium discounts. Homeowners in coastal counties have reported savings of $1,500-$4,000 per year or more compared to equivalent wood-frame homes. Ask your insurer specifically about concrete construction discounts.</p>
+            </div>
+            <div class="faq-card">
+              <h3>Is ICF approved under the Florida Building Code?</h3>
+              <p>Yes. ICF meets and in most cases exceeds Florida Building Code requirements, including High-Velocity Hurricane Zone (HVHZ) standards in South Florida. Major ICF brands publish Florida product approvals. Your contractor will verify compliance for your specific county and wind zone.</p>
+            </div>
+            <div class="faq-card">
+              <h3>Where in Florida is ICF most common?</h3>
+              <p>Coastal areas with the highest hurricane exposure lead in ICF adoption: South Florida, Tampa Bay, the Gulf Coast, and the Space Coast. That said, ICF is used statewide for energy efficiency and comfort. Orlando, Jacksonville, Gainesville, and Panhandle communities all have active ICF markets.</p>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- BOTTOM CTA -->
+        <div class="cta-panel">
+          <h2>Get a Real Quote for Your Florida ICF Project</h2>
+          <p>Every project is different. The only way to get a number you can build a budget around is to connect with a local ICF contractor who knows your market, your county's code, and what it takes to build in your area.</p>
+          <a href="/find-a-pro?state=Florida" class="btn btn-primary btn-lg">Find a Pro in Florida &rarr;</a>
+          <p style="margin-top:var(--space-3);font-size:0.8rem;color:var(--color-text-muted);">We only share your request with relevant local ICF professionals, never unrelated marketers.</p>
+        </div>
+
+        <!-- CONTRACTOR BANNER -->
+        <div class="contractor-banner" style="margin-top:var(--space-8);">
+          <div class="contractor-banner-text">
+            <span class="eyebrow" style="font-size:0.7rem;">ICF Contractors &amp; Builders</span>
+            <p>Are you an ICF contractor in Florida? Get listed in the directory and start receiving leads from homeowners in your area.</p>
+          </div>
+          <a href="/get-connected?tab=contractor" class="btn btn-primary">List Your Business &rarr;</a>
+        </div>
+
+
       </article>
+
+
+      <!-- SIDEBAR -->
       <aside class="toc-sidebar" aria-label="Page navigation">
         <div class="toc-inner">
           <p class="toc-label">On this page</p>
           <ul class="toc-list">
-            <li><a href="#cost-factors" class="toc-link">What Affects ICF Cost</a></li>
-            <li><a href="#worth-it" class="toc-link">Why It Makes Sense</a></li>
+            <li><a href="#cost-snapshot" class="toc-link">Cost at a Glance</a></li>
+            <li><a href="#icf-vs-wood" class="toc-link">ICF vs Wood Frame</a></li>
+            <li><a href="#cost-breakdown" class="toc-link">Cost Breakdown</a></li>
+            <li><a href="#cost-factors" class="toc-link">What Affects Price</a></li>
+            <li><a href="#savings" class="toc-link">Long-Term Savings</a></li>
+            <li><a href="#why-florida" class="toc-link">Why Florida</a></li>
             <li><a href="#faq" class="toc-link">Common Questions</a></li>
           </ul>
           <div style="margin-top:var(--space-8);padding-top:var(--space-6);border-top:1px solid var(--color-border);">
-            <p style="font-size:0.8rem;color:var(--color-text-muted);margin:0 0 var(--space-3);">More Florida pages</p>
-            <a href="/states/florida/" class="btn btn-secondary" style="width:100%;text-align:center;font-size:0.85rem;">Florida ICF Page &rarr;</a>
+            <a href="/find-a-pro?state=Florida" class="btn btn-primary" style="width:100%;text-align:center;font-size:0.85rem;">Find a Pro in Florida</a>
           </div>
         </div>
       </aside>
+
     </div>
   </div>
+
+
+  <!-- FOOTER -->
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
@@ -158,11 +603,12 @@
         <div class="footer-col"><h4>Contact</h4><ul class="footer-links" role="list"><li><a href="mailto:tyler@icfinsider.com" class="footer-link" style="color:var(--color-accent);">tyler@icfinsider.com</a></li></ul></div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 ICF Insider. All rights reserved.</p>
+        <p>&copy; 2026 ICF Insider. Independent and unaffiliated with any ICF brand or manufacturer.</p>
         <nav class="footer-bottom-links" aria-label="Legal"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-use">Terms of Use</a></nav>
       </div>
     </div>
   </footer>
+
   <script src="/js/main.js"></script>
 </body>
 </html>
