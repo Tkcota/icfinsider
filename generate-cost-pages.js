@@ -633,10 +633,13 @@ function generateCostPage(slug) {
     .replace(/pay back/gi, 'offset');
 
   const heroIntro = cleanEm(existing.heroIntro)
-    .replace(/typically costs more upfront than wood framing, but in/g, 'is built for')
-    .replace(/typically costs more upfront than wood framing, but/g, '')
-    .replace(/costs more upfront than wood framing, but in/g, 'is built for')
-    .replace(/costs more upfront than wood framing, but/g, '');
+    .replace(/typically costs more upfront than (?:standard )?wood framing, but in/g, 'is built for')
+    .replace(/typically costs more upfront than (?:standard )?wood framing, but the/g, 'is a strong fit - the')
+    .replace(/typically costs more upfront than (?:standard )?wood framing, but/g, '')
+    .replace(/costs more upfront than (?:standard )?wood framing, but in/g, 'is built for')
+    .replace(/costs more upfront than (?:standard )?wood framing, but the/g, 'is a strong fit - the')
+    .replace(/costs more upfront than (?:standard )?wood framing, but/g, '')
+    .replace(/  +/g, ' ');
 
   const laborText = cleanEm(existing.laborCard);
   const codeText = cleanEm(existing.codeCard);
