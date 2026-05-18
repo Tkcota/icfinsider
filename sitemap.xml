@@ -55,7 +55,12 @@
     <priority>0.3</priority>
   </url>
 
-  <!-- Blog articles -->
+  <!-- Blog -->
+  <url>
+    <loc>https://icfinsider.com/blog/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://icfinsider.com/blog/how-long-to-build-a-house</loc>
     <changefreq>monthly</changefreq>
