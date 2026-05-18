@@ -35,6 +35,59 @@ const CLIMATE = {
   'wisconsin': 'COLD', 'wyoming': 'COLD',
 };
 
+// ─── Hero intros (2 punchy sentences per state) ─────────────────────────
+const HERO_INTRO = {
+  'alabama': "Alabama's hurricane season, brutal summer heat, and Gulf Coast humidity make ICF one of the smartest building choices in the state. Lower energy bills, insurance discounts, and near-zero exterior maintenance mean Alabama ICF homeowners save thousands every year.",
+  'alaska': "Alaska's extreme cold, high energy costs, and remote building conditions make ICF a standout choice for long-term comfort. Airtight walls and superior insulation mean lower heating bills from day one - exactly what you need when winter lasts eight months.",
+  'arizona': "Arizona's triple-digit summers and year-round sun turn cooling costs into the biggest line item on your utility bill. ICF walls block that heat before it gets inside, cutting energy costs and keeping your home comfortable without running AC around the clock.",
+  'arkansas': "Arkansas sits in Tornado Alley with hot, humid summers and unpredictable severe weather every spring. ICF gives you concrete-core walls that handle high winds and cut energy bills year-round.",
+  'california': "California's earthquakes, wildfire risk, and some of the highest energy costs in the country make a strong case for ICF. Concrete-core walls deliver seismic resilience, fire resistance, and lower utility bills in one build.",
+  'colorado': "Colorado's harsh winters, wildfire exposure, and wide temperature swings put your home's shell to the test every season. ICF walls lock in heat when it's 10 below and block it when it's 95 - cutting energy costs year-round.",
+  'connecticut': "Connecticut's cold winters, coastal storms, and high energy prices make ICF a smart long-term investment. Airtight concrete walls slash heating bills and shrug off Nor'easters without the maintenance headaches of wood framing.",
+  'delaware': "Delaware's coastal storms, humid summers, and rising insurance costs make ICF a practical choice for homeowners building to last. Concrete-core walls cut energy bills, resist moisture damage, and can lower your insurance premiums.",
+  'georgia': "Georgia's hurricane risk, extreme summer heat, and high humidity make ICF one of the strongest building choices in the Southeast. Lower cooling bills, insurance discounts, and zero worry about rot or termites add up to real savings.",
+  'hawaii': "Hawaii's hurricane exposure, volcanic activity, salt air corrosion, and the highest energy prices in the nation make ICF hard to beat. Concrete-core walls resist everything the islands throw at them while keeping cooling costs way down.",
+  'idaho': "Idaho's freezing winters, dry summers, and growing wildfire risk make ICF a practical choice for year-round comfort. Superior insulation means lower heating bills, and concrete walls give you fire resistance that wood framing can't match.",
+  'illinois': "Illinois deals with tornadoes, brutal winters, and scorching summers - your home's shell takes a beating in every season. ICF walls stand up to severe weather while cutting both heating and cooling costs significantly.",
+  'indiana': "Indiana's tornado risk, cold winters, and hot humid summers demand a home that can handle all of it. ICF concrete walls deliver storm resilience and year-round energy savings that wood framing simply can't match.",
+  'iowa': "Iowa's tornadoes, subzero winters, and hot summers put extreme demands on any home. ICF walls give you concrete-core storm protection and the insulation to keep energy bills low no matter what the season throws at you.",
+  'kansas': "Kansas is ground zero for Tornado Alley, with high winds, hail, and temperature swings from subzero to 100+. ICF concrete walls handle it all while slashing your heating and cooling costs year-round.",
+  'kentucky': "Kentucky's hot humid summers, cold winters, and severe storm exposure make ICF a smart choice for comfort and resilience. Concrete-core walls cut energy bills in every season and stand up to the weather that wood framing struggles with.",
+  'louisiana': "Louisiana's hurricanes, extreme humidity, and punishing heat make ICF one of the best building decisions you can make. Concrete walls resist wind, moisture, and termites while insurance discounts and energy savings put money back in your pocket.",
+  'maine': "Maine's brutal winters, heavy snow loads, and high heating costs make ICF an obvious fit. Airtight concrete walls keep heat in when it's 20 below and dramatically cut the energy bills that eat into every Maine homeowner's budget.",
+  'maryland': "Maryland's coastal storms, humid summers, and cold winters create year-round demands on your home's envelope. ICF walls deliver energy savings in every season and the storm resilience coastal homeowners need.",
+  'massachusetts': "Massachusetts' harsh winters, Nor'easters, and some of the highest energy costs in the country make ICF a strong long-term play. Airtight concrete walls cut heating bills dramatically and stand up to coastal storms without constant maintenance.",
+  'michigan': "Michigan's long freezing winters, lake-effect snow, and high heating costs make ICF one of the smartest building choices in the Midwest. Superior insulation keeps heating bills low while concrete walls handle whatever Lake Michigan weather rolls in.",
+  'minnesota': "Minnesota's subzero winters and high heating costs make your home's insulation the single biggest factor in your monthly budget. ICF walls deliver airtight concrete construction that keeps heat in and energy bills dramatically lower.",
+  'mississippi': "Mississippi's hurricane risk, extreme heat, and year-round humidity make ICF a no-brainer for homeowners building to last. Concrete walls resist wind, moisture, and insects while cutting cooling costs and qualifying for insurance discounts.",
+  'missouri': "Missouri's tornadoes, ice storms, and hot humid summers put serious demands on any home. ICF concrete walls give you storm resilience and year-round energy savings that pay off from the first month.",
+  'montana': "Montana's extreme cold, high winds, and remote building conditions make ICF a strong choice for long-term comfort. Airtight concrete walls keep heating costs down when winter temperatures drop well below zero.",
+  'nebraska': "Nebraska's Tornado Alley location, harsh winters, and scorching summers demand a home built for extremes. ICF concrete walls deliver storm protection and insulation that keep you safe and your energy bills low year-round.",
+  'nevada': "Nevada's extreme desert heat, intense sun, and wide day-to-night temperature swings make cooling your home the biggest ongoing cost. ICF walls block that heat at the source, keeping interiors comfortable and energy bills significantly lower.",
+  'new-hampshire': "New Hampshire's brutal winters, heavy snow, and high heating costs make insulation performance the top priority for any new build. ICF walls deliver airtight concrete construction that keeps heating bills low and maintenance even lower.",
+  'new-jersey': "New Jersey's coastal storm exposure, humid summers, and cold winters make ICF a smart choice for resilience and savings. Concrete-core walls cut energy bills year-round and stand up to the weather that keeps hitting the Jersey Shore.",
+  'new-mexico': "New Mexico's intense desert sun, extreme temperature swings, and wildfire exposure make ICF a practical building choice. Concrete walls block daytime heat, hold warmth overnight, and give you fire resistance that matters in a dry climate.",
+  'new-york': "New York's harsh winters, coastal storms, and some of the highest energy costs in the nation make ICF a serious long-term investment. Airtight concrete walls slash heating bills and give you the resilience to handle anything from Nor'easters to lake-effect snow.",
+  'north-carolina': "North Carolina's hurricanes, humid summers, and growing coastal insurance costs make ICF one of the best building choices in the state. Concrete walls resist high winds and moisture while energy savings and insurance discounts add up every year.",
+  'north-dakota': "North Dakota's extreme cold, relentless wind, and long heating season make energy efficiency the most important feature of any new home. ICF walls deliver the airtight insulation you need to keep heating costs manageable when it's 30 below.",
+  'ohio': "Ohio's tornadoes, lake-effect snow, and humid summers put your home through every weather extreme. ICF concrete walls deliver storm resilience and energy savings in both heating and cooling season.",
+  'oklahoma': "Oklahoma's tornadoes, hail, and extreme heat make storm resilience a top priority for any new build. ICF concrete walls stand up to severe weather while insurance discounts and energy savings offset the investment fast.",
+  'oregon': "Oregon's earthquake risk, heavy rain, and growing wildfire exposure make ICF a strong choice for resilient building. Concrete-core walls handle seismic activity, resist moisture damage, and cut energy costs in the Pacific Northwest's long heating season.",
+  'pennsylvania': "Pennsylvania's cold winters, severe storms, and rising energy costs make ICF a smart long-term investment. Airtight concrete walls keep heating bills low and give you the durability to handle everything from ice storms to humid summers.",
+  'rhode-island': "Rhode Island's Nor'easters, coastal exposure, and high energy costs make ICF a practical choice for the Ocean State. Concrete walls shrug off storm damage and cut heating bills - two things every Rhode Island homeowner needs.",
+  'south-carolina': "South Carolina's hurricanes, extreme humidity, and coastal insurance costs make ICF one of the smartest building choices in the Lowcountry. Concrete walls resist wind and moisture while insurance discounts and energy savings pay off from year one.",
+  'south-dakota': "South Dakota's extreme cold, high winds, and severe weather make ICF a standout choice for long-term comfort and durability. Concrete walls block the wind, hold in heat, and keep energy bills low through the long Plains winter.",
+  'tennessee': "Tennessee's tornado risk, humid summers, and cold mountain winters demand a home that performs in every season. ICF concrete walls give you storm resilience and the insulation to keep energy bills low year-round.",
+  'texas': "Texas' extreme heat, severe storms, and tornado exposure make ICF one of the strongest building choices in the state. Lower cooling bills, insurance discounts, and concrete-core durability mean Texas ICF homeowners save from day one.",
+  'utah': "Utah's dry heat, cold winters, and wildfire risk in the mountain foothills make ICF a practical year-round choice. Concrete walls handle temperature extremes and fire exposure while keeping energy costs noticeably lower.",
+  'vermont': "Vermont's long winters, heavy snow, and high heating costs make your home's insulation the most important decision in the build. ICF walls deliver airtight concrete construction that keeps heating bills dramatically lower and maintenance near zero.",
+  'virginia': "Virginia's coastal storms, humid summers, and cold mountain winters create year-round weather challenges. ICF concrete walls deliver energy savings in every season and the resilience to handle hurricanes, severe storms, and everything in between.",
+  'washington': "Washington's earthquake risk, heavy rainfall, and wildfire exposure make ICF a strong choice for the Pacific Northwest. Concrete-core walls handle seismic events, resist moisture, and keep energy bills low through the long rainy season.",
+  'west-virginia': "West Virginia's cold winters, mountain weather, and rising energy costs make ICF a smart investment for long-term comfort. Airtight concrete walls keep heating bills low and stand up to the storms and moisture that challenge homes in the Appalachian climate.",
+  'wisconsin': "Wisconsin's subzero winters, lake-effect snow, and high heating costs make ICF one of the best building choices in the upper Midwest. Concrete walls with continuous insulation keep heat in and energy bills dramatically lower.",
+  'wyoming': "Wyoming's extreme cold, relentless wind, and wide-open exposure make energy efficiency critical for any new build. ICF walls block the wind, hold in warmth, and cut heating costs in one of the harshest climates in the lower 48.",
+};
+
 // ─── Per-state cost data ─────────────────────────────────────────────────
 // wallCostLow/High: ICF wall $/sqft range
 // woodWallLow/High: wood frame wall $/sqft range
@@ -632,14 +685,7 @@ function generateCostPage(slug) {
     .replace(/recover the premium/gi, 'offset the investment')
     .replace(/pay back/gi, 'offset');
 
-  const heroIntro = cleanEm(existing.heroIntro)
-    .replace(/typically costs more upfront than (?:standard )?wood framing, but in/g, 'is built for')
-    .replace(/typically costs more upfront than (?:standard )?wood framing, but the/g, 'is a strong fit - the')
-    .replace(/typically costs more upfront than (?:standard )?wood framing, but/g, '')
-    .replace(/costs more upfront than (?:standard )?wood framing, but in/g, 'is built for')
-    .replace(/costs more upfront than (?:standard )?wood framing, but the/g, 'is a strong fit - the')
-    .replace(/costs more upfront than (?:standard )?wood framing, but/g, '')
-    .replace(/  +/g, ' ');
+  const heroIntro = HERO_INTRO[slug] || cleanEm(existing.heroIntro);
 
   const laborText = cleanEm(existing.laborCard);
   const codeText = cleanEm(existing.codeCard);
