@@ -385,7 +385,7 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
       <h1 id="page-title">ICF Contractors in ${city}, ${stateAbbr}</h1>
       <p class="page-hero-intro" style="max-width:580px;">${tagline}</p>
       <div style="margin-top:var(--space-6);">
-        <a href="${homeownerHref}" class="btn btn-primary btn-lg">Get Connected in ${city} &rarr;</a>
+        <a href="/find-a-pro" class="btn btn-primary btn-lg">Find a Pro in ${state} &rarr;</a>
       </div>
       <div class="state-stats">${statsHtml}</div>
     </div>
@@ -436,11 +436,7 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
             <li><a href="#${id}-faq" class="toc-link">Common Questions</a></li>
           </ul>
           <div style="margin-top:var(--space-8);padding-top:var(--space-6);border-top:1px solid var(--color-border);">
-            <p style="font-size:0.8rem;color:var(--color-text-muted);margin:0 0 var(--space-3);">More in ${state}</p>
-            <a href="/states/${stateSlug}/" class="btn btn-secondary" style="width:100%;text-align:center;font-size:0.85rem;">ICF in ${state} &rarr;</a>
-          </div>
-          <div style="margin-top:var(--space-4);">
-            <a href="/find-a-pro" class="btn btn-secondary" style="width:100%;text-align:center;font-size:0.85rem;">Find an ICF Contractor &rarr;</a>
+            <a href="/find-a-pro" class="btn btn-primary" style="width:100%;text-align:center;font-size:0.85rem;">Find a Pro in ${state} &rarr;</a>
           </div>
         </div>
       </aside>
