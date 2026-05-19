@@ -289,7 +289,7 @@ const CITIES = [
 
 // ─── PAGE TEMPLATE ────────────────────────────────────────────────────────
 function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, faq) {
-  const homeownerHref = `/get-connected.html?tab=homeowner&state=${encodeURIComponent(state)}`;
+  const homeownerHref = `/get-connected?tab=homeowner&state=${encodeURIComponent(state)}`;
   const cardsHtml = CARDS[climate].map(c =>
     `<div class="why-card"><div class="why-icon">${ICONS[c.i]}</div><div><h3>${c.t}</h3><p>${c.b}</p></div></div>`
   ).join('');
@@ -344,7 +344,7 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
     @media(max-width:767px){.why-grid{grid-template-columns:1fr;}.learn-strip{flex-direction:column;align-items:flex-start;padding:var(--space-6);}}
   </style>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://icfinsider.com/"},{"@type":"ListItem","position":2,"name":"Find a Pro","item":"https://icfinsider.com/find-a-pro.html"},{"@type":"ListItem","position":3,"name":"ICF in ${state}","item":"https://icfinsider.com/states/${stateSlug}/"},{"@type":"ListItem","position":4,"name":"ICF Contractors in ${city}","item":"https://icfinsider.com/locations/${slug}/"}]},{"@type":"FAQPage","mainEntity":[${faqSchema}]}]}
+  {"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://icfinsider.com/"},{"@type":"ListItem","position":2,"name":"Find a Pro","item":"https://icfinsider.com/find-a-pro"},{"@type":"ListItem","position":3,"name":"ICF in ${state}","item":"https://icfinsider.com/states/${stateSlug}/"},{"@type":"ListItem","position":4,"name":"ICF Contractors in ${city}","item":"https://icfinsider.com/locations/${slug}/"}]},{"@type":"FAQPage","mainEntity":[${faqSchema}]}]}
   </script>
 </head>
 <body>
@@ -352,20 +352,20 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
     <div class="container nav-inner">
       <a href="/" class="nav-logo" aria-label="ICF Insider home"><span class="nav-logo-text">ICF <span>Insider</span></span></a>
       <ul class="nav-links" role="list">
-        <li><a href="/icf-101.html" class="nav-link">ICF 101</a></li>
-        <li><a href="/cost-guide.html" class="nav-link">Cost Guide</a></li>
-        <li><a href="/brands.html" class="nav-link">Brand Comparison</a></li>
-        <li><a href="/find-a-pro.html" class="nav-link active">Find a Pro</a></li>
+        <li><a href="/icf-101" class="nav-link">ICF 101</a></li>
+        <li><a href="/cost-guide" class="nav-link">Cost Guide</a></li>
+        <li><a href="/brands" class="nav-link">Brand Comparison</a></li>
+        <li><a href="/find-a-pro" class="nav-link active">Find a Pro</a></li>
       </ul>
       <div class="nav-cta"><a href="${homeownerHref}" class="btn btn-primary">Get Connected</a></div>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile"><span></span><span></span><span></span></button>
     </div>
   </nav>
   <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation">
-    <a href="/icf-101.html" class="nav-link">ICF 101</a>
-    <a href="/cost-guide.html" class="nav-link">Cost Guide</a>
-    <a href="/brands.html" class="nav-link">Brand Comparison</a>
-    <a href="/find-a-pro.html" class="nav-link active">Find a Pro</a>
+    <a href="/icf-101" class="nav-link">ICF 101</a>
+    <a href="/cost-guide" class="nav-link">Cost Guide</a>
+    <a href="/brands" class="nav-link">Brand Comparison</a>
+    <a href="/find-a-pro" class="nav-link active">Find a Pro</a>
     <a href="${homeownerHref}" class="btn btn-primary">Get Connected</a>
   </div>
   <section class="page-hero" aria-labelledby="page-title">
@@ -403,7 +403,7 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
               <span class="eyebrow" style="font-size:0.7rem;">ICF Contractors &amp; Builders</span>
               <p>Are you an ICF contractor in the ${city} area? Get listed free and start getting found by local homeowners.</p>
             </div>
-            <a href="/get-connected.html?tab=contractor" class="btn btn-primary">List Your Business Free &rarr;</a>
+            <a href="/get-connected?tab=contractor" class="btn btn-primary">List Your Business Free &rarr;</a>
           </div>
         </section>
         <section id="${id}-faq" style="margin-top:var(--space-16);">
@@ -414,8 +414,8 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
         <div class="learn-strip">
           <div><h3>New to ICF?</h3><p>Read the full guide before you search for a contractor. Know what to look for.</p></div>
           <div class="learn-strip-links">
-            <a href="/icf-101.html" class="btn btn-primary">ICF 101 Guide</a>
-            <a href="/cost-guide.html" class="btn btn-secondary" style="color:var(--color-text-light);border-color:rgba(255,255,255,0.2);">Cost Guide</a>
+            <a href="/icf-101" class="btn btn-primary">ICF 101 Guide</a>
+            <a href="/cost-guide" class="btn btn-secondary" style="color:var(--color-text-light);border-color:rgba(255,255,255,0.2);">Cost Guide</a>
           </div>
         </div>
       </article>
@@ -432,7 +432,7 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
             <a href="/states/${stateSlug}/" class="btn btn-secondary" style="width:100%;text-align:center;font-size:0.85rem;">ICF in ${state} &rarr;</a>
           </div>
           <div style="margin-top:var(--space-4);">
-            <a href="/find-a-pro.html" class="btn btn-secondary" style="width:100%;text-align:center;font-size:0.85rem;">Find an ICF Contractor &rarr;</a>
+            <a href="/find-a-pro" class="btn btn-secondary" style="width:100%;text-align:center;font-size:0.85rem;">Find an ICF Contractor &rarr;</a>
           </div>
         </div>
       </aside>
@@ -445,9 +445,9 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
           <a href="/" class="nav-logo" aria-label="ICF Insider home"><span class="nav-logo-text">ICF <span>Insider</span></span></a>
           <p>The independent authority on Insulated Concrete Form construction.</p>
         </div>
-        <div class="footer-col"><h4>Learn</h4><ul class="footer-links" role="list"><li><a href="/icf-101.html" class="footer-link">ICF 101</a></li><li><a href="/cost-guide.html" class="footer-link">Cost Guide</a></li><li><a href="/brands.html" class="footer-link">Brand Comparison</a></li></ul></div>
-        <div class="footer-col"><h4>Directory</h4><ul class="footer-links" role="list"><li><a href="/find-a-pro.html" class="footer-link">Find a Pro</a></li><li><a href="/get-connected.html?tab=contractor" class="footer-link">List Your Business</a></li></ul></div>
-        <div class="footer-col"><h4>Company</h4><ul class="footer-links" role="list"><li><a href="/about.html" class="footer-link">About</a></li><li><a href="/get-connected.html" class="footer-link">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Learn</h4><ul class="footer-links" role="list"><li><a href="/icf-101" class="footer-link">ICF 101</a></li><li><a href="/cost-guide" class="footer-link">Cost Guide</a></li><li><a href="/brands" class="footer-link">Brand Comparison</a></li></ul></div>
+        <div class="footer-col"><h4>Directory</h4><ul class="footer-links" role="list"><li><a href="/find-a-pro" class="footer-link">Find a Pro</a></li><li><a href="/get-connected?tab=contractor" class="footer-link">List Your Business</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul class="footer-links" role="list"><li><a href="/about" class="footer-link">About</a></li><li><a href="/get-connected" class="footer-link">Contact</a></li></ul></div>
       </div>
       <div class="footer-bottom"><p>&copy; 2026 ICF Insider. Independent and unaffiliated with any ICF brand or manufacturer.</p></div>
     </div>
