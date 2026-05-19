@@ -307,6 +307,14 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RF8D8L7VCV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RF8D8L7VCV');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ICF Contractors in ${city}, ${stateAbbr} | Insulated Concrete Form Homes | ICF Insider</title>
