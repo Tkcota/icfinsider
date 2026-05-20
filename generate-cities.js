@@ -44,7 +44,7 @@ const CARDS = {
     {i:'sun',   t:'Desert Heat Barrier',       b:`The thermal mass of Insulated Concrete Form walls absorbs daytime heat and releases it slowly overnight — naturally leveling indoor temperatures without overworking your AC.`},
     {i:'bolt',  t:'50-70% Cooling Savings',    b:`Continuous foam insulation and massive thermal mass dramatically outperform wood-frame walls in extreme heat. Lower utility bills every month.`},
     {i:'fire',  t:'Wildfire Resistant',         b:`Concrete doesn't ignite. ICF homes offer significantly better protection against wildfires increasingly common across arid regions.`},
-    {i:'dollar',t:'Lower Long-Term Cost',       b:`Higher upfront cost is offset by dramatically lower energy bills and reduced maintenance. ICF homes in hot-dry climates often reach payback in under 10 years.`},
+    {i:'dollar',t:'Lower Long-Term Cost',       b:`Energy savings and reduced maintenance start immediately and compound every year. ICF homes in hot-dry climates deliver dramatically lower total cost of ownership.`},
   ],
   PACIFIC:[
     {i:'quake', t:'Seismic Resilience',         b:`Insulated Concrete Form construction can be designed and reinforced to exceed seismic code requirements — far greater earthquake protection than standard wood framing.`},
@@ -287,20 +287,36 @@ const CITIES = [
   ['What does ICF cost in Philadelphia?','Expect 5-10% more than wood frame — roughly $165-$235 per square foot in the Philadelphia market.']]],
 ];
 
+// ─── TEXT CLEANUP ─────────────────────────────────────────────────────────
+function fixPayback(t) {
+  return t
+    .replace(/(?:typically|frequently|often|usually)\s+deliver(?:s)?\s+payback\s+in\s+\d[\d–-]*\s*years?/gi, 'energy and insurance savings start immediately and compound every year')
+    .replace(/deliver(?:s)?\s+payback\s+in\s+\d[\d–-]*\s*years?/gi, 'energy and insurance savings start immediately and compound every year')
+    .replace(/payback\s+(?:period\s+)?(?:is\s+)?(?:often|typically|frequently|usually)\s+\d[\d–-]*\s*years?/gi, 'savings start day one and grow every year')
+    .replace(/payback\s+(?:on the (?:ICF |upfront )?(?:premium|cost|investment)\s+)?(?:often|typically|frequently|usually)\s+comes?\s+in\s+\d[\d–-]*\s*years?/gi, 'savings start day one and grow every year')
+    .replace(/payback\s+(?:in|within)\s+\d[\d–-]*\s*years?/gi, 'savings that start immediately')
+    .replace(/(?:the\s+)?payback\s+(?:period|case|timeline)\s+is\s+\w+/gi, 'savings start day one')
+    .replace(/payback/gi, 'savings');
+}
+function cleanDash(t) {
+  return t.replace(/ — /g, '. ').replace(/ —/g, ' -').replace(/— /g, '- ').replace(/—/g, ' - ');
+}
+
 // ─── PAGE TEMPLATE ────────────────────────────────────────────────────────
 function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, faq) {
-  const homeownerHref = `/get-connected?tab=homeowner&state=${encodeURIComponent(state)}`;
+  const proHref = `/find-a-pro?state=${encodeURIComponent(state)}`;
+  const tl = cleanDash(fixPayback(tagline));
   const cardsHtml = CARDS[climate].map(c =>
-    `<div class="why-card"><div class="why-icon">${ICONS[c.i]}</div><div><h3>${c.t}</h3><p>${c.b}</p></div></div>`
+    `<div class="why-card"><div class="why-icon">${ICONS[c.i]}</div><div><h3>${c.t}</h3><p>${cleanDash(fixPayback(c.b))}</p></div></div>`
   ).join('');
   const statsHtml = stats.map(([v,l]) =>
     `<div class="state-stat"><span class="state-stat-number">${v}</span><span class="state-stat-label">${l}</span></div>`
   ).join('');
   const faqHtml = faq.map(([q,a]) =>
-    `<div class="faq-card"><h3>${q}</h3><p>${a}</p></div>`
+    `<div class="faq-card"><h3>${cleanDash(fixPayback(q))}</h3><p>${cleanDash(fixPayback(a))}</p></div>`
   ).join('');
   const faqSchema = faq.map(([q,a]) =>
-    `{"@type":"Question","name":${JSON.stringify(q)},"acceptedAnswer":{"@type":"Answer","text":${JSON.stringify(a)}}}`
+    `{"@type":"Question","name":${JSON.stringify(cleanDash(fixPayback(q)))},"acceptedAnswer":{"@type":"Answer","text":${JSON.stringify(cleanDash(fixPayback(a)))}}}`
   ).join(',');
   const id = slug.replace(/-/g,'');
 
@@ -323,7 +339,7 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta property="og:type" content="website">
   <meta property="og:title" content="ICF Contractors in ${city}, ${stateAbbr} | ICF Insider">
-  <meta property="og:description" content="${tagline.substring(0,120)}">
+  <meta property="og:description" content="${cleanDash(fixPayback(tagline)).substring(0,120)}">
   <meta property="og:image" content="https://icfinsider.com/images/og-image.png">
   <meta property="og:url" content="https://icfinsider.com/locations/${slug}/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -331,26 +347,6 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/components.css">
-  <style>
-    .state-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);margin-top:var(--space-10);padding-top:var(--space-10);border-top:1px solid rgba(255,255,255,0.12);}
-    .state-stat{text-align:center;}
-    .state-stat-number{display:block;font-family:var(--font-display);font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;color:var(--color-accent);line-height:1;}
-    .state-stat-label{display:block;font-size:0.78rem;color:rgba(255,255,255,0.6);margin-top:var(--space-1);text-transform:uppercase;letter-spacing:0.06em;}
-    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-top:var(--space-8);}
-    .why-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6);display:flex;gap:var(--space-4);align-items:flex-start;}
-    .why-icon{flex-shrink:0;width:40px;height:40px;background:rgba(232,120,10,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;}
-    .why-card h3{margin:0 0 4px;font-size:0.95rem;font-weight:600;}
-    .why-card p{margin:0;font-size:0.875rem;color:var(--color-text-muted);line-height:1.55;}
-    .faq-list{display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-8);}
-    .faq-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6) var(--space-7);}
-    .faq-card h3{margin:0 0 var(--space-2);font-size:0.975rem;font-weight:600;}
-    .faq-card p{margin:0;font-size:0.875rem;color:var(--color-text-muted);line-height:1.7;}
-    .learn-strip{margin-top:var(--space-20);background:var(--color-dark-900);border-radius:14px;padding:var(--space-8) var(--space-10);display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);flex-wrap:wrap;}
-    .learn-strip h3{margin:0 0 var(--space-1);color:var(--color-text-light);font-size:1.15rem;}
-    .learn-strip p{margin:0;color:var(--color-text-muted);font-size:0.875rem;}
-    .learn-strip-links{display:flex;gap:var(--space-3);flex-shrink:0;flex-wrap:wrap;}
-    @media(max-width:767px){.why-grid{grid-template-columns:1fr;}.learn-strip{flex-direction:column;align-items:flex-start;padding:var(--space-6);}}
-  </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://icfinsider.com/"},{"@type":"ListItem","position":2,"name":"Find a Pro","item":"https://icfinsider.com/find-a-pro"},{"@type":"ListItem","position":3,"name":"ICF in ${state}","item":"https://icfinsider.com/states/${stateSlug}/"},{"@type":"ListItem","position":4,"name":"ICF Contractors in ${city}","item":"https://icfinsider.com/locations/${slug}/"}]},{"@type":"FAQPage","mainEntity":[${faqSchema}]}]}
   </script>
@@ -365,7 +361,7 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
         <li><a href="/brands" class="nav-link">Brand Comparison</a></li>
         <li><a href="/find-a-pro" class="nav-link active">Find a Pro</a></li>
       </ul>
-      <div class="nav-cta"><a href="${homeownerHref}" class="btn btn-primary">Get Connected</a></div>
+      <div class="nav-cta"><a href="/find-a-pro" class="btn btn-primary">Find a Pro</a></div>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile"><span></span><span></span><span></span></button>
     </div>
   </nav>
@@ -374,7 +370,7 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
     <a href="/cost-guide" class="nav-link">Cost Guide</a>
     <a href="/brands" class="nav-link">Brand Comparison</a>
     <a href="/find-a-pro" class="nav-link active">Find a Pro</a>
-    <a href="${homeownerHref}" class="btn btn-primary">Get Connected</a>
+    <a href="/find-a-pro" class="btn btn-primary">Find a Pro</a>
   </div>
   <section class="page-hero" aria-labelledby="page-title">
     <div class="container">
@@ -383,7 +379,7 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
         <span class="page-hero-readtime">${city}, ${stateAbbr}</span>
       </div>
       <h1 id="page-title">ICF Contractors in ${city}, ${stateAbbr}</h1>
-      <p class="page-hero-intro" style="max-width:580px;">${tagline}</p>
+      <p class="page-hero-intro" style="max-width:580px;">${tl}</p>
       <div style="margin-top:var(--space-6);">
         <a href="/find-a-pro" class="btn btn-primary btn-lg">Find a Pro in ${state} &rarr;</a>
       </div>
@@ -399,19 +395,18 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
           <div class="why-grid">${cardsHtml}</div>
         </section>
         <section id="${id}-directory" style="margin-top:var(--space-16);">
-          <span class="eyebrow">Get Connected</span>
+          <span class="eyebrow">Find a Pro</span>
           <h2 style="margin-top:var(--space-2);">Find ICF Help in ${city}</h2>
           <p style="color:var(--color-text-muted);max-width:540px;">Tell us about your ${city} project and we'll connect you with local ICF professionals who can help with pricing and next steps.</p>
           <div style="margin-top:var(--space-6);">
-            <a href="${homeownerHref}" class="btn btn-primary btn-lg">Get Connected &rarr;</a>
-            <p class="form-disclaimer" style="margin-top:var(--space-3);">We only share your request with relevant local ICF professionals — never unrelated marketers.</p>
+            <a href="${proHref}" class="btn btn-primary btn-lg">Find a Pro &rarr;</a>
           </div>
           <div class="contractor-banner">
             <div class="contractor-banner-text">
               <span class="eyebrow" style="font-size:0.7rem;">ICF Contractors &amp; Builders</span>
               <p>Are you an ICF contractor in the ${city} area? Get listed free and start getting found by local homeowners.</p>
             </div>
-            <a href="/get-connected?tab=contractor" class="btn btn-primary">List Your Business Free &rarr;</a>
+            <a href="/find-a-pro" class="btn btn-primary">List Your Business &rarr;</a>
           </div>
         </section>
         <section id="${id}-faq" style="margin-top:var(--space-16);">
@@ -450,8 +445,8 @@ function page(city, slug, state, stateSlug, stateAbbr, climate, tagline, stats, 
           <p>The independent authority on Insulated Concrete Form construction.</p>
         </div>
         <div class="footer-col"><h4>Learn</h4><ul class="footer-links" role="list"><li><a href="/icf-101" class="footer-link">ICF 101</a></li><li><a href="/cost-guide" class="footer-link">Cost Guide</a></li><li><a href="/brands" class="footer-link">Brand Comparison</a></li></ul></div>
-        <div class="footer-col"><h4>Directory</h4><ul class="footer-links" role="list"><li><a href="/find-a-pro" class="footer-link">Find a Pro</a></li><li><a href="/get-connected?tab=contractor" class="footer-link">List Your Business</a></li></ul></div>
-        <div class="footer-col"><h4>Company</h4><ul class="footer-links" role="list"><li><a href="/about" class="footer-link">About</a></li><li><a href="/get-connected" class="footer-link">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Directory</h4><ul class="footer-links" role="list"><li><a href="/find-a-pro" class="footer-link">Find a Pro</a></li><li><a href="/find-a-pro" class="footer-link">List Your Business</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul class="footer-links" role="list"><li><a href="/about" class="footer-link">About</a></li><li><a href="/privacy-policy" class="footer-link">Privacy Policy</a></li><li><a href="/terms-of-use" class="footer-link">Terms of Use</a></li><li><a href="mailto:info@icfinsider.com" class="footer-link">info@icfinsider.com</a></li></ul></div>
       </div>
       <div class="footer-bottom"><p>&copy; 2026 ICF Insider. Independent and unaffiliated with any ICF brand or manufacturer.</p></div>
     </div>

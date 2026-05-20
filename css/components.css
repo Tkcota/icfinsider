@@ -1227,3 +1227,147 @@
     padding: var(--space-3);
   }
 }
+
+
+/* ------------------------------------------------------------
+   GENERATED PAGE COMPONENTS
+   Shared by state pages, city pages, and brand pages.
+   ------------------------------------------------------------ */
+
+/* Hero stat bar (3-col row under hero headline) */
+.state-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-10);
+  padding-top: var(--space-10);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.state-stat { text-align: center; }
+.state-stat-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--color-accent);
+  line-height: 1;
+}
+.state-stat-label {
+  display: block;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: var(--space-1);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Why-ICF benefit cards (2-col grid) */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+.why-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--space-6);
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+.why-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: rgba(232, 120, 10, 0.12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.why-card h3 { margin: 0 0 4px; font-size: 0.95rem; font-weight: 600; }
+.why-card p  { margin: 0; font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.55; }
+
+/* FAQ cards (vertical stack) */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+.faq-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--space-6) var(--space-7);
+}
+.faq-card h3 { margin: 0 0 var(--space-2); font-size: 0.975rem; font-weight: 600; }
+.faq-card p  { margin: 0; font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.7; }
+
+/* "New to ICF?" learn strip */
+.learn-strip {
+  margin-top: var(--space-20);
+  background: var(--color-dark-900);
+  border-radius: 14px;
+  padding: var(--space-8) var(--space-10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+.learn-strip h3 { margin: 0 0 var(--space-1); color: var(--color-text-light); font-size: 1.15rem; }
+.learn-strip p  { margin: 0; color: var(--color-text-muted); font-size: 0.875rem; }
+.learn-strip-links {
+  display: flex;
+  gap: var(--space-3);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+/* Cost snapshot cards (state pages) */
+.cost-snapshot {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+.cost-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--space-6);
+  text-align: center;
+}
+.cost-card-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 800;
+  color: var(--color-accent);
+  line-height: 1.1;
+}
+.cost-card-label {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.cost-card-note {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+  opacity: 0.7;
+}
+
+/* Responsive: generated page components */
+@media (max-width: 767px) {
+  .why-grid { grid-template-columns: 1fr; }
+  .learn-strip { flex-direction: column; align-items: flex-start; padding: var(--space-6); }
+  .cost-snapshot { grid-template-columns: 1fr; }
+}
