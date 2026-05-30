@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -12,8 +12,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ICF Brand Comparison 2026: Nudura vs Fox Blocks vs Amvic vs Element ICF & More | ICF Insider</title>
-  <meta name="description" content="Independent comparison of every major ICF brand, Nudura, Fox Blocks, Amvic, Element ICF, Quad-Lock, Super Form, Build Block, and Insul-Deck. No brand pays to be ranked first. Find your brand and connect with a contractor free.">
+  <title>ICF Brand Comparison 2026: Nudura vs Fox Blocks vs Amvic vs Element ICF &amp; More | ICF Insider</title>
+  <meta name="description" content="Independent comparison of every major ICF brand: Nudura, Fox Blocks, Amvic, Element ICF, Quad-Lock, Super Form, Build Block, and Insul-Deck. No brand pays to be ranked first.">
 
   <link rel="canonical" href="https://icfinsider.com/brands">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -31,448 +31,24 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/components.css">
 
-  <style>
-    /* Brand card, individual brand profile block */
-    .brand-card {
-      border: 1px solid var(--color-border-light);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin-bottom: var(--space-12);
-    }
-
-    .brand-card-header {
-      background-color: var(--color-dark-900);
-      padding: var(--space-6) var(--space-8);
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: var(--space-6);
-      flex-wrap: wrap;
-    }
-
-    .brand-card-heading {
-      display: flex;
-      align-items: center;
-      gap: var(--space-5);
-      flex: 1 1 420px;
-      min-width: 0;
-    }
-
-    .brand-logo-wrap {
-      background: rgba(255,255,255,0.98);
-      border: 1px solid rgba(15,23,42,0.08);
-      border-radius: 14px;
-      padding: 0.7rem 0.9rem;
-      width: 210px;
-      min-width: 210px;
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
-      overflow: hidden;
-    }
-
-    .brand-logo-wrap.dark {
-      background: #102235;
-      border-color: rgba(255,255,255,0.08);
-    }
-
-    .brand-logo {
-      display: block;
-      max-width: 170px;
-      max-height: 48px;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-    }
-
-    .brand-logo-svg {
-      display: block;
-      width: 170px;
-      height: 48px;
-      color: #0a4a8f;
-    }
-
-    .brand-logo-svg.white {
-      color: #ffffff;
-    }
-
-    .brand-logo-wrap.wide {
-      width: 230px;
-      min-width: 230px;
-    }
-
-    .brand-logo-wrap.tall {
-      width: 210px;
-      min-width: 210px;
-    }
-
-    .brand-logo-lockup {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      min-height: 42px;
-    }
-
-    .brand-logo-mark {
-      flex: 0 0 auto;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .brand-logo-lockup.amvic {
-      color: #0d6177;
-      width: 100%;
-      justify-content: center;
-      gap: 0.55rem;
-    }
-
-    .brand-logo-lockup.amvic .brand-logo-mark {
-      width: 26px;
-      height: 26px;
-      border-radius: 8px 8px 8px 2px;
-      background: linear-gradient(145deg, #0d6177 0%, #15778e 100%);
-      position: relative;
-      transform: rotate(45deg);
-      margin-right: 0;
-    }
-
-    .brand-logo-lockup.amvic .brand-logo-mark::after {
-      content: '';
-      width: 12px;
-      height: 12px;
-      background: rgba(255,255,255,0.95);
-      border-radius: 2px;
-      transform: rotate(0deg);
-    }
-
-    .brand-logo-lockup.amvic .brand-logo-wordmark {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-      align-items: flex-start;
-      flex: 0 0 auto;
-    }
-
-    .brand-logo-lockup.amvic .brand-logo-main {
-      font-size: 1.8rem;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      text-transform: lowercase;
-      color: #0d6177;
-    }
-
-    .brand-logo-lockup.amvic .brand-logo-sub {
-      font-size: 0.5rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #48646d;
-      margin-top: 0.2rem;
-    }
-
-    .brand-logo-lockup.element {
-      align-items: flex-end;
-      gap: 0.85rem;
-    }
-
-    .brand-logo-lockup.element .brand-logo-mark {
-      width: 28px;
-      height: 28px;
-      position: relative;
-    }
-
-    .brand-logo-lockup.element .brand-logo-mark::before,
-    .brand-logo-lockup.element .brand-logo-mark::after {
-      content: '';
-      position: absolute;
-      background: #8bc53f;
-    }
-
-    .brand-logo-lockup.element .brand-logo-mark::before {
-      left: 0;
-      bottom: 0;
-      width: 8px;
-      height: 26px;
-    }
-
-    .brand-logo-lockup.element .brand-logo-mark::after {
-      left: 0;
-      bottom: 0;
-      width: 24px;
-      height: 6px;
-    }
-
-    .brand-logo-lockup.element .brand-logo-wordmark {
-      display: flex;
-      align-items: baseline;
-      gap: 0;
-      flex-wrap: wrap;
-    }
-
-    .brand-logo-lockup.element .brand-logo-main {
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: -0.035em;
-      text-transform: uppercase;
-      color: #121a23;
-    }
-
-    .brand-logo-lockup.element .brand-logo-accent {
-      color: #8bc53f;
-      margin-left: 0.18rem;
-    }
-
-    .brand-logo-lockup.element .brand-logo-sub {
-      font-size: 0.5rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #4d5965;
-      width: 100%;
-      margin-top: 0.18rem;
-      padding-left: 0.08rem;
-    }
-
-    .brand-logo-lockup.buildblock {
-      color: #1d2a3a;
-      align-items: flex-end;
-      width: 100%;
-      justify-content: center;
-    }
-
-    .brand-logo-lockup.buildblock .brand-logo-wordmark {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-      align-items: center;
-    }
-
-    .brand-logo-lockup.buildblock .brand-logo-main {
-      font-size: 1.7rem;
-      font-weight: 800;
-      letter-spacing: -0.05em;
-    }
-
-    .brand-logo-lockup.buildblock .brand-logo-main .blue {
-      color: #2457a7;
-    }
-
-    .brand-logo-lockup.buildblock .brand-logo-main .red {
-      color: #e23534;
-    }
-
-    .brand-logo-lockup.buildblock .brand-logo-sub {
-      font-size: 0.5rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #3a4e69;
-      margin-top: 0.18rem;
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    .brand-logo-text {
-      flex: 1 1 auto;
-      min-width: 0;
-    }
-
-    .brand-card-name {
-      font-family: var(--font-heading);
-      font-size: var(--text-3xl);
-      font-weight: var(--weight-extrabold);
-      color: var(--color-white);
-      letter-spacing: 0.02em;
-      margin-bottom: var(--space-1);
-    }
-
-    .brand-card-parent {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-    }
-
-    .brand-card-parent.compact {
-      font-size: 0.8rem;
-      letter-spacing: 0.03em;
-      max-width: 38ch;
-      color: rgba(255,255,255,0.76);
-    }
-
-    .brand-card-badges {
-      display: flex;
-      gap: var(--space-2);
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .badge {
-      font-size: var(--text-xs);
-      font-weight: var(--weight-bold);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: var(--space-1) var(--space-3);
-      border-radius: var(--radius-sm);
-    }
-
-    .badge-market  { background: rgba(232,120,10,0.15); color: var(--color-accent); }
-    .badge-origin  { background: rgba(255,255,255,0.08); color: var(--color-text-muted); }
-    .badge-type    { background: rgba(22,163,74,0.15); color: #16a34a; }
-
-    .brand-card-body {
-      padding: var(--space-8);
-    }
-
-    /* Quick-spec row inside brand card */
-    .brand-specs {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-4);
-      background: var(--color-off-white);
-      border-radius: var(--radius-md);
-      padding: var(--space-5);
-      margin-bottom: var(--space-6);
-    }
-
-    .brand-spec-item {
-      text-align: center;
-    }
-
-    .brand-spec-value {
-      font-family: var(--font-heading);
-      font-size: var(--text-2xl);
-      font-weight: var(--weight-extrabold);
-      color: var(--color-text-dark);
-      display: block;
-      line-height: 1;
-      margin-bottom: var(--space-1);
-    }
-
-    .brand-spec-label {
-      font-size: var(--text-xs);
-      color: var(--color-text-mid);
-    }
-
-    /* Pro/con list inside brand card */
-    .pro-con-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-6);
-      margin-top: var(--space-6);
-    }
-
-    .pro-con-list h4 {
-      font-family: var(--font-body);
-      font-size: var(--text-xs);
-      font-weight: var(--weight-bold);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: var(--space-3);
-    }
-
-    .pro-con-list.pros h4 { color: #16a34a; }
-    .pro-con-list.cons h4 { color: #dc2626; }
-
-    .pro-con-list ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-    }
-
-    .pro-con-list li {
-      font-size: var(--text-sm);
-      color: var(--color-text-mid);
-      padding-left: var(--space-5);
-      position: relative;
-      line-height: 1.5;
-    }
-
-    .pro-con-list.pros li::before {
-      content: '+';
-      position: absolute;
-      left: 0;
-      color: #16a34a;
-      font-weight: var(--weight-bold);
-    }
-
-    .pro-con-list.cons li::before {
-      content: '−';
-      position: absolute;
-      left: 0;
-      color: #dc2626;
-      font-weight: var(--weight-bold);
-    }
-
-    /* Best-for callout at bottom of brand card */
-    .brand-best-for {
-      margin-top: var(--space-6);
-      padding: var(--space-4) var(--space-5);
-      background: var(--color-accent-dim);
-      border-radius: var(--radius-md);
-      font-size: var(--text-sm);
-      color: var(--color-text-dark);
-    }
-
-    .brand-best-for strong {
-      color: var(--color-accent);
-    }
-
-    @media (max-width: 767px) {
-      .brand-specs { grid-template-columns: repeat(2, 1fr); }
-      .pro-con-grid { grid-template-columns: 1fr; }
-      .brand-card-heading { align-items: flex-start; }
-      .brand-logo-wrap {
-        width: 165px;
-        min-width: 165px;
-        height: 60px;
-        padding: 0.55rem 0.75rem;
-      }
-      .brand-logo {
-        max-width: 136px;
-        max-height: 36px;
-      }
-      .brand-logo-svg {
-        width: 136px;
-        height: 36px;
-      }
-      .brand-logo-wrap.wide,
-      .brand-logo-wrap.tall {
-        width: 180px;
-        min-width: 180px;
-      }
-      .brand-logo-lockup.amvic .brand-logo-main,
-      .brand-logo-lockup.element .brand-logo-main,
-      .brand-logo-lockup.buildblock .brand-logo-main {
-        font-size: 1.28rem;
-      }
-      .brand-logo-lockup.amvic .brand-logo-sub,
-      .brand-logo-lockup.element .brand-logo-sub,
-      .brand-logo-lockup.buildblock .brand-logo-sub {
-        letter-spacing: 0.08em;
-        font-size: 0.42rem;
-      }
-      .brand-logo-lockup.buildblock .brand-logo-sub {
-        letter-spacing: 0.14em;
-      }
-    }
-  </style>
-
-  <!-- Schema: Article -->
+  <!-- Schema: Article + FAQPage -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "ICF Brand Comparison 2026: Nudura vs Fox Blocks vs Amvic vs Element ICF and More",
-    "description": "Independent comparison of every major ICF brand, Nudura, Fox Blocks, Amvic, Element ICF, Quad-Lock, Super Form, Build Block, and Insul-Deck. No brand pays to be ranked first.",
-    "url": "https://icfinsider.com/brands",
-    "dateModified": "2026-03-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "ICF Insider",
-      "url": "https://icfinsider.com"
-    }
-  }
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"Article",
+     "headline":"ICF Brand Comparison 2026: Nudura vs Fox Blocks vs Amvic vs Element ICF and More",
+     "description":"Independent comparison of every major ICF brand. No brand pays to be ranked first.",
+     "url":"https://icfinsider.com/brands",
+     "dateModified":"2026-05-30",
+     "publisher":{"@type":"Organization","name":"ICF Insider","url":"https://icfinsider.com"}},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What is the best ICF brand?","acceptedAnswer":{"@type":"Answer","text":"There is no single best ICF brand. Every major brand on the market produces a code-compliant, high-performing wall system. The best brand for your project depends on your contractor's experience, local distributor availability, and your specific project requirements. A skilled crew using any major brand will build an excellent wall."}},
+      {"@type":"Question","name":"What is the difference between Nudura and Fox Blocks?","acceptedAnswer":{"@type":"Answer","text":"Both are flat-block ICF systems with similar R-values and core width options. Nudura has a larger block (18x96 inches vs 16x48) and wider North American distribution through its Tremco/RPM parent company. Fox Blocks is American-manufactured with particularly strong Midwest distribution and brand recognition. Both are excellent products."}},
+      {"@type":"Question","name":"Which ICF brand has the highest R-value?","acceptedAnswer":{"@type":"Answer","text":"Quad-Lock offers the highest achievable R-values of any standard ICF system, ranging from R-24 to R-40 or higher. Its panel-and-tie design allows thicker foam panels on one or both faces, making it the top choice for Passive House and ultra-high-performance builds."}},
+      {"@type":"Question","name":"Does the ICF brand matter more than the contractor?","acceptedAnswer":{"@type":"Answer","text":"No. The contractor matters far more than the brand. Every major ICF brand produces a quality product. A skilled crew building with a mid-tier brand will outperform an inexperienced crew using a premium brand every time. Choose your contractor first, then let their brand preference guide your decision."}},
+      {"@type":"Question","name":"What is the most affordable ICF brand?","acceptedAnswer":{"@type":"Answer","text":"Amvic and Build Block are generally positioned as the most value-oriented ICF brands on the market. Both offer solid performance at competitive pricing compared to premium brands like Nudura and Fox Blocks. Your actual cost will depend on local distribution and contractor availability."}},
+      {"@type":"Question","name":"What is an ICF deck system?","acceptedAnswer":{"@type":"Answer","text":"An ICF deck system uses stay-in-place foam forms for concrete floors, ceilings, and roofs instead of walls. Insul-Deck is the leading product in this category. When paired with ICF walls, it creates a fully concrete building envelope with continuous insulation, 4-hour fire ratings, and superior sound dampening between floors."}}
+    ]}
+  ]}
   </script>
 </head>
 
@@ -482,17 +58,16 @@
   <nav class="nav" id="main-nav" aria-label="Main navigation">
     <div class="container nav-inner">
       <a href="/" class="nav-logo" aria-label="ICF Insider home">
-        
         <span class="nav-logo-text">ICF <span>Insider</span></span>
       </a>
       <ul class="nav-links" role="list">
-        <li><a href="icf-101"    class="nav-link">ICF 101</a></li>
-        <li><a href="cost-guide" class="nav-link">Cost Guide</a></li>
-        <li><a href="brands"     class="nav-link active">Brand Comparison</a></li>
-        <li><a href="find-a-pro" class="nav-link">Find a Pro</a></li>
+        <li><a href="/icf-101"    class="nav-link">ICF 101</a></li>
+        <li><a href="/cost-guide" class="nav-link">Cost Guide</a></li>
+        <li><a href="/brands"     class="nav-link active">Brand Comparison</a></li>
+        <li><a href="/find-a-pro" class="nav-link">Find a Pro</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="/get-connected" class="btn btn-primary">Get Connected</a>
+        <a href="/find-a-pro" class="btn btn-primary">Find a Pro</a>
       </div>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile">
         <span></span><span></span><span></span>
@@ -501,11 +76,11 @@
   </nav>
 
   <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation">
-    <a href="icf-101"    class="nav-link">ICF 101</a>
-    <a href="cost-guide" class="nav-link">Cost Guide</a>
-    <a href="brands"     class="nav-link active">Brand Comparison</a>
-    <a href="find-a-pro" class="nav-link">Find a Pro</a>
-    <a href="/get-connected" class="btn btn-primary">Get Connected</a>
+    <a href="/icf-101"    class="nav-link">ICF 101</a>
+    <a href="/cost-guide" class="nav-link">Cost Guide</a>
+    <a href="/brands"     class="nav-link active">Brand Comparison</a>
+    <a href="/find-a-pro" class="nav-link">Find a Pro</a>
+    <a href="/find-a-pro" class="btn btn-primary">Find a Pro</a>
   </div>
 
 
@@ -514,13 +89,12 @@
     <div class="container">
       <div class="page-hero-meta">
         <span class="page-hero-tag">Brand Comparison</span>
-        <span class="page-hero-readtime">18 min read · Updated 2026</span>
+        <span class="page-hero-readtime">Updated 2026</span>
       </div>
       <h1 id="page-title">Every Major ICF Brand, Compared Independently</h1>
       <p class="page-hero-intro">
-        Nudura, Fox Blocks, Amvic, Element ICF, Quad-Lock, Super Form, Build Block, plus
-        ICF deck systems. No brand pays to be ranked first. We compare them on specs,
-        distribution, contractor feedback, and best use cases.
+        No brand pays to be ranked first. We compare specs, distribution,
+        contractor feedback, and best use cases so you can make an informed decision.
       </p>
     </div>
   </section>
@@ -544,42 +118,76 @@
 
       <article class="article" id="article">
 
-        <!-- SECTION: How to Choose -->
-        <section id="how-to-choose">
-          <h2>How to Choose an ICF Brand</h2>
-
-          <p>
-            The honest truth: <strong>the brand matters less than the contractor.</strong>
-            Every major ICF brand on this page produces a code-compliant, high-performing
-            wall system. A skilled crew building with a mid-tier brand will outperform an
-            inexperienced crew using a premium brand every time.
-          </p>
-
-          <p>
-            That said, brand selection does matter for a few real reasons:
-          </p>
-
-          <ul>
-            <li><strong>Distributor availability</strong>: Some brands have strong regional distribution; others are thinly distributed in your area. If your contractor can't easily get the product, expect delays and higher costs.</li>
-            <li><strong>Contractor familiarity</strong>: Most experienced ICF builders have a preferred brand they know well. Let your contractor's preference inform the decision.</li>
-            <li><strong>Core width options</strong>: If you need a wider or narrower concrete core for structural or insulation reasons, some brands offer more flexibility than others.</li>
-            <li><strong>Technical support</strong>: Larger brands (Nudura, Fox Blocks) have robust technical support teams. Smaller brands may have less resources for complex projects.</li>
-            <li><strong>Commercial vs. residential</strong>: Some brands are better suited to commercial projects; others are optimized for residential.</li>
-          </ul>
-
-          <div class="callout">
-            <p>
-              <strong>Our recommendation:</strong> Ask your contractor which brand they've
-              built the most with and feel most confident using. Then verify that brand is
-              well-distributed in your area. Brand loyalty from an experienced contractor
-              is a feature, not a red flag.
-            </p>
+        <!-- SECTION: Brand Jump Grid -->
+        <section id="jump-to-brand">
+          <h2>Jump to a Brand</h2>
+          <div class="brand-jump-grid">
+            <a href="#nudura" class="brand-jump-card">
+              <div class="brand-jump-logo-area">
+                <img src="images/brand-logos/nudura-logo.png" alt="Nudura logo" class="brand-jump-logo">
+              </div>
+              <span class="brand-jump-name">Nudura</span>
+              <span class="brand-jump-type">Flat Block</span>
+            </a>
+            <a href="#fox-blocks" class="brand-jump-card">
+              <div class="brand-jump-logo-area">
+                <span style="background:#102235; border-radius:8px; padding:5px 10px; display:inline-flex; align-items:center; justify-content:center;">
+                  <svg style="height:28px; width:96px;" role="img" aria-label="Fox Blocks logo" viewBox="0 0 244 72">
+                    <use href="images/brand-logos/foxblocks-sprite.svg#sprite-fox-blocks-logo"></use>
+                  </svg>
+                </span>
+              </div>
+              <span class="brand-jump-name">Fox Blocks</span>
+              <span class="brand-jump-type">Flat Block</span>
+            </a>
+            <a href="#amvic" class="brand-jump-card">
+              <div class="brand-jump-logo-area">
+                <span style="font-size:1.3rem; color:#0d6177; font-weight:800; letter-spacing:-0.02em;">amvic</span>
+              </div>
+              <span class="brand-jump-name">Amvic</span>
+              <span class="brand-jump-type">Flat Block</span>
+            </a>
+            <a href="#element-icf" class="brand-jump-card">
+              <div class="brand-jump-logo-area">
+                <span style="font-size:1.15rem; font-weight:800; text-transform:uppercase; color:var(--color-text-dark);">Element<span style="color:#8bc53f;">ICF</span></span>
+              </div>
+              <span class="brand-jump-name">Element ICF</span>
+              <span class="brand-jump-type">Hybrid Block + Panel</span>
+            </a>
+            <a href="#super-form" class="brand-jump-card">
+              <div class="brand-jump-logo-area">
+                <img src="images/brand-logos/superform-logo.png" alt="Super Form logo" class="brand-jump-logo">
+              </div>
+              <span class="brand-jump-name">Super Form</span>
+              <span class="brand-jump-type">Flat Block</span>
+            </a>
+            <a href="#quad-lock" class="brand-jump-card">
+              <div class="brand-jump-logo-area">
+                <img src="images/brand-logos/quadlock-logo.svg" alt="Quad-Lock logo" class="brand-jump-logo">
+              </div>
+              <span class="brand-jump-name">Quad-Lock</span>
+              <span class="brand-jump-type">Panel + Ties</span>
+            </a>
+            <a href="#build-block" class="brand-jump-card">
+              <div class="brand-jump-logo-area">
+                <span style="font-size:1.15rem; font-weight:800;"><span style="color:#2457a7;">Build</span><span style="color:#e23534;">Block</span></span>
+              </div>
+              <span class="brand-jump-name">Build Block</span>
+              <span class="brand-jump-type">Flat Block</span>
+            </a>
+            <a href="#insul-deck" class="brand-jump-card">
+              <div class="brand-jump-logo-area">
+                <img src="images/brand-logos/insuldeck-logo.svg" alt="Insul-Deck logo" class="brand-jump-logo">
+              </div>
+              <span class="brand-jump-name">Insul-Deck</span>
+              <span class="brand-jump-type">Deck / Floor / Roof</span>
+            </a>
           </div>
         </section>
 
 
         <!-- SECTION: Quick Comparison Table -->
-        <section id="quick-comparison">
+        <section id="quick-comparison" style="margin-top:var(--space-16);">
           <h2>Quick Comparison: All Major Wall System Brands</h2>
 
           <div style="overflow-x: auto;">
@@ -632,7 +240,7 @@
                 <tr>
                   <td><strong>Quad-Lock</strong></td>
                   <td class="col-icf">R-24 to R-40+</td>
-                  <td>Adjustable (4", 12"+)</td>
+                  <td>Adjustable (4" to 12"+)</td>
                   <td>Panel + separate ties</td>
                   <td>US &amp; Canada</td>
                 </tr>
@@ -648,7 +256,7 @@
           </div>
 
           <p style="font-size: 0.8rem; color: var(--color-text-mid);">
-            R-values shown are for the full wall assembly, both foam layers plus the concrete core, using standard
+            R-values shown are for the full wall assembly (both foam layers plus concrete core) using standard
             EPS foam panels. Actual installed R-value depends on foam density and thickness
             specified. Verify current specs directly with manufacturers before specifying.
           </p>
@@ -656,7 +264,7 @@
 
 
         <!-- SECTION: Wall System Brands -->
-        <section id="wall-system-brands">
+        <section id="wall-system-brands" style="margin-top:var(--space-16);">
           <h2>Wall System Brand Profiles</h2>
           <p>Here's what you need to know about each major ICF wall brand.</p>
 
@@ -682,7 +290,7 @@
 
               <div class="brand-specs" role="list">
                 <div class="brand-spec-item" role="listitem">
-                  <span class="brand-spec-value">R-22–28</span>
+                  <span class="brand-spec-value">R-22-28</span>
                   <span class="brand-spec-label">Wall assembly R-value</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
@@ -690,7 +298,7 @@
                   <span class="brand-spec-label">Standard core width</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
-                  <span class="brand-spec-value">18"×96"</span>
+                  <span class="brand-spec-value">18"x96"</span>
                   <span class="brand-spec-label">Standard block size</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
@@ -724,7 +332,7 @@
                     <li>Large certified contractor network</li>
                     <li>Proven track record on large commercial projects</li>
                     <li>Multiple core width options including 12" for commercial</li>
-                    <li>18" tall × 8' long block, more sq ft per block than most competitors</li>
+                    <li>18" tall x 8' long block, more sq ft per block than most competitors</li>
                     <li>DuraFold hinged web ships flat, up to 40% more product per truck, lower freight costs</li>
                   </ul>
                 </div>
@@ -778,7 +386,7 @@
                   <span class="brand-spec-label">Standard core width</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
-                  <span class="brand-spec-value">16"×48"</span>
+                  <span class="brand-spec-value">16"x48"</span>
                   <span class="brand-spec-label">Standard block size</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
@@ -857,7 +465,7 @@
 
               <div class="brand-specs" role="list">
                 <div class="brand-spec-item" role="listitem">
-                  <span class="brand-spec-value">R-22–26</span>
+                  <span class="brand-spec-value">R-22-26</span>
                   <span class="brand-spec-label">Wall assembly R-value</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
@@ -865,7 +473,7 @@
                   <span class="brand-spec-label">Standard core width</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
-                  <span class="brand-spec-value">16"×48"</span>
+                  <span class="brand-spec-value">16"x48"</span>
                   <span class="brand-spec-label">Standard block size</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
@@ -949,19 +557,19 @@
                   <span class="brand-spec-label">Standard core width</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
-                  <span class="brand-spec-value">16"×48"</span>
+                  <span class="brand-spec-value">16"x48"</span>
                   <span class="brand-spec-label">Standard block size</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
                   <span class="brand-spec-value">5</span>
-                  <span class="brand-spec-label">Core width options (4", 12")</span>
+                  <span class="brand-spec-label">Core width options (4" to 12")</span>
                 </div>
               </div>
 
               <p>
                 Element ICF is the successor to Logix ICF, which was retired on January 1, 2025
                 after more than 20 years in the market. Both products are developed by Logix
-                Brands Ltd. and are dimensionally compatible, projects designed with Logix ICF
+                Brands Ltd. and are dimensionally compatible: projects designed with Logix ICF
                 can be built with Element ICF without modification.
               </p>
               <p>
@@ -983,7 +591,7 @@
                 <div class="pro-con-list pros">
                   <h4>Strengths</h4>
                   <ul>
-                    <li>Unique hybrid system, blocks and panels interchangeable on same project</li>
+                    <li>Unique hybrid system: blocks and panels interchangeable on same project</li>
                     <li>Full US and Canada availability as of 2024</li>
                     <li>4-way reversible corners reduce waste and errors</li>
                     <li>Full-height webs prevent concrete settling during pour</li>
@@ -1033,7 +641,7 @@
 
               <div class="brand-specs" role="list">
                 <div class="brand-spec-item" role="listitem">
-                  <span class="brand-spec-value">R-22–26</span>
+                  <span class="brand-spec-value">R-22-26</span>
                   <span class="brand-spec-label">Wall assembly R-value</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
@@ -1041,7 +649,7 @@
                   <span class="brand-spec-label">Standard core width</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
-                  <span class="brand-spec-value">16"×48"</span>
+                  <span class="brand-spec-value">16"x48"</span>
                   <span class="brand-spec-label">Standard block size</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
@@ -1112,7 +720,7 @@
 
               <div class="brand-specs" role="list">
                 <div class="brand-spec-item" role="listitem">
-                  <span class="brand-spec-value">R-24–40+</span>
+                  <span class="brand-spec-value">R-24-40+</span>
                   <span class="brand-spec-label">Wall assembly R-value</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
@@ -1136,7 +744,7 @@
                 individual polypropylene tie connectors.
               </p>
               <p>
-                This design allows for adjustable concrete core width, you can use the same
+                This design allows for adjustable concrete core width: you can use the same
                 foam panels with different tie lengths to achieve cores from 4" to 12" and
                 beyond. It also means you can achieve higher R-values by using thicker foam
                 panels on one or both faces. The tradeoff is that assembly is slightly more
@@ -1147,7 +755,7 @@
                 <div class="pro-con-list pros">
                   <h4>Strengths</h4>
                   <ul>
-                    <li>Adjustable core width, most flexible concrete thickness on the market</li>
+                    <li>Adjustable core width: most flexible concrete thickness on the market</li>
                     <li>Highest achievable R-values of any standard ICF system</li>
                     <li>Good for non-standard wall thicknesses and engineering requirements</li>
                     <li>Excellent for Passive House and ultra-high-performance builds</li>
@@ -1208,7 +816,7 @@
                   <span class="brand-spec-label">Standard core width</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
-                  <span class="brand-spec-value">16"×48"</span>
+                  <span class="brand-spec-value">16"x48"</span>
                   <span class="brand-spec-label">Standard block size</span>
                 </div>
                 <div class="brand-spec-item" role="listitem">
@@ -1261,7 +869,7 @@
 
 
         <!-- SECTION: Deck Systems -->
-        <section id="deck-systems">
+        <section id="deck-systems" style="margin-top:var(--space-16);">
           <h2>ICF Deck &amp; Floor Systems</h2>
 
           <p>
@@ -1274,7 +882,7 @@
           <div class="callout">
             <p>
               <strong>Who uses deck systems?</strong> Primarily builders doing full
-              concrete construction, multi-family, commercial, hurricane-zone residential,
+              concrete construction: multi-family, commercial, hurricane-zone residential,
               and high-performance builds where wood floor assemblies are undesirable for
               fire, sound, or resilience reasons.
             </p>
@@ -1336,9 +944,9 @@
                   <h4>Strengths</h4>
                   <ul>
                     <li>Creates a fully concrete, continuous building envelope when paired with ICF walls</li>
-                    <li>4-hour fire rating, exceptional life-safety performance</li>
+                    <li>4-hour fire rating: exceptional life-safety performance</li>
                     <li>Superior sound dampening between floors</li>
-                    <li>Permanent insulation, no separate insulation installation needed</li>
+                    <li>Permanent insulation: no separate insulation installation needed</li>
                     <li>Ideal for hurricane zones where wood floor assemblies are vulnerable</li>
                   </ul>
                 </div>
@@ -1347,7 +955,7 @@
                   <ul>
                     <li>Higher cost than wood floor framing</li>
                     <li>Requires experienced concrete deck crews</li>
-                    <li>Heavier structural load, foundation and wall design must account for this</li>
+                    <li>Heavier structural load: foundation and wall design must account for this</li>
                     <li>Longer pour and cure schedule than wood framing</li>
                   </ul>
                 </div>
@@ -1364,8 +972,8 @@
         </section><!-- /#deck-systems -->
 
 
-        <!-- SECTION: How to Choose -->
-        <section id="which-brand-is-right">
+        <!-- SECTION: Which Brand Is Right -->
+        <section id="which-brand-is-right" style="margin-top:var(--space-16);">
           <h2>Which Brand Is Right for Your Project?</h2>
 
           <p>Use this as a starting point, not a final answer. Your contractor's preference
@@ -1415,55 +1023,123 @@
               </tbody>
             </table>
           </div>
+        </section>
 
+
+        <!-- SECTION: How to Choose -->
+        <section id="how-to-choose" style="margin-top:var(--space-16);">
+          <h2>How to Choose an ICF Brand</h2>
+
+          <p>
+            The honest truth: <strong>the brand matters less than the contractor.</strong>
+            Every major ICF brand on this page produces a code-compliant, high-performing
+            wall system. A skilled crew building with a mid-tier brand will outperform an
+            inexperienced crew using a premium brand every time.
+          </p>
+
+          <p>
+            That said, brand selection does matter for a few real reasons:
+          </p>
+
+          <ul>
+            <li><strong>Distributor availability</strong>: Some brands have strong regional distribution; others are thinly distributed in your area. If your contractor can't easily get the product, expect delays and higher costs.</li>
+            <li><strong>Contractor familiarity</strong>: Most experienced ICF builders have a preferred brand they know well. Let your contractor's preference inform the decision.</li>
+            <li><strong>Core width options</strong>: If you need a wider or narrower concrete core for structural or insulation reasons, some brands offer more flexibility than others.</li>
+            <li><strong>Technical support</strong>: Larger brands (Nudura, Fox Blocks) have robust technical support teams. Smaller brands may have less resources for complex projects.</li>
+            <li><strong>Commercial vs. residential</strong>: Some brands are better suited to commercial projects; others are optimized for residential.</li>
+          </ul>
+
+          <div class="callout">
+            <p>
+              <strong>Our recommendation:</strong> Ask your contractor which brand they've
+              built the most with and feel most confident using. Then verify that brand is
+              well-distributed in your area. Brand loyalty from an experienced contractor
+              is a feature, not a red flag.
+            </p>
+          </div>
+        </section>
+
+
+        <!-- SECTION: FAQ -->
+        <section id="faq" style="margin-top:var(--space-16);">
+          <span class="eyebrow">FAQ</span>
+          <h2>Common Questions About ICF Brands</h2>
+          <div class="faq-list">
+            <div class="faq-card">
+              <h3>What is the best ICF brand?</h3>
+              <p>There is no single best ICF brand. Every major brand on the market produces a code-compliant, high-performing wall system. The best brand for your project depends on your contractor's experience, local distributor availability, and your specific project requirements. A skilled crew using any major brand will build an excellent wall.</p>
+            </div>
+            <div class="faq-card">
+              <h3>What is the difference between Nudura and Fox Blocks?</h3>
+              <p>Both are flat-block ICF systems with similar R-values and core width options. Nudura has a larger block (18x96 inches vs 16x48) and wider North American distribution through its Tremco/RPM parent company. Fox Blocks is American-manufactured with particularly strong Midwest distribution and brand recognition. Both are excellent products.</p>
+            </div>
+            <div class="faq-card">
+              <h3>Which ICF brand has the highest R-value?</h3>
+              <p>Quad-Lock offers the highest achievable R-values of any standard ICF system, ranging from R-24 to R-40 or higher. Its panel-and-tie design allows thicker foam panels on one or both faces, making it the top choice for Passive House and ultra-high-performance builds.</p>
+            </div>
+            <div class="faq-card">
+              <h3>Does the ICF brand matter more than the contractor?</h3>
+              <p>No. The contractor matters far more than the brand. Every major ICF brand produces a quality product. A skilled crew building with a mid-tier brand will outperform an inexperienced crew using a premium brand every time. Choose your contractor first, then let their brand preference guide your decision.</p>
+            </div>
+            <div class="faq-card">
+              <h3>What is the most affordable ICF brand?</h3>
+              <p>Amvic and Build Block are generally positioned as the most value-oriented ICF brands. Both offer solid performance at competitive pricing compared to premium brands like Nudura and Fox Blocks. Your actual cost will depend on local distribution and contractor availability.</p>
+            </div>
+            <div class="faq-card">
+              <h3>What is an ICF deck system?</h3>
+              <p>An ICF deck system uses stay-in-place foam forms for concrete floors, ceilings, and roofs instead of walls. Insul-Deck is the leading product in this category. When paired with ICF walls, it creates a fully concrete building envelope with continuous insulation, 4-hour fire ratings, and superior sound dampening between floors.</p>
+            </div>
+          </div>
         </section>
 
 
         <!-- Bottom nav -->
         <nav aria-label="Continue reading" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border-light); display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
-          <a href="cost-guide" style="font-size: 0.875rem; color: var(--color-text-mid);">
-            ← ICF Cost Guide
+          <a href="/cost-guide" style="font-size: 0.875rem; color: var(--color-text-mid);">
+            &larr; ICF Cost Guide
           </a>
-          <a href="find-a-pro" class="article-nav-next">Find an ICF Contractor <span aria-hidden="true">→</span></a>
+          <a href="/find-a-pro" class="article-nav-next">Find an ICF Contractor <span aria-hidden="true">&rarr;</span></a>
         </nav>
 
       </article>
 
 
       <!-- TABLE OF CONTENTS SIDEBAR -->
-      <aside aria-label="Table of contents">
-        <nav class="toc" id="toc">
-          <div class="toc-title">On This Page</div>
+      <aside class="toc-sidebar" aria-label="Page navigation">
+        <div class="toc-inner">
+          <p class="toc-label">On this page</p>
           <ul class="toc-list" role="list">
-            <li><a href="#how-to-choose"         class="toc-link">How to Choose</a></li>
-            <li><a href="#quick-comparison"       class="toc-link">Quick Comparison Table</a></li>
+            <li><a href="#jump-to-brand"         class="toc-link">Jump to a Brand</a></li>
+            <li><a href="#quick-comparison"       class="toc-link">Quick Comparison</a></li>
             <li><a href="#wall-system-brands"     class="toc-link">Wall System Brands</a></li>
             <li><a href="#nudura"                 class="toc-link" style="padding-left: 1.25rem;">Nudura</a></li>
             <li><a href="#fox-blocks"             class="toc-link" style="padding-left: 1.25rem;">Fox Blocks</a></li>
             <li><a href="#amvic"                  class="toc-link" style="padding-left: 1.25rem;">Amvic</a></li>
-            <li><a href="#element-icf"             class="toc-link" style="padding-left: 1.25rem;">Element ICF (formerly Logix)</a></li>
+            <li><a href="#element-icf"            class="toc-link" style="padding-left: 1.25rem;">Element ICF</a></li>
             <li><a href="#super-form"             class="toc-link" style="padding-left: 1.25rem;">Super Form</a></li>
             <li><a href="#quad-lock"              class="toc-link" style="padding-left: 1.25rem;">Quad-Lock</a></li>
             <li><a href="#build-block"            class="toc-link" style="padding-left: 1.25rem;">Build Block</a></li>
             <li><a href="#deck-systems"           class="toc-link">Deck &amp; Floor Systems</a></li>
             <li><a href="#insul-deck"             class="toc-link" style="padding-left: 1.25rem;">Insul-Deck</a></li>
             <li><a href="#which-brand-is-right"   class="toc-link">Which Brand Is Right?</a></li>
+            <li><a href="#how-to-choose"          class="toc-link">How to Choose</a></li>
+            <li><a href="#faq"                    class="toc-link">FAQ</a></li>
           </ul>
-        </nav>
+        </div>
       </aside>
 
     </div><!-- /.content-layout -->
   </div><!-- /.container -->
 
 
-  <!-- GET CONNECTED -->
+  <!-- FIND A PRO CTA -->
   <section class="section bg-dark" id="early-access" aria-labelledby="connect-heading">
     <div class="container">
       <div class="email-capture">
-        <span class="eyebrow">Get Connected</span>
-        <h2 id="connect-heading">Get Connected with Your Local ICF Expert</h2>
-        <p>Tell us about your project and we'll connect you with qualified ICF professionals in your area.</p>
-        <a href="/get-connected?tab=homeowner" class="btn btn-primary btn-lg" style="margin-top:var(--space-4);">Get Connected →</a>
+        <span class="eyebrow">Find a Pro</span>
+        <h2 id="connect-heading">Find a Qualified ICF Contractor Near You</h2>
+        <p>Browse ICF professionals in your area who work with the brands on this page. Get connected with a contractor who can give you an accurate project quote.</p>
+        <a href="/find-a-pro" class="btn btn-primary btn-lg" style="margin-top:var(--space-4);">Find a Pro &rarr;</a>
         <p class="email-disclaimer" style="margin-top:var(--space-3);">Your info goes directly to local ICF professionals, never to unrelated marketers.</p>
       </div>
     </div>
@@ -1476,7 +1152,6 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="nav-logo" aria-label="ICF Insider home">
-            
             <span class="nav-logo-text">ICF <span>Insider</span></span>
           </a>
           <p>The independent authority on Insulated Concrete Form construction. Real data, unbiased comparisons, and a vetted contractor network.</p>
@@ -1515,7 +1190,7 @@
         <p>&copy; 2026 ICF Insider. All rights reserved.</p>
         <nav class="footer-bottom-links" aria-label="Legal">
           <a href="/privacy-policy">Privacy Policy</a>
-          <a href="terms-of-use">Terms of Use</a>
+          <a href="/terms-of-use">Terms of Use</a>
         </nav>
       </div>
     </div>
