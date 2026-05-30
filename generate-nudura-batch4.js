@@ -11,7 +11,7 @@ const states = [
     whyIntro: `Alaska presents some of the most extreme building conditions on the continent: prolonged deep cold, high energy costs, and remote logistics. Nudura ICF is purpose-built for exactly these demands.`,
     reasons: [
       { title: 'Extreme Cold Climate Performance', text: `Alaska winters are among the most severe on the planet. Nudura's R-22 to R-28 wall assembly provides continuous insulation with no thermal bridging, keeping heating loads as low as possible even in Alaska's most extreme conditions. ICF consistently outperforms wood framing in cold-climate heating performance.` },
-      { title: 'Energy Savings Where They Matter Most', text: `Alaska homeowners face some of the highest energy costs in the country, combined with one of the longest heating seasons. Nudura's high R-value wall system significantly reduces heating demand, and in remote communities where fuel costs are exceptionally high, the payback on ICF's upfront premium can be faster than almost anywhere else.` },
+      { title: 'Energy Savings Where They Matter Most', text: `Alaska homeowners face some of the highest energy costs in the country, combined with one of the longest heating seasons. Nudura's high R-value wall system significantly reduces heating demand, and in remote communities where fuel costs are exceptionally high, energy savings start immediately and compound every year, delivering some of the strongest returns in the country.` },
       { title: 'Structural Durability in Harsh Conditions', text: `Alaska's freeze-thaw cycles, permafrost challenges, snowpack, and moisture exposure put real stress on building materials. ICF walls handle these conditions better than wood framing, resist moisture infiltration, and maintain structural integrity through Alaska's demanding seasonal extremes.` },
       { title: 'Alaska Distribution', text: `Nudura's distribution network reaches Alaska's major markets, including Anchorage, Fairbanks, and the Kenai Peninsula. Freight logistics and lead times vary significantly by location across Alaska, so your contractor should confirm availability and costs for your specific project area well in advance.` },
     ],
@@ -20,7 +20,7 @@ const states = [
       { q: `Is Nudura ICF available in Alaska?`, a: `Nudura's distribution network reaches Alaska's major markets including Anchorage and Fairbanks. Freight logistics and lead times vary significantly by location, so confirm specifics with your contractor well in advance of your project start date.` },
       { q: `How does Nudura ICF perform in Alaska's extreme cold?`, a: `Exceptionally well. Nudura's R-22 to R-28 wall assembly and continuous insulation are among the most effective wall systems available for Alaska's extreme climate. ICF significantly outperforms wood framing in cold-climate heating performance.` },
       { q: `What does Nudura ICF cost in Alaska?`, a: `Alaska has some of the highest construction costs in the country due to freight, logistics, and limited labor availability. ICF's energy savings are also among the highest in Alaska given the state's extreme heating demands and energy costs. Connect with a local Alaska contractor for realistic project-specific pricing.` },
-      { q: `Is ICF worth it in Alaska?`, a: `For Alaska homeowners, ICF is one of the strongest investments available. The combination of extreme cold, high energy costs, and long heating seasons means the payback on ICF's energy savings happens faster in Alaska than almost anywhere else in the country.` },
+      { q: `Is ICF worth it in Alaska?`, a: `For Alaska homeowners, ICF is one of the strongest investments available. The combination of extreme cold, high energy costs, and long heating seasons means energy savings from ICF are among the largest in the country. Those savings start from day one and grow as energy prices rise.` },
     ],
   },
 
@@ -74,7 +74,7 @@ const states = [
     whyIntro: `Hawaii's island building environment is unique: real hurricane exposure, extreme humidity, high energy costs, and a construction market shaped by limited space and high demand. Nudura ICF addresses Hawaii's specific demands in several key ways.`,
     reasons: [
       { title: 'Hurricane and High-Wind Protection', text: `Hawaii faces direct hurricane and tropical storm risk, and the islands' exposed coastlines and windward sides see persistent high-wind conditions. ICF walls, including Nudura, provide meaningful structural protection compared to wood framing in high-wind events. Many Hawaii homeowners choose ICF specifically for storm resilience.` },
-      { title: 'Energy Savings in a High-Cost Energy Market', text: `Hawaii has the highest residential electricity rates in the country. Nudura's R-22 to R-28 wall assembly reduces cooling loads significantly in Hawaii's tropical climate, and the energy savings compound year-round since cooling demands are constant. The payback on ICF's premium comes faster in Hawaii than in almost any other state.` },
+      { title: 'Energy Savings in a High-Cost Energy Market', text: `Hawaii has the highest residential electricity rates in the country. Nudura's R-22 to R-28 wall assembly reduces cooling loads significantly in Hawaii's tropical climate, and the energy savings compound year-round since cooling demands are constant. Energy savings start immediately and compound every year, delivering some of the strongest returns in the country.` },
       { title: 'Tropical Humidity and Moisture Resistance', text: `Hawaii's tropical humidity creates serious moisture management challenges for wood-frame construction. ICF walls resist moisture infiltration, don't rot, and don't support mold growth in the way wood framing can under sustained tropical humidity. This is a critical long-term durability advantage in Hawaii's climate.` },
       { title: 'Hawaii Distribution', text: `Nudura's distribution network reaches Hawaii through island freight logistics. Product availability and lead times vary by island, so your contractor should confirm specifics well in advance. Oahu has the most active construction market and best contractor availability.` },
     ],
@@ -308,32 +308,6 @@ function generatePage(s) {
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/components.css">
-  <style>
-    .brand-header{display:flex;align-items:center;gap:var(--space-5);margin-bottom:var(--space-6);padding:var(--space-5) var(--space-6);background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;}
-    .brand-header-logo{height:48px;width:auto;object-fit:contain;flex-shrink:0;}
-    .brand-header-meta{display:flex;flex-direction:column;gap:4px;}
-    .brand-header-name{font-size:1.1rem;font-weight:700;color:var(--color-text-dark);margin:0;}
-    .brand-header-parent{font-size:0.8rem;color:var(--color-text-muted);margin:0;}
-    .brand-photo{width:100%;border-radius:12px;border:1px solid var(--color-border);margin:var(--space-8) 0;overflow:hidden;}
-    .brand-photo img{width:100%;height:auto;display:block;}
-    .brand-photo figcaption{padding:var(--space-3) var(--space-4);font-size:0.78rem;color:var(--color-text-muted);background:var(--color-surface);border-top:1px solid var(--color-border);}
-    .spec-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6);margin:var(--space-8) 0;}
-    .spec-bar-item{text-align:center;}
-    .spec-bar-value{display:block;font-size:1.5rem;font-weight:700;color:var(--color-text-dark);line-height:1.1;}
-    .spec-bar-label{display:block;font-size:0.75rem;color:var(--color-text-muted);margin-top:4px;}
-    .reason-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-top:var(--space-8);}
-    .reason-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6);}
-    .reason-card h3{margin:0 0 var(--space-2);font-size:1rem;}
-    .reason-card p{margin:0;font-size:0.9rem;color:var(--color-text-mid);line-height:1.65;}
-    .faq-list{display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-8);}
-    .faq-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6) var(--space-7);}
-    .faq-card h3{margin:0 0 var(--space-2);font-size:1rem;}
-    .faq-card p{margin:0;color:var(--color-text-mid);line-height:1.7;}
-    .cta-panel{margin-top:var(--space-16);background:var(--color-dark-900);border-radius:14px;padding:var(--space-8);border:1px solid rgba(255,255,255,0.08);}
-    .cta-panel h2{margin:0 0 var(--space-3);color:var(--color-text-light);}
-    .cta-panel p{margin:0 0 var(--space-6);color:var(--color-text-muted);max-width:600px;}
-    @media(max-width:767px){.spec-bar{grid-template-columns:repeat(2,1fr);}.reason-grid{grid-template-columns:1fr;}.brand-header{flex-direction:column;align-items:flex-start;}}
-  </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
     {"@type":"BreadcrumbList","itemListElement":[
@@ -450,7 +424,7 @@ function generatePage(s) {
 
         <div class="cta-panel">
           <h2>Find a Nudura Contractor in ${s.name}</h2>
-          <p>Browse ICF professionals in ${s.name} who work with Nudura and other top brands. Get connected with a local contractor who can give you an accurate project quote.</p>
+          <p>Browse ICF professionals in ${s.name} who work with Nudura and other top brands. Get connected with ${'AEIOU'.includes(s.name[0]) ? 'an' : 'a'} ${s.name} contractor who can give you an accurate project quote.</p>
           <a href="/find-a-pro?state=${stateParam}" class="btn btn-primary btn-lg">Find a Pro in ${s.name}</a>
         </div>
 
@@ -481,7 +455,7 @@ function generatePage(s) {
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="nav-logo" aria-label="ICF Insider home"><span class="nav-logo-text">ICF <span>Insider</span></span></a>
-          <p>The independent authority on Insulated Concrete Form construction.</p>
+          <p>The independent authority on Insulated Concrete Form construction. Real data, unbiased comparisons, and a vetted contractor network.</p>
         </div>
         <div class="footer-col"><h4>Learn</h4><ul class="footer-links" role="list"><li><a href="/icf-101" class="footer-link">ICF 101</a></li><li><a href="/cost-guide" class="footer-link">Cost Guide</a></li><li><a href="/brands" class="footer-link">Brand Comparison</a></li></ul></div>
         <div class="footer-col"><h4>Directory</h4><ul class="footer-links" role="list"><li><a href="/find-a-pro" class="footer-link">Find a Contractor</a></li><li><a href="/get-connected?tab=contractor" class="footer-link">List Your Business</a></li></ul></div>

@@ -20,7 +20,7 @@ const states = [
       { q: `Is Nudura ICF available in Louisiana?`, a: `Yes. Nudura's distribution network covers Louisiana, with supply for contractors in New Orleans, Baton Rouge, Shreveport, and Lafayette. Your contractor should confirm current availability and lead times.` },
       { q: `Does Nudura ICF meet Louisiana's coastal building code?`, a: `Nudura ICF meets Louisiana building code requirements including coastal wind zone standards. Your structural engineer will specify the appropriate core width and rebar schedule for your location and wind exposure category.` },
       { q: `What does Nudura ICF cost in Louisiana?`, a: `Cost depends on design, core width, location, and labor availability. Coastal projects with hurricane zone requirements may need wider cores and more engineering, which affects total cost. Connect with a local Louisiana contractor for an accurate quote.` },
-      { q: `Is ICF worth it in Louisiana?`, a: `For most Louisiana homeowners, yes. Between hurricane resilience, resistance to the state's extreme humidity, and meaningful energy savings on year-round cooling, ICF's upfront premium pays back faster in Louisiana than in moderate climates.` },
+      { q: `Is ICF worth it in Louisiana?`, a: `For most Louisiana homeowners, yes. Between hurricane resilience, resistance to the state's extreme humidity, and meaningful energy savings on year-round cooling, ICF delivers strong long-term value in Louisiana. Energy and insurance savings start from day one and compound every year.` },
     ],
   },
 
@@ -116,7 +116,7 @@ const states = [
     whyIntro: `Minnesota has some of the coldest winters in the continental US, with extended heating seasons and significant moisture from the Great Lakes region. Nudura ICF is exceptionally well-suited to Minnesota's climate demands.`,
     reasons: [
       { title: 'Extreme Cold Weather Performance', text: `Minnesota winters are long and among the coldest in the continental US, with temperatures regularly dropping well below zero. Nudura's R-22 to R-28 wall assembly provides continuous insulation with no thermal bridging, keeping heating loads low even in Minnesota's most severe winter conditions.` },
-      { title: 'Energy Savings in a Heating-Dominant Climate', text: `Minnesota homeowners face some of the highest heating costs in the country. Nudura's high R-value wall system significantly reduces heating load compared to wood frame construction. In a heating-dominant climate like Minnesota's, the payback on ICF's upfront premium comes faster than in milder states.` },
+      { title: 'Energy Savings in a Heating-Dominant Climate', text: `Minnesota homeowners face some of the highest heating costs in the country. Nudura's high R-value wall system significantly reduces heating load compared to wood frame construction. Energy savings start immediately and compound every year in heating-dominant climates like Minnesota's.` },
       { title: 'Moisture and Freeze-Thaw Durability', text: `Minnesota's freeze-thaw cycles are hard on building materials. ICF walls resist moisture infiltration and handle freeze-thaw cycles better than wood framing. Nudura's concrete core and EPS foam system maintain structural integrity through Minnesota's demanding seasonal transitions.` },
       { title: 'Minnesota Distribution', text: `Nudura's distribution network covers Minnesota, with supply available to contractors in the Minneapolis-Saint Paul metro, Duluth, Rochester, and surrounding markets. Your contractor should confirm current availability and lead times for your specific project.` },
     ],
@@ -209,7 +209,7 @@ const states = [
       { q: `Is Nudura ICF available in Nevada?`, a: `Yes. Nudura's distribution network covers Nevada, with supply for contractors in the Las Vegas metro and Reno-Tahoe markets.` },
       { q: `How does Nudura ICF perform in Nevada's extreme heat?`, a: `Very well. Nudura's R-22 to R-28 wall assembly and ICF's thermal mass are specifically well-suited to desert climates. The system significantly reduces cooling loads and handles Nevada's intense heat cycles and UV exposure without degrading over time.` },
       { q: `What does Nudura ICF cost in Nevada?`, a: `Cost depends on your design, core width, location, and local labor. Las Vegas tends to have competitive ICF pricing due to the active construction market. Connect with a local Nevada contractor for an accurate project-specific quote.` },
-      { q: `Is ICF worth it in Nevada?`, a: `For Nevada homeowners, yes. The energy savings in Nevada's extreme heat climate are among the most significant in the country, and the payback on ICF's upfront premium is faster in high-cooling-cost environments like Las Vegas than in moderate climates.` },
+      { q: `Is ICF worth it in Nevada?`, a: `For Nevada homeowners, yes. The energy savings in Nevada's extreme heat climate are among the most significant in the country. Those savings start from day one and grow as energy prices rise, making ICF a strong long-term investment in high-cooling-cost environments like Las Vegas.` },
     ],
   },
 
@@ -287,32 +287,6 @@ function generatePage(s) {
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/components.css">
-  <style>
-    .brand-header{display:flex;align-items:center;gap:var(--space-5);margin-bottom:var(--space-6);padding:var(--space-5) var(--space-6);background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;}
-    .brand-header-logo{height:48px;width:auto;object-fit:contain;flex-shrink:0;}
-    .brand-header-meta{display:flex;flex-direction:column;gap:4px;}
-    .brand-header-name{font-size:1.1rem;font-weight:700;color:var(--color-text-dark);margin:0;}
-    .brand-header-parent{font-size:0.8rem;color:var(--color-text-muted);margin:0;}
-    .brand-photo{width:100%;border-radius:12px;border:1px solid var(--color-border);margin:var(--space-8) 0;overflow:hidden;}
-    .brand-photo img{width:100%;height:auto;display:block;}
-    .brand-photo figcaption{padding:var(--space-3) var(--space-4);font-size:0.78rem;color:var(--color-text-muted);background:var(--color-surface);border-top:1px solid var(--color-border);}
-    .spec-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6);margin:var(--space-8) 0;}
-    .spec-bar-item{text-align:center;}
-    .spec-bar-value{display:block;font-size:1.5rem;font-weight:700;color:var(--color-text-dark);line-height:1.1;}
-    .spec-bar-label{display:block;font-size:0.75rem;color:var(--color-text-muted);margin-top:4px;}
-    .reason-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-top:var(--space-8);}
-    .reason-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6);}
-    .reason-card h3{margin:0 0 var(--space-2);font-size:1rem;}
-    .reason-card p{margin:0;font-size:0.9rem;color:var(--color-text-mid);line-height:1.65;}
-    .faq-list{display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-8);}
-    .faq-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6) var(--space-7);}
-    .faq-card h3{margin:0 0 var(--space-2);font-size:1rem;}
-    .faq-card p{margin:0;color:var(--color-text-mid);line-height:1.7;}
-    .cta-panel{margin-top:var(--space-16);background:var(--color-dark-900);border-radius:14px;padding:var(--space-8);border:1px solid rgba(255,255,255,0.08);}
-    .cta-panel h2{margin:0 0 var(--space-3);color:var(--color-text-light);}
-    .cta-panel p{margin:0 0 var(--space-6);color:var(--color-text-muted);max-width:600px;}
-    @media(max-width:767px){.spec-bar{grid-template-columns:repeat(2,1fr);}.reason-grid{grid-template-columns:1fr;}.brand-header{flex-direction:column;align-items:flex-start;}}
-  </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
     {"@type":"BreadcrumbList","itemListElement":[
@@ -432,7 +406,7 @@ function generatePage(s) {
             <li><strong style="color:var(--color-text-dark);">Concrete pricing</strong>: Concrete is a major cost driver in ICF construction and fluctuates with local market conditions</li>
             <li><strong style="color:var(--color-text-dark);">Engineering requirements</strong>: Local wind zones, seismic categories, and code requirements may call for additional structural engineering</li>
           </ul>
-          <p style="margin-top:var(--space-6);">The best way to understand what Nudura ICF will cost for your specific project is to connect with a ${s.name} contractor who has direct experience with the system.</p>
+          <p style="margin-top:var(--space-6);">The best way to understand what Nudura ICF will cost for your specific project is to connect with ${'AEIOU'.includes(s.name[0]) ? 'an' : 'a'} ${s.name} contractor who has direct experience with the system.</p>
         </section>
 
         <section id="faq" style="margin-top:var(--space-16);">
@@ -479,7 +453,7 @@ function generatePage(s) {
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="nav-logo" aria-label="ICF Insider home"><span class="nav-logo-text">ICF <span>Insider</span></span></a>
-          <p>The independent authority on Insulated Concrete Form construction.</p>
+          <p>The independent authority on Insulated Concrete Form construction. Real data, unbiased comparisons, and a vetted contractor network.</p>
         </div>
         <div class="footer-col"><h4>Learn</h4><ul class="footer-links" role="list"><li><a href="/icf-101" class="footer-link">ICF 101</a></li><li><a href="/cost-guide" class="footer-link">Cost Guide</a></li><li><a href="/brands" class="footer-link">Brand Comparison</a></li></ul></div>
         <div class="footer-col"><h4>Directory</h4><ul class="footer-links" role="list"><li><a href="/find-a-pro" class="footer-link">Find a Contractor</a></li><li><a href="/get-connected?tab=contractor" class="footer-link">List Your Business</a></li></ul></div>

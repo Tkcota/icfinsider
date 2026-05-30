@@ -1365,9 +1365,87 @@
   opacity: 0.7;
 }
 
+/* Brand page: header with logo */
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+  padding: var(--space-5) var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+.brand-header-logo { height: 48px; width: auto; object-fit: contain; flex-shrink: 0; }
+.brand-header-meta { display: flex; flex-direction: column; gap: 4px; }
+.brand-header-name { font-size: 1.1rem; font-weight: 700; color: var(--color-text-dark); margin: 0; }
+.brand-header-parent { font-size: 0.8rem; color: var(--color-text-muted); margin: 0; }
+
+/* Brand page: product photo */
+.brand-photo {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  margin: var(--space-8) 0;
+  overflow: hidden;
+}
+.brand-photo img { width: 100%; height: auto; display: block; }
+.brand-photo figcaption {
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Brand page: spec bar */
+.spec-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--space-6);
+  margin: var(--space-8) 0;
+}
+.spec-bar-item { text-align: center; }
+.spec-bar-value { display: block; font-size: 1.5rem; font-weight: 700; color: var(--color-text-dark); line-height: 1.1; }
+.spec-bar-label { display: block; font-size: 0.75rem; color: var(--color-text-muted); margin-top: 4px; }
+
+/* Brand page: reason cards */
+.reason-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+.reason-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--space-6);
+}
+.reason-card h3 { margin: 0 0 var(--space-2); font-size: 1rem; }
+.reason-card p { margin: 0; font-size: 0.9rem; color: var(--color-text-mid); line-height: 1.65; }
+
+/* Brand page: CTA panel */
+.cta-panel {
+  margin-top: var(--space-16);
+  background: var(--color-dark-900);
+  border-radius: 14px;
+  padding: var(--space-8);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.cta-panel h2 { margin: 0 0 var(--space-3); color: var(--color-text-light); }
+.cta-panel p { margin: 0 0 var(--space-6); color: var(--color-text-muted); max-width: 600px; }
+
 /* Responsive: generated page components */
 @media (max-width: 767px) {
   .why-grid { grid-template-columns: 1fr; }
   .learn-strip { flex-direction: column; align-items: flex-start; padding: var(--space-6); }
   .cost-snapshot { grid-template-columns: 1fr; }
+  .spec-bar { grid-template-columns: repeat(2, 1fr); }
+  .reason-grid { grid-template-columns: 1fr; }
+  .brand-header { flex-direction: column; align-items: flex-start; }
 }

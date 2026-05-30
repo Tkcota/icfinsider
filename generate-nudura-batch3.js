@@ -200,7 +200,7 @@ const states = [
     whyIntro: `Montana's winters are long, cold, and intense, with mountain communities facing some of the most demanding conditions in the continental US. Nudura ICF is purpose-built for exactly this kind of climate.`,
     reasons: [
       { title: 'Extreme Cold Weather Performance', text: `Montana winters are among the most severe in the continental US, with temperatures regularly dropping well below zero across much of the state. Nudura's R-22 to R-28 wall assembly provides continuous insulation with no thermal bridging, keeping heating loads as low as possible even in Montana's harshest conditions.` },
-      { title: 'Energy Savings in a Heating-Dominant Climate', text: `Montana homeowners face some of the longest and most expensive heating seasons in the country. Nudura's high R-value wall system significantly reduces that burden, and ICF's continuous insulation outperforms standard insulated stud walls in cold-climate heating performance. The payback on ICF's premium comes faster in heating-dominant climates like Montana's.` },
+      { title: 'Energy Savings in a Heating-Dominant Climate', text: `Montana homeowners face some of the longest and most expensive heating seasons in the country. Nudura's high R-value wall system significantly reduces that burden, and ICF's continuous insulation outperforms standard insulated stud walls in cold-climate heating performance. Energy savings start immediately and compound every year in heating-dominant climates like Montana's.` },
       { title: 'Durability in Mountain Conditions', text: `Montana's freeze-thaw cycles, snowpack, and mountain moisture put real stress on building materials. ICF walls handle freeze-thaw cycles better than wood framing, resist moisture infiltration, and maintain structural integrity through Montana's demanding seasonal transitions.` },
       { title: 'Montana Distribution', text: `Nudura's distribution network reaches Montana, with supply available to contractors in Billings, Missoula, Great Falls, and Bozeman markets. Your contractor should confirm current distributor availability and lead times, as freight logistics in Montana vary by location.` },
     ],
@@ -243,7 +243,7 @@ const states = [
     reasons: [
       { title: 'Cold Mountain Climate Performance', text: `West Virginia's mountain communities face cold winters and heavy precipitation, with some of the higher elevations seeing significant snowfall. Nudura's R-22 to R-28 wall assembly provides continuous insulation with no thermal bridging, reducing heating loads significantly compared to wood frame construction.` },
       { title: 'Moisture and Precipitation Resistance', text: `West Virginia receives significant annual precipitation across much of the state. ICF walls resist moisture infiltration and don't rot or support mold growth the way wood framing can under sustained wet conditions. This is a meaningful long-term durability advantage in West Virginia's climate.` },
-      { title: 'Energy Savings in a Heating-Dominant Climate', text: `West Virginia homeowners face meaningful heating costs through a long winter season. Nudura's high R-value wall system reduces those costs significantly, and ICF's continuous insulation outperforms standard insulated stud walls in cold-climate performance. Many West Virginia ICF homeowners see the payback on the ICF premium faster than expected.` },
+      { title: 'Energy Savings in a Heating-Dominant Climate', text: `West Virginia homeowners face meaningful heating costs through a long winter season. Nudura's high R-value wall system reduces those costs significantly, and ICF's continuous insulation outperforms standard insulated stud walls in cold-climate performance. Energy savings start immediately and compound every year in West Virginia's heating-dominant climate.` },
       { title: 'West Virginia Distribution', text: `Nudura's distribution network covers West Virginia, with supply available to contractors in Charleston, Huntington, Morgantown, and surrounding markets. Your contractor should confirm current distributor availability and lead times for your specific project location.` },
     ],
     costLocationNote: `Charleston and the Morgantown area have the most active construction markets in West Virginia. Mountain and rural projects may see higher costs due to terrain, crew travel, and logistics challenges that are specific to West Virginia's geography.`,
@@ -287,32 +287,6 @@ function generatePage(s) {
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/components.css">
-  <style>
-    .brand-header{display:flex;align-items:center;gap:var(--space-5);margin-bottom:var(--space-6);padding:var(--space-5) var(--space-6);background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;}
-    .brand-header-logo{height:48px;width:auto;object-fit:contain;flex-shrink:0;}
-    .brand-header-meta{display:flex;flex-direction:column;gap:4px;}
-    .brand-header-name{font-size:1.1rem;font-weight:700;color:var(--color-text-dark);margin:0;}
-    .brand-header-parent{font-size:0.8rem;color:var(--color-text-muted);margin:0;}
-    .brand-photo{width:100%;border-radius:12px;border:1px solid var(--color-border);margin:var(--space-8) 0;overflow:hidden;}
-    .brand-photo img{width:100%;height:auto;display:block;}
-    .brand-photo figcaption{padding:var(--space-3) var(--space-4);font-size:0.78rem;color:var(--color-text-muted);background:var(--color-surface);border-top:1px solid var(--color-border);}
-    .spec-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6);margin:var(--space-8) 0;}
-    .spec-bar-item{text-align:center;}
-    .spec-bar-value{display:block;font-size:1.5rem;font-weight:700;color:var(--color-text-dark);line-height:1.1;}
-    .spec-bar-label{display:block;font-size:0.75rem;color:var(--color-text-muted);margin-top:4px;}
-    .reason-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-top:var(--space-8);}
-    .reason-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6);}
-    .reason-card h3{margin:0 0 var(--space-2);font-size:1rem;}
-    .reason-card p{margin:0;font-size:0.9rem;color:var(--color-text-mid);line-height:1.65;}
-    .faq-list{display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-8);}
-    .faq-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6) var(--space-7);}
-    .faq-card h3{margin:0 0 var(--space-2);font-size:1rem;}
-    .faq-card p{margin:0;color:var(--color-text-mid);line-height:1.7;}
-    .cta-panel{margin-top:var(--space-16);background:var(--color-dark-900);border-radius:14px;padding:var(--space-8);border:1px solid rgba(255,255,255,0.08);}
-    .cta-panel h2{margin:0 0 var(--space-3);color:var(--color-text-light);}
-    .cta-panel p{margin:0 0 var(--space-6);color:var(--color-text-muted);max-width:600px;}
-    @media(max-width:767px){.spec-bar{grid-template-columns:repeat(2,1fr);}.reason-grid{grid-template-columns:1fr;}.brand-header{flex-direction:column;align-items:flex-start;}}
-  </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
     {"@type":"BreadcrumbList","itemListElement":[
@@ -417,7 +391,7 @@ function generatePage(s) {
             <li><strong style="color:var(--color-text-dark);">Concrete pricing</strong>: Concrete is a major cost driver in ICF construction and fluctuates with local market conditions</li>
             <li><strong style="color:var(--color-text-dark);">Engineering requirements</strong>: Local wind zones, seismic categories, and code requirements may call for additional structural engineering</li>
           </ul>
-          <p style="margin-top:var(--space-6);">The best way to understand what Nudura ICF will cost for your specific project is to connect with a ${s.name} contractor who has direct experience with the system.</p>
+          <p style="margin-top:var(--space-6);">The best way to understand what Nudura ICF will cost for your specific project is to connect with ${'AEIOU'.includes(s.name[0]) ? 'an' : 'a'} ${s.name} contractor who has direct experience with the system.</p>
         </section>
 
         <section id="faq" style="margin-top:var(--space-16);">
@@ -461,7 +435,7 @@ function generatePage(s) {
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="nav-logo" aria-label="ICF Insider home"><span class="nav-logo-text">ICF <span>Insider</span></span></a>
-          <p>The independent authority on Insulated Concrete Form construction.</p>
+          <p>The independent authority on Insulated Concrete Form construction. Real data, unbiased comparisons, and a vetted contractor network.</p>
         </div>
         <div class="footer-col"><h4>Learn</h4><ul class="footer-links" role="list"><li><a href="/icf-101" class="footer-link">ICF 101</a></li><li><a href="/cost-guide" class="footer-link">Cost Guide</a></li><li><a href="/brands" class="footer-link">Brand Comparison</a></li></ul></div>
         <div class="footer-col"><h4>Directory</h4><ul class="footer-links" role="list"><li><a href="/find-a-pro" class="footer-link">Find a Contractor</a></li><li><a href="/get-connected?tab=contractor" class="footer-link">List Your Business</a></li></ul></div>

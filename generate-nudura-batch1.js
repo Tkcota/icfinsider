@@ -33,7 +33,7 @@ const states = [
     whyIntro: `Arizona's extreme heat, dramatic temperature swings, and dry desert climate create unique demands on wall systems. Nudura ICF is particularly well-suited to the Arizona market for several reasons.`,
     reasons: [
       { title: 'Extreme Heat Performance', text: `Phoenix regularly exceeds 110 degrees in summer. Nudura's R-22 to R-28 wall assembly and ICF's thermal mass work together to significantly reduce cooling loads. The concrete core absorbs heat during the day and releases it slowly at night, keeping interiors more comfortable with less AC.` },
-      { title: 'Energy Savings in the Desert', text: `Arizona homeowners run air conditioning for much of the year. ICF walls reduce the energy required to cool a home compared to wood framing, and many Arizona ICF homeowners see meaningful reductions in monthly utility bills. The payback period on the ICF premium is shorter in extreme climates.` },
+      { title: 'Energy Savings in the Desert', text: `Arizona homeowners run air conditioning for much of the year. ICF walls reduce the energy required to cool a home compared to wood framing, and many Arizona ICF homeowners see meaningful reductions in monthly utility bills. Energy savings start immediately and compound every year in extreme climates like Arizona's.` },
       { title: 'Durability in Desert Conditions', text: `Arizona's heat cycles, UV exposure, and dry climate are hard on building materials. ICF walls don't dry-rot, warp, or degrade under these conditions. The EPS foam and concrete core handle extreme temperature swings without structural compromise.` },
       { title: 'Arizona Distribution', text: `Nudura's national distribution network reaches Arizona, with supply available to contractors in the Phoenix, Tucson, and Flagstaff markets. Your contractor will confirm distributor availability and lead times for your specific project.` },
     ],
@@ -42,7 +42,7 @@ const states = [
       { q: `Is Nudura ICF available in Arizona?`, a: `Yes. Nudura's distribution network covers Arizona. Contractors in the Phoenix and Tucson markets can source product reliably, though your contractor should confirm current distributor availability and lead times.` },
       { q: `How does Nudura ICF hold up in Arizona heat?`, a: `Very well. ICF walls are inherently suited to extreme heat climates. The concrete core and EPS foam handle temperature cycles that would stress other building materials, and the thermal mass effect reduces cooling loads compared to wood frame construction.` },
       { q: `What does Nudura ICF cost in Arizona?`, a: `Cost depends on your design, core width, concrete pricing, and labor in your area. Phoenix-area projects tend to have more competitive pricing due to greater contractor availability. Connect with a local Arizona contractor for an accurate quote.` },
-      { q: `Is ICF worth the premium in Arizona?`, a: `In Arizona's climate, the payback on ICF's upfront premium is faster than in moderate climates due to high cooling costs. Many Arizona ICF homeowners find the long-term energy savings and durability make the upfront investment worthwhile.` },
+      { q: `Is ICF worth it in Arizona?`, a: `In Arizona's climate, the energy savings from ICF are among the most significant in the country. High cooling costs mean ICF homeowners see meaningful savings from day one, and those savings grow as energy prices rise. Combined with durability and low maintenance, ICF delivers strong long-term value in Arizona.` },
     ],
   },
 
@@ -139,7 +139,7 @@ const states = [
     reasons: [
       { title: 'Extreme Cold Weather Performance', text: `Michigan winters are long and cold, with lake effect snow amplifying the challenge in the western and northern parts of the state. Nudura's R-22 to R-28 wall assembly provides continuous insulation that significantly reduces heating loads compared to wood frame construction.` },
       { title: 'Lake Effect Snow and Moisture Resistance', text: `Western Michigan in particular sees extreme lake effect snow and year-round moisture exposure. ICF walls resist moisture infiltration and don't rot or degrade the way wood framing can under sustained wet conditions. Nudura's system handles Great Lakes climate demands well over the long term.` },
-      { title: 'Energy Savings in a Heating-Dominant Climate', text: `Michigan homeowners spend significantly on heating. Nudura's high R-value wall system reduces that burden, and ICF's continuous insulation with no thermal bridging outperforms insulated wood stud walls in cold conditions. The payback on ICF's premium comes faster in heating-dominant climates.` },
+      { title: 'Energy Savings in a Heating-Dominant Climate', text: `Michigan homeowners spend significantly on heating. Nudura's high R-value wall system reduces that burden, and ICF's continuous insulation with no thermal bridging outperforms insulated wood stud walls in cold conditions. Energy savings start immediately and compound every year in heating-dominant climates like Michigan's.` },
       { title: 'Michigan Market Distribution', text: `Nudura's distribution network covers Michigan, with supply available to contractors in the Detroit, Grand Rapids, Lansing, and Traverse City markets. Your contractor should confirm distributor availability and lead times for your specific area.` },
     ],
     costLocationNote: `Michigan construction costs vary by region, with the Detroit and Grand Rapids metros having more experienced ICF labor available. Northern Michigan and rural areas may see higher project costs due to crew travel and logistics.`,
@@ -147,7 +147,7 @@ const states = [
       { q: `Is Nudura ICF available in Michigan?`, a: `Yes. Nudura's distribution network covers Michigan, with supply for contractors in major markets including Detroit, Grand Rapids, and Lansing. Your contractor should confirm availability for your specific area.` },
       { q: `How does Nudura ICF handle Michigan winters and lake effect snow?`, a: `Very well. ICF is specifically well-suited to cold, wet climates. Nudura's R-22 to R-28 wall assembly handles Michigan's cold winters, and the concrete core resists moisture infiltration from lake effect precipitation better than wood framing.` },
       { q: `What does Nudura ICF cost in Michigan?`, a: `Cost depends on your design, location, core width, and local labor availability. The Detroit and Grand Rapids markets have more competitive pricing due to greater contractor availability. Connect with a Michigan contractor for an accurate estimate.` },
-      { q: `Is ICF worth the investment in Michigan?`, a: `For Michigan homeowners, yes. The state's heating-dominant climate means the energy savings from Nudura's high R-value wall system add up faster than in milder states, shortening the payback period on the ICF premium.` },
+      { q: `Is ICF worth the investment in Michigan?`, a: `For Michigan homeowners, yes. The state's heating-dominant climate means the energy savings from Nudura's high R-value wall system are among the most significant in the country. Those savings start from day one and grow as energy prices rise.` },
     ],
   },
 
@@ -289,32 +289,6 @@ function generatePage(s) {
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/components.css">
-  <style>
-    .brand-header{display:flex;align-items:center;gap:var(--space-5);margin-bottom:var(--space-6);padding:var(--space-5) var(--space-6);background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;}
-    .brand-header-logo{height:48px;width:auto;object-fit:contain;flex-shrink:0;}
-    .brand-header-meta{display:flex;flex-direction:column;gap:4px;}
-    .brand-header-name{font-size:1.1rem;font-weight:700;color:var(--color-text-dark);margin:0;}
-    .brand-header-parent{font-size:0.8rem;color:var(--color-text-muted);margin:0;}
-    .brand-photo{width:100%;border-radius:12px;border:1px solid var(--color-border);margin:var(--space-8) 0;overflow:hidden;}
-    .brand-photo img{width:100%;height:auto;display:block;}
-    .brand-photo figcaption{padding:var(--space-3) var(--space-4);font-size:0.78rem;color:var(--color-text-muted);background:var(--color-surface);border-top:1px solid var(--color-border);}
-    .spec-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6);margin:var(--space-8) 0;}
-    .spec-bar-item{text-align:center;}
-    .spec-bar-value{display:block;font-size:1.5rem;font-weight:700;color:var(--color-text-dark);line-height:1.1;}
-    .spec-bar-label{display:block;font-size:0.75rem;color:var(--color-text-muted);margin-top:4px;}
-    .reason-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-top:var(--space-8);}
-    .reason-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6);}
-    .reason-card h3{margin:0 0 var(--space-2);font-size:1rem;}
-    .reason-card p{margin:0;font-size:0.9rem;color:var(--color-text-mid);line-height:1.65;}
-    .faq-list{display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-8);}
-    .faq-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:var(--space-6) var(--space-7);}
-    .faq-card h3{margin:0 0 var(--space-2);font-size:1rem;}
-    .faq-card p{margin:0;color:var(--color-text-mid);line-height:1.7;}
-    .cta-panel{margin-top:var(--space-16);background:var(--color-dark-900);border-radius:14px;padding:var(--space-8);border:1px solid rgba(255,255,255,0.08);}
-    .cta-panel h2{margin:0 0 var(--space-3);color:var(--color-text-light);}
-    .cta-panel p{margin:0 0 var(--space-6);color:var(--color-text-muted);max-width:600px;}
-    @media(max-width:767px){.spec-bar{grid-template-columns:repeat(2,1fr);}.reason-grid{grid-template-columns:1fr;}.brand-header{flex-direction:column;align-items:flex-start;}}
-  </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
     {"@type":"BreadcrumbList","itemListElement":[
@@ -434,7 +408,7 @@ function generatePage(s) {
             <li><strong style="color:var(--color-text-dark);">Concrete pricing</strong>: Concrete is a major cost driver in ICF construction and fluctuates with local market conditions</li>
             <li><strong style="color:var(--color-text-dark);">Engineering requirements</strong>: Local wind zones, seismic categories, and code requirements may call for additional structural engineering</li>
           </ul>
-          <p style="margin-top:var(--space-6);">The best way to understand what Nudura ICF will cost for your specific project is to connect with a ${s.name} contractor who has direct experience with the system.</p>
+          <p style="margin-top:var(--space-6);">The best way to understand what Nudura ICF will cost for your specific project is to connect with ${'AEIOU'.includes(s.name[0]) ? 'an' : 'a'} ${s.name} contractor who has direct experience with the system.</p>
         </section>
 
         <section id="faq" style="margin-top:var(--space-16);">
@@ -481,7 +455,7 @@ function generatePage(s) {
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="nav-logo" aria-label="ICF Insider home"><span class="nav-logo-text">ICF <span>Insider</span></span></a>
-          <p>The independent authority on Insulated Concrete Form construction.</p>
+          <p>The independent authority on Insulated Concrete Form construction. Real data, unbiased comparisons, and a vetted contractor network.</p>
         </div>
         <div class="footer-col"><h4>Learn</h4><ul class="footer-links" role="list"><li><a href="/icf-101" class="footer-link">ICF 101</a></li><li><a href="/cost-guide" class="footer-link">Cost Guide</a></li><li><a href="/brands" class="footer-link">Brand Comparison</a></li></ul></div>
         <div class="footer-col"><h4>Directory</h4><ul class="footer-links" role="list"><li><a href="/find-a-pro" class="footer-link">Find a Contractor</a></li><li><a href="/get-connected?tab=contractor" class="footer-link">List Your Business</a></li></ul></div>
