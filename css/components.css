@@ -1230,6 +1230,71 @@
 
 
 /* ------------------------------------------------------------
+   COST GUIDE COMPONENTS
+   Disclaimer banners, table wrappers, footnotes, article
+   images, bottom nav, and mid-page CTAs used on cost-guide.
+   ------------------------------------------------------------ */
+
+.disclaimer-banner {
+  background: rgba(232,120,10,0.08);
+  border-bottom: 1px solid rgba(232,120,10,0.2);
+  padding: 0.875rem 0;
+}
+
+.disclaimer-banner p {
+  font-size: 0.8rem;
+  color: var(--color-text-mid);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.disclaimer-banner strong {
+  color: var(--color-text-dark);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.table-footnote {
+  font-size: 0.8rem;
+  color: var(--color-text-mid);
+  margin-top: -0.5rem;
+}
+
+.article-img {
+  width: 100%;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.article-bottom-nav {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-bottom-nav-back {
+  font-size: 0.875rem;
+  color: var(--color-text-mid);
+}
+
+.callout-centered {
+  text-align: center;
+  margin: 2.5rem 0;
+}
+
+.callout-centered p {
+  margin-bottom: 0.75rem;
+}
+
+
+/* ------------------------------------------------------------
    GENERATED PAGE COMPONENTS
    Shared by state pages, city pages, and brand pages.
    ------------------------------------------------------------ */
