@@ -602,15 +602,6 @@
           <option>Yukon</option>
         </select>
 
-        <select class="search-select" id="filter-type" aria-label="Filter by pro type">
-          <option value="">All Pro Types</option>
-          <option>Contractors &amp; Builders</option>
-          <option>Distributors</option>
-          <option>Architects &amp; Designers</option>
-          <option>Structural Engineers</option>
-          <option>ICF Pool Contractors</option>
-        </select>
-
         <select class="search-select" id="filter-brand" aria-label="Filter by ICF brand">
           <option value="">All Brands</option>
           <option>Nudura</option>
@@ -1004,11 +995,6 @@
       // ---- Search dropdowns, update instantly on change ----
       document.getElementById('filter-state').addEventListener('change', function () {
         activeFilters.state = this.value;
-        applyFilters();
-      });
-      document.getElementById('filter-type').addEventListener('change', function () {
-        var map = { 'Contractors & Builders': 'contractor', 'Distributors': 'distributor', 'Architects & Designers': 'architect', 'Structural Engineers': 'engineer', 'ICF Pool Contractors': 'pool' };
-        activeFilters.pro_type = map[this.value] || '';
         applyFilters();
       });
       document.getElementById('filter-brand').addEventListener('change', function () {
