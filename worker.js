@@ -37,9 +37,9 @@ export default {
     if (url.pathname === '/api/admin/reject')        return handleAdminReject(request, env);
     if (url.pathname === '/api/admin/geocode-all')   return handleGeocodeAll(request, env);
 
-    // ── Redirect old URLs to get-connected ──
-    if (url.pathname === '/early-access' || url.pathname === '/early-access.html' ||
-        url.pathname === '/list-your-business' || url.pathname === '/list-your-business.html') {
+    // ── Redirect retired URLs to get-connected ──
+    // /list-your-business is now its own page (served as a static asset).
+    if (url.pathname === '/early-access' || url.pathname === '/early-access.html') {
       const newUrl = new URL('/get-connected' + url.search, url.origin);
       return Response.redirect(newUrl.href, 301);
     }
@@ -62,7 +62,11 @@ async function handleListings(request, env) {
     const pro_type = (url.searchParams.get('pro_type') || '').trim();
     const brand    = (url.searchParams.get('brand')    || '').trim();
 
-    let sql = 'SELECT * FROM listings WHERE active = 1';
+    // Explicit public column list — never expose owner email (or internal
+    // fields like slug/active) to the public directory API.
+    let sql = 'SELECT id, business_name, pro_type, state, zip_code, city, lat, lng, ' +
+              'phone, website, brands, project_types, service_area, featured ' +
+              'FROM listings WHERE active = 1';
     const params = [];
 
     if (state)    { sql += ' AND state = ?';    params.push(state); }

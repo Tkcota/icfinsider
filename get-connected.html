@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -12,387 +12,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Find ICF Contractors Free or List Your ICF Business | ICF Insider</title>
-  <meta name="description" content="Homeowners, get connected with local ICF pros. Contractors, builders, and distributors, list your business free and get found by serious ICF buyers.">
+  <title>Get Connected with Local ICF Pros | ICF Insider</title>
+  <meta name="description" content="Browse vetted ICF contractors, builders, and distributors in your state, or share your project details and get pointed to the right ICF pros. Free for homeowners.">
 
   <link rel="canonical" href="https://icfinsider.com/get-connected">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <meta property="og:type"        content="website">
-  <meta property="og:title"       content="Get Connected | ICF Insider">
-  <meta property="og:description" content="Tell us about your ICF project and we'll connect you with qualified contractors in your area.">
-  <meta property="og:image" content="https://icfinsider.com/images/og-image.png">
+  <meta property="og:title"       content="Get Connected with Local ICF Pros | ICF Insider">
+  <meta property="og:description" content="Find vetted ICF pros in your state, or tell us about your project and we'll point you in the right direction.">
+  <meta property="og:image"       content="https://icfinsider.com/images/og-image.png">
   <meta property="og:url"         content="https://icfinsider.com/get-connected">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/components.css">
-
-  <style>
-    /* -------------------------------------------------------
-       Early access page, custom layout styles
-       Not added to components.css because this is a one-off
-       landing page layout, not a reusable pattern.
-    ------------------------------------------------------- */
-
-    /* Full-page dark hero for this page */
-    .ea-hero {
-      background-color: var(--color-dark-900);
-      padding-top: calc(var(--nav-height) + var(--space-20));
-      padding-bottom: var(--space-20);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .ea-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(232, 120, 10, 0.10) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .ea-hero-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .ea-hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      color: var(--color-white);
-      margin-bottom: var(--space-5);
-    }
-
-    .ea-hero p {
-      font-size: var(--text-lg);
-      color: var(--color-text-muted);
-      line-height: 1.7;
-      margin-bottom: var(--space-8);
-    }
-
-    /* Audience selector tabs */
-    .audience-tabs {
-      display: flex;
-      justify-content: center;
-      gap: var(--space-4);
-      flex-wrap: wrap;
-      margin-bottom: var(--space-3);
-    }
-
-    .audience-tab {
-      padding: var(--space-2) var(--space-5);
-      font-size: var(--text-sm);
-      font-weight: var(--weight-semibold);
-      letter-spacing: 0.04em;
-      border-radius: 999px;
-      border: 1px solid var(--color-border-dark);
-      color: var(--color-text-muted);
-      background: transparent;
-      cursor: pointer;
-      transition: background-color var(--transition-fast),
-                  color var(--transition-fast),
-                  border-color var(--transition-fast);
-    }
-
-    .audience-tab:hover {
-      border-color: var(--color-text-muted);
-      color: var(--color-white);
-    }
-
-    .audience-tab.active {
-      background-color: var(--color-accent);
-      border-color: var(--color-accent);
-      color: var(--color-white);
-    }
-
-    .tab-hint {
-      font-size: var(--text-xs);
-      color: var(--color-text-muted);
-      text-align: center;
-      margin-bottom: var(--space-10);
-    }
-
-    /* -------------------------------------------------------
-       AUDIENCE PANELS, shown/hidden based on tab selection
-    ------------------------------------------------------- */
-    .audience-panels {
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .audience-panel {
-      display: none;
-    }
-
-    .audience-panel.active {
-      display: block;
-    }
-
-    /* -------------------------------------------------------
-       FORM STYLES
-    ------------------------------------------------------- */
-    .ea-form {
-      background-color: var(--color-white);
-      border-radius: var(--radius-lg);
-      padding: var(--space-10);
-      text-align: left;
-      box-shadow: var(--shadow-lg);
-    }
-
-    .ea-form h2 {
-      font-size: var(--text-3xl);
-      color: var(--color-text-dark);
-      margin-bottom: var(--space-2);
-    }
-
-    .ea-form .form-subtext {
-      font-size: var(--text-sm);
-      color: var(--color-text-mid);
-      margin-bottom: var(--space-8);
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-4);
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-      margin-bottom: var(--space-5);
-    }
-
-    .form-group label {
-      font-size: var(--text-sm);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text-dark);
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      padding: var(--space-3) var(--space-4);
-      border: 1px solid var(--color-border-light);
-      border-radius: var(--radius-sm);
-      font-size: var(--text-base);
-      color: var(--color-text-dark);
-      background-color: var(--color-white);
-      outline: none;
-      transition: border-color var(--transition-fast);
-      width: 100%;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--color-accent);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    /* Role checkboxes */
-    .role-checkboxes {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2) var(--space-4);
-    }
-    .role-checkbox-label {
-      display: flex;
-      align-items: center;
-      gap: var(--space-2);
-      font-size: var(--text-sm);
-      color: var(--color-text-dark);
-      cursor: pointer;
-      font-weight: 400;
-    }
-    .role-checkbox-label input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-      accent-color: var(--color-accent);
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    .form-submit {
-      width: 100%;
-      padding: var(--space-4);
-      font-size: var(--text-base);
-    }
-
-    .form-disclaimer {
-      font-size: var(--text-xs);
-      color: var(--color-text-mid);
-      text-align: center;
-      margin-top: var(--space-3);
-    }
-
-    /* ── Field-level validation errors ── */
-    .field-error-msg {
-      display: block;
-      font-size: 0.78rem;
-      color: #dc2626;
-      margin-top: 4px;
-    }
-    input.field-error,
-    select.field-error {
-      border-color: #dc2626 !important;
-    }
-    input.field-error:focus,
-    select.field-error:focus {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(220,38,38,0.15);
-    }
-
-    /* ── Inline form error banner ── */
-    .form-error-banner {
-      display: none;
-      background: #fef2f2;
-      border: 1px solid #fecaca;
-      border-radius: 8px;
-      padding: 12px 16px;
-      margin-bottom: 20px;
-      font-size: 0.875rem;
-      color: #dc2626;
-      font-weight: 500;
-    }
-    .form-error-banner.visible {
-      display: block;
-    }
-
-    /* Success state, shown after form submission */
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: var(--space-12) var(--space-8);
-    }
-
-    .form-success.visible {
-      display: block;
-    }
-
-    .form-success-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background-color: rgba(22, 163, 74, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto var(--space-5);
-    }
-
-    .form-success h3 {
-      font-size: var(--text-3xl);
-      color: var(--color-text-dark);
-      margin-bottom: var(--space-3);
-    }
-
-    .form-success p {
-      font-size: var(--text-base);
-      color: var(--color-text-mid);
-    }
-
-    /* -------------------------------------------------------
-       WHAT'S COMING SECTION
-    ------------------------------------------------------- */
-    .whats-coming-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-6);
-      margin-top: var(--space-12);
-    }
-
-    .coming-item {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
-    }
-
-    .coming-item-phase {
-      font-size: var(--text-xs);
-      font-weight: var(--weight-bold);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-    }
-
-    .coming-item h3 {
-      font-size: var(--text-xl);
-      color: var(--color-white);
-    }
-
-    .coming-item p {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-      line-height: 1.6;
-    }
-
-    /* -------------------------------------------------------
-       SOCIAL PROOF / TRUST SECTION
-    ------------------------------------------------------- */
-    .trust-points {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-8);
-      margin-top: var(--space-8);
-    }
-
-    .trust-point {
-      text-align: center;
-    }
-
-    .trust-point-number {
-      font-family: var(--font-heading);
-      font-size: var(--text-4xl);
-      font-weight: var(--weight-extrabold);
-      color: var(--color-accent);
-      display: block;
-      line-height: 1;
-      margin-bottom: var(--space-2);
-    }
-
-    .trust-point-label {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-      line-height: 1.4;
-    }
-
-    /* Responsive */
-    @media (max-width: 767px) {
-      .form-row { grid-template-columns: 1fr; }
-      .whats-coming-grid { grid-template-columns: 1fr; }
-      .trust-points { grid-template-columns: 1fr; gap: var(--space-6); }
-      .ea-form { padding: var(--space-6); }
-    }
-  </style>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/components.css">
 </head>
 
-<body>
+<body class="lead-landing">
 
   <!-- NAVIGATION -->
   <nav class="nav" id="main-nav" aria-label="Main navigation">
     <div class="container nav-inner">
       <a href="/" class="nav-logo" aria-label="ICF Insider home">
-        
         <span class="nav-logo-text">ICF <span>Insider</span></span>
       </a>
       <ul class="nav-links" role="list">
-        <li><a href="icf-101"    class="nav-link">ICF 101</a></li>
-        <li><a href="cost-guide" class="nav-link">Cost Guide</a></li>
-        <li><a href="brands"     class="nav-link">Brand Comparison</a></li>
-        <li><a href="find-a-pro" class="nav-link">Find a Pro</a></li>
+        <li><a href="/icf-101"    class="nav-link">ICF 101</a></li>
+        <li><a href="/cost-guide" class="nav-link">Cost Guide</a></li>
+        <li><a href="/brands"     class="nav-link">Brand Comparison</a></li>
+        <li><a href="/find-a-pro" class="nav-link">Find a Pro</a></li>
       </ul>
       <div class="nav-cta">
         <a href="/get-connected" class="btn btn-primary">Get Connected</a>
@@ -404,292 +56,142 @@
   </nav>
 
   <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation">
-    <a href="icf-101"    class="nav-link">ICF 101</a>
-    <a href="cost-guide" class="nav-link">Cost Guide</a>
-    <a href="brands"     class="nav-link">Brand Comparison</a>
-    <a href="find-a-pro" class="nav-link">Find a Pro</a>
+    <a href="/icf-101"    class="nav-link">ICF 101</a>
+    <a href="/cost-guide" class="nav-link">Cost Guide</a>
+    <a href="/brands"     class="nav-link">Brand Comparison</a>
+    <a href="/find-a-pro" class="nav-link">Find a Pro</a>
     <a href="/get-connected" class="btn btn-primary">Get Connected</a>
   </div>
 
 
   <!-- HERO + FORM -->
-  <section class="ea-hero" aria-labelledby="ea-title">
+  <section class="ea-hero" aria-labelledby="gc-title">
     <div class="container">
       <div class="ea-hero-inner">
 
         <span class="eyebrow">Get Connected</span>
-        <h1 id="ea-title">Let's Get You Connected</h1>
-        <p>
-          Whether you're planning an ICF build or want to list your business, tell us
-          who you are and we'll take it from there.
+        <h1 id="gc-title">Connect with ICF Pros in Your Area</h1>
+        <p class="ea-hero-intro">
+          Browse vetted ICF contractors, builders, and distributors in your state on our
+          directory. Or share your project details below and we'll point you toward the
+          right pros.
         </p>
 
-        <!-- Audience selector -->
-        <div class="audience-tabs" role="tablist" aria-label="I am a...">
-          <button class="audience-tab active" role="tab" aria-selected="true"  data-panel="homeowner"  id="tab-homeowner">Get Connected</button>
-          <button class="audience-tab"        role="tab" aria-selected="false" data-panel="contractor" id="tab-contractor">List Your Business</button>
+        <div class="lyb-hero-cta">
+          <a href="/find-a-pro" class="btn btn-primary">Browse ICF Pros &rarr;</a>
         </div>
-        <p class="tab-hint">Choose the path that's right for you.</p>
 
-        <!-- =====================================================
-          AUDIENCE PANELS
-        ====================================================== -->
-        <div class="audience-panels">
+        <!-- HOMEOWNER PROJECT FORM -->
+        <div class="ea-form">
+          <h2>Tell Us About Your Project</h2>
+          <p class="form-subtext">
+            Share a few details and we'll point you to ICF pros in your area who can help
+            with pricing and next steps.
+          </p>
 
-          <!-- HOMEOWNER PANEL -->
-          <div class="audience-panel active" id="panel-homeowner" role="tabpanel" aria-labelledby="tab-homeowner">
-            <div class="ea-form">
-              <h2>Request Pricing and Local Help</h2>
-              <p class="form-subtext">
-                Tell us about your project and we'll connect you with our local ICF
-                professionals who can help with pricing and next steps.
-              </p>
+          <form id="form-homeowner" novalidate>
+            <input type="hidden" name="lead_type" value="homeowner">
+            <div class="form-error-banner" id="error-banner-homeowner">Please fill in all required fields before submitting.</div>
 
-              <form id="form-homeowner" novalidate>
-                <input type="hidden" name="lead_type" value="homeowner">
-                <div class="form-error-banner" id="error-banner-homeowner">Please fill in all required fields before submitting.</div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="h-name">Full Name <span style="color: #dc2626;">*</span></label>
-                    <input type="text" id="h-name" name="name" placeholder="John Smith" required autocomplete="name">
-                  </div>
-                  <div class="form-group">
-                    <label for="h-email">Email Address <span style="color: #dc2626;">*</span></label>
-                    <input type="email" id="h-email" name="email" placeholder="you@email.com" required autocomplete="email">
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="h-phone">Cell Phone <span style="color: #dc2626;">*</span></label>
-                    <input type="tel" id="h-phone" name="phone" placeholder="(555) 000-0000" required autocomplete="tel">
-                  </div>
-                  <div class="form-group">
-                    <label for="h-state">State</label>
-                    <select id="h-state" name="state">
-                      <option value="" disabled selected>Select your state</option>
-                      <option>Alabama</option><option>Alaska</option><option>Arizona</option>
-                      <option>Arkansas</option><option>California</option><option>Colorado</option>
-                      <option>Connecticut</option><option>Delaware</option><option>Florida</option>
-                      <option>Georgia</option><option>Hawaii</option><option>Idaho</option>
-                      <option>Illinois</option><option>Indiana</option><option>Iowa</option>
-                      <option>Kansas</option><option>Kentucky</option><option>Louisiana</option>
-                      <option>Maine</option><option>Maryland</option><option>Massachusetts</option>
-                      <option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
-                      <option>Missouri</option><option>Montana</option><option>Nebraska</option>
-                      <option>Nevada</option><option>New Hampshire</option><option>New Jersey</option>
-                      <option>New Mexico</option><option>New York</option><option>North Carolina</option>
-                      <option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
-                      <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option>
-                      <option>South Carolina</option><option>South Dakota</option><option>Tennessee</option>
-                      <option>Texas</option><option>Utah</option><option>Vermont</option>
-                      <option>Virginia</option><option>Washington</option><option>West Virginia</option>
-                      <option>Wisconsin</option><option>Wyoming</option>
-                      <option>Alberta</option><option>British Columbia</option><option>Manitoba</option>
-                      <option>New Brunswick</option><option>Newfoundland and Labrador</option><option>Nova Scotia</option>
-                      <option>Ontario</option><option>Prince Edward Island</option><option>Quebec</option>
-                      <option>Saskatchewan</option><option>Northwest Territories</option><option>Nunavut</option>
-                      <option>Yukon</option><option>Other Canada</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="h-project">Project Type</label>
-                    <select id="h-project" name="project_type">
-                      <option value="" disabled selected>What are you building?</option>
-                      <option>New home build</option>
-                      <option>Addition</option>
-                      <option>Renovation</option>
-                      <option>Commercial</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="h-file">Upload project plans <span style="font-weight:400;opacity:0.6;font-size:0.8rem;">(optional, max 100MB)</span></label>
-                    <input type="file" id="h-file" name="project_file" accept=".pdf,.dwg,.dxf,.jpg,.jpeg,.png,.zip">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="h-message">Tell us about your project</label>
-                  <textarea id="h-message" name="message" placeholder="Square footage, timeline, location, any specific requirements..."></textarea>
-                </div>
-
-                <div class="form-group">
-                  <label for="h-link">Or share a file link <span style="font-weight:400;opacity:0.6;font-size:0.8rem;">(Google Drive, Dropbox, WeTransfer)</span></label>
-                  <input type="url" id="h-link" name="file_link" placeholder="https://drive.google.com/...">
-                </div>
-
-                <button type="submit" class="btn btn-primary form-submit">Get Connected →</button>
-                <p class="form-disclaimer">We only share your request with relevant local ICF professionals - never unrelated marketers.</p>
-              </form>
-
-              <div class="form-success" id="success-homeowner">
-                <div class="form-success-icon" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                </div>
-                <h3>You're connected.</h3>
-                <p>We received your project details and will be in touch soon to connect you with qualified contractors.</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="h-name">Full Name <span class="req">*</span></label>
+                <input type="text" id="h-name" name="name" placeholder="John Smith" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="h-email">Email Address <span class="req">*</span></label>
+                <input type="email" id="h-email" name="email" placeholder="you@email.com" required autocomplete="email">
               </div>
             </div>
-          </div>
 
-
-          <!-- LIST YOUR BUSINESS PANEL -->
-          <div class="audience-panel" id="panel-contractor" role="tabpanel" aria-labelledby="tab-contractor">
-            <div class="ea-form">
-              <h2>List Your Business</h2>
-              <p class="form-subtext">
-                ICF contractors, builders, distributors, architects, and engineers are all welcome.
-                Get listed free (Early Access). Get found by homeowners already searching for ICF pros in your area.
-              </p>
-
-              <form id="form-contractor" novalidate>
-                <div class="form-error-banner" id="error-banner-contractor">Please fill in all required fields before submitting.</div>
-                <input type="hidden" name="lead_type" value="contractor">
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="c-name">Your Name <span style="color: #dc2626;">*</span></label>
-                    <input type="text" id="c-name" name="name" placeholder="First Last" required autocomplete="name">
-                  </div>
-                  <div class="form-group">
-                    <label for="c-email">Email Address <span style="color: #dc2626;">*</span></label>
-                    <input type="email" id="c-email" name="email" placeholder="you@company.com" required autocomplete="email">
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="c-company">Business Name <span style="color: #dc2626;">*</span></label>
-                    <input type="text" id="c-company" name="company" placeholder="Your Company LLC" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="c-phone">Phone Number <span style="color: #dc2626;">*</span></label>
-                    <input type="tel" id="c-phone" name="phone" placeholder="(555) 000-0000" required autocomplete="tel">
-                  </div>
-                </div>
-
-                <div class="form-group" id="role-group">
-                  <label>Business Type <span style="color: #dc2626;">*</span></label>
-                  <div class="role-checkboxes">
-                    <label class="role-checkbox-label"><input type="checkbox" name="role" value="Contractor / Builder"> Contractor / Builder</label>
-                    <label class="role-checkbox-label"><input type="checkbox" name="role" value="ICF Distributor"> ICF Distributor</label>
-                    <label class="role-checkbox-label"><input type="checkbox" name="role" value="Architect / Designer"> Architect / Designer</label>
-                    <label class="role-checkbox-label"><input type="checkbox" name="role" value="Structural Engineer"> Structural Engineer</label>
-                    <label class="role-checkbox-label"><input type="checkbox" name="role" value="ICF Pool Contractor"> ICF Pool Contractor</label>
-                  </div>
-                  <small id="role-error" style="color:#dc2626;display:none;">Please select at least one business type.</small>
-                  <small style="color:var(--color-text-mid);">Select up to 2.</small>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="c-brand">ICF Brand(s)</label>
-                    <select id="c-brand" name="brand">
-                      <option value="" disabled selected>Primary brand</option>
-                      <option>Nudura</option>
-                      <option>Fox Blocks</option>
-                      <option>Amvic</option>
-                      <option>Element ICF</option>
-                      <option>Liteform</option>
-                      <option>Super Form</option>
-                      <option>Quad-Lock</option>
-                      <option>Build Block</option>
-                      <option>Polycrete</option>
-                      <option>Multiple / varies by project</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="c-city">Zip / Postal Code <span style="color: #dc2626;">*</span></label>
-                    <input type="text" id="c-city" name="zip_code" placeholder="e.g. 33601 or A1A 1A1" required maxlength="10">
-                    <small style="color:var(--color-text-mid);font-size:0.78rem;">Used to place your listing on the map</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="c-state">Primary State</label>
-                    <select id="c-state" name="state">
-                      <option value="" disabled selected>Where do you operate?</option>
-                      <option>Alabama</option><option>Alaska</option><option>Arizona</option>
-                      <option>Arkansas</option><option>California</option><option>Colorado</option>
-                      <option>Connecticut</option><option>Delaware</option><option>Florida</option>
-                      <option>Georgia</option><option>Hawaii</option><option>Idaho</option>
-                      <option>Illinois</option><option>Indiana</option><option>Iowa</option>
-                      <option>Kansas</option><option>Kentucky</option><option>Louisiana</option>
-                      <option>Maine</option><option>Maryland</option><option>Massachusetts</option>
-                      <option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
-                      <option>Missouri</option><option>Montana</option><option>Nebraska</option>
-                      <option>Nevada</option><option>New Hampshire</option><option>New Jersey</option>
-                      <option>New Mexico</option><option>New York</option><option>North Carolina</option>
-                      <option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
-                      <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option>
-                      <option>South Carolina</option><option>South Dakota</option><option>Tennessee</option>
-                      <option>Texas</option><option>Utah</option><option>Vermont</option>
-                      <option>Virginia</option><option>Washington</option><option>West Virginia</option>
-                      <option>Wisconsin</option><option>Wyoming</option>
-                      <option>Alberta</option><option>British Columbia</option><option>Manitoba</option>
-                      <option>New Brunswick</option><option>Newfoundland and Labrador</option><option>Nova Scotia</option>
-                      <option>Ontario</option><option>Prince Edward Island</option><option>Quebec</option>
-                      <option>Saskatchewan</option><option>Northwest Territories</option><option>Nunavut</option>
-                      <option>Yukon</option><option>Other Canada</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="c-project">Project Types</label>
-                    <select id="c-project" name="project_type">
-                      <option value="" disabled selected>Primary project type</option>
-                      <option>Residential</option>
-                      <option>Commercial</option>
-                      <option>Residential &amp; Commercial</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="c-website">Business Website</label>
-                  <input type="url" id="c-website" name="website" placeholder="https://yourwebsite.com">
-                </div>
-
-                <div class="form-group">
-                  <label for="c-service">Service Area</label>
-                  <input type="text" id="c-service" name="service_area" placeholder="e.g. All of Florida, Dallas/Fort Worth area, Statewide TX">
-                </div>
-
-                <div class="form-group">
-                  <label for="c-notes">Anything else we should know?</label>
-                  <textarea id="c-notes" name="message" rows="3" placeholder="Block brands you work with, years of ICF experience, types of projects, questions or comments for us..." style="width:100%;padding:var(--space-3) var(--space-4);background-color:var(--color-bg-light);border:1px solid var(--color-border-light);border-radius:var(--radius-sm);color:var(--color-text-dark);font-size:var(--text-base);font-family:var(--font-body);resize:vertical;outline:none;"></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary form-submit">
-                  List My Business →
-                </button>
-                <p class="form-disclaimer">(Early Access) Free to list. We'll be in touch soon.</p>
-              </form>
-
-              <div class="form-success" id="success-contractor">
-                <div class="form-success-icon" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                </div>
-                <h3>Got it: we'll be in touch.</h3>
-                <p>We'll review your info and get your listing live shortly.</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="h-phone">Cell Phone <span class="req">*</span></label>
+                <input type="tel" id="h-phone" name="phone" placeholder="(555) 000-0000" required autocomplete="tel">
+              </div>
+              <div class="form-group">
+                <label for="h-state">State</label>
+                <select id="h-state" name="state">
+                  <option value="" disabled selected>Select your state</option>
+                  <option>Alabama</option><option>Alaska</option><option>Arizona</option>
+                  <option>Arkansas</option><option>California</option><option>Colorado</option>
+                  <option>Connecticut</option><option>Delaware</option><option>Florida</option>
+                  <option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+                  <option>Illinois</option><option>Indiana</option><option>Iowa</option>
+                  <option>Kansas</option><option>Kentucky</option><option>Louisiana</option>
+                  <option>Maine</option><option>Maryland</option><option>Massachusetts</option>
+                  <option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+                  <option>Missouri</option><option>Montana</option><option>Nebraska</option>
+                  <option>Nevada</option><option>New Hampshire</option><option>New Jersey</option>
+                  <option>New Mexico</option><option>New York</option><option>North Carolina</option>
+                  <option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+                  <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option>
+                  <option>South Carolina</option><option>South Dakota</option><option>Tennessee</option>
+                  <option>Texas</option><option>Utah</option><option>Vermont</option>
+                  <option>Virginia</option><option>Washington</option><option>West Virginia</option>
+                  <option>Wisconsin</option><option>Wyoming</option>
+                  <option>Alberta</option><option>British Columbia</option><option>Manitoba</option>
+                  <option>New Brunswick</option><option>Newfoundland and Labrador</option><option>Nova Scotia</option>
+                  <option>Ontario</option><option>Prince Edward Island</option><option>Quebec</option>
+                  <option>Saskatchewan</option><option>Northwest Territories</option><option>Nunavut</option>
+                  <option>Yukon</option><option>Other Canada</option>
+                </select>
               </div>
             </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="h-project">Project Type</label>
+                <select id="h-project" name="project_type">
+                  <option value="" disabled selected>What are you building?</option>
+                  <option>New home build</option>
+                  <option>Addition</option>
+                  <option>Renovation</option>
+                  <option>Commercial</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="h-file">Upload project plans <span class="field-hint">(optional, max 100MB)</span></label>
+                <input type="file" id="h-file" name="project_file" accept=".pdf,.dwg,.dxf,.jpg,.jpeg,.png,.zip">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="h-message">Tell us about your project</label>
+              <textarea id="h-message" name="message" placeholder="Square footage, timeline, location, any specific requirements..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="h-link">Or share a file link <span class="field-hint">(Google Drive, Dropbox, WeTransfer)</span></label>
+              <input type="url" id="h-link" name="file_link" placeholder="https://drive.google.com/...">
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit">Get Connected &rarr;</button>
+            <p class="form-disclaimer">We only share your request with relevant local ICF professionals - never unrelated marketers.</p>
+          </form>
+
+          <div class="form-success" id="success-homeowner">
+            <div class="form-success-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <h3>You're connected.</h3>
+            <p>We received your project details. In the meantime, browse ICF pros in your state in our directory.</p>
+            <a href="/find-a-pro" class="btn btn-primary">Browse ICF Pros &rarr;</a>
           </div>
+        </div><!-- /.ea-form -->
 
+        <!-- Cross-link for pros -->
+        <div class="contractor-banner">
+          <div class="contractor-banner-text">
+            <strong>Are you an ICF pro?</strong>
+            <p>Get listed and found by buyers searching for ICF pros in your state.</p>
+          </div>
+          <a href="/list-your-business" class="btn btn-primary">List Your Business</a>
+        </div>
 
-
-        </div><!-- /.audience-panels -->
       </div><!-- /.ea-hero-inner -->
     </div><!-- /.container -->
   </section><!-- /.ea-hero -->
@@ -701,7 +203,6 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="nav-logo" aria-label="ICF Insider home">
-            
             <span class="nav-logo-text">ICF <span>Insider</span></span>
           </a>
           <p>The independent authority on Insulated Concrete Form construction. Real data, unbiased comparisons, and a vetted contractor network.</p>
@@ -718,7 +219,7 @@
           <h4>Directory</h4>
           <ul class="footer-links" role="list">
             <li><a href="/find-a-pro" class="footer-link">Find a Contractor</a></li>
-            <li><a href="/get-connected?tab=contractor" class="footer-link">List Your Business</a></li>
+            <li><a href="/list-your-business" class="footer-link">List Your Business</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -740,150 +241,53 @@
         <p>&copy; 2026 ICF Insider. All rights reserved.</p>
         <nav class="footer-bottom-links" aria-label="Legal">
           <a href="/privacy-policy">Privacy Policy</a>
-          <a href="terms-of-use">Terms of Use</a>
+          <a href="/terms-of-use">Terms of Use</a>
         </nav>
       </div>
     </div>
   </footer>
 
 
-  <script src="js/main.js"></script>
+  <script src="/js/main.js"></script>
 
   <script>
     /* =========================================================
-       EARLY ACCESS PAGE SCRIPTS
-       1. Audience tab switching
-       2. Form submission handling (one handler for all three forms)
+       GET CONNECTED PAGE SCRIPT
+       Homeowner project form: pre-fill state, validate, submit.
     ========================================================= */
 
-    // --- 1. AUDIENCE TABS ---
-    // When you click a tab, hide all panels and show the matching one.
-    // Also supports ?tab=contractor URL param to auto-select a tab on load,
-    // and ?state=Florida to pre-fill the state dropdown.
+    // Pre-fill state dropdown from URL param: ?state=Florida
     (function () {
-      const tabs   = document.querySelectorAll('.audience-tab');
-      const panels = document.querySelectorAll('.audience-panel');
-
-      function activateTab(panelName) {
-        tabs.forEach(function (t) {
-          var isTarget = t.dataset.panel === panelName;
-          t.classList.toggle('active', isTarget);
-          t.setAttribute('aria-selected', isTarget ? 'true' : 'false');
-        });
-        panels.forEach(function (panel) {
-          panel.classList.toggle('active', panel.id === 'panel-' + panelName);
-        });
-      }
-
-      tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () { activateTab(tab.dataset.panel); });
-      });
-
-      // Auto-select tab from URL param: ?tab=contractor
-      var params   = new URLSearchParams(window.location.search);
-      var tabParam = params.get('tab');
-      if (tabParam) activateTab(tabParam);
-
-      // Pre-fill state dropdowns from URL param: ?state=Florida
+      var params = new URLSearchParams(window.location.search);
       var stateParam = params.get('state');
-      if (stateParam) {
-        var homeownerState = document.getElementById('h-state');
-        var contractorState = document.getElementById('c-state');
-
-        [homeownerState, contractorState].forEach(function (select) {
-          if (!select) return;
-
-          var matchingOption = Array.from(select.options).find(function (option) {
-            return option.value === stateParam || option.text === stateParam;
-          });
-
-          if (matchingOption) {
-            select.value = matchingOption.value || matchingOption.text;
-          }
-        });
-      }
-    }());
-
-
-    // --- 2. ZIP CODE AUTO-FILL STATE ---
-    (function () {
-      var zipInput   = document.getElementById('c-city');
-      var stateSelect = document.getElementById('c-state');
-      if (!zipInput || !stateSelect) return;
-
-      zipInput.addEventListener('input', function () {
-        var raw = zipInput.value.trim();
-
-        // Canadian postal code: starts with letter-digit-letter (e.g. A1A or A1A 1A1)
-        var isCanadian = /^[A-Za-z]\d[A-Za-z]/i.test(raw);
-
-        if (isCanadian) {
-          // Use just the FSA (first 3 chars, no space) for the lookup
-          var fsa = raw.replace(/\s/g, '').slice(0, 3).toUpperCase();
-          if (fsa.length < 3) return;
-
-          fetch('https://api.zippopotam.us/ca/' + fsa)
-            .then(function (r) { return r.ok ? r.json() : null; })
-            .then(function (data) {
-              if (!data || !data.places || !data.places[0]) return;
-              var provinceName = data.places[0]['state'];
-              var options = Array.from(stateSelect.options);
-              var match = options.find(function (o) { return o.text === provinceName; });
-              if (match) stateSelect.value = match.value || match.text;
-            })
-            .catch(function () { /* silently fail */ });
-
-        } else {
-          // US zip, must be exactly 5 digits
-          var zip = raw.replace(/\D/g, '');
-          if (zip.length !== 5) return;
-
-          fetch('https://api.zippopotam.us/us/' + zip)
-            .then(function (r) { return r.ok ? r.json() : null; })
-            .then(function (data) {
-              if (!data || !data.places || !data.places[0]) return;
-              var stateName = data.places[0]['state'];
-              var options = Array.from(stateSelect.options);
-              var match = options.find(function (o) { return o.text === stateName; });
-              if (match) stateSelect.value = match.value || match.text;
-            })
-            .catch(function () { /* silently fail */ });
-        }
+      if (!stateParam) return;
+      var select = document.getElementById('h-state');
+      if (!select) return;
+      var match = Array.from(select.options).find(function (o) {
+        return o.value === stateParam || o.text === stateParam;
       });
-    }());
-
-    // Limit role checkboxes to 2 max
-    (function () {
-      var roleBoxes = document.querySelectorAll('input[name="role"]');
-      roleBoxes.forEach(function (cb) {
-        cb.addEventListener('change', function () {
-          var checked = Array.from(roleBoxes).filter(function (b) { return b.checked; });
-          roleBoxes.forEach(function (b) {
-            if (!b.checked) b.disabled = checked.length >= 2;
-          });
-        });
-      });
+      if (match) select.value = match.value || match.text;
     }());
 
 
-    // --- 3. FORM SUBMISSION ---
-    // Both forms POST to /api/submit (Cloudflare Worker).
-    // Each form has a hidden lead_type field so we can distinguish
-    // homeowner / contractor in the database.
+    // Form validation + submission
     (function () {
-      var formIds = ['form-homeowner', 'form-contractor'];
+      var form = document.getElementById('form-homeowner');
+      if (!form) return;
 
-      // ── Helpers ──────────────────────────────────────────────
+      var successDiv      = document.getElementById('success-homeowner');
+      var submitBtn       = form.querySelector('[type="submit"]');
+      var errorBanner     = document.getElementById('error-banner-homeowner');
+      var originalBtnText = submitBtn ? submitBtn.textContent.trim() : 'Submit';
+
       function markError(input, message) {
         input.classList.add('field-error');
-        // Only add message once
         if (!input.parentNode.querySelector('.field-error-msg')) {
           var msg = document.createElement('span');
           msg.className = 'field-error-msg';
           msg.textContent = message;
           input.parentNode.appendChild(msg);
         }
-        // Clear error as soon as user starts correcting
         input.addEventListener('input', function clearErr() {
           input.classList.remove('field-error');
           var m = input.parentNode.querySelector('.field-error-msg');
@@ -892,160 +296,84 @@
         });
       }
 
-      function clearAllErrors(form) {
-        form.querySelectorAll('.field-error').forEach(function (el) {
-          el.classList.remove('field-error');
-        });
-        form.querySelectorAll('.field-error-msg').forEach(function (el) {
-          el.remove();
-        });
+      function clearAllErrors() {
+        form.querySelectorAll('.field-error').forEach(function (el) { el.classList.remove('field-error'); });
+        form.querySelectorAll('.field-error-msg').forEach(function (el) { el.remove(); });
       }
 
-      function scrollToFirst(form) {
-        var first = form.querySelector('.field-error, #role-error[style*="block"]');
-        if (first) {
-          first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      function scrollToFirst() {
+        var first = form.querySelector('.field-error');
+        if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        clearAllErrors();
+        if (errorBanner) errorBanner.classList.remove('visible');
+
+        var hasErrors = false;
+
+        // Name
+        var nameInput = form.querySelector('input[name="name"][required]');
+        if (nameInput && !nameInput.value.trim()) {
+          markError(nameInput, 'Your name is required.');
+          hasErrors = true;
         }
-      }
 
-      // ── Per-form setup ───────────────────────────────────────
-      formIds.forEach(function (formId) {
-        var form = document.getElementById(formId);
-        if (!form) return;
+        // Email
+        var emailInput = form.querySelector('input[type="email"]');
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailInput && !emailRegex.test(emailInput.value.trim())) {
+          markError(emailInput, 'Please enter a valid email address.');
+          hasErrors = true;
+        }
 
-        var successDiv  = document.getElementById(formId.replace('form-', 'success-'));
-        var submitBtn   = form.querySelector('[type="submit"]');
-        var errorBanner = document.getElementById('error-banner-' + formId.replace('form-', ''));
-        var originalBtnText = submitBtn ? submitBtn.textContent.trim() : 'Submit';
-
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-          clearAllErrors(form);
-          if (errorBanner) errorBanner.classList.remove('visible');
-
-          var hasErrors = false;
-
-          // 1. Name
-          var nameInput = form.querySelector('input[name="name"][required]');
-          if (nameInput && !nameInput.value.trim()) {
-            markError(nameInput, 'Your name is required.');
+        // Phone (at least 10 digits)
+        var phoneInput = form.querySelector('input[type="tel"]');
+        if (phoneInput && phoneInput.hasAttribute('required')) {
+          var digits = phoneInput.value.replace(/\D/g, '');
+          if (digits.length < 10) {
+            markError(phoneInput, 'Please enter a valid phone number (at least 10 digits).');
             hasErrors = true;
           }
+        }
 
-          // 2. Email
-          var emailInput = form.querySelector('input[type="email"]');
-          var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (emailInput && !emailRegex.test(emailInput.value.trim())) {
-            markError(emailInput, 'Please enter a valid email address.');
-            hasErrors = true;
-          }
+        if (hasErrors) {
+          if (errorBanner) errorBanner.classList.add('visible');
+          scrollToFirst();
+          return;
+        }
 
-          // 3. Phone, required, at least 10 digits
-          var phoneInput = form.querySelector('input[type="tel"]');
-          if (phoneInput && phoneInput.hasAttribute('required')) {
-            var digits = phoneInput.value.replace(/\D/g, '');
-            if (digits.length < 10) {
-              markError(phoneInput, 'Please enter a valid phone number (at least 10 digits).');
-              hasErrors = true;
-            }
-          }
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sending...';
+        }
 
-          // 4. Company (contractor only)
-          var companyInput = form.querySelector('input[name="company"][required]');
-          if (companyInput && !companyInput.value.trim()) {
-            markError(companyInput, 'Your company name is required.');
-            hasErrors = true;
-          }
-
-          // 5. Zip / postal code (contractor only)
-          var zipInput = form.querySelector('input[name="zip_code"][required]');
-          if (zipInput && !zipInput.value.trim()) {
-            markError(zipInput, 'Please enter your zip or postal code.');
-            hasErrors = true;
-          }
-
-          // 6. Website, optional but must look real if provided
-          var websiteInput = form.querySelector('input[name="website"]');
-          if (websiteInput && websiteInput.value.trim()) {
-            var stripped = websiteInput.value.trim().replace(/^https?:\/\//i, '').replace(/\/.*$/, '').toLowerCase();
-            var domainPattern = /^[a-z0-9]([a-z0-9\-]{0,61}[a-z0-9])?(\.[a-z]{2,})+$/i;
-            if (!domainPattern.test(stripped)) {
-              markError(websiteInput, 'Please enter a valid website address (e.g. mycompany.com).');
-              hasErrors = true;
-            }
-          }
-
-          // 7. Role checkboxes (contractor only)
-          var roleCheckboxes = form.querySelectorAll('input[name="role"]');
-          if (roleCheckboxes.length > 0) {
-            var anyChecked = Array.from(roleCheckboxes).some(function (cb) { return cb.checked; });
-            var roleError = document.getElementById('role-error');
-            if (!anyChecked) {
-              if (roleError) roleError.style.display = 'block';
-              hasErrors = true;
-              // Clear role error when any checkbox is ticked
-              roleCheckboxes.forEach(function (cb) {
-                cb.addEventListener('change', function () {
-                  if (roleError) roleError.style.display = 'none';
-                }, { once: true });
-              });
-            } else {
-              if (roleError) roleError.style.display = 'none';
-            }
-          }
-
-          // ── Stop here if any errors ──
-          if (hasErrors) {
-            if (errorBanner) errorBanner.classList.add('visible');
-            scrollToFirst(form);
-            return;
-          }
-
-          // ── All good, submit ────────────────────────────────
-          if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-          }
-
-          fetch('/api/submit', {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-          })
-          .then(function (response) {
-            if (response.ok) {
-              form.style.display = 'none';
-              if (successDiv) successDiv.classList.add('visible');
-            } else {
-              if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalBtnText;
-              }
-              if (errorBanner) {
-                errorBanner.textContent = 'Something went wrong on our end. Please try again in a moment.';
-                errorBanner.classList.add('visible');
-                errorBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              }
-            }
-          })
-          .catch(function () {
-            if (submitBtn) {
-              submitBtn.disabled = false;
-              submitBtn.textContent = originalBtnText;
-            }
+        fetch('/api/submit', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(function (response) {
+          if (response.ok) {
+            form.style.display = 'none';
+            if (successDiv) successDiv.classList.add('visible');
+          } else {
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
             if (errorBanner) {
-              errorBanner.textContent = 'Network error, please check your connection and try again.';
+              errorBanner.textContent = 'Something went wrong on our end. Please try again in a moment.';
               errorBanner.classList.add('visible');
               errorBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-          });
-        });
-
-        // Reset red border when user starts correcting a field
-        form.querySelectorAll('input, select, textarea').forEach(function (field) {
-          field.addEventListener('focus', function () {
-            field.style.borderColor = '';
-          });
+          }
+        })
+        .catch(function () {
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
+          if (errorBanner) {
+            errorBanner.textContent = 'Network error, please check your connection and try again.';
+            errorBanner.classList.add('visible');
+            errorBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
         });
       });
     }());
@@ -1053,4 +381,3 @@
 
 </body>
 </html>
-
