@@ -2164,6 +2164,27 @@
   font-size: 1.05rem;
 }
 
+/* "or" divider between the two Get Connected paths (browse vs. form) */
+.lead-landing .gc-or {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: 680px;
+  margin: var(--space-8) auto;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.lead-landing .gc-or::before,
+.lead-landing .gc-or::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border-dark);
+}
+
 /* Map preview — shows the pro's pin/blip, mirroring the directory map */
 .lead-landing .preview-map {
   max-width: 680px;
