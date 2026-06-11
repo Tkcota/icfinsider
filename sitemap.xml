@@ -83,6 +83,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://icfinsider.com/blog/icf-disadvantages</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://icfinsider.com/blog/how-to-find-icf-contractor</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
