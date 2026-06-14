@@ -44,6 +44,10 @@ export default {
       return Response.redirect(newUrl.href, 301);
     }
 
+    // ── Pro profile pages + their sitemap (server-rendered from D1) ──
+    if (url.pathname.startsWith('/pro/')) return handleProPage(request, env);
+    if (url.pathname === '/sitemap-pros.xml') return handleProSitemap(request, env);
+
     // ── Static assets (HTML, CSS, JS, images, etc.) ──────────
     return env.ASSETS.fetch(request);
   },
@@ -64,7 +68,7 @@ async function handleListings(request, env) {
 
     // Explicit public column list — never expose owner email (or internal
     // fields like slug/active) to the public directory API.
-    let sql = 'SELECT id, business_name, pro_type, state, zip_code, city, lat, lng, ' +
+    let sql = 'SELECT id, slug, business_name, pro_type, state, zip_code, city, lat, lng, ' +
               'phone, website, brands, project_types, service_area, featured ' +
               'FROM listings WHERE active = 1';
     const params = [];
@@ -90,6 +94,201 @@ async function handleListings(request, env) {
     return new Response(JSON.stringify({ ok: false, error: 'Failed to load listings.' }), {
       status: 500, headers: cors,
     });
+  }
+}
+
+
+// ── GET /pro/[slug] ─────────────────────────────────────────────────────────
+// Server-rendered profile page for a single active listing, built from D1.
+
+async function handleProPage(request, env) {
+  const url  = new URL(request.url);
+  const slug = decodeURIComponent(url.pathname.replace(/^\/pro\//, '').replace(/\/+$/, '')).trim();
+
+  // No slug, or a deeper sub-path → send to the directory.
+  if (!slug || slug.includes('/')) {
+    return Response.redirect(new URL('/find-a-pro', url.origin).href, 302);
+  }
+
+  try {
+    const listing = await env.DB
+      .prepare('SELECT * FROM listings WHERE slug = ? AND active = 1')
+      .bind(slug)
+      .first();
+
+    // Not found or inactive → redirect to the directory (no dead page).
+    if (!listing) {
+      return Response.redirect(new URL('/find-a-pro', url.origin).href, 302);
+    }
+
+    const relatedRes = await env.DB
+      .prepare('SELECT business_name, pro_type, city, slug FROM listings WHERE state = ? AND slug != ? AND active = 1 ORDER BY featured DESC, business_name ASC LIMIT 3')
+      .bind(listing.state, slug)
+      .all();
+
+    const html = renderProPage(listing, relatedRes.results || []);
+    return new Response(html, {
+      headers: {
+        'Content-Type': 'text/html; charset=utf-8',
+        'Cache-Control': 'public, max-age=300',
+      },
+    });
+  } catch (err) {
+    console.error('Pro page error:', err);
+    return Response.redirect(new URL('/find-a-pro', url.origin).href, 302);
+  }
+}
+
+// ── Pro page helpers ──
+function proEsc(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+function proTypeLabel(t) {
+  const map = { contractor: 'Contractor / Builder', distributor: 'Distributor', architect: 'Architect / Designer', engineer: 'Structural Engineer', pool: 'ICF Pool Contractor' };
+  return map[(t || '').trim().toLowerCase()] || (t || '').trim();
+}
+function proTypeLabels(proType) {
+  return (proType || '').split(',').map(t => proTypeLabel(t)).filter(Boolean).join(' · ');
+}
+function proInitials(name) {
+  const parts = (name || '').trim().split(/\s+/).filter(Boolean);
+  if (!parts.length) return 'IC';
+  return (parts[0][0] + (parts[1] ? parts[1][0] : '')).toUpperCase();
+}
+function proEnsureUrl(u) { return !u ? '' : (/^https?:\/\//i.test(u) ? u : 'https://' + u); }
+function proFormatPhone(p) {
+  const d = (p || '').replace(/\D/g, '');
+  if (d.length === 10) return '(' + d.slice(0,3) + ') ' + d.slice(3,6) + '-' + d.slice(6);
+  if (d.length === 11 && d[0] === '1') return '(' + d.slice(1,4) + ') ' + d.slice(4,7) + '-' + d.slice(7);
+  return p || '';
+}
+function proList(csv) { return (csv || '').split(',').map(s => s.trim()).filter(Boolean); }
+
+function renderProPage(l, related) {
+  const name = l.business_name || 'ICF Professional';
+  const location = l.city ? (l.city + ', ' + l.state) : l.state;
+  const typeLabels = proTypeLabels(l.pro_type);
+  const primaryType = proTypeLabel((l.pro_type || '').split(',')[0]);
+  const brands = proList(l.brands);
+  const projects = proList(l.project_types);
+  const website = proEnsureUrl(l.website);
+  const phoneFmt = proFormatPhone(l.phone);
+  const phoneDigits = (l.phone || '').replace(/\D/g, '');
+
+  let desc = (l.description || '').trim();
+  if (!desc) {
+    const b = brands.length ? (', working with ' + brands.join(' and ')) : '';
+    const p = projects.length ? (' on ' + projects.join(' and ').toLowerCase() + ' projects') : '';
+    desc = name + ' is an Insulated Concrete Form ' + primaryType.toLowerCase() + ' serving ' + location + b + p + '. Contact them directly to learn more or request a quote.';
+  }
+
+  const metaTitle = name + ' | ICF ' + primaryType + ' in ' + (l.city || l.state) + ' | ICF Insider';
+  const metaDesc  = desc.length > 155 ? desc.slice(0, 152) + '...' : desc;
+
+  const websiteBtn  = website ? '<a href="' + proEsc(website) + '" target="_blank" rel="noopener" class="btn btn-primary">Visit Website</a>' : '';
+  const callBtn     = phoneDigits ? '<a href="tel:' + proEsc(phoneDigits) + '" class="btn btn-outline">Call ' + proEsc(phoneFmt) + '</a>' : '';
+  const sideCallBtn = phoneDigits ? '<a href="tel:' + proEsc(phoneDigits) + '" class="btn btn-outline-dark">Call ' + proEsc(phoneFmt) + '</a>' : '';
+  const badges = '<span class="pro-badge verified">Verified ICF Pro</span>' + (l.featured ? '<span class="pro-badge">Featured</span>' : '');
+
+  const detailRows = [
+    typeLabels ? '<li><span>Business type</span><span>' + proEsc(typeLabels) + '</span></li>' : '',
+    brands.length ? '<li><span>ICF brands</span><span>' + proEsc(brands.join(', ')) + '</span></li>' : '',
+    projects.length ? '<li><span>Project types</span><span>' + proEsc(projects.join(', ')) + '</span></li>' : '',
+    l.service_area ? '<li><span>Service area</span><span>' + proEsc(l.service_area) + '</span></li>' : '',
+    location ? '<li><span>Based in</span><span>' + proEsc(location) + '</span></li>' : '',
+  ].join('');
+
+  const relatedCards = (related || []).map(function (r) {
+    return '<a href="/pro/' + proEsc(r.slug) + '" class="pro-rel-card"><div class="pro-rel-name">' + proEsc(r.business_name) + '</div><div class="pro-rel-meta">' + proEsc(proTypeLabels(r.pro_type)) + (r.city ? ' · ' + proEsc(r.city) + ', ' + proEsc(l.state) : '') + '</div></a>';
+  }).join('');
+
+  const relatedSection = relatedCards ?
+    '<section class="pro-related"><div class="container"><h2>More ICF Pros in ' + proEsc(l.state) + '</h2><div class="pro-related-grid">' + relatedCards + '</div><div style="text-align:center;margin-top:var(--space-8);"><a href="/find-a-pro?state=' + encodeURIComponent(l.state) + '" class="btn btn-primary btn-lg">See All ICF Pros in ' + proEsc(l.state) + ' &rarr;</a></div></div></section>' : '';
+
+  const ldJson = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "GeneralContractor",
+    "name": name,
+    "description": desc,
+    "url": "https://icfinsider.com/pro/" + l.slug,
+    "telephone": l.phone || undefined,
+    "areaServed": l.state || undefined,
+    "address": { "@type": "PostalAddress", "addressLocality": l.city || undefined, "addressRegion": l.state || undefined, "addressCountry": "US" }
+  });
+
+  return '<!DOCTYPE html>\n<html lang="en">\n<head>\n'
+    + '<script async src="https://www.googletagmanager.com/gtag/js?id=G-RF8D8L7VCV"></script>\n'
+    + '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-RF8D8L7VCV");</script>\n'
+    + '<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
+    + '<title>' + proEsc(metaTitle) + '</title>\n'
+    + '<meta name="description" content="' + proEsc(metaDesc) + '">\n'
+    + '<link rel="canonical" href="https://icfinsider.com/pro/' + proEsc(l.slug) + '">\n'
+    + '<link rel="icon" type="image/svg+xml" href="/favicon.svg">\n'
+    + '<meta property="og:type" content="website">\n'
+    + '<meta property="og:title" content="' + proEsc(name) + ' | ICF Insider">\n'
+    + '<meta property="og:description" content="' + proEsc(metaDesc) + '">\n'
+    + '<meta property="og:url" content="https://icfinsider.com/pro/' + proEsc(l.slug) + '">\n'
+    + '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
+    + '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
+    + '<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">\n'
+    + '<link rel="stylesheet" href="/css/main.css">\n<link rel="stylesheet" href="/css/components.css">\n'
+    + '<script type="application/ld+json">' + ldJson + '</script>\n'
+    + '</head>\n<body>\n'
+    + '<nav class="nav" id="main-nav" aria-label="Main navigation"><div class="container nav-inner">'
+    + '<a href="/" class="nav-logo" aria-label="ICF Insider home"><span class="nav-logo-text">ICF <span>Insider</span></span></a>'
+    + '<ul class="nav-links" role="list"><li><a href="/icf-101" class="nav-link">ICF 101</a></li><li><a href="/cost-guide" class="nav-link">Cost Guide</a></li><li><a href="/brands" class="nav-link">Brand Comparison</a></li><li><a href="/find-a-pro" class="nav-link">Find a Pro</a></li></ul>'
+    + '<div class="nav-cta"><a href="/get-connected" class="btn btn-primary">Get Connected</a></div>'
+    + '<button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile"><span></span><span></span><span></span></button>'
+    + '</div></nav>'
+    + '<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation"><a href="/icf-101" class="nav-link">ICF 101</a><a href="/cost-guide" class="nav-link">Cost Guide</a><a href="/brands" class="nav-link">Brand Comparison</a><a href="/find-a-pro" class="nav-link">Find a Pro</a><a href="/get-connected" class="btn btn-primary">Get Connected</a></div>'
+    + '<section class="pro-hero"><div class="container">'
+    + '<nav class="pro-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/find-a-pro">Find a Pro</a> &rsaquo; <a href="/find-a-pro?state=' + encodeURIComponent(l.state) + '">' + proEsc(l.state) + '</a> &rsaquo; ' + proEsc(name) + '</nav>'
+    + '<div class="pro-header"><div class="pro-logo">' + proEsc(proInitials(name)) + '</div><div class="pro-header-main">'
+    + '<h1 class="pro-name">' + proEsc(name) + '</h1>'
+    + '<div class="pro-meta">'
+    + '<span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ' + proEsc(location) + '</span>'
+    + (typeLabels ? '<span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg> ' + proEsc(typeLabels) + '</span>' : '')
+    + (l.service_area ? '<span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg> ' + proEsc(l.service_area) + '</span>' : '')
+    + '</div>'
+    + '<div class="pro-badges">' + badges + '</div>'
+    + '<div class="pro-actions">' + websiteBtn + callBtn + '</div>'
+    + '</div></div></div></section>'
+    + '<section class="pro-body"><div class="container"><div class="pro-layout">'
+    + '<div class="pro-main"><h2>About ' + proEsc(name) + '</h2><p>' + proEsc(desc) + '</p><ul class="pro-details">' + detailRows + '</ul></div>'
+    + '<aside class="pro-side"><div class="pro-side-card"><div class="pro-side-card-body">'
+    + '<h3>Get in Touch</h3>'
+    + '<p class="pro-side-card-note">Reach out to ' + proEsc(name) + ' directly to discuss your project or request a quote.</p>'
+    + '<div class="pro-contact-row">' + websiteBtn + sideCallBtn + '</div>'
+    + '</div></div></aside>'
+    + '</div></div></section>'
+    + relatedSection
+    + '<footer class="footer" role="contentinfo"><div class="container"><div class="footer-grid">'
+    + '<div class="footer-brand"><a href="/" class="nav-logo" aria-label="ICF Insider home"><span class="nav-logo-text">ICF <span>Insider</span></span></a><p>The independent authority on Insulated Concrete Form construction. Real data, unbiased comparisons, and a vetted contractor network.</p></div>'
+    + '<div class="footer-col"><h4>Learn</h4><ul class="footer-links" role="list"><li><a href="/icf-101" class="footer-link">ICF 101</a></li><li><a href="/cost-guide" class="footer-link">Cost Guide</a></li><li><a href="/brands" class="footer-link">Brand Comparison</a></li></ul></div>'
+    + '<div class="footer-col"><h4>Directory</h4><ul class="footer-links" role="list"><li><a href="/find-a-pro" class="footer-link">Find a Contractor</a></li><li><a href="/list-your-business" class="footer-link">List Your Business</a></li></ul></div>'
+    + '<div class="footer-col"><h4>Company</h4><ul class="footer-links" role="list"><li><a href="/about" class="footer-link">About</a></li><li><a href="/privacy-policy" class="footer-link">Privacy Policy</a></li><li><a href="/terms-of-use" class="footer-link">Terms of Use</a></li></ul></div>'
+    + '<div class="footer-col"><h4>Contact</h4><ul class="footer-links" role="list"><li><a href="mailto:tyler@icfinsider.com" class="footer-link" style="color:var(--color-accent);">tyler@icfinsider.com</a></li></ul></div>'
+    + '</div><div class="footer-bottom"><p>&copy; 2026 ICF Insider. All rights reserved.</p><nav class="footer-bottom-links" aria-label="Legal"><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-use">Terms of Use</a></nav></div></div></footer>'
+    + '<script src="/js/main.js"></script>\n</body>\n</html>';
+}
+
+
+// ── GET /sitemap-pros.xml ──
+// Dynamic sitemap of all active pro profile pages, generated from D1 so it
+// always reflects the current listings.
+async function handleProSitemap(request, env) {
+  try {
+    const { results } = await env.DB.prepare('SELECT slug FROM listings WHERE active = 1 ORDER BY slug').all();
+    const urls = (results || []).map(function (r) {
+      return '  <url>\n    <loc>https://icfinsider.com/pro/' + r.slug + '</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.6</priority>\n  </url>';
+    }).join('\n');
+    const xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + '\n</urlset>\n';
+    return new Response(xml, { headers: { 'Content-Type': 'application/xml; charset=utf-8', 'Cache-Control': 'public, max-age=3600' } });
+  } catch (err) {
+    console.error('Pro sitemap error:', err);
+    return new Response('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>\n', { headers: { 'Content-Type': 'application/xml; charset=utf-8' } });
   }
 }
 

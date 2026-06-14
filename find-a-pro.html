@@ -852,8 +852,8 @@
         });
 
         var location = l.city ? l.city + ', ' + l.state : l.state;
-        var websiteBtn = l.website
-          ? '<a href="' + ensureUrl(l.website) + '" target="_blank" rel="noopener" class="btn btn-primary">Visit Website</a>'
+        var profileBtn = l.slug
+          ? '<a href="/pro/' + l.slug + '" class="btn btn-primary">View Profile</a>'
           : '';
         var phoneBtn = l.phone
           ? '<a href="tel:' + l.phone.replace(/\D/g, '') + '" class="btn btn-outline-dark">' + formatPhone(l.phone) + '</a>'
@@ -870,7 +870,7 @@
           + '</div>'
           + '<div class="listing-tags">' + tags + '</div>'
           + '</div>'
-          + '<div class="listing-card-action">' + websiteBtn + phoneBtn + '</div>'
+          + '<div class="listing-card-action">' + profileBtn + phoneBtn + '</div>'
           + '</div>';
       }
 
@@ -1072,7 +1072,7 @@
           var popup = '<strong>' + l.business_name + '</strong><br>'
             + allTypes + ' · ' + (l.city ? l.city + ', ' : '') + l.state
             + (l.phone ? '<br><a href="tel:' + l.phone.replace(/\D/g,'') + '">' + formatPhone(l.phone) + '</a>' : '')
-            + (l.website ? '<br><a href="' + ensureUrl(l.website) + '" target="_blank" rel="noopener">Visit Website</a>' : '');
+            + (l.slug ? '<br><a href="/pro/' + l.slug + '">View Profile</a>' : '');
           var color1 = pinColors[types[0]] || '#cc2200';
           var color2 = types[1] ? (pinColors[types[1]] || color1) : null;
           var pinBackground = color2

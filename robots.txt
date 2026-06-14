@@ -3,3 +3,4 @@ Allow: /
 Disallow: /api/
 
 Sitemap: https://icfinsider.com/sitemap.xml
+Sitemap: https://icfinsider.com/sitemap-pros.xml
