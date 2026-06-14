@@ -2123,7 +2123,7 @@
 /* Grouping labels inside the white form card */
 .lead-landing .form-section-label {
   font-family: var(--font-heading);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   font-weight: var(--weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.08em;
