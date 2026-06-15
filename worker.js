@@ -184,7 +184,7 @@ function renderProPage(l, related) {
     desc = name + ' is an Insulated Concrete Form ' + primaryType.toLowerCase() + ' serving ' + location + b + p + '. Contact them directly to learn more or request a quote.';
   }
 
-  const metaTitle = name + ' | ICF ' + primaryType + ' in ' + (l.city || l.state) + ' | ICF Insider';
+  const metaTitle = name + ' | ICF ' + primaryType + ' in ' + (l.city || l.state);
   const metaDesc  = desc.length > 155 ? desc.slice(0, 152) + '...' : desc;
 
   const websiteBtn  = website ? '<a href="' + proEsc(website) + '" target="_blank" rel="noopener" class="btn btn-primary">Visit Website</a>' : '';
@@ -534,8 +534,8 @@ async function handleAdminApprove(request, env) {
 
     // Insert into listings
     await env.DB.prepare(`
-      INSERT INTO listings (slug, business_name, pro_type, state, zip_code, city, lat, lng, phone, website, email, brands, project_types, service_area, active, featured)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 0)
+      INSERT INTO listings (slug, business_name, pro_type, state, zip_code, city, lat, lng, phone, website, email, brands, project_types, service_area, description, active, featured)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 0)
     `).bind(
       slug,
       lead.company || lead.name,
@@ -550,7 +550,8 @@ async function handleAdminApprove(request, env) {
       lead.email || '',
       lead.brand || '',
       lead.project_type || '',
-      lead.service_area || ''
+      lead.service_area || '',
+      lead.message || ''
     ).run();
 
     // Mark lead as approved
