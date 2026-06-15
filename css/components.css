@@ -1089,6 +1089,22 @@
   color: var(--color-accent);
 }
 
+/* Button centered at the bottom of a standard (left-bordered) callout */
+.callout:not(.callout-centered) .btn {
+  display: block;
+  width: fit-content;
+  margin: var(--space-4) auto 0;
+}
+
+/* Keep that callout button from feeling oversized on phones */
+@media (max-width: 600px) {
+  .callout:not(.callout-centered) .btn {
+    font-size: var(--text-xs);
+    padding: var(--space-3) var(--space-4);
+    letter-spacing: 0.02em;
+  }
+}
+
 /* Comparison table — ICF vs wood frame */
 .comparison-table {
   width: 100%;
