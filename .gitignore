@@ -11,6 +11,9 @@ Thumbs.db
 .vscode/
 *.swp
 
+# Claude Code internal state (worktrees, local settings)
+.claude/
+
 # Environment variables (never commit secrets)
 .env
 .env.local
