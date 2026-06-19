@@ -762,7 +762,7 @@ const STATES = [
 ];
 
 function cleanDash(text) {
-  return text.replace(/ — /g, '. ').replace(/ —/g, ' -').replace(/— /g, '- ').replace(/—/g, ' - ');
+  return text.replace(/ — /g, ', ').replace(/ —/g, ' -').replace(/— /g, '- ').replace(/—/g, ' - ');
 }
 
 function fixPayback(text) {
@@ -794,6 +794,7 @@ function page(name, slug, climate, tagline, stats, faq) {
   const cost = COST_DATA[slug] || {wall:'$8–$18', build:'$150–$230', savings:'$1.5K–$3K+'};
   const contextHtml = cleanDash(STATE_CONTEXT[slug] || CONTEXT[climate](name));
   const tl = cleanDash(tagline);
+  const tlShort = tl.split('. ')[0].replace(/[.\s]+$/, '') + '.';
   const cardsHtml = CARDS[climate].map(c =>
     `<div class="why-card"><div class="why-icon">${ICONS[c.i]}</div><div><h3>${c.t}</h3><p>${cleanDash(fixPayback(c.b))}</p></div></div>`
   ).join('');
@@ -820,12 +821,12 @@ function page(name, slug, climate, tagline, stats, faq) {
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ICF Construction in ${name} | Insulated Concrete Form Homes & Contractors | ICF Insider</title>
-  <meta name="description" content="ICF construction in ${name} - cost data, climate performance, brand comparisons, and vetted ICF contractors near you. The independent resource for Insulated Concrete Form building in ${name}.">
+  <title>ICF Builders & Pros in ${name} | Find Local ICF Contractors | ICF Insider</title>
+  <meta name="description" content="Find vetted ICF builders, contractors, and distributors in ${name}. Browse local ICF pros, see real cost data, and connect with experienced Insulated Concrete Form crews near you.">
   <link rel="canonical" href="https://icfinsider.com/states/${slug}/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="ICF Construction in ${name} | ICF Insider">
+  <meta property="og:title" content="ICF Builders & Pros in ${name} | ICF Insider">
   <meta property="og:description" content="${tl.substring(0,120)}">
   <meta property="og:image" content="https://icfinsider.com/images/og-image.png">
   <meta property="og:url" content="https://icfinsider.com/states/${slug}/">
@@ -865,8 +866,8 @@ function page(name, slug, climate, tagline, stats, faq) {
         <span class="page-hero-tag"><a href="/find-a-pro" style="color:inherit;text-decoration:none;">Find a Pro</a></span>
         <span class="page-hero-readtime">${name}</span>
       </div>
-      <h1 id="page-title">ICF Construction in ${name}</h1>
-      <p class="page-hero-intro" style="max-width:580px;">${tl}</p>
+      <h1 id="page-title">ICF Builders &amp; Pros in ${name}</h1>
+      <p class="page-hero-intro" style="max-width:580px;">Connect with experienced ICF builders, contractors, and distributors near you. ${tlShort}</p>
       <div style="margin-top:var(--space-6);">
         <a href="${proHref}" class="btn btn-primary btn-lg">Find a Pro in ${name} &rarr;</a>
       </div>
@@ -919,7 +920,7 @@ function page(name, slug, climate, tagline, stats, faq) {
               <span class="eyebrow" style="font-size:0.7rem;">ICF Contractors &amp; Builders</span>
               <p>Are you an ICF contractor in ${name}? List your business for free and connect with homeowners.</p>
             </div>
-            <a href="/get-connected?tab=contractor" class="btn btn-primary">List Your Business &rarr;</a>
+            <a href="/list-your-business" class="btn btn-primary">List Your Business &rarr;</a>
           </div>
         </section>
         <section id="${id}-faq" style="margin-top:var(--space-16);">
@@ -961,7 +962,7 @@ function page(name, slug, climate, tagline, stats, faq) {
           <p>The independent authority on Insulated Concrete Form construction.</p>
         </div>
         <div class="footer-col"><h4>Learn</h4><ul class="footer-links" role="list"><li><a href="/icf-101" class="footer-link">ICF 101</a></li><li><a href="/cost-guide" class="footer-link">Cost Guide</a></li><li><a href="/brands" class="footer-link">Brand Comparison</a></li></ul></div>
-        <div class="footer-col"><h4>Directory</h4><ul class="footer-links" role="list"><li><a href="/find-a-pro" class="footer-link">Find a Pro</a></li><li><a href="/get-connected?tab=contractor" class="footer-link">List Your Business</a></li></ul></div>
+        <div class="footer-col"><h4>Directory</h4><ul class="footer-links" role="list"><li><a href="/find-a-pro" class="footer-link">Find a Pro</a></li><li><a href="/list-your-business" class="footer-link">List Your Business</a></li><li><a href="https://billing.stripe.com/p/login/9B6bJ062x5s637xadI1oI00" class="footer-link" target="_blank" rel="noopener">Manage Subscription</a></li></ul></div>
         <div class="footer-col"><h4>Company</h4><ul class="footer-links" role="list"><li><a href="/about" class="footer-link">About</a></li><li><a href="/privacy-policy" class="footer-link">Privacy Policy</a></li><li><a href="/terms-of-use" class="footer-link">Terms of Use</a></li></ul></div>
         <div class="footer-col"><h4>Contact</h4><ul class="footer-links" role="list"><li><a href="mailto:tyler@icfinsider.com" class="footer-link" style="color:var(--color-accent);">tyler@icfinsider.com</a></li></ul></div>
       </div>
