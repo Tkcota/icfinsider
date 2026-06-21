@@ -56,6 +56,19 @@
     .directory-hero-inner {
       position: relative;
       z-index: 1;
+      display: flex;
+      gap: var(--space-10);
+      align-items: flex-start;
+    }
+    .directory-hero-text { flex: 1; min-width: 0; }
+    .directory-hero-aside { width: 340px; flex-shrink: 0; }
+    .directory-hero-aside .pro-key {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      margin-bottom: 0;
+    }
+    @media (max-width: 900px) {
+      .directory-hero-inner { flex-direction: column; }
+      .directory-hero-aside { width: 100%; max-width: 480px; }
     }
 
     .directory-hero h1 {
@@ -517,6 +530,52 @@
         flex-wrap: wrap;
       }
     }
+
+    /* "Who's who" key — compact map legend + pro-type explainer (right column) */
+    .pro-key {
+      background: var(--color-dark-800);
+      border: 1px solid var(--color-border-dark);
+      border-radius: 10px;
+      padding: var(--space-4) var(--space-5);
+      margin-bottom: var(--space-4);
+    }
+    .pro-key-title {
+      font-size: 0.72rem;
+      font-weight: var(--weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text-muted);
+      margin: 0 0 var(--space-3);
+    }
+    .pro-key-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .pro-key-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      color: var(--color-text-muted);
+    }
+    .pro-key-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 4px;
+      border: 1.5px solid #fff;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    }
+    .pro-key-type {
+      font-weight: var(--weight-bold);
+      color: var(--color-white);
+    }
   </style>
 </head>
 
@@ -566,6 +625,7 @@
   <!-- DIRECTORY HERO + SEARCH -->
   <section class="directory-hero" aria-labelledby="dir-title">
     <div class="container directory-hero-inner">
+      <div class="directory-hero-text">
 
       <span class="eyebrow">ICF Contractor Directory</span>
       <h1 id="dir-title">Find a Qualified ICF Professional Near You</h1>
@@ -616,6 +676,20 @@
         </select>
 
       </div>
+      </div><!-- /.directory-hero-text -->
+
+      <aside class="directory-hero-aside" aria-label="What each ICF pro type does">
+        <div class="pro-key">
+          <p class="pro-key-title">Types of ICF pros</p>
+          <ul class="pro-key-list">
+            <li><span class="pro-key-dot" style="background:#1d4ed8;"></span><span><span class="pro-key-type">Distributor</span> Sells the ICF blocks and materials. Often the best first call: they can quote your project and answer any questions.</span></li>
+            <li><span class="pro-key-dot" style="background:#cc2200;"></span><span><span class="pro-key-type">Contractor</span> Builds your home or just installs the ICF. Some handle the full build, others the ICF only.</span></li>
+            <li><span class="pro-key-dot" style="background:#16a34a;"></span><span><span class="pro-key-type">Architect</span> Designs your home and draws up the plans.</span></li>
+            <li><span class="pro-key-dot" style="background:#7c3aed;"></span><span><span class="pro-key-type">Structural Engineer</span> Sizes the rebar and loads so the walls meet code.</span></li>
+            <li><span class="pro-key-dot" style="background:#0891b2;"></span><span><span class="pro-key-type">Pool Contractor</span> Builds ICF swimming pools.</span></li>
+          </ul>
+        </div>
+      </aside>
 
     </div>
   </section>
@@ -641,8 +715,8 @@
         <!-- Pro type tabs -->
         <div class="pro-type-tabs" role="tablist">
           <button class="pro-type-tab active" role="tab">All Pros</button>
-          <button class="pro-type-tab" role="tab">Contractors</button>
           <button class="pro-type-tab" role="tab">Distributors</button>
+          <button class="pro-type-tab" role="tab">Contractors</button>
           <button class="pro-type-tab" role="tab">Architects</button>
           <button class="pro-type-tab" role="tab">Engineers</button>
           <button class="pro-type-tab" role="tab">ICF Pools</button>
@@ -669,8 +743,8 @@
           <!-- RIGHT: sticky map -->
           <div class="split-map">
             <div id="map-legend" style="display:none;flex-wrap:wrap;gap:8px;margin-bottom:10px;padding:8px 12px;background:var(--color-surface);border:1px solid var(--color-border-light);border-radius:var(--radius-sm);font-size:0.75rem;">
-              <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#cc2200;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Contractor</span>
               <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#1d4ed8;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Distributor</span>
+              <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#cc2200;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Contractor</span>
               <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#16a34a;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Architect</span>
               <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#7c3aed;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>Engineer</span>
               <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;background:#0891b2;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></span>ICF Pool</span>
