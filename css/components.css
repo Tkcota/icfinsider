@@ -1391,8 +1391,8 @@
   border-radius: 12px;
   padding: var(--space-6) var(--space-7);
 }
-.faq-card h3 { margin: 0 0 var(--space-2); font-size: 0.975rem; font-weight: 600; }
-.faq-card p  { margin: 0; font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.7; }
+.faq-card h3 { margin: 0 0 var(--space-2); font-size: 1.0625rem; font-weight: 600; }
+.faq-card p  { margin: 0; font-size: var(--text-base); color: var(--color-text-dark); line-height: 1.6; }
 
 /* "New to ICF?" learn strip */
 .learn-strip {
