@@ -184,7 +184,7 @@ function renderProPage(l, related) {
     desc = name + ' is an Insulated Concrete Form ' + primaryType.toLowerCase() + ' serving ' + location + b + p + '. Contact them directly to learn more or request a quote.';
   }
 
-  const metaTitle = name + ' | ICF ' + primaryType + ' in ' + (l.city || l.state);
+  const metaTitle = name + ' | ICF ' + primaryType + ' in ' + location;
   const metaDesc  = desc.length > 155 ? desc.slice(0, 152) + '...' : desc;
 
   const websiteBtn  = website ? '<a href="' + proEsc(website) + '" target="_blank" rel="noopener" class="btn btn-primary">Visit Website</a>' : '';
