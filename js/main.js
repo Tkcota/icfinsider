@@ -219,3 +219,39 @@
     });
   });
 }());
+
+
+/* ------------------------------------------------------------
+   6. FIX INITIAL HASH SCROLL POSITION
+   When you land directly on a page+anchor (e.g. a link from
+   another page to page.html#section, often opened in a new
+   tab), the browser jumps to the anchor before web fonts finish
+   loading. The font swap then reflows the text above it, leaving
+   the viewport short of the actual target. Re-scroll once fonts
+   have settled to land in the right place.
+   ------------------------------------------------------------ */
+(function () {
+  if (!location.hash) return;
+  const NAV_HEIGHT = 72; // keep in sync with --nav-height in CSS
+
+  function fixScroll() {
+    let target;
+    try {
+      target = document.querySelector(location.hash);
+    } catch (err) {
+      return;
+    }
+    if (!target) return;
+
+    const top = target.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT;
+    window.scrollTo({ top: top });
+  }
+
+  window.addEventListener('load', function () {
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(fixScroll);
+    } else {
+      fixScroll();
+    }
+  });
+}());
