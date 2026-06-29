@@ -1724,7 +1724,7 @@
 .lead-landing .ea-hero {
   background-color: var(--color-dark-900);
   padding-top: calc(var(--nav-height) + var(--space-20));
-  padding-bottom: var(--space-20);
+  padding-bottom: var(--space-12);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1987,6 +1987,36 @@
   opacity: 0.6;
 }
 
+/* Missed-reach social-proof band (search impressions) */
+.lead-landing .lyb-reach-band {
+  background: var(--color-dark-800);
+  border-top: 1px solid var(--color-dark-700);
+  border-bottom: 1px solid var(--color-dark-700);
+  padding: var(--space-4) 0;
+  text-align: center;
+}
+.lead-landing .lyb-reach-stat {
+  margin: 0;
+  color: #fff;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+}
+.lead-landing .lyb-reach-stat strong {
+  font-weight: var(--weight-bold);
+  color: var(--color-accent);
+}
+.lead-landing .lyb-reach-sub {
+  margin: var(--space-2) 0 0;
+  color: rgba(255,255,255,0.75);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+}
+.lead-landing .lyb-reach-note {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+}
+
 /* Generic sell section + centered heading */
 .lead-landing .lyb-section {
   padding: var(--space-20) 0;
@@ -2196,6 +2226,17 @@
   color: var(--color-accent);
   font-weight: var(--weight-semibold);
   font-size: var(--text-sm);
+}
+
+.lead-landing .lyb-founding {
+  margin: var(--space-3) auto 0;
+  max-width: 30rem;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.lead-landing .lyb-founding strong {
+  color: #fff;
 }
 
 .lead-landing .form-success .btn { margin-top: var(--space-5); }
